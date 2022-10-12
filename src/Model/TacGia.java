@@ -64,7 +64,5 @@ public class TacGia{
         return sachs;
     }
 
-    public void setSachs(ArrayList<Sach> sachs) {
-        this.sachs = sachs;
-    }
+
 }

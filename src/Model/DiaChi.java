@@ -1,10 +1,12 @@
 package Model;
 
+import helper.Helper;
+
 import java.util.Scanner;
 
 public class DiaChi {
 	private String SoNha, Duong, Phuong, Quan, Tinh;
-	Scanner inp = new Scanner(System.in);
+
 
 	public String getSoNha() {
 		return SoNha;
@@ -52,20 +54,20 @@ public class DiaChi {
 	
 	public void Nhap() {
 		System.out.println("Nhập số nhà: ");
-		SoNha = inp.nextLine();
+		SoNha = Helper.scanner.nextLine();
 		System.out.println("Nhập đường: ");
-		Duong = inp.nextLine();
+		Duong = Helper.scanner.nextLine();
 		System.out.println("Nhập phường: ");
-		Phuong = inp.nextLine();
+		Phuong = Helper.scanner.nextLine();
 		System.out.println("Nhập quận: ");
-		Quan = inp.nextLine();
+		Quan = Helper.scanner.nextLine();
 		System.out.println("Nhập tỉnh: ");
-		Tinh = inp.nextLine();
+		Tinh = Helper.scanner.nextLine();
 	}
 
 	public String toString() {
 		return "DiaChi [SoNha=" + SoNha + ", Duong=" + Duong + ", Phuong=" + Phuong + ", Quan=" + Quan + ", Tinh="
-				+ Tinh + ", inp=" + inp + "]";
+				+ Tinh +"]";
 	}
 	
 	public void Xuat() {
