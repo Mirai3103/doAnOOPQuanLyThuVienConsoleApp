@@ -103,7 +103,15 @@ public class ConNguoi {
 		
 	}
 
-	public static void main(String[] args) {
-		new ConNguoi().Nhap();
+	@Override
+	public String toString() {
+		return "ConNguoi{" +
+				"HoTen='" + HoTen + '\'' +
+				", NgaySinh='" + NgaySinh + '\'' +
+				", SDT='" + SDT + '\'' +
+				", CMND='" + CMND + '\'' +
+				", DC=" + DC +
+				'}';
 	}
+
 }
