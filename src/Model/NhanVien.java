@@ -1,6 +1,9 @@
 package Model;
 
+import java.util.ArrayList;
+
 public class NhanVien extends ConNguoi {
+
 	private String MaNV, ChucVu, MK;
 	private int Luong;
 	public String getMaNV() {
@@ -27,6 +30,6 @@ public class NhanVien extends ConNguoi {
 	public void setLuong(int luong) {
 		Luong = luong;
 	}
-	
+
 	
 }
