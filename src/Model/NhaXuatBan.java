@@ -28,7 +28,6 @@ public class NhaXuatBan {
         this.nguoiDaiDien = nguoiDaiDien;
         this.sachDaXuatBan = sachDaXuatBan;
     }
-
     public int getId() {
         return id;
     }
