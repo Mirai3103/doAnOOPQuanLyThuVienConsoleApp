@@ -1,5 +1,7 @@
 package Model;
 
+import helper.Helper;
+
 import java.util.ArrayList;
 
 public class NhanVien extends ConNguoi {
@@ -9,9 +11,7 @@ public class NhanVien extends ConNguoi {
 	public String getMaNV() {
 		return MaNV;
 	}
-	public void setMaNV(String maNV) {
-		MaNV = maNV;
-	}
+
 	public String getChucVu() {
 		return ChucVu;
 	}
@@ -31,5 +31,17 @@ public class NhanVien extends ConNguoi {
 		Luong = luong;
 	}
 
-	
+	@Override
+	public void Nhap() {
+		super.Nhap();
+		System.out.println("Nhập mã nhân viên: ");
+		MaNV = Helper.scanner.nextLine();
+		System.out.println("Nhập chức vụ: ");
+		ChucVu = Helper.scanner.nextLine();
+		MK = Helper.scanner.nextLine();
+		System.out.println("Nhập mật khẩu: ");
+		MK = Helper.scanner.nextLine();
+		System.out.println("Nhập lương");
+		Luong = Helper.nhapSoNguyen("Không hợp lệ!. Nhập lại số lương: ");
+	}
 }
