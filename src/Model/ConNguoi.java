@@ -100,7 +100,7 @@ public class ConNguoi {
 	}
 	
 	public void Xuat() {
-		
+		System.out.println("ten")
 	}
 
 	@Override
