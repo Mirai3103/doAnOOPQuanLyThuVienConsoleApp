@@ -125,6 +125,7 @@ public class ConNguoi {
 		System.out.printf("Số điện thoại: " + SDT);
 		System.out.printf("Số CMND/CCCD: " + CMND);
 		DC.Xuat();
+
 	}
 
 	@Override
