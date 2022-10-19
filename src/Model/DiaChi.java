@@ -2,9 +2,13 @@ package Model;
 
 import helper.Helper;
 
+import java.io.Serial;
+import java.io.Serializable;
 import java.util.Scanner;
 
-public class DiaChi {
+public class DiaChi implements Serializable {
+	@Serial
+	private static final long serialVersionUID = 67434L;
 	private String SoNha, Duong, Phuong, Quan, Tinh;
 
 
@@ -62,7 +66,7 @@ public class DiaChi {
 		System.out.println("Nhập quận: ");
 		Quan = Helper.scanner.nextLine();
 		System.out.println("Nhập tỉnh: ");
-		Tinh = Helper.scanner.nextLine();
+		this.Tinh = Helper.scanner.nextLine();
 	}
 
 	public String toString() {
