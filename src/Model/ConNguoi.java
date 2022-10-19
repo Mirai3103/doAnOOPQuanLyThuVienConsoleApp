@@ -43,8 +43,8 @@ public class ConNguoi {
 	}
 
 	public ConNguoi() {
-		HoTen = NgaySinh = SDT = CMND = null;
-		DC = null;
+		HoTen = NgaySinh = SDT = CMND = "";
+		DC;
 	}
 
 	//check lại cái ngày sinh chỗ này dùng hàm được không???

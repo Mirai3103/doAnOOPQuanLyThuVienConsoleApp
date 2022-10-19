@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 // Nên kế thừ từ lớp con người??
 // Tại vì con người nó có cái sdt, CMND gì nữa, mấy thông tin nhạy cảm z thường tác giả ko có
-public class TacGia{
+public class TacGia {
     private final int id;
     private String tenTacGia;
     private String website;

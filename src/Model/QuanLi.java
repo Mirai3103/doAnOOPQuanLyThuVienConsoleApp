@@ -18,7 +18,7 @@ public class QuanLi extends NhanVien {
     public QuanLi() {
         super();
         NamKinhNghiem = 0;
-        NgayNhanChuc = MaBaoMat = DacQuyen = null;
+        NgayNhanChuc = MaBaoMat = DacQuyen = "";
     }
 
     public int getNamKinhNghiem() {
