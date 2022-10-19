@@ -1,4 +1,4 @@
-package temp;
+package Model;
 import java.util.Scanner;
 public class CTMuonTra {
     protected String mamt;
