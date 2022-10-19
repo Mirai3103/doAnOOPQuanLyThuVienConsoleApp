@@ -43,8 +43,8 @@ public class ConNguoi {
 	}
 
 	public ConNguoi() {
-		HoTen = NgaySinh = SDT = CMND = null;
-		DC = null;
+		HoTen = NgaySinh = SDT = CMND = "";
+		DC;
 	}
 
 	//check lại cái ngày sinh chỗ này dùng hàm được không???
@@ -120,10 +120,10 @@ public class ConNguoi {
 	}
 
 	public void Xuat() {
-		System.out.printf("Họ và tên: " + HoTen);
+		System.out.printf("\nHọ và tên: " + HoTen);
 		System.out.printf("\nNgày sinh: " + NgaySinh);
-		System.out.printf("Số điện thoại: " + SDT);
-		System.out.printf("Số CMND/CCCD: " + CMND);
+		System.out.printf("\nSố điện thoại: " + SDT);
+		System.out.printf("\nSố CMND/CCCD: " + CMND);
 		DC.Xuat();
 
 	}

@@ -1,13 +1,12 @@
-package temp;
+package Model;
 import java.util.Scanner;
-public class DocGia {
+public class DocGia extends ConNguoi {
     protected String madg;
-    protected String tendg;
-    protected DiaChi dc;
     protected String sothe;
     Scanner sc=new Scanner(System.in);
     public DocGia()
     {
+    	
     	madg=new String();
     	tendg=new String();
     	dc=new DiaChi();

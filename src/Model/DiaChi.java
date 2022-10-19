@@ -49,7 +49,7 @@ public class DiaChi {
 	}
 	
 	public DiaChi () {
-		SoNha = Duong = Quan = Phuong = Tinh = null;
+		SoNha = Duong = Quan = Phuong = Tinh = "";
 	}
 	
 	public void Nhap() {

@@ -25,9 +25,9 @@ public class NhanVien extends ConNguoi {
 
 	public NhanVien() {
 		super();
-		MaNV = null;
-		ChucVu = null;
-		MK = null;
+		MaNV = "";
+		ChucVu = "";
+		MK = "";
 		Luong = 0;
 	}
 
