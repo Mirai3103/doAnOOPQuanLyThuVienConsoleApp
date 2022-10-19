@@ -4,9 +4,6 @@ import helper.Helper;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
-
-
 public class ConNguoi {
 	private String HoTen, NgaySinh, SDT, CMND;
 	private DiaChi DC = new DiaChi();
@@ -44,7 +41,7 @@ public class ConNguoi {
 
 	public ConNguoi() {
 		HoTen = NgaySinh = SDT = CMND = "";
-		DC;
+		DC=new DiaChi();
 	}
 
 	//check lại cái ngày sinh chỗ này dùng hàm được không???
