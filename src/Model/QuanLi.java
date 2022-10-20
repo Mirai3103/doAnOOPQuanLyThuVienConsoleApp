@@ -2,6 +2,7 @@ package Model;
 
 
 import helper.Helper;
+import Repository.NhanViens;
 
 public class QuanLi extends NhanVien {
     private int NamKinhNghiem;
@@ -18,7 +19,7 @@ public class QuanLi extends NhanVien {
     public QuanLi() {
         super();
         NamKinhNghiem = 0;
-        NgayNhanChuc = MaBaoMat = DacQuyen = null;
+        NgayNhanChuc = MaBaoMat = DacQuyen = "";
     }
 
     public int getNamKinhNghiem() {
@@ -58,7 +59,7 @@ public class QuanLi extends NhanVien {
         do {
             System.out.println("Nhập ngày nhận chức: ");
             NgayNhanChuc = Helper.scanner.nextLine();
-        }while (!checkNgayThang(NgayNhanChuc));
+        }while (Helper.checkNgayThang(NgayNhanChuc));
         System.out.println("Nhập năm kinh nghiệm: ");
         NamKinhNghiem=Helper.nhapSoNguyen("Không hợp lệ. Nhập lại năm Kinh nghiem: ");
         System.out.println("Nhập mã bảo mật: ");
@@ -74,8 +75,5 @@ public class QuanLi extends NhanVien {
         System.out.printf("\nĐặc quyền: " + DacQuyen);
         System.out.printf("\nMã bảo mật: " + MaBaoMat);
     }
-
-
-
-
+   
 }
