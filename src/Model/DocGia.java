@@ -9,16 +9,12 @@ public class DocGia {
     public DocGia()
     {
     	madg=new String();
-    	tendg=new String();
-    	dc=new DiaChi();
     	sothe=new String();
     }
 
     public DocGia(String madg, String tendg, DiaChi dc, String sothe) 
     {
         this.madg=madg;
-        this.tendg=tendg;
-        this.dc=dc;
         this.sothe=sothe;
     }
     
@@ -46,21 +42,9 @@ public class DocGia {
 		this.madg = madg;
 	}
 
-	public String getTendg() {
-		return tendg;
-	}
 
-	public void setTendg(String tendg) {
-		this.tendg = tendg;
-	}
 
-	public DiaChi getDc() {
-		return dc;
-	}
 
-	public void setDc(DiaChi dc) {
-		this.dc = dc;
-	}
 
 	public String getSothe() {
 		return sothe;
@@ -70,10 +54,7 @@ public class DocGia {
 		this.sothe = sothe;
 	}
 	
-	@Override
-	public String toString() {
-		return "DocGia [madg=" + madg + ", tendg=" + tendg + ", dc=" + dc + ", sothe=" + sothe + "]";
-	}
+
 
 	
 

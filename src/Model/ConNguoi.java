@@ -2,12 +2,16 @@ package Model;
 
 import helper.Helper;
 
+import java.io.Serial;
+import java.io.Serializable;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 
 
-public class ConNguoi {
+public class ConNguoi  implements Serializable {
+	@Serial
+	private static final long serialVersionUID = 1L;
 	private String HoTen, NgaySinh, SDT, CMND;
 	private DiaChi DC = new DiaChi();
 
@@ -44,7 +48,8 @@ public class ConNguoi {
 
 	public ConNguoi() {
 		HoTen = NgaySinh = SDT = CMND = "";
-		DC=new DiaChi();
+		DC = new DiaChi();
+
 	}
 
 	//check lại cái ngày sinh chỗ này dùng hàm được không???
@@ -58,20 +63,21 @@ public class ConNguoi {
 	private boolean checkSdt( ){
 		if(this.SDT.matches("^[\\d]{10,11}$"))
 		{
-			System.out.println("Số điện thoại không hop lệ! ");
+
 			return true;
 		}else {
+			System.out.println("Số điện thoại không hop lệ! ");
 			return  false;
 		}
 	}
 
 	// chặc chẽ hơn nx là check trong file thử có cái nào trùng CMND không. thầy dễ check chỗ này.
 	protected boolean checkCMND(){
-		if(this.SDT.matches("^([\\d]{9}|[\\d]{12})$"))
+		if(this.CMND.matches("([\\d]{9})$"))
 		{
-			System.out.println("Số CMND/CCCD không hop lệ! ");
 			return true;
 		}else {
+			System.out.println("Số CMND/CCCD không hop lệ! ");
 			return  false;
 		}
 	}
@@ -138,6 +144,12 @@ public class ConNguoi {
 				", CMND='" + CMND + '\'' +
 				", DC=" + DC +
 				'}';
+	}
+
+	public static void main(String[] args) {
+		ConNguoi a = new ConNguoi();
+		a.Nhap();
+		a.Xuat();
 	}
 
 }
