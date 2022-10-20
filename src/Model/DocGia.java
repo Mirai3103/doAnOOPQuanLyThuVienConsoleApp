@@ -1,11 +1,11 @@
-package temp;
+package Model;
 import java.util.Scanner;
+import helper.Helper;
 public class DocGia {
     protected String madg;
     protected String tendg;
     protected DiaChi dc;
     protected String sothe;
-    Scanner sc=new Scanner(System.in);
     public DocGia()
     {
     	madg=new String();
@@ -25,13 +25,13 @@ public class DocGia {
     public void Nhap()
     {
         System.out.print("Nhập mã độc giả: ");
-        madg=sc.nextLine();
+        madg=Helper.scanner.nextLine();
         System.out.print("Nhập tên độc giả: ");
-        tendg=sc.nextLine();
+        tendg=Helper.scanner.nextLine();
         System.out.print("Nhập địa chỉ: ");
         dc.Nhap();
         System.out.print("Nhập số thẻ: ");
-        sothe=sc.nextLine();
+        sothe=Helper.scanner.nextLine();
     }
     public void Xuat()
     {

@@ -1,12 +1,13 @@
 package Model;
 import java.util.Scanner;
+import helper.Helper;
+
 public class CTMuonTra {
     protected String mamt;
     protected String masach;
     protected String ghichu;
     protected Boolean datra;
     protected String ngaytra;
-    Scanner sc=new Scanner(System.in);
     public CTMuonTra()
     {
     	mamt=new String();
@@ -28,15 +29,18 @@ public class CTMuonTra {
     public void Nhap()
     {
         System.out.print("Nhập mã mượn trả: ");
-        mamt=sc.nextLine();
+        mamt=Helper.scanner.nextLine();
         System.out.print("Nhập mã sách: ");
-        masach=sc.nextLine();
+        masach=Helper.scanner.nextLine();
         System.out.print("Sách đã trả hay chưa: ");
-        datra=Boolean.parseBoolean(sc.nextLine());
+        // cái này sao bữa trước tui ép nó báo lỗi ta?? (Quỳnh)
+        datra=Boolean.parseBoolean(Helper.scanner.nextLine());
         if(datra)
         {
-        	System.out.print("Nhập ngày trả: ");
-            ngaytra=sc.nextLine();
+        	do {
+        		System.out.print("Nhập ngày trả: ");
+        		ngaytra=Helper.scanner.nextLine();;
+        	}while(!Helper.checkNgayThang(ngaytra));
         }
         
     }
