@@ -27,20 +27,20 @@ public final class Helper {
     
     // dùng để đọc flie theo từng dòng thành String 
     // vào hàm của ai thì cắt cái String đó ra bằng lệnh str.split(" ")
-    public static ArrayList<String> DocFile(String Path){
-    	ArrayList<String> listLine = new ArrayList<>();
-    	try {
-			FileReader f = new FileReader(Path);
-			BufferedReader B = new BufferedReader(f); 
-			String Line;
-			while ((Line = B.readLine())!=null) {
-				listLine.add(Line);
-			}
-		} catch (FileNotFoundException E) {
-			E.printStackTrace();
-		} catch ( IOException E) {
-			E.printStackTrace();
-		}
+//    public static ArrayList<String> DocFile(String Path){
+//    	ArrayList<String> listLine = new ArrayList<>();
+//    	try {
+//			FileReader f = new FileReader(Path);
+//			BufferedReader B = new BufferedReader(f); 
+//			String Line;
+//			while ((Line = B.readLine())!=null) {
+//				listLine.add(Line);
+//			}
+//		} catch (FileNotFoundException E) {
+//			E.printStackTrace();
+//		} catch ( IOException E) {
+//			E.printStackTrace();
+//		}
     	
     	return listLine;
     	

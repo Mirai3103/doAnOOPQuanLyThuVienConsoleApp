@@ -9,11 +9,11 @@ public class ThuThu extends NhanVien{
     private String NoiLamViec,NgayNhanChuc,NgayLamViec;
     private int NamKinhNghiem;
     private boolean Truong;
-    private KhoSach Sachs;
+    public KhoSach Sachs;
 
-    private ThuThu() {
+    public ThuThu() {
         super();
-        NoiLamViec = NgayNhanChuc = NgayLamViec = null;
+        NoiLamViec = NgayNhanChuc = NgayLamViec = "";
         NamKinhNghiem = 0;
         Truong = false;
     }
