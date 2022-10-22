@@ -1,6 +1,8 @@
 package helper;
 
 
+import Repository.DbContext;
+
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -12,6 +14,9 @@ import java.util.regex.Pattern;
 
 public final class Helper {
     // các hằng và hàm sử lý thường dùng
+	// Cái  này được xem là database chứa tất cả danh sách  , khi ghi đọc ghi file thì chỉ ghi 1 cái này thôi, khỏi toon cong ghi nhieu
+	// biến toàn cucj nên ởdđau cũng lấy được, dễ dàng kiểm tra ràng buộc
+	public static DbContext khoDuLieu  =null;
     public final static Scanner scanner = new Scanner(System.in);
     public final static String EMAIL_PATTERN = "^([\\w.][^_])+@([\\w]+\\.)+[\\w-]{2,4}$";
     public final static Pattern DATE_PATTERN = Pattern.compile("^([\\d]{1,2})[/\\-]([\\d]{1,2})[/\\-]([\\d]{4})$");
@@ -24,7 +29,7 @@ public final class Helper {
         }
         return Integer.parseInt(number);
     }
-    
+    // sau này cái sau này dùng xuất ra file excel đọc được ví dụ như để liệt kê các loại sách hay là lịch sử đọc của ai đó
     // dùng để đọc flie theo từng dòng thành String 
     // vào hàm của ai thì cắt cái String đó ra bằng lệnh str.split(" ")
 //    public static ArrayList<String> DocFile(String Path){
@@ -42,9 +47,9 @@ public final class Helper {
 //			E.printStackTrace();
 //		}
     	
-    	return listLine;
-    	
-    }
+//    	return listLine;
+//
+//    }
     
     public static boolean checkNgayThang(String NgayThang){
 		Matcher matcher = Helper.DATE_PATTERN.matcher(NgayThang);

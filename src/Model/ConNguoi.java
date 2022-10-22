@@ -11,7 +11,7 @@ import java.util.regex.Pattern;
 
 public class ConNguoi  implements Serializable {
 	@Serial
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1345644L;
 	private String HoTen, NgaySinh, SDT, CMND;
 	private DiaChi DC = new DiaChi();
 
