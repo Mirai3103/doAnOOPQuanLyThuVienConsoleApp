@@ -1,7 +1,11 @@
 package Model;
 
 
+import Main.Main;
+import helper.Helper;
+
 import java.util.ArrayList;
+import java.util.List;
 
 // Nên kế thừ từ lớp con người??
 // Tại vì con người nó có cái sdt, CMND gì nữa, mấy thông tin nhạy cảm z thường tác giả ko có
@@ -10,11 +14,9 @@ public class TacGia {
     private String tenTacGia;
     private String website;
     private String gioiThieu;
-    private ArrayList<Sach> sachs;
 
     public TacGia(int id) {
         this.id = id;
-        sachs = new ArrayList<>();
     }
 
     public TacGia(int id, String tenTacGia, String website, String gioiThieu) {
@@ -24,13 +26,7 @@ public class TacGia {
         this.gioiThieu = gioiThieu;
     }
 
-    public TacGia(int id, String tenTacGia, String website, String gioiThieu, ArrayList<Sach> sachs) {
-        this.id = id;
-        this.tenTacGia = tenTacGia;
-        this.website = website;
-        this.gioiThieu = gioiThieu;
-        this.sachs = sachs;
-    }
+
 
     public int getId() {
         return id;
@@ -62,9 +58,8 @@ public class TacGia {
         this.gioiThieu = gioiThieu;
     }
 
-    public ArrayList<Sach> getSachs() {
-        return sachs;
+    public List<Sach> getSachs() {
+        return Helper.khoDuLieu.getKhoSach().timSachCuaTacGia(this.id);
     }
-
 
 }
