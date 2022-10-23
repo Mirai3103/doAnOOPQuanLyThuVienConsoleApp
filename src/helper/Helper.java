@@ -69,7 +69,15 @@ public final class Helper {
 			System.out.println("Ngày tháng không hợp lệ");
 			return  false;
 		}
+		//toDo:check xem thử hợp lệ ko ví dụ 30/2/2022 => ko hợp lệ
 		return true; //   dd/mm/yyyy || dd-mm-yyyy
+	}
+	public static void clearScreen() {
+		Runtime runtime = Runtime.getRuntime();
+		try {
+			runtime.exec("cls");
+		} catch (Exception ignored) {
+		}
 	}
     
 }

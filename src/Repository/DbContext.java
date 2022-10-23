@@ -16,6 +16,7 @@ public class DbContext implements Serializable {
     private KhoTheLoai khoTheLoai = new KhoTheLoai();
     private DanhSachTheLoai_Sach danhSachTheLoai_sach = new DanhSachTheLoai_Sach();
     private DanhSachTacGia danhSachTacGia = new DanhSachTacGia();
+    private DanhSachNhaXuatBan danhSachNhaXuatBan = new DanhSachNhaXuatBan();
     private String filePath = "E:\\data.bin";
     public DbContext(String saveFilePath){
         this.filePath = saveFilePath;
@@ -63,6 +64,10 @@ public class DbContext implements Serializable {
 
     public DanhSachTacGia getDanhSachTacGia() {
         return danhSachTacGia;
+    }
+
+    public DanhSachNhaXuatBan getDanhSachNhaXuatBan() {
+        return danhSachNhaXuatBan;
     }
 
     public KhoTheLoai getKhoTheLoai() {

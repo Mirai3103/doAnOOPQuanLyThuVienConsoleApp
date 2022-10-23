@@ -6,7 +6,7 @@ import Model.TheLoai_Sach;
 
 import java.util.ArrayList;
 
-
+// thực thể yếu
 public class DanhSachTheLoai_Sach {
     private ArrayList<TheLoai_Sach> theLoai_saches = new ArrayList<>();
 
