@@ -9,7 +9,7 @@ import java.util.List;
 
 public class DbContext implements Serializable {
     @Serial
-    private static final long serialVersionUID = 134564324234L;
+    private static final long serialVersionUID = 134560024234L;
 
 
     private KhoSach khoSach = new KhoSach();

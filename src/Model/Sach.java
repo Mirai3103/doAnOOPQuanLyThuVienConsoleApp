@@ -135,7 +135,7 @@ public class Sach implements Serializable {
         // hỏi người dùng có muốn nhập tác giả mới không hay chọn từ danh sách tác giả
         System.out.println("Bạn có muốn nhập tác giả mới không? (y/n)");
         String chon = Helper.scanner.nextLine();
-        if ((chon.charAt(0) + "").equalsIgnoreCase("y ")) {
+        if ((chon.charAt(0) + "").equalsIgnoreCase("y")) {
             TacGia tacGia = new TacGia();
             tacGia.nhap();
             Helper.khoDuLieu.getDanhSachTacGia().getTacGias().add(tacGia);
@@ -158,7 +158,7 @@ public class Sach implements Serializable {
         System.out.println("Nhập nhà xuất bản: ");
         System.out.println("Bạn có muốn nhập nhà xuất bản mới không? (y/n)");
         chon = Helper.scanner.nextLine();
-        if ((chon.charAt(0) + "").equalsIgnoreCase("y ")) {
+        if ((chon.charAt(0) + "").equalsIgnoreCase("y")) {
             NhaXuatBan nhaXuatBan = new NhaXuatBan();
             nhaXuatBan.nhap();
             Helper.khoDuLieu.getDanhSachNhaXuatBan().getData().add(nhaXuatBan);
