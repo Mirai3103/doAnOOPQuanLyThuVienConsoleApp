@@ -65,7 +65,6 @@ public class DiaChi implements Serializable {
 		Phuong = Helper.scanner.nextLine();
 		System.out.println("Nhập quận: ");
 		Quan = Helper.scanner.nextLine();
-		System.out.println("Nhập tỉnh: ");
 		this.Tinh = Helper.scanner.nextLine();
 	}
 

@@ -3,12 +3,16 @@ package Repository;
 import Model.TacGia;
 import helper.Helper;
 
+import java.io.Serial;
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  * @author HuuHoang
  */
-public class DanhSachTacGia {
+public class DanhSachTacGia  implements Serializable {
+    @Serial
+    private static final long serialVersionUID = 13424000L;
     private ArrayList<TacGia> tacGias = new ArrayList<>();
 
     public ArrayList<TacGia> getTacGias() {

@@ -4,10 +4,14 @@ package Repository;
 import Model.NhaXuatBan;
 import helper.Helper;
 
+import java.io.Serial;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DanhSachNhaXuatBan {
+public class DanhSachNhaXuatBan  implements Serializable {
+    @Serial
+    private static final long serialVersionUID = 13424644L;
     private ArrayList<NhaXuatBan> data = new ArrayList<>();
 
     public ArrayList<NhaXuatBan> getData() {

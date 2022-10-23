@@ -4,9 +4,13 @@ package Repository;
 import Model.TheLoai;
 import helper.Helper;
 
+import java.io.Serial;
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class KhoTheLoai {
+public class KhoTheLoai  implements Serializable {
+    @Serial
+    private static final long serialVersionUID = 13424000119L;
     private ArrayList<TheLoai> theLoais = new ArrayList<>();
 
     public ArrayList<TheLoai> getTheLoais() {

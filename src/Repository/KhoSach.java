@@ -4,10 +4,14 @@ package Repository;
 import Model.Sach;
 import helper.Helper;
 
+import java.io.Serial;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class KhoSach {
+public class KhoSach  implements Serializable {
+    @Serial
+    private static final long serialVersionUID = 1342401100L;
     private ArrayList<Sach> data= new ArrayList<>();
 
     public ArrayList<Sach> getAll() {
