@@ -1,41 +1,34 @@
 package Model;
 
 
-import java.util.ArrayList;
+import helper.Helper;
+
+import java.util.List;
 
 // Nên kế thừ từ lớp con người??
 // Tại vì con người nó có cái sdt, CMND gì nữa, mấy thông tin nhạy cảm z thường tác giả ko có
-public class TacGia{
+public class TacGia {
+    private static int idIncrement = 0;
     private final int id;
     private String tenTacGia;
     private String website;
     private String gioiThieu;
-    private ArrayList<Sach> sachs;
 
-    public TacGia(int id) {
-        this.id = id;
-        sachs = new ArrayList<>();
+    public TacGia() {
+        this.id = TacGia.idIncrement++;
     }
 
-    public TacGia(int id, String tenTacGia, String website, String gioiThieu) {
-        this(id);
+    public TacGia(String tenTacGia, String website, String gioiThieu) {
+        this();
         this.tenTacGia = tenTacGia;
         this.website = website;
         this.gioiThieu = gioiThieu;
     }
 
-    public TacGia(int id, String tenTacGia, String website, String gioiThieu, ArrayList<Sach> sachs) {
-        this.id = id;
-        this.tenTacGia = tenTacGia;
-        this.website = website;
-        this.gioiThieu = gioiThieu;
-        this.sachs = sachs;
-    }
 
     public int getId() {
         return id;
     }
-
 
 
     public String getTenTacGia() {
@@ -62,9 +55,23 @@ public class TacGia{
         this.gioiThieu = gioiThieu;
     }
 
-    public ArrayList<Sach> getSachs() {
-        return sachs;
+    public List<Sach> getSachs() {
+        return Helper.khoDuLieu.getKhoSach().timSachCuaTacGia(this.id);
     }
 
+    public void nhap() {
+        System.out.println("Nhập tên tác giả: ");
+        this.tenTacGia = Helper.scanner.nextLine();
+        System.out.println("Nhập website: ");
+        this.website = Helper.scanner.nextLine();
+        System.out.println("Nhập giới thiệu: ");
+        this.gioiThieu = Helper.scanner.nextLine();
+    }
+
+    public void xuat() {
+        // xuat id, ten
+        System.out.printf("%-5d %-20s\n", this.id, this.tenTacGia);
+
+    }
 
 }

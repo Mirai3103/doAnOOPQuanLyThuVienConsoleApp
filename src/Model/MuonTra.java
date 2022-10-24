@@ -1,11 +1,12 @@
 package Model;
 import java.util.Scanner;
+
+import helper.Helper;
 public class MuonTra {
     protected String mamt;
     protected String sothe;
     protected String manv;
     protected String ngaymuon;
-    Scanner sc=new Scanner(System.in);
     public MuonTra()
     {
     	mamt=new String();
@@ -25,13 +26,15 @@ public class MuonTra {
     public void Nhap()
     {
         System.out.print("Nhập mã mượn trả: ");
-        mamt=sc.nextLine();
+        mamt=Helper.scanner.nextLine();
         System.out.print("Nhập số thẻ: ");
-        sothe=sc.nextLine();
+        sothe=Helper.scanner.nextLine();
         System.out.print("Nhập mã nhân viên: ");
-        manv=sc.nextLine();
-        System.out.print("Nhập ngày mượn: ");
-        ngaymuon=sc.nextLine();
+        manv=Helper.scanner.nextLine();
+        do {
+        	System.out.print("Nhập ngày mượn: ");
+        	ngaymuon=Helper.scanner.nextLine();
+        }while(!Helper.checkNgayThang(ngaymuon));
     }
     public void Xuat()
     {

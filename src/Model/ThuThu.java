@@ -2,19 +2,20 @@ package Model;
 
 
 import helper.Helper;
+import Repository.KhoSach;
 
 public class ThuThu extends NhanVien{
+    private static final long serialVersionUID = 3L;
     private String NoiLamViec,NgayNhanChuc,NgayLamViec;
     private int NamKinhNghiem;
     private boolean Truong;
+    public KhoSach Sachs;
 
-
-    private ThuThu() {
+    public ThuThu() {
         super();
-        NoiLamViec = NgayNhanChuc = NgayLamViec = null;
+        NoiLamViec = NgayNhanChuc = NgayLamViec = "";
         NamKinhNghiem = 0;
         Truong = false;
-//        s = null;
     }
 
 
@@ -26,7 +27,6 @@ public class ThuThu extends NhanVien{
         NgayLamViec = ngayLamViec;
         NamKinhNghiem = namKinhNghiem;
         Truong = truong;
-//        this.s = s;
     }
 
     public String getNoiLamViec() {
@@ -77,11 +77,11 @@ public class ThuThu extends NhanVien{
         do {
             System.out.println("Nhập ngày nhận chức: ");
             NgayNhanChuc = Helper.scanner.nextLine();
-        }while (!checkNgayThang(NgayNhanChuc));
+        }while (!Helper.checkNgayThang(NgayNhanChuc));
         do {
             System.out.println("Nhập ngày làm việc: ");
             NgayLamViec = Helper.scanner.nextLine();
-        }while (!checkNgayThang(NgayLamViec));
+        }while (!Helper.checkNgayThang(NgayLamViec));
         System.out.println("Nhập năm kinh nghiệm: ");
         NamKinhNghiem= Helper.nhapSoNguyen("Không hợp lệ. Nhập lại năm Kinh nghiem: ");
         System.out.println("Đây có phải là trưởng phòng (y/n): ");
@@ -96,6 +96,5 @@ public class ThuThu extends NhanVien{
         System.out.printf("Năm kinh nghiệm: " + NamKinhNghiem);
         System.out.printf("Trưởng phòng: " + Truong);
     }
-
-
+    
 }

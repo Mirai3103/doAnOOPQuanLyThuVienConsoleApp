@@ -1,12 +1,13 @@
 package DocGia;
 import java.util.Scanner;
-public class DocGia extends ConNguoi {
+import helper.Helper;
+public class DocGia {
     protected String madg;
+    protected String tendg;
+    protected DiaChi dc;
     protected String sothe;
-    Scanner sc=new Scanner(System.in);
     public DocGia()
     {
-    	super();
     	madg=new String();
     	sothe=new String();
     }
@@ -17,11 +18,14 @@ public class DocGia extends ConNguoi {
     }    
     public void Nhap()
     {
-    	super.Nhap();
         System.out.print("Nhập mã độc giả: ");
-        madg=sc.nextLine();
+        madg=Helper.scanner.nextLine();
+        System.out.print("Nhập tên độc giả: ");
+        tendg=Helper.scanner.nextLine();
+        System.out.print("Nhập địa chỉ: ");
+        dc.Nhap();
         System.out.print("Nhập số thẻ: ");
-        sothe=sc.nextLine();
+        sothe=Helper.scanner.nextLine();
     }
     public void Xuat()
     {
@@ -35,6 +39,7 @@ public class DocGia extends ConNguoi {
 	public void setMadg(String madg) {
 		this.madg = madg;
 	}
+
 	public String getSothe() {
 		return sothe;
 	}
@@ -44,8 +49,5 @@ public class DocGia extends ConNguoi {
 	}
 	
 	
-
-	
-
 
 }

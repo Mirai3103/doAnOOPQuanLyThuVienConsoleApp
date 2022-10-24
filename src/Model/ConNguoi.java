@@ -2,9 +2,15 @@ package Model;
 
 import helper.Helper;
 
+import java.io.Serial;
+import java.io.Serializable;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-public class ConNguoi {
+
+
+public class ConNguoi  implements Serializable {
+	@Serial
+	private static final long serialVersionUID = 1345644L;
 	private String HoTen, NgaySinh, SDT, CMND;
 	private DiaChi DC = new DiaChi();
 
@@ -41,7 +47,9 @@ public class ConNguoi {
 
 	public ConNguoi() {
 		HoTen = NgaySinh = SDT = CMND = "";
-		DC=new DiaChi();
+
+		DC = new DiaChi();
+
 	}
 
 	//check lại cái ngày sinh chỗ này dùng hàm được không???
@@ -55,46 +63,48 @@ public class ConNguoi {
 	private boolean checkSdt( ){
 		if(this.SDT.matches("^[\\d]{10,11}$"))
 		{
-			System.out.println("Số điện thoại không hop lệ! ");
+
 			return true;
 		}else {
+			System.out.println("Số điện thoại không hop lệ! ");
 			return  false;
 		}
 	}
 
 	// chặc chẽ hơn nx là check trong file thử có cái nào trùng CMND không. thầy dễ check chỗ này.
 	protected boolean checkCMND(){
-		if(this.SDT.matches("^([\\d]{9}|[\\d]{12})$"))
+		if(this.CMND.matches("([\\d]{9})$"))
 		{
-			System.out.println("Số CMND/CCCD không hop lệ! ");
 			return true;
 		}else {
+			System.out.println("Số CMND/CCCD không hop lệ! ");
 			return  false;
 		}
 	}
 
+	// chuyên cái này qua helper vì  mã phiếu còn dùng mấy cái này nữa.
 	// hàm ngày tháng còn thiếu check tháng 31 30 ngày với check tháng 2.
 	// tui sửa lại cho nó đa dụng check ngày tháng luôn class con dùng lại check thử đúng hay sai nha.
-	protected boolean checkNgayThang(String NgayThang){
-		Matcher matcher = Helper.DATE_PATTERN.matcher(NgayThang);
-		if(!matcher.find()) {
-			System.out.println("Ngày tháng không hợp lệ");
-			return  false;
-		};
-		if(Integer.parseInt(matcher.group(1)) > 31||Integer.parseInt(matcher.group(1)) ==0){
-			System.out.println("Ngày tháng không hợp lệ");
-			return  false;
-		}
-		if(Integer.parseInt(matcher.group(2)) > 12 ||Integer.parseInt(matcher.group(2)) ==0 ){
-			System.out.println("Ngày tháng không hợp lệ");
-			return  false;
-		}
-		if(Integer.parseInt(matcher.group(3)) > 2025 ||Integer.parseInt(matcher.group(3)) <1940){
-			System.out.println("Ngày tháng không hợp lệ");
-			return  false;
-		}
-		return true; //   dd/mm/yyyy || dd-mm-yyyy
-	}
+//	protected boolean checkNgayThang(String NgayThang){
+//		Matcher matcher = Helper.DATE_PATTERN.matcher(NgayThang);
+//		if(!matcher.find()) {
+//			System.out.println("Ngày tháng không hợp lệ");
+//			return  false;
+//		};
+//		if(Integer.parseInt(matcher.group(1)) > 31||Integer.parseInt(matcher.group(1)) ==0){
+//			System.out.println("Ngày tháng không hợp lệ");
+//			return  false;
+//		}
+//		if(Integer.parseInt(matcher.group(2)) > 12 ||Integer.parseInt(matcher.group(2)) ==0 ){
+//			System.out.println("Ngày tháng không hợp lệ");
+//			return  false;
+//		}
+//		if(Integer.parseInt(matcher.group(3)) > 2025 ||Integer.parseInt(matcher.group(3)) <1940){
+//			System.out.println("Ngày tháng không hợp lệ");
+//			return  false;
+//		}
+//		return true; //   dd/mm/yyyy || dd-mm-yyyy
+//	}
 
 
 	public void Nhap() {
@@ -103,7 +113,7 @@ public class ConNguoi {
 		do {
 			System.out.println("Nhập ngày sinh:");
 			NgaySinh = Helper.scanner.nextLine();
-		}while (!checkNgayThang(NgaySinh));
+		}while (Helper.checkNgayThang(NgaySinh));
 		do {
 			System.out.println("Nhập số điện thoại:");
 			SDT = Helper.scanner.nextLine();
@@ -117,10 +127,10 @@ public class ConNguoi {
 	}
 
 	public void Xuat() {
-		System.out.printf("\nHọ và tên: " + HoTen);
+		System.out.printf("Họ và tên: " + HoTen);
 		System.out.printf("\nNgày sinh: " + NgaySinh);
-		System.out.printf("\nSố điện thoại: " + SDT);
-		System.out.printf("\nSố CMND/CCCD: " + CMND);
+		System.out.printf("Số điện thoại: " + SDT);
+		System.out.printf("Số CMND/CCCD: " + CMND);
 		DC.Xuat();
 
 	}
@@ -134,6 +144,12 @@ public class ConNguoi {
 				", CMND='" + CMND + '\'' +
 				", DC=" + DC +
 				'}';
+	}
+
+	public static void main(String[] args) {
+		ConNguoi a = new ConNguoi();
+		a.Nhap();
+		a.Xuat();
 	}
 
 }
