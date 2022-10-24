@@ -1,4 +1,4 @@
-package Model;
+package DocGia;
 import java.util.Scanner;
 import helper.Helper;
 public class DocGia {
@@ -11,13 +11,11 @@ public class DocGia {
     	madg=new String();
     	sothe=new String();
     }
-
-    public DocGia(String madg, String tendg, DiaChi dc, String sothe) 
+    public DocGia(String madg, String sothe) 
     {
         this.madg=madg;
         this.sothe=sothe;
-    }
-    
+    }    
     public void Nhap()
     {
         System.out.print("Nhập mã độc giả: ");
@@ -42,10 +40,6 @@ public class DocGia {
 		this.madg = madg;
 	}
 
-
-
-
-
 	public String getSothe() {
 		return sothe;
 	}
@@ -54,9 +48,6 @@ public class DocGia {
 		this.sothe = sothe;
 	}
 	
-
-
 	
-
 
 }

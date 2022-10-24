@@ -8,7 +8,6 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 
-
 public class ConNguoi  implements Serializable {
 	@Serial
 	private static final long serialVersionUID = 1345644L;
@@ -48,6 +47,7 @@ public class ConNguoi  implements Serializable {
 
 	public ConNguoi() {
 		HoTen = NgaySinh = SDT = CMND = "";
+
 		DC = new DiaChi();
 
 	}
