@@ -11,7 +11,7 @@ import java.util.ArrayList;
 public class TheLoai  implements Serializable {
     @Serial
     private static final long serialVersionUID = 1342400999L;
-    private static int idIncrement = 0;
+    public  static int idIncrement = 0;
     private final int id;
     private  String tenTheLoai;
     private String gioiThieu;

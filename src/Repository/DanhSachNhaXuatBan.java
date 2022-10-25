@@ -39,6 +39,10 @@ public class DanhSachNhaXuatBan  implements Serializable {
         return null;
     }
     public void showAll(){
+        if(data.size() == 0){
+            System.out.println("Danh sách tác giả trống");
+            return;
+        }
         for (NhaXuatBan nhaXuatBan : data) {
             // print id and tenNhaXuatBan
             System.out.println(nhaXuatBan.getId() + " - " + nhaXuatBan.getTenNXB()+"\n");

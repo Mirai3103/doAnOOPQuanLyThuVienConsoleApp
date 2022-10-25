@@ -15,7 +15,7 @@ public class TestThemXoaSua {
     }
     public static void main(String[] args) {
 
-        Helper.khoDuLieu = new DbContext("E:\\data.bin");
+        Helper.khoDuLieu = new DbContext();
         Helper.khoDuLieu.docDuLieuTuFile();
         int luaChon;
         do {

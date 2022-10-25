@@ -3,10 +3,7 @@ package helper;
 
 import Repository.DbContext;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.regex.Matcher;
@@ -73,11 +70,11 @@ public final class Helper {
 		return true; //   dd/mm/yyyy || dd-mm-yyyy
 	}
 	public static void clearScreen() {
-		Runtime runtime = Runtime.getRuntime();
 		try {
-			runtime.exec("cls");
-		} catch (Exception ignored) {
+			new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+		}catch (Exception ignored) {
 		}
+
 	}
     
 }

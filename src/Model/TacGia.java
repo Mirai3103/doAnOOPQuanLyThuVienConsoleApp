@@ -3,12 +3,16 @@ package Model;
 
 import helper.Helper;
 
+import java.io.Serial;
+import java.io.Serializable;
 import java.util.List;
 
 // Nên kế thừ từ lớp con người??
 // Tại vì con người nó có cái sdt, CMND gì nữa, mấy thông tin nhạy cảm z thường tác giả ko có
-public class TacGia {
-    private static int idIncrement = 0;
+public class TacGia implements Serializable {
+    @Serial
+    private static final long serialVersionUID = 12200345644L;
+    public  static int idIncrement = 0;
     private final int id;
     private String tenTacGia;
     private String website;
