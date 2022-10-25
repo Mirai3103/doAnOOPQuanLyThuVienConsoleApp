@@ -9,7 +9,7 @@ import helper.Helper;
 import java.util.ArrayList;
 
 public class NhanVien extends ConNguoi {
-	private static final long serialVersionUID = 2L;
+	private static final long serialVersionUID = 2213L;
 	private String MaNV, ChucVu, MK;
 	private int Luong;
 

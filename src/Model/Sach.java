@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Sach implements Serializable {
-    private static int idIncrement = 0;
+    public  static int idIncrement = 0;
     @Serial
     private static final long serialVersionUID = 134243242345644L;
     private final int id;

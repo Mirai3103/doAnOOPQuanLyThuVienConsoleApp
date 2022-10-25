@@ -1,6 +1,7 @@
 package Repository;
 
 import Model.TacGia;
+import helper.ASCIITable;
 import helper.Helper;
 
 import java.io.Serial;
@@ -27,9 +28,20 @@ public class DanhSachTacGia  implements Serializable {
         return null;
     }
     public void xuatDanhSachTacGia(){
-        for (TacGia tacGia : tacGias) {
-           tacGia.xuat();
+        if(tacGias.size() == 0){
+            System.out.println("Danh sách tác giả trống");
+            return;
         }
+        String [] header = {"ID", "Tên tác giả", "Giới thiệu","Website"};
+        String [][] data = new String[tacGias.size()][header.length];
+        for (int i = 0; i < tacGias.size(); i++) {
+            TacGia tacGia = tacGias.get(i);
+            data[i][0] = String.valueOf(tacGia.getId());
+            data[i][1] = tacGia.getTenTacGia();
+            data[i][2] = tacGia.getGioiThieu();
+            data[i][3] = tacGia.getWebsite();
+        }
+        System.out.println( ASCIITable.taoBang(header, data));
     }
     public void themTacGia(TacGia tacGia){
         tacGias.add(tacGia);

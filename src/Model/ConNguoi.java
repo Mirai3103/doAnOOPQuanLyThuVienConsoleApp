@@ -4,6 +4,7 @@ import helper.Helper;
 
 import java.io.Serial;
 import java.io.Serializable;
+import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -13,7 +14,7 @@ public class ConNguoi  implements Serializable {
 	@Serial
 	private static final long serialVersionUID = 1345644L;
 	private String HoTen, NgaySinh, SDT, CMND;
-	private DiaChi DC = new DiaChi();
+	private DiaChi DC;
 
 	public String getHoTen() {
 		return HoTen;
@@ -49,7 +50,6 @@ public class ConNguoi  implements Serializable {
 	public ConNguoi() {
 		HoTen = NgaySinh = SDT = CMND = "";
 		DC = new DiaChi();
-
 	}
 
 	//check lại cái ngày sinh chỗ này dùng hàm được không???
@@ -113,17 +113,33 @@ public class ConNguoi  implements Serializable {
 		do {
 			System.out.println("Nhập ngày sinh:");
 			NgaySinh = Helper.scanner.nextLine();
-		}while (Helper.checkNgayThang(NgaySinh));
+			if(NgaySinh.equalsIgnoreCase("null")){
+				NgaySinh = "";
+				break;
+			}
+		}while (!Helper.checkNgayThang(NgaySinh));
 		do {
 			System.out.println("Nhập số điện thoại:");
 			SDT = Helper.scanner.nextLine();
+			if(SDT.equalsIgnoreCase("null")){
+				SDT = "";
+				break;
+			}
 		}while (!checkSdt());
 		do {
 			System.out.println("Nhập số CMND/CCCD:");
 			CMND = Helper.scanner.nextLine();
+			if(CMND.equalsIgnoreCase("null")){
+				CMND = "";
+				break;
+			}
 		}while (!checkCMND());
-		System.out.println("Nhập địa chỉ: ");
-		DC.Nhap();
+		System.out.println("Bạn có muốn nhập địa chỉ không? (y/n)");
+		String chon = Helper.scanner.nextLine().charAt(0)+"";
+		if(chon.equalsIgnoreCase("y")){
+			System.out.println("Nhập địa chỉ: ");
+			DC.Nhap();
+		}
 	}
 
 	public void Xuat() {

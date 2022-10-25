@@ -8,7 +8,7 @@ public class ThemVaShowSach {
     public static void main(String[] args) {
         // có lẽ cần thêm 1 số data mẫu để test
 
-        Helper.khoDuLieu = new DbContext("E:\\data.bin");
+        Helper.khoDuLieu = new DbContext();
         System.out.println("Hello");
         System.out.print("\033[H\033[2J");
         System.out.flush();

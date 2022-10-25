@@ -3,10 +3,14 @@ package Model;
 
 import helper.Helper;
 
+import java.io.Serial;
+import java.io.Serializable;
 import java.util.*;
 
-public class NhaXuatBan {
-    private static int idIncrement = 0;
+public class NhaXuatBan implements Serializable {
+    @Serial
+    private static final long serialVersionUID = 13457777644L;
+    public  static int idIncrement = 0;
     private final int id;
     private String tenNXB;
     private DiaChi diaChi;

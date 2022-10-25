@@ -1,7 +1,7 @@
 package Repository;
 
 
-import Model.ConNguoi;
+import Model.*;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -17,11 +17,13 @@ public class DbContext implements Serializable {
     private DanhSachTheLoai_Sach danhSachTheLoai_sach = new DanhSachTheLoai_Sach();
     private DanhSachTacGia danhSachTacGia = new DanhSachTacGia();
     private DanhSachNhaXuatBan danhSachNhaXuatBan = new DanhSachNhaXuatBan();
-    private String filePath = "E:\\data.bin";
-    public DbContext(String saveFilePath){
-        this.filePath = saveFilePath;
-    }
+    private String filePath = System.getProperty("user.dir")+"\\src\\data\\data.bin";
+    private int sachIdIncrement = 0, theLoaiIdIncrement = 0, tacGiaIdIncrement = 0, nhaXuatBanIdIncrement = 0;
     public  void luuDuLieuVaoFile() {
+        sachIdIncrement = Sach.idIncrement;
+        theLoaiIdIncrement = TheLoai.idIncrement;
+        tacGiaIdIncrement = TacGia.idIncrement;
+        nhaXuatBanIdIncrement = NhaXuatBan.idIncrement;
 
         try {
             FileOutputStream fout = new FileOutputStream(filePath);
@@ -35,8 +37,16 @@ public class DbContext implements Serializable {
         }
     }
     public void copy(DbContext db){
-        this.khoSach = db.khoSach;
-        this.khoTheLoai = db.khoTheLoai;
+        this.khoSach = db.khoSach!=null?db.khoSach:new KhoSach();
+        this.khoTheLoai = db.khoTheLoai!=null?db.khoTheLoai:new KhoTheLoai();
+        this.danhSachTheLoai_sach = db.danhSachTheLoai_sach!=null?db.danhSachTheLoai_sach:new DanhSachTheLoai_Sach();
+        this.danhSachTacGia = db.danhSachTacGia!=null?db.danhSachTacGia:new DanhSachTacGia();
+        this.danhSachNhaXuatBan = db.danhSachNhaXuatBan!=null?db.danhSachNhaXuatBan:new DanhSachNhaXuatBan();
+        Sach.idIncrement = db.sachIdIncrement;
+        TheLoai.idIncrement = db.theLoaiIdIncrement;
+        TacGia.idIncrement = db.tacGiaIdIncrement;
+        NhaXuatBan.idIncrement = db.nhaXuatBanIdIncrement;
+
     }
 
     public void docDuLieuTuFile() {

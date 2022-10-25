@@ -5,7 +5,7 @@ import helper.Helper;
 import Repository.KhoSach;
 
 public class ThuThu extends NhanVien{
-    private static final long serialVersionUID = 3L;
+    private static final long serialVersionUID = 321299L;
     private String NoiLamViec,NgayNhanChuc,NgayLamViec;
     private int NamKinhNghiem;
     private boolean Truong;
