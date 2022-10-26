@@ -1,4 +1,4 @@
-package DocGia;
+package Model;
 import java.util.Scanner;
 import helper.Helper;
 public class DocGia {
@@ -11,10 +11,12 @@ public class DocGia {
     	madg=new String();
     	sothe=new String();
     }
-    public DocGia(String madg, String sothe) 
+    public DocGia(String madg, String sothe, DiaChi dc, String tendg) 
     {
         this.madg=madg;
         this.sothe=sothe;
+        this.dc=dc;
+        this.tendg=tendg;
     }    
     public void Nhap()
     {
@@ -46,6 +48,22 @@ public class DocGia {
 
 	public void setSothe(String sothe) {
 		this.sothe = sothe;
+	}
+	public String getTendg() {
+		return tendg;
+	}
+	public void setTendg(String tendg) {
+		this.tendg = tendg;
+	}
+	public DiaChi getDc() {
+		return dc;
+	}
+	public void setDc(DiaChi dc) {
+		this.dc = dc;
+	}
+	@Override
+	public String toString() {
+		return "DocGia [madg=" + madg + ", tendg=" + tendg + ", dc=" + dc + ", sothe=" + sothe + "]";
 	}
 	
 	
