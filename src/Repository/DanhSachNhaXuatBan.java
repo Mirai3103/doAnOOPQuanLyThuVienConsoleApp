@@ -56,7 +56,7 @@ public class DanhSachNhaXuatBan  implements Serializable {
     }
     public void xoaNhaXuatBan(){
         System.out.println("Nhap id nha xuat ban can xoa");
-        int id = Helper.scanner.nextInt();
+        int id = Helper.nhapSoNguyen("Lỗi!! Bạn nên nhập số nguyên :");
         data.removeIf(n -> n.getId() == id);
     }
     public void suaNhaXuatBan(int id){
@@ -67,7 +67,7 @@ public class DanhSachNhaXuatBan  implements Serializable {
     }
     public void suaNhaXuatBan(){
         System.out.println("Nhap id nha xuat ban can sua");
-        int id = Helper.scanner.nextInt();
+        int id = Helper.nhapSoNguyen("Lỗi!! Bạn nên nhập số nguyên :");
         NhaXuatBan nhaXuatBan = findById(id);
         if(nhaXuatBan != null){
             nhaXuatBan.nhap();
