@@ -34,11 +34,19 @@ public class NhanViens {
 	}
 	
 	public NhanVien getByMaNV(String MaNV) {
-		return NVs.stream().filter(s ->s.getMaNV() == MaNV).findFirst().orElse(null);
+		for(NhanVien NV : NVs) {
+			if(NV.getMaNV()==MaNV)
+				return NV;
+		}
+		return null;
 	}
 	
 	public NhanVien getByName(String name) {
-		return NVs.stream().filter(s ->s.getHoTen() == name).findFirst().orElse(null);
+		for(NhanVien NV : NVs) {
+			if(NV.getHoTen()==name)
+				return NV;
+		}
+		return null;
 	}
 	
 	public void NhapNVM() {
@@ -69,17 +77,71 @@ public class NhanViens {
 		int chon = Helper.nhapSoNguyen("Lỗi!!!Nên nhập số nguyên: ");
 		switch (chon) {
 		case 1:
-			System.out.println("Nhập mã nhân viên: ");
+			System.out.println("Nhập mã nhân viên cần sửa thông tin: ");
 			String MaNV = Helper.scanner.nextLine();
-			NhanVien NVTT = new NhanVien();
-			System.out.println("Nhập thông tin sửa: ");
-			NVTT.Nhap();
-			NVs.stream().filter(s ->s.getMaNV() == MaNV).map(S->NVTT);
+			NhanVien NV = getByMaNV(MaNV);
+			if(NV != null) {
+				if(NV instanceof QuanLi) {
+					QuanLi QL = (QuanLi) NV;
+					QL.Nhap();
+				}else {
+					ThuThu TT = (ThuThu) NV;
+					TT.Nhap();
+				}
+			}else
+				System.out.println("Nhân viên không tồn tại!!");
 			break;
 
-		default: // chưa xong
+		default: 
+			System.out.println("Nhập mã nhân viên cần sửa thông tin: ");
+			String name = Helper.scanner.nextLine();
+			NhanVien NV2 = getByName(name);
+			if(NV2 != null) {
+				if(NV2 instanceof QuanLi) {
+					QuanLi QL = (QuanLi) NV2;
+					QL.Nhap();
+				}else {
+					ThuThu TT = (ThuThu) NV2;
+					TT.Nhap();
+				}
+			}else
+				System.out.println("Nhân viên không tồn tại!!!");
 			break;
+			
 		}
+	}
+	
+	public void XoaNhanVien() {
+		Menu2();
+		System.out.println("Nhập phương thức sử dụng: ");
+		int chon = Helper.nhapSoNguyen("Lỗi!!!Nên nhập số nguyên: ");
+		switch (chon) {
+		case 1:
+			System.out.println("Nhập mã nhân viên cần sửa thông tin: ");
+			String MaNV = Helper.scanner.nextLine();
+			NhanVien NV = getByMaNV(MaNV);
+			if(NV != null) {
+				XoaNV(NV);
+			}else
+				System.out.println("Nhân viên không tồn tại!!");
+			break;
+
+		default: 
+			System.out.println("Nhập mã nhân viên cần sửa thông tin: ");
+			String name = Helper.scanner.nextLine();
+			NhanVien NV2 = getByName(name);
+			if(NV2 != null) {
+				XoaNV(NV2);
+			}else
+				System.out.println("Nhân viên không tồn tại!!!");
+			break;
+			
+		}
+	}
+	
+	public void ShowAll() {
+		System.out.println("Quản Lí: ");
+		
 	}
 	
 	
