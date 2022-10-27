@@ -2,24 +2,23 @@ package Model;
 import java.util.Scanner;
 import helper.Helper;
 
-public class CTMuonTra {
-    protected String mamt;
+public class CTMuonTra extends MuonTra {
     protected String masach;
     protected String ghichu;
-    protected Boolean datra;
+    protected int datra;
     protected String ngaytra;
     public CTMuonTra()
     {
-    	mamt=new String();
+    	super();
     	masach=new String();
     	ghichu=new String();
-    	datra=false;
+    	datra=1;
     	ngaytra=new String();
     }
 
-    public CTMuonTra(String mamt, String masach, String ghichu,Boolean datra, String ngaytra)
+    public CTMuonTra(int mamt, String sothe, String manv, String ngaymuon, String masach, String ghichu,int datra, String ngaytra)
     {
-    	this.mamt=mamt;
+    	super(mamt,sothe,manv,ngaymuon);
     	this.masach=masach;
     	this.ghichu=ghichu;
     	this.datra=datra;
@@ -28,17 +27,15 @@ public class CTMuonTra {
     
     public void Nhap()
     {
-        System.out.print("Nhập mã mượn trả: ");
-        mamt=Helper.scanner.nextLine();
         System.out.print("Nhập mã sách: ");
         masach=Helper.scanner.nextLine();
         System.out.print("Sách đã trả hay chưa: ");
         // cái này sao bữa trước tui ép nó báo lỗi ta?? (Quỳnh)
-        datra=Boolean.parseBoolean(Helper.scanner.nextLine());
-        if(datra)
+        datra=Integer.parseInt(Helper.scanner.nextLine());
+        if(datra==1)
         {
         	do {
-        		System.out.print("Nhập ngày trả: ");
+        		System.out.print(": ");
         		ngaytra=Helper.scanner.nextLine();;
         	}while(!Helper.checkNgayThang(ngaytra));
         }
@@ -49,20 +46,10 @@ public class CTMuonTra {
     	System.out.print(this.toString());
     }
 
-	
-	
 	@Override
 	public String toString() {
-		return "CTMuonTra [mamt=" + mamt + ", masach=" + masach + ", ghichu=" + ghichu + ", datra=" + datra
-				+ ", ngaytra=" + ngaytra + "]";
-	}
-
-	public String getMamt() {
-		return mamt;
-	}
-
-	public void setMamt(String mamt) {
-		this.mamt = mamt;
+		return "CTMuonTra [mamt=" + mamt + ", manv=" + manv + ", ngaymuon=" + ngaymuon + ", sothe=" + sothe
+				+ ", masach=" + masach + ", datra=" + datra + ", ghichu=" + ghichu + ", ngaytra=" + ngaytra + "]";
 	}
 
 	public String getMasach() {
@@ -81,11 +68,11 @@ public class CTMuonTra {
 		this.ghichu = ghichu;
 	}
 
-	public Boolean getDatra() {
+	public int getDatra() {
 		return datra;
 	}
 
-	public void setDatra(Boolean datra) {
+	public void setDatra(int datra) {
 		this.datra = datra;
 	}
 

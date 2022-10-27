@@ -1,23 +1,24 @@
 package Model;
+import java.io.Serializable;
 import java.util.Scanner;
-
 import helper.Helper;
-public class MuonTra {
-    protected String mamt;
+public class MuonTra implements Serializable {
+	public  static int mamtIncrement = 0;
+    protected final int mamt;
     protected String sothe;
     protected String manv;
     protected String ngaymuon;
     public MuonTra()
     {
-    	mamt=new String();
+        this.mamt = MuonTra.mamtIncrement++;
     	sothe=new String();
     	manv=new String();
     	ngaymuon=new String();
     }
 
-    public MuonTra(String mamt, String sothe, String manv, String ngaymuon) 
+    public MuonTra(int mamt, String sothe, String manv, String ngaymuon) 
     {
-        this.mamt=mamt;
+        this.mamt = MuonTra.mamtIncrement++;
         this.sothe=sothe;
         this.manv=manv;
         this.ngaymuon=ngaymuon;
@@ -25,8 +26,6 @@ public class MuonTra {
     
     public void Nhap()
     {
-        System.out.print("Nhập mã mượn trả: ");
-        mamt=Helper.scanner.nextLine();
         System.out.print("Nhập số thẻ: ");
         sothe=Helper.scanner.nextLine();
         System.out.print("Nhập mã nhân viên: ");
@@ -40,41 +39,28 @@ public class MuonTra {
     {
     	System.out.print(this.toString());
     }
-
-	
 	@Override
 	public String toString() {
-		return "MuonTra [mamt=" + mamt + ", sothe=" + sothe + ", manv=" + manv + ", ngaymuon=" + ngaymuon + "]";
+		return "MuonTra [ID=" + mamt + ", sothe=" + sothe + ", manv=" + manv + ", ngaymuon=" + ngaymuon + "]";
 	}
-
-	public String getMamt() {
+	public int getID() {
 		return mamt;
 	}
-
-	public void setMamt(String mamt) {
-		this.mamt = mamt;
-	}
-
-	public String getSothe() {
+	String getSothe() {
 		return sothe;
 	}
-
 	public void setSothe(String sothe) {
 		this.sothe = sothe;
 	}
-
 	public String getManv() {
 		return manv;
 	}
-
 	public void setManv(String manv) {
 		this.manv = manv;
 	}
-
 	public String getNgaymuon() {
 		return ngaymuon;
 	}
-
 	public void setNgaymuon(String ngaymuon) {
 		this.ngaymuon = ngaymuon;
 	}
