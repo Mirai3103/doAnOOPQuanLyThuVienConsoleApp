@@ -1,14 +1,16 @@
 package Model;
+import java.io.Serializable;
 import java.util.Scanner;
-public class TheThuVien {
-    protected String sothe;
+public class TheThuVien implements Serializable {
+	public  static int sotheIncrement = 0;
+    protected final int sothe;
     protected String ngaybd;
     protected String ngayhh;
     protected String ghichu;
     Scanner sc=new Scanner(System.in);
     public TheThuVien()
     {
-    	sothe=new String();
+        this.sothe = TheThuVien.sotheIncrement++;
     	ngaybd=new String();
     	ngayhh=new String();
     	ghichu=new String();
@@ -16,15 +18,13 @@ public class TheThuVien {
 
     public TheThuVien(String sothe, String ngaybd,String ngayhh, String ghichu) 
     {
-    	this.sothe=sothe;
+        this.sothe = TheThuVien.sotheIncrement++;
     	this.ngaybd=ngaybd;
     	this.ngayhh=ngayhh;
     	this.ghichu=ghichu;	
     }  
     public void Nhap()
     {
-        System.out.print("Nhập số thẻ: ");
-        sothe=sc.nextLine();
         System.out.print("Nhập tên ngày bắt đầu: ");
         ngaybd=sc.nextLine();
         System.out.print("Nhập tên ngày hết hạn: ");
@@ -36,12 +36,8 @@ public class TheThuVien {
     {
     	System.out.print(this.toString());
     }
-	public String getSothe() {
+	public int getSothe() {
 		return sothe;
-	}
-
-	public void setSothe(String sothe) {
-		this.sothe = sothe;
 	}
 
 	public String getNgaybd() {
