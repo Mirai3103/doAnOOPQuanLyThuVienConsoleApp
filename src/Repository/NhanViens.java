@@ -130,7 +130,7 @@ public class NhanViens {
 			String name = Helper.scanner.nextLine();
 			NhanVien NV2 = getByName(name);
 			if(NV2 != null) {
-				if(NV2 instanceof QuanLi) {
+				if(NV2 instanceof QuanLi) { //https://codelearn.io/learning/lap-trinh-huong-doi-tuong-trong-java/11157048
 					QuanLi QL = (QuanLi) NV2;
 					int flag1=1;
 		        	do {
