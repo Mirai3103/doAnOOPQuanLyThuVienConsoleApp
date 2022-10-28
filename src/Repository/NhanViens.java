@@ -48,6 +48,7 @@ public class NhanViens {
 		}
 		return null;
 	}
+
 	
 	public void NhapNVM() {
 		System.out.println("0.Là Quản lí");
@@ -57,15 +58,31 @@ public class NhanViens {
 		switch (chon) {
 		case 0:
 			QuanLi QL = new QuanLi();
-			QL.Nhap();
+			int flag=1;
+			do {
+				flag=1;
+				QL.Nhap();
+				if(NVs.stream().filter(s -> s.getMaNV()==QL.getMaNV()).findFirst().orElse(null)!=null) {
+					System.out.println("Mã nhân viên bị trùng lặp yêu cầu nhập lại mã nhân viên.");
+					flag=0;
+			}
+			}while(flag==0);
 			NhanVien NV = QL;
         	NVs.add(NV);
 			break;
 		default:
 			ThuThu TT = new ThuThu();
-        	TT.Nhap();
-        	NV = TT;
-        	NVs.add(NV);
+			int flag2=1;
+        	do {
+    			flag2=1;
+    			TT.Nhap();
+    			if(NVs.stream().filter(s -> s.getMaNV()==TT.getMaNV()).findFirst().orElse(null)!=null) {
+    				System.out.println("Mã nhân viên bị trùng lặp yêu cầu nhập lại.");
+    				flag2=0;
+    			}
+    		}while(flag2==0);
+        	NhanVien NV2 = TT;
+        	NVs.add(NV2);
 			break;
 		}
 		
@@ -83,26 +100,58 @@ public class NhanViens {
 			if(NV != null) {
 				if(NV instanceof QuanLi) {
 					QuanLi QL = (QuanLi) NV;
-					QL.Nhap();
+					int flag1=1;
+		        	do {
+		    			flag1=1;
+		    			QL.Nhap();
+		    			if(NVs.stream().filter(s -> s.getMaNV()==QL.getMaNV()).findFirst().orElse(null)!=null) {
+		    				System.out.println("Mã nhân viên bị trùng lặp yêu cầu nhập lại mã nhân viên.");
+		    				flag1=0;
+		    			}
+		    			}while(flag1==0);
 				}else {
 					ThuThu TT = (ThuThu) NV;
-					TT.Nhap();
+					int flag2=1;
+		        	do {
+		    			flag2=1;
+		    			TT.Nhap();
+		    			if(NVs.stream().filter(s -> s.getMaNV()==TT.getMaNV()).findFirst().orElse(null)!=null) {
+		    				System.out.println("Mã nhân viên bị trùng lặp yêu cầu nhập lại mã nhân viên.");
+		    				flag2=0;
+		    			}
+		    			}while(flag2==0);
 				}
 			}else
 				System.out.println("Nhân viên không tồn tại!!");
 			break;
 
 		default: 
-			System.out.println("Nhập mã nhân viên cần sửa thông tin: ");
+			System.out.println("Nhập Tên nhân viên cần sửa thông tin: ");
 			String name = Helper.scanner.nextLine();
 			NhanVien NV2 = getByName(name);
 			if(NV2 != null) {
 				if(NV2 instanceof QuanLi) {
 					QuanLi QL = (QuanLi) NV2;
-					QL.Nhap();
+					int flag1=1;
+		        	do {
+		    			flag1=1;
+		    			QL.Nhap();
+		    			if(NVs.stream().filter(s -> s.getMaNV()==QL.getMaNV()).findFirst().orElse(null)!=null) {
+		    				System.out.println("Mã nhân viên bị trùng lặp yêu cầu nhập lại mã nhân viên.");
+		    				flag1=0;
+		    			}
+		    			}while(flag1==0);
 				}else {
 					ThuThu TT = (ThuThu) NV2;
-					TT.Nhap();
+					int flag2=1;
+		        	do {
+		    			flag2=1;
+		    			TT.Nhap();
+		    			if(NVs.stream().filter(s -> s.getMaNV()==TT.getMaNV()).findFirst().orElse(null)!=null) {
+		    				System.out.println("Mã nhân viên bị trùng lặp yêu cầu nhập lại mã nhân viên.");
+		    				flag2=0;
+		    			}
+		    			}while(flag2==0);
 				}
 			}else
 				System.out.println("Nhân viên không tồn tại!!!");
@@ -127,7 +176,7 @@ public class NhanViens {
 			break;
 
 		default: 
-			System.out.println("Nhập mã nhân viên cần sửa thông tin: ");
+			System.out.println("Nhập Tên nhân viên cần sửa thông tin: ");
 			String name = Helper.scanner.nextLine();
 			NhanVien NV2 = getByName(name);
 			if(NV2 != null) {
@@ -139,8 +188,9 @@ public class NhanViens {
 		}
 	}
 	
-	public void ShowAll() {
-		System.out.println("Quản Lí: ");
+	public void ShowQL(QuanLi QL ) {
+		System.out.println("");
+		// thấy có hàm xuất bản nhưng không biết dùng :))
 		
 	}
 	
@@ -198,8 +248,9 @@ public class NhanViens {
 		System.out.println("1.Nhập nhân viên mới.");
 		System.out.println("2.sửa nhân viên.");
 		System.out.println("3.Xóa nhân viên.");
-		System.out.println("4.Xuất.");
-		System.out.println("5.Thoát.");
+		System.out.println("4.Tìm kiếm nhân viên.");
+		System.out.println("5.Xuất ra toàn danh sách.");
+		System.out.println("6.Thoát.");
 	}
 	public void Menu2() {
 		System.out.println("1.Với mã nhân viên.");
@@ -208,26 +259,35 @@ public class NhanViens {
 	public void LamViec() {
 		Menu1();
 		int chon;
-		System.out.println("chọn thao tác: ");
-		chon = Helper.nhapSoNguyen("Yêu cầu nhập số nguyên:");
-		switch (chon) {
-		case 1:
-			NhapNVM();
-			break;
-//chưa xong
-		case 2:
-			
-			break;
-		case 3:
-			
-			break;
-
-		case 4:
-			
-			break;
-		case 5:
-			
-			break;
-		}
+		do {
+			System.out.println("chọn thao tác: ");
+			chon = Helper.nhapSoNguyen("Yêu cầu nhập số nguyên:");
+			switch (chon) {
+			case 1:
+				NhapNVM();
+				break;
+	//chưa xong
+			case 2:
+				SuaNhanVien();
+				break;
+			case 3:
+				XoaNhanVien();
+				break;
+	
+			case 4:
+				// thấy có hàm xuất mà không biết dùng....
+				break;
+			case 5:
+				// thấy có hàm xuất mà không biết dùng....
+				break;
+			case 6:
+				
+				break;
+			default:
+				System.out.println("Đối số truyền vào không đúng.");
+			}
+			System.out.println("Nhập 1 để tiếp tục.");
+			chon=Helper.nhapSoNguyen("Nhập số nguyên.");
+		}while(chon!=6);
 	}
 }
