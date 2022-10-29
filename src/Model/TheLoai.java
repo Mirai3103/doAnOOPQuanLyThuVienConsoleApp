@@ -1,8 +1,7 @@
 package Model;
 
 
-import Main.Main;
-import helper.ASCIITable;
+import helper.Table;
 import helper.Helper;
 import helper.ITableRowData;
 
@@ -86,6 +85,6 @@ public class TheLoai  implements Serializable, ITableRowData {
         return  new String[]{"Id","Tên thể loại","giới thiệu"};
     }
     public void xuatDangBang(){
-        System.out.println(ASCIITable.taoBang(this));
+        System.out.println(Table.taoBang(this));
     }
 }

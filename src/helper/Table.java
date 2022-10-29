@@ -2,9 +2,8 @@ package helper;
 
 
 import java.util.ArrayList;
-import java.util.List;
 
-public class ASCIITable {
+public class Table {
    public static String taoBang(ArrayList<? extends ITableRowData> data) {
        if(data.size()==0){
            return "Trống";

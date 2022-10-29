@@ -2,7 +2,7 @@ package Repository;
 
 
 import Model.TheLoai;
-import helper.ASCIITable;
+import helper.Table;
 import helper.Helper;
 
 import java.io.*;
@@ -32,7 +32,7 @@ public class KhoTheLoai  implements Serializable {
             return;
         }
 
-        System.out.println( ASCIITable.taoBang(theLoais));
+        System.out.println( Table.taoBang(theLoais));
     }
 
     //toDo: crud

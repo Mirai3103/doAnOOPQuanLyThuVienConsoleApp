@@ -1,6 +1,7 @@
 package Model;
 
 
+import helper.Table;
 import helper.Helper;
 import helper.ITableRowData;
 
@@ -81,11 +82,14 @@ public class TacGia implements Serializable , ITableRowData {
 
     @Override
     public String[] getRowData() {
-        return new String[]{};
+         return new String[] {""+id,tenTacGia,website,gioiThieu};
     }
 
     @Override
     public String[] getHeader() {
         return new String[] {"Id","Tên tác giả","website","giới thiệu"};
+    }
+    public void xuatDangBang(){
+        System.out.println(Table.taoBang(this));
     }
 }
