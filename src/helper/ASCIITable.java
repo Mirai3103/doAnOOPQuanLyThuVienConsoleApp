@@ -1,17 +1,26 @@
 package helper;
 
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ASCIITable {
-   public static String taoBang(String[] header, String[][] data) {
+   public static String taoBang(ArrayList<? extends ITableRowData> data) {
+       if(data.size()==0){
+           return "Trống";
+       }
+       String[] header=data.get(0).getHeader();
        int[] chieuRongCacCot = new int[header.length];
+
        // tìm chiều rộng lớn nhất của cột
        for (int i = 0; i < header.length; i++) {
            chieuRongCacCot[i] = header[i].length();
        }
-       for (String[] datum : data) {
-           for (int j = 0; j < datum.length; j++) {
-               if (datum[j].length() > chieuRongCacCot[j]) {
-                   chieuRongCacCot[j] = datum[j].length();
+
+       for (ITableRowData  rowData : data) {
+           for (int j = 0; j < rowData.getRowData().length; j++) {
+               if ((rowData.getRowData())[j].length()> chieuRongCacCot[j]) {
+                   chieuRongCacCot[j] = (rowData.getRowData())[j].length();
                }
            }
        }
@@ -19,10 +28,11 @@ public class ASCIITable {
        sb.append(taoDuongPhanCach(chieuRongCacCot));
        sb.append(taoDongDuLieu(chieuRongCacCot, header));
        sb.append(taoDuongPhanCach(chieuRongCacCot));
-       for (String[] d : data) {
-           sb.append(taoDongDuLieu(chieuRongCacCot, d));
+       for (ITableRowData d : data) {
+           String[] dataStrs =  d.getRowData();
+           sb.append(taoDongDuLieu(chieuRongCacCot,dataStrs));
+           sb.append(taoDuongPhanCach(chieuRongCacCot));
        }
-       sb.append(taoDuongPhanCach(chieuRongCacCot));
        return sb.toString();
    }
    // tạo các đường phân cách: +------+-------------+--------+
@@ -47,5 +57,8 @@ public class ASCIITable {
          sb.append("|");
          sb.append(System.lineSeparator());
          return sb.toString();
+    }
+    public static String taoBang(ITableRowData data) {
+        return taoBang(new ArrayList<>(){{add(data);}});
     }
 }

@@ -2,6 +2,7 @@ package Model;
 
 
 import helper.Helper;
+import helper.ITableRowData;
 
 import java.io.Serial;
 import java.io.Serializable;
@@ -9,7 +10,7 @@ import java.util.List;
 
 // Nên kế thừ từ lớp con người??
 // Tại vì con người nó có cái sdt, CMND gì nữa, mấy thông tin nhạy cảm z thường tác giả ko có
-public class TacGia implements Serializable {
+public class TacGia implements Serializable , ITableRowData {
     @Serial
     private static final long serialVersionUID = 12200345644L;
     public  static int idIncrement = 0;
@@ -78,4 +79,13 @@ public class TacGia implements Serializable {
 
     }
 
+    @Override
+    public String[] getRowData() {
+        return new String[]{};
+    }
+
+    @Override
+    public String[] getHeader() {
+        return new String[] {"Id","Tên tác giả","website","giới thiệu"};
+    }
 }

@@ -5,8 +5,7 @@ import Model.TheLoai;
 import helper.ASCIITable;
 import helper.Helper;
 
-import java.io.Serial;
-import java.io.Serializable;
+import java.io.*;
 import java.util.ArrayList;
 
 public class KhoTheLoai  implements Serializable {
@@ -32,15 +31,8 @@ public class KhoTheLoai  implements Serializable {
             System.out.println("Danh sách tác giả trống");
             return;
         }
-        String [] header = {"ID", "Tên thể loại", "Giới thiệu"};
-        String [][] data = new String[theLoais.size()][header.length];
-        for (int i = 0; i < theLoais.size(); i++) {
-            TheLoai theLoai = theLoais.get(i);
-            data[i][0] = String.valueOf(theLoai.getId());
-            data[i][1] = theLoai.getTenTheLoai();
-            data[i][2] = theLoai.getGioiThieu();
-        }
-        System.out.println( ASCIITable.taoBang(header, data));
+
+        System.out.println( ASCIITable.taoBang(theLoais));
     }
 
     //toDo: crud
@@ -98,5 +90,15 @@ public class KhoTheLoai  implements Serializable {
             }
         }while (luaChon != 5);
     }
+    public String getCSVHeader(){
+        return "Id,tên thể loại, giới thiệu";
+    }
+    public void toCSVFile(String filePath){
+        File fileOut = new File(filePath);
+        try {
+            if(!fileOut.exists())fileOut.createNewFile();
+        }catch (Exception ignored){
 
+        }
+    }
 }
