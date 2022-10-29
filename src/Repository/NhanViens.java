@@ -62,7 +62,7 @@ public class NhanViens {
 			do {
 				flag=1;
 				QL.Nhap();
-				if(NVs.stream().filter(s -> s.getMaNV()==QL.getMaNV()).findFirst().orElse(null)!=null) {
+				if(NVs.stream().filter(s -> s.getMaNV().equalsIgnoreCase(QL.getMaNV())).findFirst().orElse(null)!=null) {
 					System.out.println("Mã nhân viên bị trùng lặp yêu cầu nhập lại mã nhân viên.");
 					flag=0;
 			}

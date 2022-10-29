@@ -1,9 +1,9 @@
 package Model;
 
 
-import helper.Table;
+import helper.Xuat.Table;
 import helper.Helper;
-import helper.ITableRowData;
+import helper.Xuat.ITableRowData;
 
 import java.io.Serial;
 import java.io.Serializable;

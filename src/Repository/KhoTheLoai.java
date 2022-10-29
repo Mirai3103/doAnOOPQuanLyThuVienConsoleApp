@@ -2,7 +2,7 @@ package Repository;
 
 
 import Model.TheLoai;
-import helper.Table;
+import helper.Xuat.Table;
 import helper.Helper;
 
 import java.io.*;
@@ -31,7 +31,6 @@ public class KhoTheLoai  implements Serializable {
             System.out.println("Danh sách tác giả trống");
             return;
         }
-
         System.out.println( Table.taoBang(theLoais));
     }
 
