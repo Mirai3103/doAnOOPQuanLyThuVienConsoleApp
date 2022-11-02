@@ -2,6 +2,7 @@ package Model;
 import java.util.Scanner;
 import helper.Helper;
 public class DocGia {
+
     protected String madg;
     protected String tendg;
     protected DiaChi dc;

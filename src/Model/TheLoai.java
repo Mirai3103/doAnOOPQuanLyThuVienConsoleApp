@@ -1,14 +1,15 @@
 package Model;
 
 
-import Main.Main;
+import helper.Table;
 import helper.Helper;
+import helper.ITableRowData;
 
 import java.io.Serial;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-public class TheLoai  implements Serializable {
+public class TheLoai  implements Serializable, ITableRowData {
     @Serial
     private static final long serialVersionUID = 1342400999L;
     public  static int idIncrement = 0;
@@ -69,5 +70,21 @@ public class TheLoai  implements Serializable {
     }
     public void xuat(){
         System.out.printf("ID: %d, Tên thể loại: %s, Giới thiệu: %s\n", this.id, this.tenTheLoai, this.gioiThieu);
+    }
+    public String toCSVRow(){
+        return String.format("%d, %s, \"%s\"", this.id,this.tenTheLoai,this.gioiThieu);
+    }
+
+    @Override
+    public String[] getRowData() {
+        return new String[]{id+"",tenTheLoai,gioiThieu};
+    }
+
+    @Override
+    public String[] getHeader() {
+        return  new String[]{"Id","Tên thể loại","giới thiệu"};
+    }
+    public void xuatDangBang(){
+        System.out.println(Table.taoBang(this));
     }
 }

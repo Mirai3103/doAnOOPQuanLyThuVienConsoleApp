@@ -2,6 +2,7 @@ package Model;
 
 import helper.Helper;
 
+import java.io.Serial;
 import java.util.ArrayList;
 
 import helper.Helper;
@@ -9,7 +10,8 @@ import helper.Helper;
 import java.util.ArrayList;
 
 public class NhanVien extends ConNguoi {
-	private static final long serialVersionUID = 2213L;
+	@Serial
+	private static final long serialVersionUID = 221223213L;
 	private String MaNV, ChucVu, MK;
 	private int Luong;
 
