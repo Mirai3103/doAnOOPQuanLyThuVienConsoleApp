@@ -83,18 +83,18 @@ public class ThuThu extends NhanVien{
             NgayLamViec = Helper.scanner.nextLine();
         }while (!Helper.checkNgayThang(NgayLamViec));
         System.out.println("Nhập năm kinh nghiệm: ");
-        NamKinhNghiem= Helper.nhapSoNguyen("Không hợp lệ. Nhập lại năm Kinh nghiem: ");
-        System.out.println("Đây có phải là trưởng phòng (y/n): ");
-        Truong=Helper.scanner.nextLine().toLowerCase().charAt(0) == 'y'; // bị lỗi ?? cần hàm check không?
+        NamKinhNghiem= Helper.nhapSoNguyen("Phải là số nguyên!! yêu cầu nhập lại: ");
+        System.out.println("Nhấn y nếu đó là trưởng (y/n): ");
+        Truong=Helper.scanner.nextLine().toLowerCase().charAt(0) == 'y'; // bá»‹ lá»—i ?? cáº§n hÃ m check khÃ´ng?
     }
     public void Xuat() {
 
         super.Xuat();
-        System.out.printf("Nơi làm việc: " + NoiLamViec);
-        System.out.printf("Ngày nhận chức: " + NgayNhanChuc);
-        System.out.printf("Ngày làm việc: " + NgayLamViec);
-        System.out.printf("Năm kinh nghiệm: " + NamKinhNghiem);
-        System.out.printf("Trưởng phòng: " + Truong);
+        System.out.printf("NÆ¡i lÃ m viá»‡c: " + NoiLamViec);
+        System.out.printf("NgÃ y nháº­n chá»©c: " + NgayNhanChuc);
+        System.out.printf("NgÃ y lÃ m viá»‡c: " + NgayLamViec);
+        System.out.printf("NÄƒm kinh nghiá»‡m: " + NamKinhNghiem);
+        System.out.printf("TrÆ°á»Ÿng phÃ²ng: " + Truong);
     }
     
 }
