@@ -2,8 +2,11 @@ eclipse.preferences.version=1
 encoding//src/Model/ConNguoi.java=UTF-8
 encoding//src/Model/DiaChi.java=UTF-8
 encoding//src/Model/DocGia.java=UTF-8
+<<<<<<< HEAD
+=======
 encoding//src/Model/NhanVien.java=UTF-8
 encoding//src/Model/QuanLi.java=UTF-8
+>>>>>>> fe861e37a5a382c0b9bd04399a8caf519bac8018
 encoding//src/Model/Sach.java=UTF-8
 encoding//src/Model/TacGia.java=UTF-8
 encoding//src/Model/TheLoai.java=UTF-8
