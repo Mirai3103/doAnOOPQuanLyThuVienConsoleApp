@@ -2,6 +2,7 @@ package Model;
 
 import helper.Helper;
 
+import java.io.Serial;
 import java.util.ArrayList;
 
 import helper.Helper;
@@ -9,7 +10,8 @@ import helper.Helper;
 import java.util.ArrayList;
 
 public class NhanVien extends ConNguoi {
-	private static final long serialVersionUID = 2L;
+	@Serial
+	private static final long serialVersionUID = 221223213L;
 	private String MaNV, ChucVu, MK;
 	private int Luong;
 
@@ -63,15 +65,15 @@ public class NhanVien extends ConNguoi {
 		ChucVu = Helper.scanner.nextLine();
 		System.out.println("Nhập mật khẩu: ");
 		MK = Helper.scanner.nextLine();
-		System.out.println("Nhập lương");
-		Luong = Helper.nhapSoNguyen("Không hợp lệ!. Nhập lại số lương: ");
+		System.out.println("Nhập mức lương");
+		Luong = Helper.nhapSoNguyen("phải là số nguyên!! yêu cầu nhập lại : ");
 	}
 
 	public void Xuat() {
 		super.Xuat();
-		System.out.printf("Mã nhân viên: " + MaNV);
-		System.out.printf("Chức vụ: " + ChucVu);
-		System.out.printf("Mật khẩu: " + MK);
-		System.out.printf("Lương" + Luong);
+		System.out.printf("MÃ£ nhÃ¢n viÃªn: " + MaNV);
+		System.out.printf("Chá»©c vá»¥: " + ChucVu);
+		System.out.printf("Máº­t kháº©u: " + MK);
+		System.out.printf("LÆ°Æ¡ng" + Luong);
 	}
 }

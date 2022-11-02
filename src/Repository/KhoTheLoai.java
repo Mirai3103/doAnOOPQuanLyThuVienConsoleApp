@@ -2,10 +2,10 @@ package Repository;
 
 
 import Model.TheLoai;
+import helper.Table;
 import helper.Helper;
 
-import java.io.Serial;
-import java.io.Serializable;
+import java.io.*;
 import java.util.ArrayList;
 
 public class KhoTheLoai  implements Serializable {
@@ -27,9 +27,12 @@ public class KhoTheLoai  implements Serializable {
     }
 
     public void showAll() {
-        for (TheLoai theLoai : theLoais) {
-            theLoai.xuat();
+        if(theLoais.size() == 0) {
+            System.out.println("Danh sách tác giả trống");
+            return;
         }
+
+        System.out.println( Table.taoBang(theLoais));
     }
 
     //toDo: crud
@@ -87,5 +90,15 @@ public class KhoTheLoai  implements Serializable {
             }
         }while (luaChon != 5);
     }
+    public String getCSVHeader(){
+        return "Id,tên thể loại, giới thiệu";
+    }
+    public void toCSVFile(String filePath){
+        File fileOut = new File(filePath);
+        try {
+            if(!fileOut.exists())fileOut.createNewFile();
+        }catch (Exception ignored){
 
+        }
+    }
 }

@@ -1,14 +1,20 @@
 package Model;
 
 
+import helper.Table;
 import helper.Helper;
+import helper.ITableRowData;
 
+import java.io.Serial;
+import java.io.Serializable;
 import java.util.List;
 
 // Nên kế thừ từ lớp con người??
 // Tại vì con người nó có cái sdt, CMND gì nữa, mấy thông tin nhạy cảm z thường tác giả ko có
-public class TacGia {
-    private static int idIncrement = 0;
+public class TacGia implements Serializable , ITableRowData {
+    @Serial
+    private static final long serialVersionUID = 12200345644L;
+    public  static int idIncrement = 0;
     private final int id;
     private String tenTacGia;
     private String website;
@@ -74,4 +80,16 @@ public class TacGia {
 
     }
 
+    @Override
+    public String[] getRowData() {
+         return new String[] {""+id,tenTacGia,website,gioiThieu};
+    }
+
+    @Override
+    public String[] getHeader() {
+        return new String[] {"Id","Tên tác giả","website","giới thiệu"};
+    }
+    public void xuatDangBang(){
+        System.out.println(Table.taoBang(this));
+    }
 }

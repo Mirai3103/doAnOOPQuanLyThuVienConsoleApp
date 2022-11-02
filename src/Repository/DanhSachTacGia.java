@@ -2,6 +2,7 @@ package Repository;
 
 import Model.TacGia;
 import helper.Helper;
+import helper.Table;
 
 import java.io.Serial;
 import java.io.Serializable;
@@ -27,9 +28,11 @@ public class DanhSachTacGia  implements Serializable {
         return null;
     }
     public void xuatDanhSachTacGia(){
-        for (TacGia tacGia : tacGias) {
-           tacGia.xuat();
+        if(tacGias.size() == 0){
+            System.out.println("Danh sách tác giả trống");
+            return;
         }
+        System.out.println(Table.taoBang(this.tacGias));
     }
     public void themTacGia(TacGia tacGia){
         tacGias.add(tacGia);

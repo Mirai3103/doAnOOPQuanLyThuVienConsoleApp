@@ -57,11 +57,11 @@ public class QuanLi extends NhanVien {
     public void Nhap() {
         super.Nhap();
         do {
-            System.out.println("Nhập ngày nhận chức: ");
+            System.out.println("Nhập ngày nhận chức : ");
             NgayNhanChuc = Helper.scanner.nextLine();
         }while (Helper.checkNgayThang(NgayNhanChuc));
         System.out.println("Nhập năm kinh nghiệm: ");
-        NamKinhNghiem=Helper.nhapSoNguyen("Không hợp lệ. Nhập lại năm Kinh nghiem: ");
+        NamKinhNghiem=Helper.nhapSoNguyen("Phải là số nguyên!!! Yêu cầu nhập lại: ");
         System.out.println("Nhập mã bảo mật: ");
         MaBaoMat = Helper.scanner.nextLine();
         System.out.println("Nhập đặc quyền: ");

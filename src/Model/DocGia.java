@@ -2,6 +2,7 @@ package Model;
 import java.util.Scanner;
 import helper.Helper;
 public class DocGia {
+
     protected int madg;
     protected String tendg;
     protected DiaChi dc;
@@ -14,12 +15,12 @@ public class DocGia {
     	sothe=0;
     	
     }
-    public DocGia(int madg, String tendg, DiaChi dc, int sothe) 
+    public DocGia(int madg, int sothe, DiaChi dc, String tendg) 
     {
         this.madg=madg;
         this.sothe=sothe;
-        this.tendg=tendg;
         this.dc=dc;
+        this.tendg=tendg;
     }    
     public void Nhap()
     {
@@ -66,6 +67,8 @@ public class DocGia {
 	public void setSothe(int sothe) {
 		this.sothe = sothe;
 	}
+	
+	
 	
 	
 	

@@ -39,6 +39,10 @@ public class DanhSachNhaXuatBan  implements Serializable {
         return null;
     }
     public void showAll(){
+        if(data.size() == 0){
+            System.out.println("Danh sách tác giả trống");
+            return;
+        }
         for (NhaXuatBan nhaXuatBan : data) {
             // print id and tenNhaXuatBan
             System.out.println(nhaXuatBan.getId() + " - " + nhaXuatBan.getTenNXB()+"\n");
@@ -52,7 +56,7 @@ public class DanhSachNhaXuatBan  implements Serializable {
     }
     public void xoaNhaXuatBan(){
         System.out.println("Nhap id nha xuat ban can xoa");
-        int id = Helper.scanner.nextInt();
+        int id = Helper.nhapSoNguyen("Lỗi!! Bạn nên nhập số nguyên :");
         data.removeIf(n -> n.getId() == id);
     }
     public void suaNhaXuatBan(int id){
@@ -63,7 +67,7 @@ public class DanhSachNhaXuatBan  implements Serializable {
     }
     public void suaNhaXuatBan(){
         System.out.println("Nhap id nha xuat ban can sua");
-        int id = Helper.scanner.nextInt();
+        int id = Helper.nhapSoNguyen("Lỗi!! Bạn nên nhập số nguyên :");
         NhaXuatBan nhaXuatBan = findById(id);
         if(nhaXuatBan != null){
             nhaXuatBan.nhap();
