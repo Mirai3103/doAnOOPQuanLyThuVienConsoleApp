@@ -1,4 +1,5 @@
 package Model;
+import java.time.LocalDate;
 import java.util.Scanner;
 import helper.Helper;
 
@@ -6,17 +7,21 @@ public class CTMuonTra extends MuonTra {
     protected String masach;
     protected String ghichu;
     protected int datra;
-    protected String ngaytra;
+    protected LocalDate ngayhentra;
+    protected LocalDate ngaytra;
+    protected LocalDate ngaymuon;
+    
     public CTMuonTra()
     {
     	super();
     	masach=new String();
     	ghichu=new String();
     	datra=1;
-    	ngaytra=new String();
+    	ngayhentra=null;
+    	ngaytra=null;
     }
 
-    public CTMuonTra(int mamt, String sothe, String manv, String ngaymuon, String masach, String ghichu,int datra, String ngaytra)
+    public CTMuonTra(int mamt, String sothe, String manv, String ngaymuon, String masach, String ghichu,int datra)
     {
     	super(mamt,sothe,manv,ngaymuon);
     	this.masach=masach;
@@ -29,17 +34,7 @@ public class CTMuonTra extends MuonTra {
     {
         System.out.print("Nhập mã sách: ");
         masach=Helper.scanner.nextLine();
-        System.out.print("Sách đã trả hay chưa: ");
-        // cái này sao bữa trước tui ép nó báo lỗi ta?? (Quỳnh)
-        datra=Integer.parseInt(Helper.scanner.nextLine());
-        if(datra==1)
-        {
-        	do {
-        		System.out.print(": ");
-        		ngaytra=Helper.scanner.nextLine();;
-        	}while(!Helper.checkNgayThang(ngaytra));
-        }
-        
+        System.out.print("Sách đã trả hay chưa: ");   
     }
     public void Xuat()
     {
@@ -76,11 +71,5 @@ public class CTMuonTra extends MuonTra {
 		this.datra = datra;
 	}
 
-	public String getNgaytra() {
-		return ngaytra;
-	}
-
-	public void setNgaytra(String ngaytra) {
-		this.ngaytra = ngaytra;
-	}
+	
 }
