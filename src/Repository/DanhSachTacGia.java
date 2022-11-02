@@ -2,7 +2,7 @@ package Repository;
 
 import Model.TacGia;
 import helper.Helper;
-import helper.Table;
+import helper.Xuat.Table;
 
 import java.io.Serial;
 import java.io.Serializable;
