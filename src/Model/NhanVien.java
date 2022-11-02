@@ -65,15 +65,15 @@ public class NhanVien extends ConNguoi {
 		ChucVu = Helper.scanner.nextLine();
 		System.out.println("Nhập mật khẩu: ");
 		MK = Helper.scanner.nextLine();
-		System.out.println("Nhập lương");
-		Luong = Helper.nhapSoNguyen("Không hợp lệ!. Nhập lại số lương: ");
+		System.out.println("Nhập mức lương");
+		Luong = Helper.nhapSoNguyen("phải là số nguyên!! yêu cầu nhập lại : ");
 	}
 
 	public void Xuat() {
 		super.Xuat();
-		System.out.printf("Mã nhân viên: " + MaNV);
-		System.out.printf("Chức vụ: " + ChucVu);
-		System.out.printf("Mật khẩu: " + MK);
-		System.out.printf("Lương" + Luong);
+		System.out.printf("MÃ£ nhÃ¢n viÃªn: " + MaNV);
+		System.out.printf("Chá»©c vá»¥: " + ChucVu);
+		System.out.printf("Máº­t kháº©u: " + MK);
+		System.out.printf("LÆ°Æ¡ng" + Luong);
 	}
 }
