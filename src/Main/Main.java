@@ -2,7 +2,6 @@ package Main;
 
 import Model.NhanVien;
 import helper.Helper;
-
 public class Main {
     public NhanVien nguoiDung = null;
     private static void Login(){

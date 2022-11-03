@@ -12,7 +12,9 @@ public final  class TongHopDuLieu  {
     private static DanhSachTheLoai_Sach danhSachTheLoai_sach = null;
     private static DanhSachTacGia danhSachTacGia = null;
     private static DanhSachNhaXuatBan danhSachNhaXuatBan = null;
+
     private static NhanViens nhanViens = null;
+
     public static KhoSach getKhoSach() {
         if(khoSach == null){
             khoSach = new KhoSach();
@@ -48,6 +50,7 @@ public final  class TongHopDuLieu  {
         }
         return danhSachNhaXuatBan;
     }
+
     public static NhanViens getNhanViens() {
         if(nhanViens == null){
             nhanViens = new NhanViens();

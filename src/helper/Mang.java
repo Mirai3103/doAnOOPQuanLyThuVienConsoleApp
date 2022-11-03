@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.ListIterator;
 
 public class Mang <T > implements Serializable, List<T> {
+
     @Serial
     private static final long serialVersionUID = 13424000119L;
     private T[] arr ;
@@ -23,6 +24,7 @@ public class Mang <T > implements Serializable, List<T> {
     public T get(int index){
         return  arr[index];
     }
+
     public T set(int index, T value){
         arr[index] = value;
         return arr[index] ;
@@ -46,6 +48,7 @@ public class Mang <T > implements Serializable, List<T> {
         return index >= 0 && index < size;
     }
     public boolean add(T value){
+
         if(size == 0){
             arr = (T[]) new Object[1];
             arr[0] = value;
@@ -125,6 +128,7 @@ public class Mang <T > implements Serializable, List<T> {
 
         if(isInRange(index)){
             T rs= arr[index];
+
             T[] temp = (T[]) new Object[size-1];
             for (int i = 0; i < index; i++) {
                 temp[i] = arr[i];
@@ -161,10 +165,11 @@ public class Mang <T > implements Serializable, List<T> {
 
 
 
+
     public int size(){
         return size;
     }
-
+  
     @Override
     public boolean isEmpty() {
         return arr == null || size == 0;
@@ -179,6 +184,7 @@ public class Mang <T > implements Serializable, List<T> {
         }
         return false;
     }
+    // dưới đây là những hàm không biết kế thừa sao, mà cũng chẳng cần dùng nên thôi
     @Override
     public ListIterator<T> listIterator() {
         return null;
@@ -207,6 +213,7 @@ public class Mang <T > implements Serializable, List<T> {
     public <T1> T1[] toArray(T1[] a) {
         return null;
     }
+
 
     public static void main(String[] args) {
         // cach dung;

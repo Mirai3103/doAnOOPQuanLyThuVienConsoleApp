@@ -11,6 +11,7 @@ import helper.Xuat.ITableRowData;
 import java.util.ArrayList;
 
 public abstract class NhanVien extends ConNguoi implements ITableRowData {
+
 	@Serial
 	private static final long serialVersionUID = 221223213L;
 	protected String MaNV, ChucVu, MK;

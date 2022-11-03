@@ -21,7 +21,10 @@ protected ArrayList<T> data = new ArrayList<>();
     public ArrayList<T> getAll() {
         return data;
     }
-
+    @Override
+    public void add(T value) {
+        data.add( value);
+    }
     @Override
     public void xuatConsoleDangTable(){
         if(data.size() == 0){

@@ -65,6 +65,7 @@ public class DanhSachTacGia extends BaseDanhSach<TacGia>  {
     public void xuatFileBinary(){
         this.xuatFileBinary(FILE_PATH);
     }
+
     public TacGia getById(int id) {
         for (TacGia tacGia : data) {
             if(tacGia.getId() == id){
@@ -73,6 +74,7 @@ public class DanhSachTacGia extends BaseDanhSach<TacGia>  {
         }
         return null;
     }
+
 
     public void delete(int id) {
         data.removeIf(t -> t.getId() == id);
@@ -98,5 +100,6 @@ public class DanhSachTacGia extends BaseDanhSach<TacGia>  {
         TacGia tacGia = new TacGia();
         tacGia.nhap();
         data.add(tacGia);
+
     }
 }

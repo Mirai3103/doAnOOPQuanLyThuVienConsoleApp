@@ -76,6 +76,8 @@ public class DanhSachNhaXuatBan extends BaseDanhSach<NhaXuatBan>  {
         xuatFileBinary(FILE_PATH);
     }
 
+
+
     public NhaXuatBan getById(int id) {
         for (NhaXuatBan nhaXuatBan : data) {
             if(nhaXuatBan.getId() == id){
@@ -84,9 +86,11 @@ public class DanhSachNhaXuatBan extends BaseDanhSach<NhaXuatBan>  {
         }
         return null;
     }
+
     public void add(NhaXuatBan nhaXuatBan){
         data.add(nhaXuatBan);
     }
+
 
     public void delete(int id) {
         data.removeIf(n -> n.getId() == id);
