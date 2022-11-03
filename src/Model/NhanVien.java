@@ -6,13 +6,15 @@ import java.io.Serial;
 import java.util.ArrayList;
 
 import helper.Helper;
+import helper.Xuat.ITableRowData;
 
 import java.util.ArrayList;
 
-public abstract class NhanVien extends ConNguoi {
+public abstract class NhanVien extends ConNguoi implements ITableRowData {
+
 	@Serial
 	private static final long serialVersionUID = 221223213L;
-	private String MaNV, ChucVu, MK;
+	protected String MaNV, ChucVu, MK;
 	private int Luong;
 
 
@@ -37,6 +39,7 @@ public abstract class NhanVien extends ConNguoi {
 		return MaNV;
 	}
 
+
 	public String getChucVu() {
 		return ChucVu;
 	}
@@ -59,14 +62,17 @@ public abstract class NhanVien extends ConNguoi {
 	@Override
 	public void Nhap() {
 		super.Nhap();
-		System.out.println("Nhập mã nhân viên: ");
-		MaNV = Helper.scanner.nextLine();
 		System.out.println("Nhập chức vụ: ");
 		ChucVu = Helper.scanner.nextLine();
 		System.out.println("Nhập mật khẩu: ");
 		MK = Helper.scanner.nextLine();
 		System.out.println("Nhập mức lương");
 		Luong = Helper.nhapSoNguyen("phải là số nguyên!! yêu cầu nhập lại : ");
+	}
+	public void Nhap(String maNV) {
+		MaNV = maNV;
+		this.Nhap();
+
 	}
 
 	public void Xuat() {
@@ -75,5 +81,25 @@ public abstract class NhanVien extends ConNguoi {
 		System.out.printf("Chá»©c vá»¥: " + ChucVu);
 		System.out.printf("Máº­t kháº©u: " + MK);
 		System.out.printf("LÆ°Æ¡ng" + Luong);
+	}
+
+	@Override
+	public String[] getRowData() {
+		return new String[] {
+				MaNV,
+				getHoTen(),
+				getNgaySinh(),
+				getSDT(),
+				getCMND(),
+				getDC().toString(),
+				ChucVu,
+				MK,
+				String.valueOf(Luong)
+		};
+	}
+
+	@Override
+	public String[] getHeader() {
+		return new String[] {"Mã nhân viên", "Họ tên", "Ngày sinh", "Số điện thoại", "CMND", "Địa chỉ", "Chức vụ", "Mật khẩu", "Lương"};
 	}
 }

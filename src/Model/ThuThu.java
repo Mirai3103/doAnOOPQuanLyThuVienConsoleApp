@@ -3,13 +3,17 @@ package Model;
 
 import helper.Helper;
 import Repository.KhoSach;
+import helper.Xuat.Table;
+
+import java.io.Serial;
+import java.lang.reflect.Array;
 
 public class ThuThu extends NhanVien{
+    @Serial
     private static final long serialVersionUID = 321299L;
     private String NoiLamViec,NgayNhanChuc,NgayLamViec;
     private int NamKinhNghiem;
     private boolean Truong;
-    public KhoSach Sachs;
 
     public ThuThu() {
         super();
@@ -85,16 +89,48 @@ public class ThuThu extends NhanVien{
         System.out.println("Nhập năm kinh nghiệm: ");
         NamKinhNghiem= Helper.nhapSoNguyen("Phải là số nguyên!! yêu cầu nhập lại: ");
         System.out.println("Nhấn y nếu đó là trưởng (y/n): ");
-        Truong=Helper.scanner.nextLine().toLowerCase().charAt(0) == 'y'; // bá»‹ lá»—i ?? cáº§n hÃ m check khÃ´ng?
+        Truong=Helper.scanner.nextLine().toLowerCase().charAt(0) == 'y';
     }
+
     public void Xuat() {
 
         super.Xuat();
-        System.out.printf("NÆ¡i lÃ m viá»‡c: " + NoiLamViec);
+        System.out.printf("Nhập nga lam: " + NoiLamViec);
         System.out.printf("NgÃ y nháº­n chá»©c: " + NgayNhanChuc);
         System.out.printf("NgÃ y lÃ m viá»‡c: " + NgayLamViec);
         System.out.printf("NÄƒm kinh nghiá»‡m: " + NamKinhNghiem);
         System.out.printf("TrÆ°á»Ÿng phÃ²ng: " + Truong);
     }
-    
-}
+    public void xuatDangBang(){
+        System.out.println(Table.taoBang(this));;
+    }
+
+
+    @Override
+    public String[] getRowData() {
+        String[] rowData = super.getRowData();
+        // append new data
+        String[] newRowData = new String[rowData.length + 5];
+        System.arraycopy(rowData, 0, newRowData, 0, rowData.length);
+        int i = rowData.length;
+        newRowData[i++] = NoiLamViec;
+        newRowData[i++] = NgayNhanChuc;
+        newRowData[i++] = NgayLamViec;
+        newRowData[i++] = String.valueOf(NamKinhNghiem);
+        newRowData[i] = Truong? "Trưởng phòng" : "";
+        return newRowData;
+    }
+
+    @Override
+    public String[] getHeader() {
+        String[] header = super.getHeader();
+        String[] newHeader = new String[header.length + 5];
+        System.arraycopy(header, 0, newHeader, 0, header.length);
+        int i = header.length;
+        newHeader[i++] = "Nơi làm việc";
+        newHeader[i++] = "Ngày nhận chức";
+        newHeader[i++] = "Ngày làm việc";
+        newHeader[i++] = "Năm kinh nghiệm";
+        newHeader[i] = "Trưởng phòng";
+        return newHeader;
+}}

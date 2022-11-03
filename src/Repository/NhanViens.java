@@ -1,9 +1,7 @@
 package Repository;
 
 import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,42 +11,48 @@ import Model.ThuThu;
 import helper.Helper;
 
 
-public class NhanViens {
+public class NhanViens  extends BaseDanhSach<NhanVien>{
+	public static String FILE_PATH = Helper.dirPath + "NhanViens.bin";
 	
-	private ArrayList<NhanVien> NVs = new ArrayList<>();
 
 	public ArrayList<NhanVien> getNVs() {
-		return NVs;
+		return data;
 	}
 
 	public void setNVs(ArrayList<NhanVien> nVs) {
-		NVs = nVs;
+		data = nVs;
 	}
 	
 	public void ThemNV(NhanVien e) {
-		NVs.add(e);
+		data.add(e);
 	}
 	
 	public void XoaNV(NhanVien e) {
-		NVs.remove(e);
+		data.remove(e);
 	}
 	
 	public NhanVien getByMaNV(String MaNV) {
-		for(NhanVien NV : NVs) {
-			if(NV.getMaNV()==MaNV)
+		for(NhanVien NV : data) {
+			if(NV.getMaNV().equalsIgnoreCase(MaNV))
 				return NV;
 		}
 		return null;
 	}
 	
 	public NhanVien getByName(String name) {
-		for(NhanVien NV : NVs) {
-			if(NV.getHoTen()==name)
+		for(NhanVien NV : data) {
+			if(NV.getHoTen().equalsIgnoreCase(name))
 				return NV;
 		}
 		return null;
 	}
-
+	public boolean checkId(String id) {
+		for(NhanVien NV : data) {
+			if(NV.getMaNV().equalsIgnoreCase(id))
+				return true;
+		}
+		return false;
+	}
 	
 	public void NhapNVM() {
 		System.out.println("0.Là Quản lí");
@@ -58,31 +62,37 @@ public class NhanViens {
 		switch (chon) {
 		case 0:
 			QuanLi QL = new QuanLi();
-			int flag=1;
+			boolean maCoTrungHayK=false;
 			do {
-				flag=1;
-				QL.Nhap();
-				if(NVs.stream().filter(s -> s.getMaNV().equalsIgnoreCase(QL.getMaNV())).findFirst().orElse(null)!=null) {
-					System.out.println("Mã nhân viên bị trùng lặp yêu cầu nhập lại mã nhân viên.");
-					flag=0;
-			}
-			}while(flag==0);
-			NhanVien NV = QL;
-        	NVs.add(NV);
+				System.out.println("Nhập mã nhân viên: ");
+				String maNV = Helper.scanner.nextLine();
+				if(checkId(maNV)) {
+					System.out.println("Mã nhân viên đã tồn tại, mời nhập lại: ");
+					maCoTrungHayK=true;
+				}
+				else {
+					QL.Nhap(maNV);
+					maCoTrungHayK=false;
+				}
+			}while(maCoTrungHayK);
+        	data.add(QL);
 			break;
 		default:
 			ThuThu TT = new ThuThu();
-			int flag2=1;
-        	do {
-    			flag2=1;
-    			TT.Nhap();
-    			if(NVs.stream().filter(s -> s.getMaNV()==TT.getMaNV()).findFirst().orElse(null)!=null) {
-    				System.out.println("Mã nhân viên bị trùng lặp yêu cầu nhập lại.");
-    				flag2=0;
-    			}
-    		}while(flag2==0);
-        	NhanVien NV2 = TT;
-        	NVs.add(NV2);
+			boolean maCoTrungHayK1=false;
+			do {
+				System.out.println("Nhập mã nhân viên: ");
+				String maNV = Helper.scanner.nextLine();
+				if(checkId(maNV)) {
+					System.out.println("Mã nhân viên đã tồn tại, mời nhập lại: ");
+					maCoTrungHayK1=true;
+				}
+				else {
+					TT.Nhap(maNV);
+					maCoTrungHayK1=false;
+				}
+			} while (maCoTrungHayK1);
+        	data.add(TT);
 			break;
 		}
 		
@@ -104,7 +114,7 @@ public class NhanViens {
 		        	do {
 		    			flag1=1;
 		    			QL.Nhap();
-		    			if(NVs.stream().filter(s -> s.getMaNV()==QL.getMaNV()).findFirst().orElse(null)!=null) {
+		    			if(data.stream().filter(s -> s.getMaNV()==QL.getMaNV()).findFirst().orElse(null)!=null) {
 		    				System.out.println("Mã nhân viên bị trùng lặp yêu cầu nhập lại mã nhân viên.");
 		    				flag1=0;
 		    			}
@@ -115,7 +125,7 @@ public class NhanViens {
 		        	do {
 		    			flag2=1;
 		    			TT.Nhap();
-		    			if(NVs.stream().filter(s -> s.getMaNV()==TT.getMaNV()).findFirst().orElse(null)!=null) {
+		    			if(data.stream().filter(s -> s.getMaNV()==TT.getMaNV()).findFirst().orElse(null)!=null) {
 		    				System.out.println("Mã nhân viên bị trùng lặp yêu cầu nhập lại mã nhân viên.");
 		    				flag2=0;
 		    			}
@@ -136,7 +146,7 @@ public class NhanViens {
 		        	do {
 		    			flag1=1;
 		    			QL.Nhap();
-		    			if(NVs.stream().filter(s -> s.getMaNV()==QL.getMaNV()).findFirst().orElse(null)!=null) {
+		    			if(data.stream().filter(s -> s.getMaNV()==QL.getMaNV()).findFirst().orElse(null)!=null) {
 		    				System.out.println("Mã nhân viên bị trùng lặp yêu cầu nhập lại mã nhân viên.");
 		    				flag1=0;
 		    			}
@@ -147,7 +157,7 @@ public class NhanViens {
 		        	do {
 		    			flag2=1;
 		    			TT.Nhap();
-		    			if(NVs.stream().filter(s -> s.getMaNV()==TT.getMaNV()).findFirst().orElse(null)!=null) {
+		    			if(data.stream().filter(s -> s.getMaNV()==TT.getMaNV()).findFirst().orElse(null)!=null) {
 		    				System.out.println("Mã nhân viên bị trùng lặp yêu cầu nhập lại mã nhân viên.");
 		    				flag2=0;
 		    			}
@@ -211,38 +221,7 @@ public class NhanViens {
 	    }
 	
 	//ghi file
-	public void Ghi() {
-		
-		// Nhập lần đầu vào:
-		
-//		System.out.println("Nháº­p sá»‘ nhÃ¢n viÃªn cáº§n táº¡o: ");
-//		int n = Helper.nhapSoNguyen("Nháº­p sá»‘ nhÃ¢n viÃªn cáº§n táº¡o: ");
-//        for (int i = 0; i < n; i++) {
-//        	System.out.println("Nháº­p sá»‘ 0 Ä‘á»ƒ nháº­p quáº£n lÃ­. KhÃ¡c 0 Ä‘á»ƒ nháº­p nhÃ¢n viÃªn: ");
-//            int k = Helper.nhapSoNguyen("Nháº­p sá»‘ 0 Ä‘á»ƒ nháº­p quáº£n lÃ­. KhÃ¡c 0 Ä‘á»ƒ nháº­p thá»§ thÆ°");
-//            if(k==0) {
-//            	QuanLi QL = new QuanLi();
-//            	QL.Nhap();
-//            	NhanVien NV = QL;
-//            	NVs.add(NV);
-//            }else {
-//            	ThuThu TT = new ThuThu();
-//            	TT.Nhap();
-//            	NhanVien NV = TT;
-//            	NVs.add(NV);
-//            }
-//        }
-        try {
-            FileOutputStream fout = new FileOutputStream("E:\\data.obj");
-            ObjectOutputStream objout = new ObjectOutputStream(fout);
-            objout.writeObject(NVs);
-            System.out.println("ghi thanh coong");
-            objout.close();
-            fout.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
+
 	
 	public void Menu1() {
 		System.out.println("1.Nhập nhân viên mới.");
@@ -275,10 +254,18 @@ public class NhanViens {
 				break;
 	
 			case 4:
-				// thấy có hàm xuất mà không biết dùng....
+				System.out.println("Nhập tên nhân viên cần tìm: "); // hoac id hay gi do
+				String name = Helper.scanner.nextLine();
+				NhanVien NV = getByName(name);
+				if(NV != null) {
+					System.out.println("Nhân viên có tên "+name+" là: ");
+					NV.Xuat();
+				}else
+					System.out.println("Nhân viên không tồn tại!!!");
+
 				break;
 			case 5:
-				// thấy có hàm xuất mà không biết dùng....
+				xuatConsoleDangTable();
 				break;
 			case 6:
 				
@@ -289,5 +276,9 @@ public class NhanViens {
 			System.out.println("Nhập 1 để tiếp tục.");
 			chon=Helper.nhapSoNguyen("Nhập số nguyên.");
 		}while(chon!=6);
+	}
+
+	public static void main(String[] args) {
+	   TongHopDuLieu.getNhanViens().LamViec();
 	}
 }

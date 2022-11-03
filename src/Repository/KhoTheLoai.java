@@ -15,6 +15,7 @@ public class KhoTheLoai extends BaseDanhSach<TheLoai> {
     }
 
 
+
     //toDo: crud
     public void showMenu() {
         System.out.println("Tương tác với thể loại");
@@ -30,8 +31,11 @@ public class KhoTheLoai extends BaseDanhSach<TheLoai> {
     public int themVaNhapTheLoai() {
         TheLoai theLoai = new TheLoai();
         theLoai.nhap();
-        this.add(theLoai);
+        data.add(theLoai);
         return theLoai.getId();
+    }
+    public void add(TheLoai theLoai){
+        data.add(theLoai);
     }
 
     public void lamViecVoiDanhSachTheLoai(){
@@ -74,7 +78,7 @@ public class KhoTheLoai extends BaseDanhSach<TheLoai> {
         }
     }
 
-    @Override
+
     public TheLoai getById(int id) {
         for (TheLoai theLoai : this.data) {
             if (theLoai.getId() == id) {
@@ -84,7 +88,7 @@ public class KhoTheLoai extends BaseDanhSach<TheLoai> {
         return null;
     }
 
-    @Override
+
     public void delete(int id) {
         TheLoai theLoai = getById(id);
         if(theLoai != null){
@@ -92,7 +96,6 @@ public class KhoTheLoai extends BaseDanhSach<TheLoai> {
         }
     }
 
-    @Override
     public void update(int id) {
         TheLoai theLoai = getById(id);
         if(theLoai != null){

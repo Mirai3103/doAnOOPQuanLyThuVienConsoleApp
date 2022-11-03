@@ -19,12 +19,12 @@ public class KhoSach extends BaseDanhSach<Sach>  {
         return data.stream().filter(s ->s.getId() == id).findFirst().orElse(null);
     }
 
-    @Override
+
     public void delete(int id) {
         data.removeIf(s -> s.getId() == id);
     }
 
-    @Override
+
     public void update(int id) {
 
         Sach sach = getById(id);
@@ -46,7 +46,8 @@ public class KhoSach extends BaseDanhSach<Sach>  {
     public void themSach(){
         Sach sach = new Sach();
         sach.nhapSach();
-      add(sach);
+      data.add(sach);
+
     }
     public boolean kiemTraIdTrung(int id){
         return data.stream().filter(s ->s.getId() == id).findFirst().orElse(null) !=null;

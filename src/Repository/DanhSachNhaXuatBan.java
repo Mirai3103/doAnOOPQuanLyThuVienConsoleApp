@@ -14,7 +14,7 @@ public class DanhSachNhaXuatBan extends BaseDanhSach<NhaXuatBan>  {
     public void themNhaXuatBan(){
         NhaXuatBan nhaXuatBan = new NhaXuatBan();
         nhaXuatBan.nhap();
-        add(nhaXuatBan);
+        data.add(nhaXuatBan);
     }
 
 
@@ -76,7 +76,8 @@ public class DanhSachNhaXuatBan extends BaseDanhSach<NhaXuatBan>  {
         xuatFileBinary(FILE_PATH);
     }
 
-    @Override
+
+
     public NhaXuatBan getById(int id) {
         for (NhaXuatBan nhaXuatBan : data) {
             if(nhaXuatBan.getId() == id){
@@ -86,12 +87,15 @@ public class DanhSachNhaXuatBan extends BaseDanhSach<NhaXuatBan>  {
         return null;
     }
 
-    @Override
+    public void add(NhaXuatBan nhaXuatBan){
+        data.add(nhaXuatBan);
+    }
+
+
     public void delete(int id) {
         data.removeIf(n -> n.getId() == id);
     }
 
-    @Override
     public void update(int id) {
         NhaXuatBan nhaXuatBan = getById(id);
         if(nhaXuatBan != null){

@@ -70,8 +70,7 @@ public class DiaChi implements Serializable {
     }
 
     public String toString() {
-        return "DiaChi [SoNha=" + SoNha + ", Duong=" + Duong + ", Phuong=" + Phuong + ", Quan=" + Quan + ", Tinh="
-                + Tinh + "]";
+        return SoNha+", "+Duong+", "+Phuong+", "+Quan+", "+Tinh;
     }
 
     public void Xuat() {
