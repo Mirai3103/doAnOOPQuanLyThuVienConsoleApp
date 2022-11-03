@@ -2,62 +2,23 @@ package Repository;
 
 import Model.TacGia;
 import helper.Helper;
-import helper.Xuat.Table;
 
 import java.io.Serial;
 import java.io.Serializable;
-import java.util.ArrayList;
 
-/**
- * @author HuuHoang
- */
-public class DanhSachTacGia  implements Serializable {
-    @Serial
-    private static final long serialVersionUID = 13424000L;
-    private ArrayList<TacGia> tacGias = new ArrayList<>();
 
-    public ArrayList<TacGia> getTacGias() {
-        return tacGias;
-    }
-    public TacGia findById(int id){
-        for (TacGia tacGia : tacGias) {
-            if(tacGia.getId() == id){
-                return tacGia;
-            }
-        }
-        return null;
-    }
-    public void xuatDanhSachTacGia(){
-        if(tacGias.size() == 0){
-            System.out.println("Danh sách tác giả trống");
-            return;
-        }
-        System.out.println(Table.taoBang(this.tacGias));
-    }
-    public void themTacGia(TacGia tacGia){
-        tacGias.add(tacGia);
-    }
-    public void themTacGia(){
-        TacGia tacGia = new TacGia();
-        tacGia.nhap();
-        tacGias.add(tacGia);
-    }
-    public void xoaTacGia(int id){
-        tacGias.removeIf(t -> t.getId() == id);
-    }
+public class DanhSachTacGia extends BaseDanhSach<TacGia>  {
+    public static String FILE_PATH = Helper.dirPath + "DanhSachTacGia.bin";
+
+
     public void xoaTacGia(){
         System.out.println("Nhap id tac gia can xoa:");
-        xoaTacGia(Helper.nhapSoNguyen("Id không hợp lệ, nhập lại: "));
+        this.delete(Helper.nhapSoNguyen("Id không hợp lệ, nhập lại: "));
     }
-    public void suaTacGia(int id){
-        TacGia tacGia = findById(id);
-        if(tacGia != null){
-            tacGia.nhap();
-        }
-    }
+
     public void suaTacGia(){
         System.out.println("Nhap id tac gia can sua:");
-        suaTacGia(Helper.nhapSoNguyen("Id không hợp lệ, nhập lại: "));
+        update(Helper.nhapSoNguyen("Id không hợp lệ, nhập lại: "));
     }
 
     public void showMenu() {
@@ -67,6 +28,8 @@ public class DanhSachTacGia  implements Serializable {
         System.out.println("3. Xoa tac gia");
         System.out.println("4. Xem danh sach tac gia");
         System.out.println("5. Thoat");
+        System.out.println("5. Luu vao file");
+
     }
     public void lamViec(){
         int luaChon;
@@ -76,7 +39,7 @@ public class DanhSachTacGia  implements Serializable {
             luaChon = Helper.nhapSoNguyen("Lua chon khong hop le, nhap lai: ");
             switch (luaChon){
                 case 1:
-                    themTacGia();
+                    nhapVaThemTacGia();
                     break;
                 case 2:
                     suaTacGia();
@@ -85,14 +48,58 @@ public class DanhSachTacGia  implements Serializable {
                     xoaTacGia();
                     break;
                 case 4:
-                    xuatDanhSachTacGia();
+                    xuatConsoleDangTable();
                     break;
                 case 5:
                     System.out.println("Thoat");
+                    break;
+                case 6:
+                    xuatFileBinary();
                     break;
                 default:
                     System.out.println("Lua chon khong hop le, nhap lai");
             }
         }while (luaChon != 5);
+    }
+
+    public void xuatFileBinary(){
+        this.xuatFileBinary(FILE_PATH);
+    }
+    @Override
+    public TacGia getById(int id) {
+        for (TacGia tacGia : data) {
+            if(tacGia.getId() == id){
+                return tacGia;
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public void delete(int id) {
+        data.removeIf(t -> t.getId() == id);
+    }
+
+    @Override
+    public void update(int id) {
+        TacGia tacGia = getById(id);
+        if(tacGia != null){
+            tacGia.nhap();
+        }else {
+            System.out.println("Khong tim thay tac gia");
+        }
+    }
+
+
+
+//    @Override
+//    public void readCsv(String fileName) {
+//
+//    }
+
+    public void nhapVaThemTacGia(){
+        TacGia tacGia = new TacGia();
+        tacGia.nhap();
+        this.add(tacGia);
     }
 }

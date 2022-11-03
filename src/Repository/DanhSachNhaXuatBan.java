@@ -6,72 +6,30 @@ import helper.Helper;
 
 import java.io.Serial;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 
-public class DanhSachNhaXuatBan  implements Serializable {
-    @Serial
-    private static final long serialVersionUID = 13424644L;
-    private ArrayList<NhaXuatBan> data = new ArrayList<>();
+public class DanhSachNhaXuatBan extends BaseDanhSach<NhaXuatBan>  {
+    public static String FILE_PATH = Helper.dirPath + "DanhSachNhaXuatBan.bin";
 
-    public ArrayList<NhaXuatBan> getData() {
-        return data;
-    }
 
-    public void setData(ArrayList<NhaXuatBan> data) {
-        this.data = data;
-    }
-
-    public void themNhaXuatBan(NhaXuatBan nhaXuatBan){
-        this.data.add(nhaXuatBan);
-    }
     public void themNhaXuatBan(){
         NhaXuatBan nhaXuatBan = new NhaXuatBan();
         nhaXuatBan.nhap();
-        this.data.add(nhaXuatBan);
+        add(nhaXuatBan);
     }
-    public NhaXuatBan findById(int id){
-        for (NhaXuatBan nhaXuatBan : data) {
-            if(nhaXuatBan.getId() == id){
-                return nhaXuatBan;
-            }
-        }
-        return null;
-    }
-    public void showAll(){
-        if(data.size() == 0){
-            System.out.println("Danh sách tác giả trống");
-            return;
-        }
-        for (NhaXuatBan nhaXuatBan : data) {
-            // print id and tenNhaXuatBan
-            System.out.println(nhaXuatBan.getId() + " - " + nhaXuatBan.getTenNXB()+"\n");
-        }
-    }
+
+
     public boolean kiemTraIdTrung(int id){
         return data.stream().filter(n ->n.getId() == id).findFirst().orElse(null) !=null;
     }
-    public void xoaNhaXuatBan(int id){
-        data.removeIf(n -> n.getId() == id);
-    }
     public void xoaNhaXuatBan(){
         System.out.println("Nhap id nha xuat ban can xoa");
-        int id = Helper.nhapSoNguyen("Lỗi!! Bạn nên nhập số nguyên :");
-        data.removeIf(n -> n.getId() == id);
-    }
-    public void suaNhaXuatBan(int id){
-        NhaXuatBan nhaXuatBan = findById(id);
-        if(nhaXuatBan != null){
-            nhaXuatBan.nhap();
-        }
+        int id = Helper.nhapSoNguyen("Lỗi!! id là số nguyên :");
+        delete(id);
     }
     public void suaNhaXuatBan(){
         System.out.println("Nhap id nha xuat ban can sua");
         int id = Helper.nhapSoNguyen("Lỗi!! Bạn nên nhập số nguyên :");
-        NhaXuatBan nhaXuatBan = findById(id);
-        if(nhaXuatBan != null){
-            nhaXuatBan.nhap();
-        }
+        update(id);
     }
     public void showMenu(){
         System.out.println("Tương tác với nhà xuất bản");
@@ -80,6 +38,7 @@ public class DanhSachNhaXuatBan  implements Serializable {
         System.out.println("3. Xoa nha xuat ban");
         System.out.println("4. Xem danh sach nha xuat ban");
         System.out.println("5. Thoat");
+        System.out.println("6. Luu vao file");
         System.out.println("Nhap lua chon cua ban:");
     }
     public void lamViec(){
@@ -99,15 +58,45 @@ public class DanhSachNhaXuatBan  implements Serializable {
                     xoaNhaXuatBan();
                     break;
                 case 4:
-                    showAll();
+                    xuatConsoleDangTable();
                     break;
                 case 5:
                     System.out.println("Thoat");
+                    break;
+                case 6:
+                    xuatFileBinary();
                     break;
                 default:
                     System.out.println("Lua chon khong hop le");
             }
         }while (luaChon != 5);
+    }
+    public void xuatFileBinary(){
+        TongHopDuLieu.getDanhSachTheLoai_sach().xuatFileBinary();
+        xuatFileBinary(FILE_PATH);
+    }
+
+    @Override
+    public NhaXuatBan getById(int id) {
+        for (NhaXuatBan nhaXuatBan : data) {
+            if(nhaXuatBan.getId() == id){
+                return nhaXuatBan;
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public void delete(int id) {
+        data.removeIf(n -> n.getId() == id);
+    }
+
+    @Override
+    public void update(int id) {
+        NhaXuatBan nhaXuatBan = getById(id);
+        if(nhaXuatBan != null){
+            nhaXuatBan.nhap();
+        }
     }
 
 
