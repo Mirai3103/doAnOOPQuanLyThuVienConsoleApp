@@ -1,7 +1,11 @@
 package helper.Xuat;
 
 
+
+import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Table {
    public static String taoBang(ArrayList<? extends ITableRowData> data) {
@@ -59,5 +63,37 @@ public class Table {
     }
     public static String taoBang(ITableRowData data) {
         return taoBang(new ArrayList<>(){{add(data);}});
+    }
+
+    public static void xuatFileExcel(ArrayList<? extends ITableRowData> data , String fileName){
+       try {
+           Writer fileWriter = new OutputStreamWriter(new FileOutputStream(fileName), StandardCharsets.UTF_8);
+           fileWriter.write(String.join(",",data.get(0).getHeader())+"\n");
+           for (ITableRowData  rowData : data) {
+               fileWriter.write(String.join(",",rowData.getRowData())+"\n");
+           }
+           fileWriter.flush();
+           fileWriter.close();
+       }catch (IOException ignored){
+
+       }
+
+    }
+    public static ArrayList<String> docFileExcel(String fileName){
+        ArrayList<String> data=new ArrayList<>();
+        try {
+            BufferedReader fileReader = new BufferedReader(new InputStreamReader(new FileInputStream(fileName), StandardCharsets.UTF_8));
+            String line = fileReader.readLine();//ignore header
+
+            while ((line=fileReader.readLine())!=null){
+               if(line.trim().charAt(0)!='\n'){
+                   data.add(line);
+               }
+            }
+            fileReader.close();
+        }catch (IOException ignored){
+
+        }
+        return data;
     }
 }

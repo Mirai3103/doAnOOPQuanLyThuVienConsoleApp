@@ -1,13 +1,15 @@
 package Model;
 
+import Repository.TongHopDuLieu;
 import helper.Helper;
+import helper.Xuat.ITableRowData;
 
 import java.io.Serial;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Sach implements Serializable {
+public class Sach implements Serializable, ITableRowData {
     public  static int idIncrement = 0;
     @Serial
     private static final long serialVersionUID = 134243242345644L;
@@ -67,7 +69,7 @@ public class Sach implements Serializable {
     }
 
     public TacGia getTacGia() {
-        return Helper.khoDuLieu.getDanhSachTacGia().findById(tacGiaId);
+        return TongHopDuLieu.getDanhSachTacGia().getById(tacGiaId);
     }
 
     public void setTacGia(TacGia tacGia) {
@@ -75,7 +77,7 @@ public class Sach implements Serializable {
     }
 
     public NhaXuatBan getNhaXuatBan() {
-        return Helper.khoDuLieu.getDanhSachNhaXuatBan().findById(this.nhaXuatBanId);
+        return TongHopDuLieu.getDanhSachNhaXuatBan().getById(this.nhaXuatBanId);
     }
 
     public int getNhaXuatBanId() {
@@ -111,17 +113,17 @@ public class Sach implements Serializable {
     }
 
     public List<TheLoai> getTheLoais() {
-        List<TheLoai_Sach> theLoaiId = Helper.khoDuLieu.getDanhSachTheLoai_sach().getTheLoai_saches().stream().filter(t -> t.getSachId() == this.id).toList();
+        List<TheLoai_Sach> theLoaiId = TongHopDuLieu.getDanhSachTheLoai_sach().getTheLoai_saches().stream().filter(t -> t.getSachId() == this.id).toList();
         List<TheLoai> theLoais = new ArrayList<>();
         for (TheLoai_Sach theLoai_sach : theLoaiId) {
-            TheLoai t = Helper.khoDuLieu.getKhoTheLoai().findById(theLoai_sach.getTheLoaiId());
+            TheLoai t =TongHopDuLieu.getKhoTheLoai().getById(theLoai_sach.getTheLoaiId());
             if (t != null) theLoais.add(t);
         }
         return theLoais;
     }
 
     public void themTheLoai(TheLoai theLoai) {
-        Helper.khoDuLieu.getDanhSachTheLoai_sach().add(this.id, theLoai.getId());
+        TongHopDuLieu.getDanhSachTheLoai_sach().add(this.id, theLoai.getId());
     }
 
     public void nhapSach() {
@@ -138,17 +140,17 @@ public class Sach implements Serializable {
         if ((chon.charAt(0) + "").equalsIgnoreCase("y")) {
             TacGia tacGia = new TacGia();
             tacGia.nhap();
-            Helper.khoDuLieu.getDanhSachTacGia().getTacGias().add(tacGia);
+           TongHopDuLieu.getDanhSachTacGia().getAll().add(tacGia);
             this.tacGiaId = tacGia.getId();
         } else {
             boolean validId = false;
             while (!validId) {
-                Helper.khoDuLieu.getDanhSachTacGia().xuatDanhSachTacGia();
+               TongHopDuLieu.getDanhSachTacGia().xuatConsoleDangTable();
                 System.out.println("Nhập id tác giả: ");
                 this.tacGiaId = Helper.nhapSoNguyen("Id phải là số nguyên dương");
                 //kiểm tra id có tồn tại trong danh sách tác giả không
 
-                if (Helper.khoDuLieu.getDanhSachTacGia().findById(this.tacGiaId) != null) {
+                if (TongHopDuLieu.getDanhSachNhaXuatBan().getById(this.tacGiaId) != null) {
                     validId = true;
                 } else {
                     System.out.println("Id không tồn tại trong danh sách tác giả");
@@ -161,17 +163,17 @@ public class Sach implements Serializable {
         if ((chon.charAt(0) + "").equalsIgnoreCase("y")) {
             NhaXuatBan nhaXuatBan = new NhaXuatBan();
             nhaXuatBan.nhap();
-            Helper.khoDuLieu.getDanhSachNhaXuatBan().getData().add(nhaXuatBan);
+           TongHopDuLieu.getDanhSachNhaXuatBan().add(nhaXuatBan);
             this.nhaXuatBanId = nhaXuatBan.getId();
         } else {
             boolean validId = false;
             while (!validId) {
-                Helper.khoDuLieu.getDanhSachNhaXuatBan().showAll();
+                TongHopDuLieu.getDanhSachNhaXuatBan().xuatConsoleDangTable();
                 System.out.println("Nhập id nhà xuất bản: ");
                 this.nhaXuatBanId = Helper.nhapSoNguyen("Id phải là số nguyên dương");
                 //kiểm tra id có tồn tại trong danh sách nhà xuất bản không
 
-                if (Helper.khoDuLieu.getDanhSachNhaXuatBan().findById(this.nhaXuatBanId) != null) {
+                if (TongHopDuLieu.getDanhSachNhaXuatBan().getById(this.nhaXuatBanId) != null) {
                     validId = true;
                 } else {
                     System.out.println("Id không tồn tại trong danh sách nhà xuất bản");
@@ -187,19 +189,19 @@ public class Sach implements Serializable {
         boolean tiepTuc = true;
         while (tiepTuc) {
             System.out.println("Nhập thể loại: ");
-            Helper.khoDuLieu.getKhoTheLoai().showAll();
+           TongHopDuLieu.getKhoTheLoai().xuatConsoleDangTable();
             System.out.println();
             System.out.println("Bạn muốn taọ thể loại mới không? (y/n)");
             if (Helper.scanner.nextLine().equals("y")) {
                 TheLoai theLoai = new TheLoai();
                 theLoai.nhap();
-                Helper.khoDuLieu.getKhoTheLoai().getTheLoais().add(theLoai);
+                TongHopDuLieu.getKhoTheLoai().add(theLoai);
                 this.themTheLoai(theLoai);
             } else {
 
                 System.out.println("Nhập id thể loại: ");
                 int theLoaiId = Helper.nhapSoNguyen("Id phải là số nguyên dương");
-                TheLoai theLoai = Helper.khoDuLieu.getKhoTheLoai().findById(theLoaiId);
+                TheLoai theLoai =TongHopDuLieu.getKhoTheLoai().getById(theLoaiId);
                 if (theLoai != null) {
                     this.themTheLoai(theLoai);
                 } else {
@@ -225,5 +227,26 @@ public class Sach implements Serializable {
         for (TheLoai theLoai : this.getTheLoais()) {
             System.out.print(theLoai.getTenTheLoai() + "; ");
         }
+    }
+
+    @Override
+    public String[] getRowData() {
+        var theLoai =String.join("-", getTheLoais().stream().map(TheLoai::getTenTheLoai).toList());
+        return new String[]{
+                this.id + "",
+                this.tenSach,
+                this.tongSoTrang + "",
+                this.ngonNgu,
+                this.getTacGia().getTenTacGia(),
+                this.getNhaXuatBan().getTenNXB(),
+                this.namXuatBan + "",
+                this.tinhTrang,
+                this.gioiThieu,
+                theLoai
+        };
+    }
+    @Override
+    public String[] getHeader() {
+        return new String[]{"Id", "Tên sách", "Tổng số trang", "Ngôn ngữ", "Tác giả", "Nhà xuất bản", "Năm xuất bản", "Tình trạng", "Giới thiệu", "Thể loại"};
     }
 }

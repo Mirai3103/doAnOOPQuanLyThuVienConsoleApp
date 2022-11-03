@@ -1,6 +1,7 @@
 package Model;
 
 
+import Repository.TongHopDuLieu;
 import helper.Helper;
 import helper.Xuat.ITableRowData;
 
@@ -72,7 +73,7 @@ public class NhaXuatBan implements Serializable , ITableRowData {
     }
 
     public List<Sach> getSachDaXuatBan() {
-        return Helper.khoDuLieu.getKhoSach().getAll().stream().filter(s->s.getNhaXuatBanId()==this.id).toList();
+        return TongHopDuLieu.getKhoSach().getAll().stream().filter(s->s.getNhaXuatBanId()==this.id).toList();
     }
 
     public void nhap(){
@@ -91,7 +92,7 @@ public class NhaXuatBan implements Serializable , ITableRowData {
 
     @Override
     public String[] getRowData() {
-        return new String[] {this.id+"", this.tenNXB, this.diaChi.toString(), this.email, this.nguoiDaiDien.toString()};
+        return new String[] {this.id+"", this.tenNXB, this.diaChi.toString(), this.email, this.nguoiDaiDien.getHoTen()};
     }
 
     @Override

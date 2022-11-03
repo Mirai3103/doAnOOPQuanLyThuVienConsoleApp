@@ -1,9 +1,10 @@
 package Model;
 
 
-import helper.Xuat.Table;
+import Repository.TongHopDuLieu;
 import helper.Helper;
 import helper.Xuat.ITableRowData;
+import helper.Xuat.Table;
 
 import java.io.Serial;
 import java.io.Serializable;
@@ -11,11 +12,11 @@ import java.util.List;
 
 // Nên kế thừ từ lớp con người??
 // Tại vì con người nó có cái sdt, CMND gì nữa, mấy thông tin nhạy cảm z thường tác giả ko có
-public class TacGia implements Serializable , ITableRowData {
+public class TacGia implements Serializable, ITableRowData {
     @Serial
     private static final long serialVersionUID = 12200345644L;
-    public  static int idIncrement = 0;
-    private final int id;
+    public static int idIncrement = 0;
+    private int id;
     private String tenTacGia;
     private String website;
     private String gioiThieu;
@@ -62,7 +63,7 @@ public class TacGia implements Serializable , ITableRowData {
     }
 
     public List<Sach> getSachs() {
-        return Helper.khoDuLieu.getKhoSach().timSachCuaTacGia(this.id);
+        return TongHopDuLieu.getKhoSach().timSachCuaTacGia(this.id);
     }
 
     public void nhap() {
@@ -82,14 +83,22 @@ public class TacGia implements Serializable , ITableRowData {
 
     @Override
     public String[] getRowData() {
-         return new String[] {""+id,tenTacGia,website,gioiThieu};
+        return new String[]{"" + id, tenTacGia, website, gioiThieu};
     }
 
     @Override
     public String[] getHeader() {
-        return new String[] {"Id","Tên tác giả","website","giới thiệu"};
+        return new String[]{"Id", "Tên tác giả", "website", "giới thiệu"};
     }
-    public void xuatDangBang(){
+
+    public static TacGia fromCSVRong(String[] data) {
+        TacGia tg = new TacGia(data[1], data[2], data[3]);
+        tg.id = Integer.parseInt(data[0]);
+        return tg;
+
+    }
+
+    public void xuatDangBang() {
         System.out.println(Table.taoBang(this));
     }
 }

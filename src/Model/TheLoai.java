@@ -1,6 +1,7 @@
 package Model;
 
 
+import Repository.TongHopDuLieu;
 import helper.Xuat.Table;
 import helper.Helper;
 import helper.Xuat.ITableRowData;
@@ -13,24 +14,19 @@ public class TheLoai  implements Serializable, ITableRowData {
     @Serial
     private static final long serialVersionUID = 1342400999L;
     public  static int idIncrement = 0;
-    private final int id;
+    private int id;
     private  String tenTheLoai;
     private String gioiThieu;
 
-    public TheLoai( String tenTheLoai, String gioiThieu) {
-        this.id = TheLoai.idIncrement++;
-        this.tenTheLoai = tenTheLoai;
-        this.gioiThieu = gioiThieu;
-    }
 
     public TheLoai(){
         this.id = TheLoai.idIncrement++;
     }
     public ArrayList<Sach> getSachs() {
-     var sachIds =  Helper.khoDuLieu.getDanhSachTheLoai_sach().getTheLoai_saches().stream().filter(t -> t.getTheLoaiId() == this.id).toList();
+     var sachIds =  TongHopDuLieu.getDanhSachTheLoai_sach().getTheLoai_saches().stream().filter(t -> t.getTheLoaiId() == this.id).toList();
         ArrayList<Sach> sachs = new ArrayList<>();
         for (TheLoai_Sach theLoai_sach : sachIds) {
-            Sach s = Helper.khoDuLieu.getKhoSach().findById(theLoai_sach.getSachId());
+            Sach s = TongHopDuLieu.getKhoSach().getById(theLoai_sach.getSachId());
             if (s != null) {
                 sachs.add(s);
             }
@@ -39,10 +35,11 @@ public class TheLoai  implements Serializable, ITableRowData {
     }
 
 
-    public TheLoai(int id) {
-        this.id = id;
+    public TheLoai(String tenTheLoai, String gioiThieu) {
+        this.id = TheLoai.idIncrement++;
+        this.tenTheLoai = tenTheLoai;
+        this.gioiThieu = gioiThieu;
     }
-
     public int getId() {
         return id;
     }
@@ -84,7 +81,16 @@ public class TheLoai  implements Serializable, ITableRowData {
     public String[] getHeader() {
         return  new String[]{"Id","Tên thể loại","giới thiệu"};
     }
+    public static TheLoai fromCSVRow(String csvRow){
+        String[] data = csvRow.split(",");
+        TheLoai theLoai = new TheLoai();
+        theLoai.id = Integer.parseInt(data[0]);
+        theLoai.tenTheLoai = data[1];
+        theLoai.gioiThieu = data[2];
+        return theLoai;
+    }
     public void xuatDangBang(){
         System.out.println(Table.taoBang(this));
     }
+
 }
