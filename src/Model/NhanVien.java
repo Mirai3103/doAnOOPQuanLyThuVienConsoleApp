@@ -26,14 +26,19 @@ public abstract class NhanVien extends ConNguoi implements ITableRowData {
 		MK = mK;
 		Luong = luong;
 	}
-
 	public NhanVien() {
 		super();
-		MaNV = "";
+		MaNV = ChucVu = MK = "";
+		Luong = 0;
+	}
+	public NhanVien(String maNV) {
+		super();
+		MaNV = maNV;
 		ChucVu = "";
 		MK = "";
 		Luong = 0;
 	}
+
 
 	public String getMaNV() {
 		return MaNV;

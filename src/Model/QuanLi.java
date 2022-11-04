@@ -23,6 +23,11 @@ public class QuanLi extends NhanVien  {
         NamKinhNghiem = 0;
         NgayNhanChuc = MaBaoMat = DacQuyen = "";
     }
+    public QuanLi(String maNV) {
+        super(maNV);
+        NamKinhNghiem = 0;
+        NgayNhanChuc = MaBaoMat = DacQuyen = "";
+    }
 
     public int getNamKinhNghiem() {
         return NamKinhNghiem;
