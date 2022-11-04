@@ -51,8 +51,7 @@ protected ArrayList<T> data = new ArrayList<>();
             System.out.println("Lưu thành công!");
             objout.close();
             fout.close();
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (Exception ignored) {
         }
     }
     @Override
@@ -64,8 +63,7 @@ protected ArrayList<T> data = new ArrayList<>();
             this.data = duLieuDocDuoc;
             objinput.close();
             finput.close();
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (Exception ignored) {
         }
     }
 //    @Override

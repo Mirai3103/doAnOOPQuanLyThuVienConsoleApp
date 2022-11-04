@@ -52,6 +52,12 @@ public final  class TongHopDuLieu  {
         if(nhanViens == null){
             nhanViens = new NhanViens();
             nhanViens.docFileBinary(NhanViens.FILE_PATH);
+            if(nhanViens.data.size() == 0){
+                NhanVien quanLi = new QuanLi("admin");
+                quanLi.setHoTen("Admin");
+                quanLi.setMK("admin");
+                nhanViens.data.add(quanLi);
+            }
         }
         return nhanViens;
     }
