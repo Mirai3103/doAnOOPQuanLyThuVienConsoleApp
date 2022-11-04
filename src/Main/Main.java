@@ -1,5 +1,7 @@
 package Main;
 
+import Main.Views.QuanLyView;
+import Main.Views.ThuThuView;
 import Model.NhanVien;
 import Model.QuanLi;
 import Model.ThuThu;
@@ -32,10 +34,10 @@ public class Main {
 
         }
         if(nguoiDung instanceof QuanLi){
-            // Menu Các việc làm của quản lí
+            QuanLyView.run();
         }
         else{
-            // Menu Các việc làm của thủ thư
+            ThuThuView.run();
         }
     }
 
