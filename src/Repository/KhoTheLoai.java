@@ -34,6 +34,9 @@ public class KhoTheLoai extends BaseDanhSach<TheLoai> {
         data.add(theLoai);
         return theLoai.getId();
     }
+    public TheLoai getByName(String name){
+        return this.data.stream().filter(s ->s.getTenTheLoai().toLowerCase().equalsIgnoreCase(name.toLowerCase())).findFirst().orElse(null);
+    }
     public void add(TheLoai theLoai){
         data.add(theLoai);
     }
@@ -66,17 +69,7 @@ public class KhoTheLoai extends BaseDanhSach<TheLoai> {
             }
         }while (luaChon != 5);
     }
-    public String getCSVHeader(){
-        return "Id,tên thể loại, giới thiệu";
-    }
-    public void toCSVFile(String filePath){
-        File fileOut = new File(filePath);
-        try {
-            if(!fileOut.exists())fileOut.createNewFile();
-        }catch (Exception ignored){
 
-        }
-    }
 
 
     public TheLoai getById(int id) {
@@ -107,6 +100,7 @@ public class KhoTheLoai extends BaseDanhSach<TheLoai> {
 
 
     public void xuatFileBinary(){
+        TongHopDuLieu.getDanhSachTheLoai_sach().xuatFileBinary();
         super.xuatFileBinary(FILE_PATH);
     }
 

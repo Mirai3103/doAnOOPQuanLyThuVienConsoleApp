@@ -32,7 +32,7 @@ public final  class TongHopDuLieu  {
     public static DanhSachTheLoai_Sach getDanhSachTheLoai_sach() {
         if(danhSachTheLoai_sach == null){
             danhSachTheLoai_sach = new DanhSachTheLoai_Sach();
-            danhSachTheLoai_sach.docFileBinary(DanhSachTheLoai_Sach.FILE_PATH);
+            danhSachTheLoai_sach.docFileBinary();
         }
         return danhSachTheLoai_sach;
     }

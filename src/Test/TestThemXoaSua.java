@@ -15,7 +15,6 @@ public class TestThemXoaSua {
     }
     public static void main(String[] args) {
 
-        Helper.khoDuLieu = new TongHopDuLieu();
         int luaChon;
         do {
             showMenu();

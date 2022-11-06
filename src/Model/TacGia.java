@@ -38,6 +38,7 @@ public class TacGia implements Serializable, ITableRowData {
     }
 
 
+
     public String getTenTacGia() {
         return tenTacGia;
     }
