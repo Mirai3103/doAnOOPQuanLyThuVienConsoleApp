@@ -1,7 +1,12 @@
 package Model;
 
 
-public class TheLoai_Sach {
+import java.io.Serial;
+import java.io.Serializable;
+
+public class TheLoai_Sach  implements Serializable {
+    @Serial
+    private static final long serialVersionUID = 13424321644L;
     private int sachId;
     private int theLoaiId;
 

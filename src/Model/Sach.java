@@ -22,13 +22,23 @@ public class Sach implements Serializable, ITableRowData {
     private short namXuatBan;
     private String tinhTrang;
     private String gioiThieu;
+    private int nguoiMuonId = -1;
 
 
     public Sach() {
         this.id = Sach.idIncrement++;
     }
+    public boolean checkDangMuon(){
+        return nguoiMuonId >= 0;
+    }
+    public void setNguoiMuon(DocGia docGia){
+        nguoiMuonId = docGia.getMadg();
+    }
+//    public DocGia getNguoiMuon(){
+//        return TongHopDuLieu.khoDocGia.getById(nguoiMuonId);
+//    }
 
-    public Sach(int id, String tenSach, int tongSoTrang, String ngonNgu, TacGia tacGia, NhaXuatBan nhaXuatBan, short namXuatBan, String tinhTrang, String gioiThieu) {
+    public Sach( String tenSach, int tongSoTrang, String ngonNgu, TacGia tacGia, NhaXuatBan nhaXuatBan, short namXuatBan, String tinhTrang, String gioiThieu) {
         this.id = Sach.idIncrement++;
         this.tenSach = tenSach;
         this.tongSoTrang = tongSoTrang;

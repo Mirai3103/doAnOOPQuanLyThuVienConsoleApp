@@ -1,5 +1,6 @@
 package Main.Views;
 
+import Repository.TongHopDuLieu;
 
 public class QuanLyView {
     private static void menu(){
@@ -18,7 +19,13 @@ public class QuanLyView {
             System.out.println("Nhập lựa chọn của bạn");
             luaChon = helper.Helper.nhapSoNguyen("Không hợp lệ: ");
             switch (luaChon) {
-                //toDo: xử lý các chức năng
+                case 1 -> TongHopDuLieu.getKhoSach().lamViec();
+                case 2 -> TongHopDuLieu.getKhoTheLoai().lamViecVoiDanhSachTheLoai();
+                case 3 -> TongHopDuLieu.getDanhSachTacGia().lamViec();
+                case 4 -> TongHopDuLieu.getDanhSachNhaXuatBan().lamViec();
+                case 5 -> TongHopDuLieu.getNhanViens().LamViec();
+                case 6 -> System.out.println("Thoát");
+                default -> System.out.println("Lựa chọn không hợp lệ");
             }
         }while (luaChon != 6);
     }

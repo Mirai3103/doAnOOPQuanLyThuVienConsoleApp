@@ -3,13 +3,16 @@ package Repository;
 import Model.Sach;
 import Model.TheLoai;
 import Model.TheLoai_Sach;
+import helper.Helper;
 
 import java.io.*;
 import java.util.ArrayList;
 
 // thực thể yếu
-public class DanhSachTheLoai_Sach   {
-    public static String FILE_PATH = "DanhSachTheLoai_Sach.bin";
+public class DanhSachTheLoai_Sach implements Serializable {
+    @Serial
+    private static final long serialVersionUID = 13424321644L;
+    public static String FILE_PATH = Helper.dirPath+ "DanhSachTheLoai_Sach.bin";
 
     private ArrayList<TheLoai_Sach> theLoai_saches = new ArrayList<>();
 
@@ -22,13 +25,13 @@ public class DanhSachTheLoai_Sach   {
     public void add(int sachId, int theLoaiId){
         theLoai_saches.add(new TheLoai_Sach(sachId,theLoaiId));
     }
-    public void xuatFileBinary(String filePath){
+    public void xuatFileBinary(){
         if(theLoai_saches.size() == 0){
             System.out.println("Danh sách trống, không thể xuất file");
             return;
         }
         try {
-            FileOutputStream fout = new FileOutputStream(filePath);
+            FileOutputStream fout = new FileOutputStream(FILE_PATH);
             ObjectOutputStream objout = new ObjectOutputStream(fout);
             objout.writeObject(this.theLoai_saches);
             System.out.println("Lưu thành công!");
@@ -38,26 +41,20 @@ public class DanhSachTheLoai_Sach   {
             e.printStackTrace();
         }
     }
-    public void docFileBinary(String filePath){
+    public void docFileBinary(){
         try {
-            FileInputStream finput = new FileInputStream(filePath);
+            FileInputStream finput = new FileInputStream(FILE_PATH);
             ObjectInputStream objinput = new ObjectInputStream(finput);
             ArrayList<TheLoai_Sach> duLieuDocDuoc = (ArrayList<TheLoai_Sach>) objinput.readObject();
             this.theLoai_saches = duLieuDocDuoc;
             objinput.close();
             finput.close();
 
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (Exception ignored) {
+
 
         }
     }
-    public void docFileBinary(){
-        docFileBinary(FILE_PATH);
-    }
 
-    public void xuatFileBinary(){
-        xuatFileBinary(FILE_PATH);
-    }
 
 }

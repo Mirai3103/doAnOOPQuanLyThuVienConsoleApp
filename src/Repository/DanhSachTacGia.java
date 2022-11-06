@@ -75,6 +75,9 @@ public class DanhSachTacGia extends BaseDanhSach<TacGia>  {
         return null;
     }
 
+    public TacGia getByName(String name){
+        return this.data.stream().filter(s ->s.getTenTacGia().toLowerCase().equalsIgnoreCase(name.toLowerCase())).findFirst().orElse(null);
+    }
 
     public void delete(int id) {
         data.removeIf(t -> t.getId() == id);

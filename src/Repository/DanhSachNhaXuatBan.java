@@ -4,9 +4,6 @@ package Repository;
 import Model.NhaXuatBan;
 import helper.Helper;
 
-import java.io.Serial;
-import java.io.Serializable;
-
 public class DanhSachNhaXuatBan extends BaseDanhSach<NhaXuatBan>  {
     public static String FILE_PATH = Helper.dirPath + "DanhSachNhaXuatBan.bin";
 
@@ -72,11 +69,12 @@ public class DanhSachNhaXuatBan extends BaseDanhSach<NhaXuatBan>  {
         }while (luaChon != 5);
     }
     public void xuatFileBinary(){
-        TongHopDuLieu.getDanhSachTheLoai_sach().xuatFileBinary();
         xuatFileBinary(FILE_PATH);
     }
 
-
+    public NhaXuatBan getByName(String name){
+        return data.stream().filter(t -> t.getTenNXB().equalsIgnoreCase(name.toLowerCase())).findFirst().orElse(null);
+    }
 
     public NhaXuatBan getById(int id) {
         for (NhaXuatBan nhaXuatBan : data) {

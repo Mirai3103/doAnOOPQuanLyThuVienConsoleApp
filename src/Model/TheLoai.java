@@ -9,6 +9,7 @@ import helper.Xuat.ITableRowData;
 import java.io.Serial;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Optional;
 
 public class TheLoai  implements Serializable, ITableRowData {
     @Serial
@@ -18,10 +19,11 @@ public class TheLoai  implements Serializable, ITableRowData {
     private  String tenTheLoai;
     private String gioiThieu;
 
-
-    public TheLoai(){
+    public TheLoai() {
         this.id = TheLoai.idIncrement++;
     }
+
+
     public ArrayList<Sach> getSachs() {
      var sachIds =  TongHopDuLieu.getDanhSachTheLoai_sach().getTheLoai_saches().stream().filter(t -> t.getTheLoaiId() == this.id).toList();
         ArrayList<Sach> sachs = new ArrayList<>();
@@ -40,6 +42,7 @@ public class TheLoai  implements Serializable, ITableRowData {
         this.tenTheLoai = tenTheLoai;
         this.gioiThieu = gioiThieu;
     }
+
     public int getId() {
         return id;
     }
@@ -81,14 +84,7 @@ public class TheLoai  implements Serializable, ITableRowData {
     public String[] getHeader() {
         return  new String[]{"Id","Tên thể loại","giới thiệu"};
     }
-    public static TheLoai fromCSVRow(String csvRow){
-        String[] data = csvRow.split(",");
-        TheLoai theLoai = new TheLoai();
-        theLoai.id = Integer.parseInt(data[0]);
-        theLoai.tenTheLoai = data[1];
-        theLoai.gioiThieu = data[2];
-        return theLoai;
-    }
+
     public void xuatDangBang(){
         System.out.println(Table.taoBang(this));
     }

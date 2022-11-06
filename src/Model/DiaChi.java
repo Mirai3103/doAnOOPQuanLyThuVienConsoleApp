@@ -55,6 +55,14 @@ public class DiaChi implements Serializable {
         SoNha = Duong = Quan = Phuong = Tinh = "";
     }
 
+    public DiaChi(String soNha, String duong, String phuong, String quan, String tinh) {
+        SoNha = soNha;
+        Duong = duong;
+        Phuong = phuong;
+        Quan = quan;
+        Tinh = tinh;
+    }
+
     public void Nhap() {
         System.out.println("Nhập số nhà: ");
         SoNha = Helper.scanner.nextLine();
