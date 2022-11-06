@@ -4,7 +4,6 @@ import Main.Views.QuanLyView;
 import Main.Views.ThuThuView;
 import Model.NhanVien;
 import Model.QuanLi;
-import Model.ThuThu;
 import Repository.TongHopDuLieu;
 import helper.Helper;
 public class Main {
