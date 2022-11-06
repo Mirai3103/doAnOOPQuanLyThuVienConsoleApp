@@ -20,6 +20,7 @@ public class ThuThu extends NhanVien{
         NoiLamViec = NgayNhanChuc = NgayLamViec = "";
         NamKinhNghiem = 0;
         Truong = false;
+        this.ChucVu = "Thu Thu";
     }
 
 
@@ -31,6 +32,7 @@ public class ThuThu extends NhanVien{
         NgayLamViec = ngayLamViec;
         NamKinhNghiem = namKinhNghiem;
         Truong = truong;
+        this.ChucVu = "Thu Thu";
     }
 
     public String getNoiLamViec() {
@@ -106,31 +108,32 @@ public class ThuThu extends NhanVien{
     }
 
 
-    @Override
-    public String[] getRowData() {
-        String[] rowData = super.getRowData();
-        // append new data
-        String[] newRowData = new String[rowData.length + 5];
-        System.arraycopy(rowData, 0, newRowData, 0, rowData.length);
-        int i = rowData.length;
-        newRowData[i++] = NoiLamViec;
-        newRowData[i++] = NgayNhanChuc;
-        newRowData[i++] = NgayLamViec;
-        newRowData[i++] = String.valueOf(NamKinhNghiem);
-        newRowData[i] = Truong? "Trưởng phòng" : "";
-        return newRowData;
-    }
+//    @Override
+//    public String[] getRowData() {
+//        String[] rowData = super.getRowData();
+//        // append new data
+//        String[] newRowData = new String[rowData.length + 5];
+//        System.arraycopy(rowData, 0, newRowData, 0, rowData.length);
+//        int i = rowData.length;
+//        newRowData[i++] = NoiLamViec;
+//        newRowData[i++] = NgayNhanChuc;
+//        newRowData[i++] = NgayLamViec;
+//        newRowData[i++] = String.valueOf(NamKinhNghiem);
+//        newRowData[i] = Truong? "Trưởng phòng" : "";
+//        return newRowData;
+//    }
 
-    @Override
-    public String[] getHeader() {
-        String[] header = super.getHeader();
-        String[] newHeader = new String[header.length + 5];
-        System.arraycopy(header, 0, newHeader, 0, header.length);
-        int i = header.length;
-        newHeader[i++] = "Nơi làm việc";
-        newHeader[i++] = "Ngày nhận chức";
-        newHeader[i++] = "Ngày làm việc";
-        newHeader[i++] = "Năm kinh nghiệm";
-        newHeader[i] = "Trưởng phòng";
-        return newHeader;
-}}
+//    @Override
+//    public String[] getHeader() {
+//        String[] header = super.getHeader();
+//        String[] newHeader = new String[header.length + 5];
+//        System.arraycopy(header, 0, newHeader, 0, header.length);
+//        int i = header.length;
+//        newHeader[i++] = "Nơi làm việc";
+//        newHeader[i++] = "Ngày nhận chức";
+//        newHeader[i++] = "Ngày làm việc";
+//        newHeader[i++] = "Năm kinh nghiệm";
+//        newHeader[i] = "Trưởng phòng";
+//        return newHeader;
+//}
+}
