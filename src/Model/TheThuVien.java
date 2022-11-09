@@ -65,7 +65,7 @@ public class TheThuVien implements Serializable, ITableRowData{
 	public String toString() {
 		return "TheThuVien [IDthe=" + IDthe + ",IDuser=" + IDuser + ", ngaybd=" + ngaybd + ", ngayhh=" + ngayhh + ", ghichu=" + ghichu + "]";
 	}
-	void themTheThuVien()
+	public void themTheThuVien()
 	{
 		System.out.print("Nhập IDuser: ");
 	    this.IDuser = Integer.parseInt(Helper.scanner.nextLine());
