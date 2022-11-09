@@ -3,10 +3,6 @@ package Repository;
 
 import Model.TheLoai;
 import helper.Helper;
-import helper.Xuat.Table;
-
-import java.io.*;
-import java.util.ArrayList;
 
 public class KhoTheLoai extends BaseDanhSach<TheLoai> {
     public static String FILE_PATH = Helper.dirPath + "KhoTheLoai.bin";

@@ -52,7 +52,7 @@ public class MuonTra implements Serializable, ITableRowData{
 	public String getNgaymuon() {
 		return ngaymuon;
 	}
-	void nhapPhieuMuonTra()
+	 public  void nhapPhieuMuonTra()
 	{
 		System.out.print("Nhập số thẻ: ");
         IDthe=Integer.parseInt(Helper.scanner.nextLine());

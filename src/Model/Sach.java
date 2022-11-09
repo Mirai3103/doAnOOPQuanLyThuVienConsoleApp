@@ -32,7 +32,7 @@ public class Sach implements Serializable, ITableRowData {
         return nguoiMuonId >= 0;
     }
     public void setNguoiMuon(DocGia docGia){
-        nguoiMuonId = docGia.getMadg();
+        nguoiMuonId = docGia.getIDdg();
     }
 //    public DocGia getNguoiMuon(){
 //        return TongHopDuLieu.khoDocGia.getById(nguoiMuonId);

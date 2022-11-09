@@ -236,9 +236,9 @@ public class NhanViens  extends BaseDanhSach<NhanVien>{
 		System.out.println("khác 1.với tên nhân viên( nhân viên đầu tiên có tên trong DS):");
 	}
 	public void LamViec() {
-		Menu1();
 		int chon;
 		do {
+			Menu1();
 			System.out.println("chọn thao tác: ");
 			chon = Helper.nhapSoNguyen("Yêu cầu nhập số nguyên:");
 			switch (chon) {
