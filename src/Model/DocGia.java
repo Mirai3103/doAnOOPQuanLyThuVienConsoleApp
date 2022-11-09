@@ -1,12 +1,6 @@
 package Model;
 import java.io.Serializable;
 import helper.Helper;
-import helper.Xuat.ITableRowData;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
 import java.io.Serial;
 public class DocGia implements Serializable, ITableRowData{
 	private static int IDdgIncrement=0;
@@ -74,54 +68,4 @@ public class DocGia implements Serializable, ITableRowData{
 	 public String[] getHeader() {
 	     return new String[]{"IDdg","Tên độc giả","Địa chỉ","Idthe"};
 	 }
-	 public static void showString(String[] str)
-	 {
-		 for(int i=0;i<str.length;i++)
-		 {
-			 System.out.printf("%-20s",str[i]);
-		 }
-		 System.out.printf("\n");
-	 }
-	public void ghifile(DocGia[] DGG)
-	 {
-		 try {   
-            FileOutputStream f = new FileOutputStream("docgia.dat");   
-            ObjectOutputStream oStream = new ObjectOutputStream(f); 
-            oStream.writeObject(DGG);   
-            oStream.close();
-        } catch (IOException e) {
-            System.out.println("Error Write file");
-        }
-	 }
-	 public DocGia[] docfile()
-	 {
-		 DocGia[]  DGD = null;
-        try {  
-            FileInputStream f = new FileInputStream("docgia.dat");
-            ObjectInputStream inStream = new ObjectInputStream(f); 
-            DGD = (DocGia[]) inStream.readObject();
-            inStream.close();
-        } catch (ClassNotFoundException e) {
-            System.out.println("Class not found");
-        } catch (IOException e) {
-            System.out.println("Error Read file");
-        }
-        return DGD;
-	 }
-	 public void show(DocGia[] DG)
-	 {
-        try {
-       	 showString(DG[0].getHeader());
-            for (int i = 0; i < DG.length; i++) {
-           	showString(DG[i].getRowData());
-            }	
-        } catch (NullPointerException e) {
-            System.out.println("File Empty");
-        }
-        
-	 }
-	
-	
-	
-
 }

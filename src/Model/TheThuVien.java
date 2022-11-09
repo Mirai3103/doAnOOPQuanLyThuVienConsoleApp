@@ -4,11 +4,6 @@ import java.util.Date;
 import java.io.Serializable;
 import helper.Helper;
 import helper.Xuat.ITableRowData;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
 import java.io.Serial;
 public class TheThuVien implements Serializable, ITableRowData{
 	private static int IDtheIncrement=0;
@@ -96,55 +91,4 @@ public class TheThuVien implements Serializable, ITableRowData{
 	 public String[] getHeader() {
 	     return new String[]{"IDthe", "IDuser", "Ngày bắt đầu", "Ngày hết hạn", "Ghi chú"};
 	 }
-	 public static void showString(String[] str)
-	 {
-		 for(int i=0;i<str.length;i++)
-		 {
-			 System.out.printf("%-20s",str[i]);
-		 }
-		 System.out.printf("\n");
-	 }
-    public static void main(String[] args)
-    {
-//    	tao magn the thu vien
-    	 int n;
-         System.out.print("Nhập số lượng thẻ: ");
-         n = Integer.parseInt(Helper.scanner.nextLine());  
-         TheThuVien[] ttv = new TheThuVien[n];
-         for (int i = 0; i < n; i++) {
-         	ttv[i] = new TheThuVien(); 
-             ttv[i].themTheThuVien();  
-         }
-//         ghi the thu vien
-         try {   
-             FileOutputStream f = new FileOutputStream("thethuvien.dat");   
-             ObjectOutputStream oStream = new ObjectOutputStream(f); 
-             oStream.writeObject(ttv);   
-             oStream.close();
-         } catch (IOException e) {
-             System.out.println("Error Write file");
-         }
-         
-//         doc the thu vien
-         TheThuVien[] ttvd = null;
-         try {  
-             FileInputStream f = new FileInputStream("thethuvien.dat");
-             ObjectInputStream inStream = new ObjectInputStream(f); 
-             ttvd = (TheThuVien[]) inStream.readObject();
-             inStream.close();
-         } catch (ClassNotFoundException e) {
-             System.out.println("Class not found");
-         } catch (IOException e) {
-             System.out.println("Error Read file");
-         }
-         /// show the thi vein
-         try {
-        	 showString(ttvd[0].getHeader());
-             for (int i = 0; i < ttvd.length; i++) {
-            	showString(ttvd[i].getRowData());
-             }	
-         } catch (NullPointerException e) {
-             System.out.println("File Empty");
-         }   
-    }
 }
