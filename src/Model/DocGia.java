@@ -1,49 +1,44 @@
 package Model;
-import java.util.Scanner;
+import java.io.Serializable;
 import helper.Helper;
-public class DocGia {
-
-    protected int madg;
+import helper.Xuat.ITableRowData;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serial;
+public class DocGia implements Serializable, ITableRowData{
+	private static int IDdgIncrement=0;
+	@Serial
+	private static final long serialVersionUID = -266706354210367639L;
+    protected int IDdg;
     protected String tendg;
     protected DiaChi dc;
-    protected int sothe;
+    protected int IDthe;
     public DocGia()
     {
-    	madg=0;
-    	tendg =new String();
-    	dc= new DiaChi();
-    	sothe=0;
-    	
+    	this.IDdg=DocGia.IDdgIncrement++;
     }
-    public DocGia(int madg, int sothe, DiaChi dc, String tendg) 
+    public DocGia(int IDdg, int IDthe, DiaChi dc, String tendg) 
     {
-        this.madg=madg;
-        this.sothe=sothe;
+        this.IDdg=IDdg;
+        this.IDthe=IDthe;
         this.dc=dc;
         this.tendg=tendg;
     }    
-    public void Nhap()
+    public void nhapDocGia()
     {
-        System.out.print("Nhập mã độc giả: ");
-        madg=Helper.scanner.nextInt();
         System.out.print("Nhập tên độc giả: ");
         tendg=Helper.scanner.nextLine();
         System.out.print("Nhập địa chỉ: ");
         dc.Nhap();
         System.out.print("Nhập số thẻ: ");
-        sothe=Helper.scanner.nextInt();
+        IDthe=Integer.parseInt(Helper.scanner.nextLine());
     }
-    public void Xuat()
-    {
-    	System.out.print(this.toString());
-    }
-	public int getMadg() {
-		return madg;
+	public int getIDdg() {
+		return IDdg;
 	}
-	public void setMadg(int madg) {
-		this.madg = madg;
-	}
-	
 	public String getTendg() {
 		return tendg;
 	}
@@ -58,17 +53,73 @@ public class DocGia {
 	}
 	@Override
 	public String toString() {
-		return "DocGia [madg=" + madg + ", tendg=" + tendg + ", dc=" + dc + ", sothe=" + sothe + "]";
+		return "DocGia [IDdg=" + IDdg + ", tendg=" + tendg + ", dc=" + dc + ", IDthe=" + IDthe + "]";
 	}
-	public int getSothe() {
-		return sothe;
+	public int getIDthe() {
+		return IDthe;
 	}
-
-	public void setSothe(int sothe) {
-		this.sothe = sothe;
+	public void setIDthe(int IDthe) {
+		this.IDthe = IDthe;
 	}
-	
-	
+	@Override
+	public String[] getRowData() {
+	    return new String[]{
+	    		this.IDdg+"",
+	    		this.tendg,
+	    		this.dc+"",
+	    		this.IDthe+""
+	        };
+	    }
+	 @Override
+	 public String[] getHeader() {
+	     return new String[]{"IDdg","Tên độc giả","Địa chỉ","Idthe"};
+	 }
+	 public static void showString(String[] str)
+	 {
+		 for(int i=0;i<str.length;i++)
+		 {
+			 System.out.printf("%-20s",str[i]);
+		 }
+		 System.out.printf("\n");
+	 }
+	public void ghifile(DocGia[] DGG)
+	 {
+		 try {   
+            FileOutputStream f = new FileOutputStream("docgia.dat");   
+            ObjectOutputStream oStream = new ObjectOutputStream(f); 
+            oStream.writeObject(DGG);   
+            oStream.close();
+        } catch (IOException e) {
+            System.out.println("Error Write file");
+        }
+	 }
+	 public DocGia[] docfile()
+	 {
+		 DocGia[]  DGD = null;
+        try {  
+            FileInputStream f = new FileInputStream("docgia.dat");
+            ObjectInputStream inStream = new ObjectInputStream(f); 
+            DGD = (DocGia[]) inStream.readObject();
+            inStream.close();
+        } catch (ClassNotFoundException e) {
+            System.out.println("Class not found");
+        } catch (IOException e) {
+            System.out.println("Error Read file");
+        }
+        return DGD;
+	 }
+	 public void show(DocGia[] DG)
+	 {
+        try {
+       	 showString(DG[0].getHeader());
+            for (int i = 0; i < DG.length; i++) {
+           	showString(DG[i].getRowData());
+            }	
+        } catch (NullPointerException e) {
+            System.out.println("File Empty");
+        }
+        
+	 }
 	
 	
 	
