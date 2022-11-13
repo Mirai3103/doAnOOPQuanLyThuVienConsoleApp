@@ -11,7 +11,7 @@ import java.util.ArrayList;
 // thực thể yếu
 public class DanhSachTheLoai_Sach implements Serializable {
     @Serial
-    private static final long serialVersionUID = 13424321644L;
+    private static final long serialVersionUID = 134243219644L;
     public static String FILE_PATH = Helper.dirPath+ "DanhSachTheLoai_Sach.bin";
 
     private ArrayList<TheLoai_Sach> theLoai_saches = new ArrayList<>();

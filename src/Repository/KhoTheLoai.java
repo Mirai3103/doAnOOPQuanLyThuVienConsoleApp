@@ -4,11 +4,15 @@ package Repository;
 import Model.TheLoai;
 import helper.Helper;
 
-public class KhoTheLoai extends BaseDanhSach<TheLoai> {
-    public static String FILE_PATH = Helper.dirPath + "KhoTheLoai.bin";
+import java.io.Serial;
 
-    public KhoTheLoai() {
-    }
+public class KhoTheLoai extends BaseDanhSach<TheLoai> {
+    @Serial
+    private static final long serialVersionUID = 121211232112L;
+    public static String FILE_PATH = Helper.dirPath + "KhoTheLoai.bin";
+    private int idIdentity = 0;
+
+
 
 
 
@@ -27,13 +31,14 @@ public class KhoTheLoai extends BaseDanhSach<TheLoai> {
     public int themVaNhapTheLoai() {
         TheLoai theLoai = new TheLoai();
         theLoai.nhap();
-        data.add(theLoai);
+        this.add(theLoai);
         return theLoai.getId();
     }
     public TheLoai getByName(String name){
         return this.data.stream().filter(s ->s.getTenTheLoai().toLowerCase().equalsIgnoreCase(name.toLowerCase())).findFirst().orElse(null);
     }
     public void add(TheLoai theLoai){
+        theLoai.setId(idIdentity++);
         data.add(theLoai);
     }
 
@@ -100,14 +105,11 @@ public class KhoTheLoai extends BaseDanhSach<TheLoai> {
         super.xuatFileBinary(FILE_PATH);
     }
 
-//    @Override
-//    public void readCsv(String fileName) {
-//        this.data = new ArrayList<>();
-//       var rows =  Table.docFileExcel(FILE_PATH);
-//         for (String row : rows) {
-//           data.add(TheLoai.fromCSVRow(row));
-//         }
-//    }
-
+    @Override
+    public void copyFrom(IDanhSach<TheLoai> other) {
+        var otherKhoTheLoai = (KhoTheLoai) other;
+        this.data = otherKhoTheLoai.data;
+        this.idIdentity = otherKhoTheLoai.idIdentity;
+    }
 
 }

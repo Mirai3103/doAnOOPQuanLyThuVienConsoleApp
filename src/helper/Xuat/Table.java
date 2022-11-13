@@ -2,12 +2,42 @@ package helper.Xuat;
 
 
 
+import helper.Mang;
+
 import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Table {
+    public static<T extends ITableRowData> String taoBang(Mang<T> data){
+        if(data.size() == 0){
+            return "Danh sách trống";
+        }
+        String[] header = data.get(0).getHeader();
+        int[] chieuRongCacCot = new int[header.length];
+        for (int i = 0; i < header.length; i++) {
+            chieuRongCacCot[i] = header[i].length();
+        }
+        for (int i = 0; i < data.size(); i++) {
+            String[] row = data.get(i).getRowData();
+            for (int j = 0; j < row.length; j++) {
+                if(row[j].length() > chieuRongCacCot[j]){
+                    chieuRongCacCot[j] = row[j].length();
+                }
+            }
+        }
+        StringBuilder sb = new StringBuilder();
+        sb.append(taoDuongPhanCach(chieuRongCacCot));
+        sb.append(taoDongDuLieu(chieuRongCacCot, header));
+        sb.append(taoDuongPhanCach(chieuRongCacCot));
+        for (int i = 0; i < data.size(); i++) {
+            String[] row = data.get(i).getRowData();
+            sb.append(taoDongDuLieu(chieuRongCacCot, row));
+            sb.append(taoDuongPhanCach(chieuRongCacCot));
+        }
+        return sb.toString();
+    }
    public static String taoBang(ArrayList<? extends ITableRowData> data) {
        if(data.size()==0){
            return "Trống";

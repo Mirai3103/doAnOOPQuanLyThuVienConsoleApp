@@ -8,7 +8,10 @@ import java.io.Serializable;
 
 
 public class DanhSachTacGia extends BaseDanhSach<TacGia>  {
+    @Serial
+    private static final long serialVersionUID = 132434645712L;
     public static String FILE_PATH = Helper.dirPath + "DanhSachTacGia.bin";
+    private int idIdentity = 0;
 
 
     public void xoaTacGia(){
@@ -104,5 +107,18 @@ public class DanhSachTacGia extends BaseDanhSach<TacGia>  {
         tacGia.nhap();
         data.add(tacGia);
 
+    }
+
+    @Override
+    public void copyFrom(IDanhSach<TacGia> other) {
+        var otherList = (DanhSachTacGia) other;
+        this.data = otherList.data;
+        this.idIdentity = otherList.idIdentity;
+    }
+
+    @Override
+    public void add(TacGia item) {
+        item.setId(idIdentity++);
+        data.add(item);
     }
 }

@@ -14,24 +14,27 @@ import java.util.*;
 public class NhaXuatBan implements Serializable , ITableRowData {
     @Serial
     private static final long serialVersionUID = 13457777644L;
-    public  static int idIncrement = 0;
-    private final int id;
+    private  int id;
     private String tenNXB;
     private DiaChi diaChi;
     private String email;
     private String nguoiDaiDien;
     public NhaXuatBan() {
-        this.id = NhaXuatBan.idIncrement++;
+
     }
-    public NhaXuatBan( String tenNXB, DiaChi diaChi, String email, String nguoiDaiDien) {
-        this.id = NhaXuatBan.idIncrement++;
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public NhaXuatBan(int id, String tenNXB, DiaChi diaChi, String email, String nguoiDaiDien) {
+        this.id = id;
         this.tenNXB = tenNXB;
         this.diaChi = diaChi;
         this.email = email;
         this.nguoiDaiDien = nguoiDaiDien;
     }
-    public NhaXuatBan(int id, String tenNXB, DiaChi diaChi, String email, String nguoiDaiDien) {
-        this.id = id;
+    public NhaXuatBan(String tenNXB, DiaChi diaChi, String email, String nguoiDaiDien) {
         this.tenNXB = tenNXB;
         this.diaChi = diaChi;
         this.email = email;

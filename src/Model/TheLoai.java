@@ -14,15 +14,16 @@ import java.util.Optional;
 public class TheLoai  implements Serializable, ITableRowData {
     @Serial
     private static final long serialVersionUID = 1342400999L;
-    public  static int idIncrement = 0;
     private int id;
     private  String tenTheLoai;
     private String gioiThieu;
 
     public TheLoai() {
-        this.id = TheLoai.idIncrement++;
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public ArrayList<Sach> getSachs() {
      var sachIds =  TongHopDuLieu.getDanhSachTheLoai_sach().getTheLoai_saches().stream().filter(t -> t.getTheLoaiId() == this.id).toList();
@@ -38,7 +39,6 @@ public class TheLoai  implements Serializable, ITableRowData {
 
 
     public TheLoai(String tenTheLoai, String gioiThieu) {
-        this.id = TheLoai.idIncrement++;
         this.tenTheLoai = tenTheLoai;
         this.gioiThieu = gioiThieu;
     }

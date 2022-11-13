@@ -14,6 +14,41 @@ public final  class TongHopDuLieu  {
     private static DanhSachNhaXuatBan danhSachNhaXuatBan = null;
 
     private static NhanViens nhanViens = null;
+    private static DanhSachPhieuMuon danhSachPhieuMuonTra =null;
+    private static DanhSachCTMuonTra danhSachCTMuonTra = null;
+    private static DocGias danhSachDocGia = null;
+    private static DanhSachTheThuVien danhSachTheThuVien = null;
+
+    public static DanhSachTheThuVien getDanhSachTheThuVien() {
+        if (danhSachTheThuVien == null) {
+            danhSachTheThuVien = new DanhSachTheThuVien();
+            danhSachTheThuVien.docFileBinary(DanhSachTheThuVien.FILE_PATH);
+        }
+        return danhSachTheThuVien;
+    }
+
+    public static DocGias getDanhSachDocGia() {
+        if(danhSachDocGia == null){
+            danhSachDocGia = new DocGias();
+            danhSachDocGia.docFileBinary(DocGias.FILE_PATH);
+        }
+        return danhSachDocGia;
+    }
+    public static DanhSachCTMuonTra getDanhSachCTMuonTra() {
+        if(danhSachCTMuonTra == null){
+            danhSachCTMuonTra = new DanhSachCTMuonTra();
+            danhSachCTMuonTra.docFileBinary(DanhSachCTMuonTra.FILE_PATH);
+        }
+        return danhSachCTMuonTra;
+    }
+    public static DanhSachPhieuMuon getDanhSachPhieuMuonTra(){
+        if(danhSachPhieuMuonTra == null){
+            danhSachPhieuMuonTra = new DanhSachPhieuMuon();
+            danhSachPhieuMuonTra.docFileBinary(DanhSachPhieuMuon.FILE_PATH);
+        }
+
+        return danhSachPhieuMuonTra;
+    }
 
     public static KhoSach getKhoSach() {
         if(khoSach == null){
@@ -55,12 +90,7 @@ public final  class TongHopDuLieu  {
         if(nhanViens == null){
             nhanViens = new NhanViens();
             nhanViens.docFileBinary(NhanViens.FILE_PATH);
-            if(nhanViens.data.size() == 0){
-                NhanVien quanLi = new QuanLi("admin");
-                quanLi.setHoTen("Admin");
-                quanLi.setMK("admin");
-                nhanViens.data.add(quanLi);
-            }
+
         }
         return nhanViens;
     }

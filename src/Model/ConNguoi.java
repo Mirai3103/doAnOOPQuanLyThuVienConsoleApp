@@ -79,29 +79,6 @@ public class ConNguoi  implements Serializable {
 		}
 	}
 
-	// chuyên cái này qua helper vì  mã phiếu còn dùng mấy cái này nữa.
-	// hàm ngày tháng còn thiếu check tháng 31 30 ngày với check tháng 2.
-	// tui sửa lại cho nó đa dụng check ngày tháng luôn class con dùng lại check thử đúng hay sai nha.
-//	protected boolean checkNgayThang(String NgayThang){
-//		Matcher matcher = Helper.DATE_PATTERN.matcher(NgayThang);
-//		if(!matcher.find()) {
-//			System.out.println("Ngày tháng không hợp lệ");
-//			return  false;
-//		};
-//		if(Integer.parseInt(matcher.group(1)) > 31||Integer.parseInt(matcher.group(1)) ==0){
-//			System.out.println("Ngày tháng không hợp lệ");
-//			return  false;
-//		}
-//		if(Integer.parseInt(matcher.group(2)) > 12 ||Integer.parseInt(matcher.group(2)) ==0 ){
-//			System.out.println("Ngày tháng không hợp lệ");
-//			return  false;
-//		}
-//		if(Integer.parseInt(matcher.group(3)) > 2025 ||Integer.parseInt(matcher.group(3)) <1940){
-//			System.out.println("Ngày tháng không hợp lệ");
-//			return  false;
-//		}
-//		return true; //   dd/mm/yyyy || dd-mm-yyyy
-//	}
 
 
 	public void Nhap() {

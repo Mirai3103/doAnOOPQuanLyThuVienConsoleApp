@@ -2,34 +2,42 @@ package Model;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.io.Serializable;
+
+import Repository.DocGias;
+import Repository.TongHopDuLieu;
 import helper.Helper;
 import helper.Xuat.ITableRowData;
 import java.io.Serial;
 public class TheThuVien implements Serializable, ITableRowData{
-	private static int IDtheIncrement=0;
 	@Serial
 	private static final long serialVersionUID = -266706354210367639L;
-	private final int IDthe;
+	private  int IDthe;
     private int IDuser;
     private String ngaybd;
     private String ngayhh;
     private String ghichu;
     public TheThuVien()
     {
-        this.IDthe = TheThuVien.IDtheIncrement++;
         Date date = new Date();
         SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
         ngaybd = formatter.format(date);
     }
     public TheThuVien(String IDthe,String ngaybd,int IDuser,String ngayhh,String ghichu) 
     {
-        this.IDthe = TheThuVien.IDtheIncrement++;
         this.IDuser=IDuser;
     	this.ngaybd=ngaybd;
     	this.ngayhh=ngayhh;
     	this.ghichu=ghichu;	
-    }  
-  
+    }
+
+	public void setIDthe(int IDthe) {
+		this.IDthe = IDthe;
+	}
+
+	public void setNgaybd(String ngaybd) {
+		this.ngaybd = ngaybd;
+	}
+
 	public int getIDthe() {
 		return IDthe;
 	}
@@ -68,6 +76,17 @@ public class TheThuVien implements Serializable, ITableRowData{
         this.ngayhh = Helper.scanner.nextLine();
         System.out.print("Nhập ghi chú: ");
         this.ghichu = Helper.scanner.nextLine();
+	}
+	public DocGia getUser(){
+		return TongHopDuLieu.getDanhSachDocGia().getById(IDuser);
+	}
+	public void themTheThuVien(int IDuser)
+	{
+		this.IDuser = IDuser;
+		System.out.print("Nhập ngày hết hạn(dd/MM/yyyy): ");
+		this.ngayhh = Helper.scanner.nextLine();
+		System.out.print("Nhập ghi chú: ");
+		this.ghichu = Helper.scanner.nextLine();
 	}
 	public void xuatTheThuVien()
 	{
