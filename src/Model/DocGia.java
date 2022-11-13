@@ -1,54 +1,38 @@
 package Model;
 import java.io.Serializable;
 import helper.Helper;
+import helper.Xuat.ITableRowData;
+
 import java.io.Serial;
-public class DocGia implements Serializable, ITableRowData{
-	private static int IDdgIncrement=0;
+public class DocGia extends ConNguoi implements Serializable, ITableRowData {
 	@Serial
 	private static final long serialVersionUID = -266706354210367639L;
     protected int IDdg;
-    protected String tendg;
-    protected DiaChi dc;
     protected int IDthe;
     public DocGia()
     {
-    	this.IDdg=DocGia.IDdgIncrement++;
     }
-    public DocGia(int IDdg, int IDthe, DiaChi dc, String tendg) 
+
+	public DocGia(String hoTen, String ngaySinh, String sDT, String cMND, DiaChi dC, int IDdg, int IDthe) {
+		super(hoTen, ngaySinh, sDT, cMND, dC);
+		this.IDdg = IDdg;
+		this.IDthe = IDthe;
+	}
+
+	public void nhapDocGia()
     {
-        this.IDdg=IDdg;
-        this.IDthe=IDthe;
-        this.dc=dc;
-        this.tendg=tendg;
-    }    
-    public void nhapDocGia()
-    {
-        System.out.print("Nhập tên độc giả: ");
-        tendg=Helper.scanner.nextLine();
-        System.out.print("Nhập địa chỉ: ");
-        dc.Nhap();
-        System.out.print("Nhập số thẻ: ");
-        IDthe=Integer.parseInt(Helper.scanner.nextLine());
+        super.Nhap();
     }
 	public int getIDdg() {
 		return IDdg;
 	}
-	public String getTendg() {
-		return tendg;
+
+	public void setIDdg(int IDdg) {
+		this.IDdg = IDdg;
 	}
-	public void setTendg(String tendg) {
-		this.tendg = tendg;
-	}
-	public DiaChi getDc() {
-		return dc;
-	}
-	public void setDc(DiaChi dc) {
-		this.dc = dc;
-	}
-	@Override
-	public String toString() {
-		return "DocGia [IDdg=" + IDdg + ", tendg=" + tendg + ", dc=" + dc + ", IDthe=" + IDthe + "]";
-	}
+
+
+
 	public int getIDthe() {
 		return IDthe;
 	}
@@ -59,13 +43,17 @@ public class DocGia implements Serializable, ITableRowData{
 	public String[] getRowData() {
 	    return new String[]{
 	    		this.IDdg+"",
-	    		this.tendg,
-	    		this.dc+"",
-	    		this.IDthe+""
+	    		this.IDthe+"",
+					    		this.getHoTen(),
+					    		this.getNgaySinh(),
+					    		this.getSDT(),
+					    		this.getCMND(),
+					    		this.getDC().toString(),
 	        };
 	    }
 	 @Override
 	 public String[] getHeader() {
-	     return new String[]{"IDdg","Tên độc giả","Địa chỉ","Idthe"};
+		 return new String[]{"ID Độc Giả", "ID Thẻ", "Họ Tên", "Ngày Sinh", "Số Điện Thoại", "CMND", "Địa Chỉ"};
 	 }
+
 }

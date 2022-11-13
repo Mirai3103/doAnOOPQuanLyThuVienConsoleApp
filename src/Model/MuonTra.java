@@ -1,39 +1,50 @@
 package Model;
+import java.awt.print.Book;
 import java.io.Serializable;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.Date;
+
+import Repository.TongHopDuLieu;
 import helper.Helper;
 import helper.Xuat.ITableRowData;
+import helper.Xuat.Table;
+
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 public class MuonTra implements Serializable, ITableRowData{
-	public  static int IDmtIncrement = 0;
-    protected final int IDmt;
+    protected  int IDmt;
     protected int IDthe;
-    protected int IDnv;
-    protected String ngaymuon;
+    protected String IDnv;
+    protected LocalDate ngaymuon;
     public MuonTra()
     {
-        this.IDmt = MuonTra.IDmtIncrement++;
         Date date = new Date();
         SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
-        ngaymuon = formatter.format(date);
+        ngaymuon = LocalDate.now();
     }
-    public MuonTra(int IDmt, int IDthe, int IDnv, String ngaymuon) 
-    {
-        this.IDmt = MuonTra.IDmtIncrement++;
+    public MuonTra(int IDmt, int IDthe, String IDnv, String ngaymuon) {
         this.IDthe=IDthe;
         this.IDnv=IDnv;
-        this.ngaymuon=ngaymuon;
+		var formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        this.ngaymuon= LocalDate.parse(ngaymuon, formatter);
 
     }
 	@Override
 	public String toString() {
 		return "MuonTra [ID=" + IDmt + ", IDthe=" + IDthe + ", IDnv=" + IDnv + ", ngaymuon=" + ngaymuon + "]";
 	}
+
+	public void setIDmt(int IDmt) {
+		this.IDmt = IDmt;
+	}
+
 	public int getIDmt() {
 		return IDmt;
 	}
@@ -43,48 +54,59 @@ public class MuonTra implements Serializable, ITableRowData{
 	public void setIDthe(int IDthe) {
 		this.IDthe = IDthe;
 	}
-	public int getIDnv() {
+	public String getIDnv() {
 		return IDnv;
 	}
-	public void setIDnv(int IDnv) {
+	public void setIDnv(String IDnv) {
 		this.IDnv = IDnv;
 	}
-	public String getNgaymuon() {
+	public LocalDate getNgaymuon() {
 		return ngaymuon;
 	}
 	 public  void nhapPhieuMuonTra()
 	{
-		System.out.print("Nhập số thẻ: ");
-        IDthe=Integer.parseInt(Helper.scanner.nextLine());
-        System.out.print("Nhập mã nhân viên: ");
-        IDnv=Integer.parseInt(Helper.scanner.nextLine());
+		while (true)
+		{
+			System.out.print("Nhập số thẻ: ");
+			IDthe=Integer.parseInt(Helper.scanner.nextLine());
+			var theTv =TongHopDuLieu.getDanhSachTheThuVien().getById(IDthe);
+			if(theTv==null)
+			{
+				System.out.println("Không tìm thấy thẻ thư viện");
+			}
+			else
+			{
+				break;
+			}
+		}
+
 	}
-	public void xuatPhieuMuonTra()
-	{
-		System.out.println("IDthe: " + this.IDthe);
-		System.out.println("IDuser: " + this.IDthe);
-		System.out.println("IDnv: " + this.IDnv);
-        System.out.println("Ngày mượn: " + this.ngaymuon);	
-	}
+
 	@Override
 	public String[] getRowData() {
 	    return new String[]{
 	           this.IDmt + "",
 	           this.IDthe + "",
 	           this.IDnv + "",
-	           this.ngaymuon,     
+	           this.ngaymuon.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")),
 	        };
 	    }
 	 @Override
 	 public String[] getHeader() {
 	     return new String[]{"IDmt", "IDthe", "IDnv", "Ngày mượn"};
 	 }
-	 public static void showString(String[] str)
-	 {
-		 for(int i=0;i<str.length;i++)
-		 {
-			 System.out.printf("%-20s",str[i]);
-		 }
-		 System.out.printf("\n");
-	 }
+	public  void xuatPhieu(){
+		System.out.println("ID phiếu mượn: "+this.IDmt);
+		System.out.println("ID thẻ: "+this.IDthe);
+		System.out.println("ID nhân viên: "+this.IDnv);
+		System.out.println("Ngày mượn: "+this.ngaymuon);
+		ArrayList<CTMuonTra> ctMuonTras= TongHopDuLieu.getDanhSachCTMuonTra().getChiTietPhieuMuong(this.IDmt);
+		System.out.println("Danh sách sách mượn: ");
+		System.out.println(Table.taoBang(ctMuonTras));
+	}
+	public TheThuVien getTheThuVien()
+	{
+		return TongHopDuLieu.getDanhSachTheThuVien().getById(this.IDthe);
+	}
+
 }

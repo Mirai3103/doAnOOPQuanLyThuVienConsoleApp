@@ -1,29 +1,32 @@
 package Repository;
 
 
+import helper.Mang;
 import helper.Xuat.ITableRowData;
-import helper.Xuat.Table;
 
-import java.io.*;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
-public abstract class BaseDanhSach<T extends ITableRowData> implements IDanhSach<T>, Serializable {
 
-
-protected ArrayList<T> data = new ArrayList<>();
-
-
-
-    public ArrayList<T> getAll() {
-        return  this.data;
+public abstract class BaseDanhSachArray<T extends ITableRowData> implements IDanhSach<T> {
+    protected Mang<T> data = new Mang<>();
+    public void copyFrom(BaseDanhSachArray<T> other){
+        this.data = other.data;
     }
+    public T[] getAll() {
+        return data.getAll();
+    }
+
     @Override
-    public void xuatConsoleDangTable(){
-        if(data.size() == 0){
+    public void xuatConsoleDangTable() {
+        if (data.size() == 0) {
             System.out.println("Danh sách trống");
             return;
         }
-        System.out.println(Table.taoBang(data));
+        System.out.println(data);
     }
 
     @Override
@@ -40,8 +43,6 @@ protected ArrayList<T> data = new ArrayList<>();
             objout.close();
             fout.close();
         } catch (Exception ignored) {
-            System.out.println(ignored.getMessage());
-            ignored.printStackTrace();
         }
     }
     @Override
@@ -49,13 +50,12 @@ protected ArrayList<T> data = new ArrayList<>();
         try {
             FileInputStream finput = new FileInputStream(filePath);
             ObjectInputStream objinput = new ObjectInputStream(finput);
-            BaseDanhSach<T> duLieuDocDuoc = (BaseDanhSach<T>) objinput.readObject();
+            BaseDanhSachArray<T> duLieuDocDuoc = (BaseDanhSachArray<T>) objinput.readObject();
             this.copyFrom(duLieuDocDuoc);
             objinput.close();
             finput.close();
         } catch (Exception ignored) {
         }
     }
-
 
 }

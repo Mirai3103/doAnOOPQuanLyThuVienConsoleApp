@@ -15,14 +15,12 @@ import java.util.List;
 public class TacGia implements Serializable, ITableRowData {
     @Serial
     private static final long serialVersionUID = 12200345644L;
-    public static int idIncrement = 0;
     private int id;
     private String tenTacGia;
     private String website;
     private String gioiThieu;
 
     public TacGia() {
-        this.id = TacGia.idIncrement++;
     }
 
     public TacGia(String tenTacGia, String website, String gioiThieu) {
@@ -32,6 +30,9 @@ public class TacGia implements Serializable, ITableRowData {
         this.gioiThieu = gioiThieu;
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public int getId() {
         return id;

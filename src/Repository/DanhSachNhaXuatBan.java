@@ -4,20 +4,22 @@ package Repository;
 import Model.NhaXuatBan;
 import helper.Helper;
 
+import java.io.Serial;
+
 public class DanhSachNhaXuatBan extends BaseDanhSach<NhaXuatBan>  {
+    @Serial
+    private static final long serialVersionUID = 19068362L;
     public static String FILE_PATH = Helper.dirPath + "DanhSachNhaXuatBan.bin";
+    private int idIdentity = 0;
 
 
     public void themNhaXuatBan(){
         NhaXuatBan nhaXuatBan = new NhaXuatBan();
         nhaXuatBan.nhap();
-        data.add(nhaXuatBan);
+       this.add(nhaXuatBan);
     }
 
 
-    public boolean kiemTraIdTrung(int id){
-        return data.stream().filter(n ->n.getId() == id).findFirst().orElse(null) !=null;
-    }
     public void xoaNhaXuatBan(){
         System.out.println("Nhap id nha xuat ban can xoa");
         int id = Helper.nhapSoNguyen("Lỗi!! id là số nguyên :");
@@ -85,15 +87,9 @@ public class DanhSachNhaXuatBan extends BaseDanhSach<NhaXuatBan>  {
         return null;
     }
 
-    public void add(NhaXuatBan nhaXuatBan){
-        data.add(nhaXuatBan);
-    }
-
-
     public void delete(int id) {
         data.removeIf(n -> n.getId() == id);
     }
-
     public void update(int id) {
         NhaXuatBan nhaXuatBan = getById(id);
         if(nhaXuatBan != null){
@@ -101,6 +97,15 @@ public class DanhSachNhaXuatBan extends BaseDanhSach<NhaXuatBan>  {
         }
     }
 
+    @Override
+    public void copyFrom(IDanhSach<NhaXuatBan> other) {
+DanhSachNhaXuatBan danhSachNhaXuatBan = (DanhSachNhaXuatBan) other;
+        this.data = danhSachNhaXuatBan.data;this.idIdentity = danhSachNhaXuatBan.idIdentity;
+    }
 
-
+    @Override
+    public void add(NhaXuatBan item) {
+        item.setId(idIdentity++);
+        data.add(item);
+    }
 }

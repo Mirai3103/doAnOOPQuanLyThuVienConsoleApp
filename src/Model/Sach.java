@@ -10,10 +10,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Sach implements Serializable, ITableRowData {
-    public  static int idIncrement = 0;
+
     @Serial
     private static final long serialVersionUID = 134243242345644L;
-    private final int id;
+    private  int id;
     private String tenSach;
     private int tongSoTrang;
     private String ngonNgu;
@@ -22,24 +22,24 @@ public class Sach implements Serializable, ITableRowData {
     private short namXuatBan;
     private String tinhTrang;
     private String gioiThieu;
-    private int nguoiMuonId = -1;
+    private int theTVNguoiMuonId = -1;
 
 
     public Sach() {
-        this.id = Sach.idIncrement++;
     }
     public boolean checkDangMuon(){
-        return nguoiMuonId >= 0;
+        return theTVNguoiMuonId >= 0;
     }
-    public void setNguoiMuon(DocGia docGia){
-        nguoiMuonId = docGia.getIDdg();
+    public void setTheTVNguoiMuonId(TheThuVien docGia){
+        if(docGia == null) {
+            theTVNguoiMuonId = -1;
+        }else theTVNguoiMuonId = docGia.getIDthe();
     }
-//    public DocGia getNguoiMuon(){
-//        return TongHopDuLieu.khoDocGia.getById(nguoiMuonId);
-//    }
+    public TheThuVien getNguoiMuon(){
+        return TongHopDuLieu.getDanhSachTheThuVien().getById(theTVNguoiMuonId);
+    }
 
     public Sach( String tenSach, int tongSoTrang, String ngonNgu, TacGia tacGia, NhaXuatBan nhaXuatBan, short namXuatBan, String tinhTrang, String gioiThieu) {
-        this.id = Sach.idIncrement++;
         this.tenSach = tenSach;
         this.tongSoTrang = tongSoTrang;
         this.ngonNgu = ngonNgu;
@@ -48,6 +48,22 @@ public class Sach implements Serializable, ITableRowData {
         this.namXuatBan = namXuatBan;
         this.tinhTrang = tinhTrang;
         this.gioiThieu = gioiThieu;
+    }
+
+    public void setTacGiaId(int tacGiaId) {
+        this.tacGiaId = tacGiaId;
+    }
+
+    public void setNhaXuatBanId(int nhaXuatBanId) {
+        this.nhaXuatBanId = nhaXuatBanId;
+    }
+
+    public void setTheTVNguoiMuonId(int nguoiMuonId) {
+        this.theTVNguoiMuonId = nguoiMuonId;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public int getId() {
@@ -252,11 +268,12 @@ public class Sach implements Serializable, ITableRowData {
                 this.namXuatBan + "",
                 this.tinhTrang,
                 this.gioiThieu,
+                this.checkDangMuon() ? "Đang mượn" : "đang có sẵn",
                 theLoai
         };
     }
     @Override
     public String[] getHeader() {
-        return new String[]{"Id", "Tên sách", "Tổng số trang", "Ngôn ngữ", "Tác giả", "Nhà xuất bản", "Năm xuất bản", "Tình trạng", "Giới thiệu", "Thể loại"};
+        return new String[]{"Id", "Tên sách", "Tổng số trang", "Ngôn ngữ", "Tác giả", "Nhà xuất bản", "Năm xuất bản", "Tình trạng", "Giới thiệu","Tình trạng mượn", "Thể loại"};
     }
 }

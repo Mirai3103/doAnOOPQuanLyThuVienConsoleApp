@@ -24,11 +24,53 @@ public class Main {
         initTacGiaData();
         initNhaXuatBanData();
         initSachData();
+        initNhanVien();
         TongHopDuLieu.getKhoSach().xuatFileBinary();
         TongHopDuLieu.getKhoTheLoai().xuatFileBinary();
         TongHopDuLieu.getDanhSachTacGia().xuatFileBinary();
         TongHopDuLieu.getDanhSachNhaXuatBan().xuatFileBinary();
+        TongHopDuLieu.getNhanViens().xuatFileBinary();
 
+    }
+    public static void initDocGiaData(){
+
+        DocGia dg1 = new DocGia();
+        dg1.setHoTen("Nguyễn Văn A");
+        dg1.setNgaySinh("01/01/2000");
+        dg1.setSDT("0123456789");
+        dg1.setCMND("123456789");
+        dg1.setDC(new DiaChi("16 ","Hàng Chuối","Phạm Đình Hổ","Hai Bà Trưng"," TP HCM"));
+        TongHopDuLieu.getDanhSachDocGia().add(dg1);
+        TheThuVien theThuVien1 = new TheThuVien();
+        theThuVien1.setGhichu("");
+        theThuVien1.setNgaybd("01/01/2021");
+        theThuVien1.setNgayhh("01/01/2024");
+        theThuVien1.setIDuser(dg1.getIDdg());
+        TongHopDuLieu.getDanhSachTheThuVien().add(theThuVien1);
+        DocGia dg2 = new DocGia();
+        dg2.setHoTen("Lê thị B");
+        dg2.setNgaySinh("04/02/2002");
+        dg2.setSDT("1123456789");
+        dg2.setCMND("223456789");
+        dg2.setDC(new DiaChi("273","An dương vương","P4","Q5"," TP HCM"));
+        TongHopDuLieu.getDanhSachDocGia().add(dg2);
+        TheThuVien theThuVien2 = new TheThuVien();
+        theThuVien2.setGhichu("");
+        theThuVien2.setNgaybd("01/01/2022");
+        theThuVien2.setNgayhh("01/01/2023");
+        theThuVien2.setIDuser(dg2.getIDdg());
+
+    }
+    public static void initNhanVien(){
+        NhanVien quanLi = new QuanLi("admin");
+        quanLi.setHoTen("Admin");
+        quanLi.setMK("admin");
+        TongHopDuLieu.getNhanViens().add(quanLi);
+        NhanVien thuThu = new ThuThu();
+        thuThu.setMK("thuthu");
+        thuThu.setHoTen("Thủ thư");
+        thuThu.setMaNV("thuthu");
+        TongHopDuLieu.getNhanViens().add(thuThu);
     }
     public static void initTheLoaiData(){
         TongHopDuLieu.getKhoTheLoai().add(new TheLoai("Truyện tranh","truyen tranh"));
@@ -60,7 +102,7 @@ public class Main {
     public static void initNhaXuatBanData(){
 
         TongHopDuLieu.getDanhSachNhaXuatBan().add(new NhaXuatBan("NXB Kim Đồng",new DiaChi("248","Cống Quỳnh","Phạm Ngũ Lão","Q.1","TP.HCM"),"info@nxbkimdong.com.vn","Bùi Tuấn Nghĩa"));
-            TongHopDuLieu.getDanhSachNhaXuatBan().add(new NhaXuatBan("NXB trẻ", new DiaChi("161B","Lý Chính Thắng","Võ Thị Sáu","Q.3","TP.HCM"),"hopthubandoc@nxbtre.com.vn","Nguyễn Thị Thanh Thủy"));
+        TongHopDuLieu.getDanhSachNhaXuatBan().add(new NhaXuatBan("NXB trẻ", new DiaChi("161B","Lý Chính Thắng","Võ Thị Sáu","Q.3","TP.HCM"),"hopthubandoc@nxbtre.com.vn","Nguyễn Thị Thanh Thủy"));
         TongHopDuLieu.getDanhSachNhaXuatBan().add(new NhaXuatBan("NXB Giáo dục", new DiaChi("1","Nguyễn Thị Minh Khai","Nguyễn Thị Minh Khai","Q.3","TP.HCM"),"nxbgd@moet.edu.vn","Nguyễn Văn A"));
         TongHopDuLieu.getDanhSachNhaXuatBan().add(new NhaXuatBan("NXB ĐHQG Hà Nội", new DiaChi("16 ","Hàng Chuối","Phạm Đình Hổ","Hai Bà Trưng"," Hà Nội"),"nxb@vnu.edu.vn","Nguyễn Văn B"));
         TongHopDuLieu.getDanhSachNhaXuatBan().add(new NhaXuatBan("NXB Chính trị quốc gia Sự thật.", new DiaChi("6/86","","Duy tân","Cầu Giấy","Hà Nội" ),"phathanh@nxbctqg.vn","Nguyễn Văn C"));

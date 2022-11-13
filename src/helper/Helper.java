@@ -3,6 +3,10 @@ package helper;
 
 import Repository.TongHopDuLieu;
 
+import javax.swing.text.DateFormatter;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Locale;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -11,6 +15,7 @@ public final class Helper {
     // các hằng và hàm sử lý thường dùng
 	// Cái  này được xem là database chứa tất cả danh sách  , khi ghi đọc ghi file thì chỉ ghi 1 cái này thôi, khỏi toon cong ghi nhieu
 	// biến toàn cucj nên ởdđau cũng lấy được, dễ dàng kiểm tra ràng buộc
+	public static DateTimeFormatter DATE_FORMAT  = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 	public static TongHopDuLieu khoDuLieu  =null;
     public final static Scanner scanner = new Scanner(System.in);
     public final static String EMAIL_PATTERN = "^([\\w.][^_])+@([\\w]+\\.)+[\\w-]{2,4}$";
@@ -66,7 +71,16 @@ public final class Helper {
 			return  false;
 		}
 		//toDo:check xem thử hợp lệ ko ví dụ 30/2/2022 => ko hợp lệ
+		try {
+			LocalDate date = LocalDate.of(Integer.parseInt(matcher.group(3)), Integer.parseInt(matcher.group(2)), Integer.parseInt(matcher.group(1)));
+		}catch (Exception e){
+			System.out.println("Ngày tháng không hợp lệ");
+			return  false;
+		}
 		return true; //   dd/mm/yyyy || dd-mm-yyyy
+	}
+	public static LocalDate parseDate(String date){
+		return LocalDate.parse(date, DATE_FORMAT);
 	}
 	public static void clearScreen() {
 		try {

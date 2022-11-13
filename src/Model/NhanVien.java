@@ -17,9 +17,11 @@ public abstract class NhanVien extends ConNguoi implements ITableRowData {
 	protected String MaNV, ChucVu, MK;
 	private int Luong;
 
+	public void setMaNV(String maNV) {
+		MaNV = maNV;
+	}
 
-
-	public NhanVien(String hoTen, String ngaySinh, String sDT, String cMND, DiaChi dC,String maNV, String chucVu, String mK, int luong) {
+	public NhanVien(String hoTen, String ngaySinh, String sDT, String cMND, DiaChi dC, String maNV, String chucVu, String mK, int luong) {
 		super(hoTen,ngaySinh,sDT,cMND,dC);
 		MaNV = maNV;
 		ChucVu = chucVu;
@@ -67,8 +69,6 @@ public abstract class NhanVien extends ConNguoi implements ITableRowData {
 	@Override
 	public void Nhap() {
 		super.Nhap();
-		System.out.println("Nhập chức vụ: ");
-		ChucVu = Helper.scanner.nextLine();
 		System.out.println("Nhập mật khẩu: ");
 		MK = Helper.scanner.nextLine();
 		System.out.println("Nhập mức lương");

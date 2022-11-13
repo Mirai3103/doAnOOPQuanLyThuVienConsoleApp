@@ -2,8 +2,10 @@ package Repository;
 
 import java.io.FileInputStream;
 import java.io.ObjectInputStream;
+import java.io.Serial;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 import Model.NhanVien;
 import Model.QuanLi;
@@ -12,8 +14,13 @@ import helper.Helper;
 
 
 public class NhanViens  extends BaseDanhSach<NhanVien>{
+	@Serial
+	private static final long serialVersionUID = 12121212L;
 	public static String FILE_PATH = Helper.dirPath + "NhanViens.bin";
-	
+
+	public void xuatFileBinary() {
+		super.xuatFileBinary(FILE_PATH);
+	}
 
 	public ArrayList<NhanVien> getNVs() {
 		return data;
@@ -108,8 +115,7 @@ public class NhanViens  extends BaseDanhSach<NhanVien>{
 			String MaNV = Helper.scanner.nextLine();
 			NhanVien NV = getByMaNV(MaNV);
 			if(NV != null) {
-				if(NV instanceof QuanLi) {
-					QuanLi QL = (QuanLi) NV;
+				if(NV instanceof QuanLi QL) {
 					int flag1=1;
 		        	do {
 		    			flag1=1;
@@ -140,8 +146,7 @@ public class NhanViens  extends BaseDanhSach<NhanVien>{
 			String name = Helper.scanner.nextLine();
 			NhanVien NV2 = getByName(name);
 			if(NV2 != null) {
-				if(NV2 instanceof QuanLi) { //https://codelearn.io/learning/lap-trinh-huong-doi-tuong-trong-java/11157048
-					QuanLi QL = (QuanLi) NV2;
+				if(NV2 instanceof QuanLi QL) { //https://codelearn.io/learning/lap-trinh-huong-doi-tuong-trong-java/11157048
 					int flag1=1;
 		        	do {
 		    			flag1=1;
@@ -171,6 +176,7 @@ public class NhanViens  extends BaseDanhSach<NhanVien>{
 	}
 	
 	public void XoaNhanVien() {
+
 		Menu2();
 		System.out.println("Nhập phương thức sử dụng: ");
 		int chon = Helper.nhapSoNguyen("Lỗi!!!Nên nhập số nguyên: ");
@@ -204,15 +210,14 @@ public class NhanViens  extends BaseDanhSach<NhanVien>{
 		
 	}
 	
-	
-	// Ä‘oáº¡n code bÃªn dÆ°á»›i khÃ´ng cháº¯c Ä‘Ãºng
+
 	public List<NhanVien> DocFile() {
 	        try {
 	            FileInputStream finput = new FileInputStream("E:\\data.obj");
 	            ObjectInputStream objinput = new ObjectInputStream(finput);
 	            ArrayList<NhanVien> DATA = (ArrayList<NhanVien>) objinput.readObject();
 	            return DATA;
-	            // náº¿u nhÆ° nÃ y khi Ä‘á»�c cÃ¡i nÃ y thÃ¬ pháº£i dÃ¹ng downcasting??
+
 	        } catch (Exception e) {
 
 	            e.printStackTrace();
@@ -268,17 +273,26 @@ public class NhanViens  extends BaseDanhSach<NhanVien>{
 				xuatConsoleDangTable();
 				break;
 			case 6:
-				
+				this.xuatFileBinary(FILE_PATH);
 				break;
 			default:
 				System.out.println("Đối số truyền vào không đúng.");
 			}
-			System.out.println("Nhập 1 để tiếp tục.");
-			chon=Helper.nhapSoNguyen("Nhập số nguyên.");
 		}while(chon!=6);
 	}
 
 	public static void main(String[] args) {
 	   TongHopDuLieu.getNhanViens().LamViec();
+	}
+
+	@Override
+	public void copyFrom(IDanhSach<NhanVien> other) {
+		var otherList = (NhanViens) other;
+		this.data = new ArrayList<>(otherList.data);
+	}
+
+	@Override
+	public void add(NhanVien item) {
+		this.data.add(item);
 	}
 }
