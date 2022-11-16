@@ -13,17 +13,13 @@ import java.time.LocalDate;
 
 public class ThuThuView {
     private static void menu() {
-        System.out.println("1. tìm kiếm sách");
-        System.out.println("2. mượn sách");
-        System.out.println("3. trả sách");
-        System.out.println("4. đăng ký thành viên");
-        System.out.println("5. xem các phiếu mượn quá hạn");
-        System.out.println("6. xem các phiếu mượn chưa trả");
-        System.out.println("7. xem các phiếu mượn đã trả");
-        System.out.println("8. xem các phiếu mượn");
-        System.out.println("9. xem các phiếu mượn của độc giả");
-        System.out.println("10. gia hạn phiếu mượn");
-        // toDo: thêm các chức năng khác
+        System.out.println("1. Tương tác với sách");
+        System.out.println("2. Tương tác với thể loại");
+        System.out.println("3. Tương tác với nhà xuất bản");
+        System.out.println("4. Tương tác với tác giả");
+        System.out.println("5. Tương tác với độc giả");
+        System.out.println("6. Tương tác với phiếu mượn");
+        System.out.println("7. Thoát");
     }
 
 
@@ -36,11 +32,15 @@ public class ThuThuView {
             System.out.println("Nhập lựa chọn của bạn");
             luaChon = helper.Helper.nhapSoNguyen("Không hợp lệ: ");
             switch (luaChon) {
-                case 1 -> TongHopDuLieu.getKhoSach().timSach();
-                case 2 -> TongHopDuLieu.getDanhSachPhieuMuonTra().muonSach();
-                case 3 -> TongHopDuLieu.getDanhSachPhieuMuonTra().traSach();
-                case 4 -> TongHopDuLieu.getDanhSachDocGia().dangKyThanhVien();
+                case 1 -> TongHopDuLieu.getKhoSach().thuThuLamViec();
+                case 2 -> TongHopDuLieu.getKhoTheLoai().thuThuLamViec();
+                case 3 -> TongHopDuLieu.getDanhSachNhaXuatBan().thuThulamViec();
+                case 4 -> TongHopDuLieu.getDanhSachTacGia().thuThuLamViec();
+                case 5 -> TongHopDuLieu.getDanhSachDocGia().thuThuLamViec();
+                case 6 -> TongHopDuLieu.getDanhSachPhieuMuonTra().thuThuLamViec();
+                case 7 -> System.out.println("Bye!");
+
             }
-        } while (luaChon != 6);
+        } while (luaChon !=7);
     }
 }

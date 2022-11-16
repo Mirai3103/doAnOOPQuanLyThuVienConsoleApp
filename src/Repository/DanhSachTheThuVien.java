@@ -27,5 +27,7 @@ var otherTheThuViens = (DanhSachTheThuVien) other;
     public TheThuVien getById(int id){
         return data.stream().filter(s ->s.getIDthe() == id).findFirst().orElse(null);
     }
-
+    public void xuatFileBinary(){
+        super.xuatFileBinary(FILE_PATH);
+    }
 }
