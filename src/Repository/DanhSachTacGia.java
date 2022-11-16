@@ -121,4 +121,7 @@ public class DanhSachTacGia extends BaseDanhSach<TacGia>  {
         item.setId(idIdentity++);
         data.add(item);
     }
+
+    public void thuThuLamViec() {
+    }
 }

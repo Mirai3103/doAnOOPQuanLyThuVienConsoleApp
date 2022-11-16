@@ -22,23 +22,23 @@ public class MuonTra implements Serializable, ITableRowData{
     protected  int IDmt;
     protected int IDthe;
     protected String IDnv;
-    protected LocalDate ngaymuon;
+    protected LocalDate ngayLapPhieu;
     public MuonTra()
     {
         Date date = new Date();
         SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
-        ngaymuon = LocalDate.now();
+		ngayLapPhieu = LocalDate.now();
     }
     public MuonTra(int IDmt, int IDthe, String IDnv, String ngaymuon) {
         this.IDthe=IDthe;
         this.IDnv=IDnv;
 		var formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        this.ngaymuon= LocalDate.parse(ngaymuon, formatter);
+        this.ngayLapPhieu= LocalDate.parse(ngaymuon, formatter);
 
     }
 	@Override
 	public String toString() {
-		return "MuonTra [ID=" + IDmt + ", IDthe=" + IDthe + ", IDnv=" + IDnv + ", ngaymuon=" + ngaymuon + "]";
+		return "MuonTra [ID=" + IDmt + ", IDthe=" + IDthe + ", IDnv=" + IDnv + ", ngaymuon=" + ngayLapPhieu + "]";
 	}
 
 	public void setIDmt(int IDmt) {
@@ -60,8 +60,8 @@ public class MuonTra implements Serializable, ITableRowData{
 	public void setIDnv(String IDnv) {
 		this.IDnv = IDnv;
 	}
-	public LocalDate getNgaymuon() {
-		return ngaymuon;
+	public LocalDate getNgayLapPhieu() {
+		return ngayLapPhieu;
 	}
 	 public  void nhapPhieuMuonTra()
 	{
@@ -88,7 +88,7 @@ public class MuonTra implements Serializable, ITableRowData{
 	           this.IDmt + "",
 	           this.IDthe + "",
 	           this.IDnv + "",
-	           this.ngaymuon.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")),
+	           this.ngayLapPhieu.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")),
 	        };
 	    }
 	 @Override
@@ -99,7 +99,7 @@ public class MuonTra implements Serializable, ITableRowData{
 		System.out.println("ID phiếu mượn: "+this.IDmt);
 		System.out.println("ID thẻ: "+this.IDthe);
 		System.out.println("ID nhân viên: "+this.IDnv);
-		System.out.println("Ngày mượn: "+this.ngaymuon);
+		System.out.println("Ngày mượn: "+this.ngayLapPhieu);
 		ArrayList<CTMuonTra> ctMuonTras= TongHopDuLieu.getDanhSachCTMuonTra().getChiTietPhieuMuong(this.IDmt);
 		System.out.println("Danh sách sách mượn: ");
 		System.out.println(Table.taoBang(ctMuonTras));

@@ -138,4 +138,7 @@ public class DanhSachPhieuMuon  extends BaseDanhSach<MuonTra>{
             System.out.println(Table.taoBang(dsDGQuaHan));
         }
     }
+
+    public void thuThuLamViec() {
+    }
 }

@@ -26,8 +26,12 @@ public class CTMuonTra implements ITableRowData {
 		IdPhieuMuon = idPhieuMuon;
 	}
 
-	public void setIDsach(int IDsach) {
+	public void setIDsach(int IDsach) throws RuntimeException {
+	    var sach =	TongHopDuLieu.getKhoSach().getById(IDsach);
+		if (sach.checkDangMuon())
+			throw new RuntimeException("Sách đã được mượn");
 		this.IDsach = IDsach;
+		sach.setTheTVNguoiMuonId(IdPhieuMuon);
 	}
 
 	public LocalDate getNgayhentra() {

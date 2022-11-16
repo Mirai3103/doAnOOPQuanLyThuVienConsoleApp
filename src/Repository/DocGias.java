@@ -47,7 +47,7 @@ public class DocGias  extends BaseDanhSach<DocGia> {
         return data.stream().filter(s ->s.getIDdg() == id).findFirst().orElse(null);
     }
     public ArrayList<DocGia> getByName(String name){
-       return  new ArrayList<>( data.stream().filter(s ->s.getTendg().toLowerCase().contains(name.toLowerCase())).toList());
+       return  new ArrayList<>( data.stream().filter(s ->s.getHoTen().toLowerCase().contains(name.toLowerCase())).toList());
     }
     public void suaDocGia(){
         System.out.println("Nhập ID độc giả cần sửa");
@@ -123,7 +123,12 @@ public class DocGias  extends BaseDanhSach<DocGia> {
             }
         }while (chon != 6);
     }
+    public void xuatFileBinary(){
+        super.xuatFileBinary(FILE_PATH);
+    }
 
+    public void thuThuLamViec() {
+    }
 }
 
 

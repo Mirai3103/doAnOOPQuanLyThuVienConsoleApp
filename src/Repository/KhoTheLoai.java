@@ -3,18 +3,16 @@ package Repository;
 
 import Model.TheLoai;
 import helper.Helper;
+import helper.Xuat.Table;
 
 import java.io.Serial;
+import java.util.ArrayList;
 
 public class KhoTheLoai extends BaseDanhSach<TheLoai> {
     @Serial
     private static final long serialVersionUID = 121211232112L;
     public static String FILE_PATH = Helper.dirPath + "KhoTheLoai.bin";
     private int idIdentity = 0;
-
-
-
-
 
     //toDo: crud
     public void showMenu() {
@@ -28,21 +26,95 @@ public class KhoTheLoai extends BaseDanhSach<TheLoai> {
 
     }
 
+    public void showMenuThuThu() {
+        System.out.println("Tương tác với thể loại");
+        System.out.println("1. tìm kiếm thể loại");
+        System.out.println("2. Xem danh sach the loai");
+        System.out.println("3. Thoat");
+    }
+
+    public void thuThuLamViec() {
+        int luaChon;
+        Helper.clearScreen();
+        do {
+            showMenuThuThu();
+            luaChon = Helper.nhapSoNguyen("Lua chon khong hop le, nhap lai: ");
+            switch (luaChon) {
+                case 1:
+                    timKiemTheLoai();
+                    break;
+                case 2:
+                    xuatConsoleDangTable();
+                    break;
+                case 3:
+                    System.out.println("Thoat");
+                    break;
+            }
+        } while (luaChon != 3);
+    }
+
+    private void timKiemTheLoai() {
+        System.out.println("Bạn muốn tìm theo tên hay id?");
+        System.out.println("1. Tìm theo tên");
+        System.out.println("2. Tìm theo id");
+        int luaChon = Helper.nhapSoNguyen("Lua chon khong hop le, nhap lai: ");
+        switch (luaChon) {
+            case 1:
+                System.out.println("Nhập tên: ");
+                String ten = Helper.scanner.nextLine();
+                ArrayList<TheLoai> theLoaiArrayList = this.getAllByName(ten);
+                if (theLoaiArrayList.size() == 0) {
+                    System.out.println("Không tìm thấy");
+                }
+                break;
+            case 2:
+                System.out.println("Nhập id: ");
+                int id = Helper.nhapSoNguyen("Id không hợp lệ, nhập lại: ");
+                TheLoai theLoai = this.getById(id);
+                if (theLoai == null) {
+                    System.out.println("Không tìm thấy");
+                } else {
+                    theLoai.xuat();
+                    System.out.println("Bạn có muốn xuất tất cả sách thuộc thể loại này không? (y/n)");
+                    char luaChon2 = Helper.scanner.nextLine().trim().toLowerCase().charAt(0);
+                    if (luaChon2 == 'y') {
+                        var khoSach = theLoai.getSachs();
+                        System.out.println(Table.taoBang(khoSach));
+                    }
+                    else{
+                        System.out.println("bye");
+                    }
+
+                }
+                break;
+            default:
+                System.out.println("Lua chon khong hop le: ");
+                break;
+        }
+    }
+
+
     public int themVaNhapTheLoai() {
         TheLoai theLoai = new TheLoai();
         theLoai.nhap();
         this.add(theLoai);
         return theLoai.getId();
     }
-    public TheLoai getByName(String name){
-        return this.data.stream().filter(s ->s.getTenTheLoai().toLowerCase().equalsIgnoreCase(name.toLowerCase())).findFirst().orElse(null);
+
+    public TheLoai getByName(String name) {
+        return this.data.stream().filter(s -> s.getTenTheLoai().toLowerCase().contains(name.toLowerCase())).findFirst().orElse(null);
     }
-    public void add(TheLoai theLoai){
+
+    public ArrayList<TheLoai> getAllByName(String name) {
+        return new ArrayList<TheLoai>(this.data.stream().filter(s -> s.getTenTheLoai().toLowerCase().contains(name.toLowerCase())).toList());
+    }
+
+    public void add(TheLoai theLoai) {
         theLoai.setId(idIdentity++);
         data.add(theLoai);
     }
 
-    public void lamViecVoiDanhSachTheLoai(){
+    public void lamViecVoiDanhSachTheLoai() {
         int luaChon;
         Helper.clearScreen();
         do {
@@ -68,9 +140,8 @@ public class KhoTheLoai extends BaseDanhSach<TheLoai> {
 
                 default -> System.out.println("Lua chon khong hop le");
             }
-        }while (luaChon != 5);
+        } while (luaChon != 5);
     }
-
 
 
     public TheLoai getById(int id) {
@@ -85,22 +156,22 @@ public class KhoTheLoai extends BaseDanhSach<TheLoai> {
 
     public void delete(int id) {
         TheLoai theLoai = getById(id);
-        if(theLoai != null){
+        if (theLoai != null) {
             data.remove(theLoai);
         }
     }
 
     public void update(int id) {
         TheLoai theLoai = getById(id);
-        if(theLoai != null){
+        if (theLoai != null) {
             theLoai.nhap();
-        }else {
+        } else {
             System.out.println("Khong tim thay the loai");
         }
     }
 
 
-    public void xuatFileBinary(){
+    public void xuatFileBinary() {
         TongHopDuLieu.getDanhSachTheLoai_sach().xuatFileBinary();
         super.xuatFileBinary(FILE_PATH);
     }

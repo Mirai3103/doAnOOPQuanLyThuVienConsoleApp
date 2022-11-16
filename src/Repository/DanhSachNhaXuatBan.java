@@ -108,4 +108,7 @@ DanhSachNhaXuatBan danhSachNhaXuatBan = (DanhSachNhaXuatBan) other;
         item.setId(idIdentity++);
         data.add(item);
     }
+
+    public void thuThulamViec() {
+    }
 }
