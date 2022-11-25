@@ -23,7 +23,19 @@ public class Sach implements Serializable, ITableRowData {
     private String tinhTrang;
     private String gioiThieu;
     private int theTVNguoiMuonId = -1;
+    private int giaSach;
 
+    public int getGiaSach() {
+        return giaSach;
+    }
+
+    public int getTacGiaId() {
+        return tacGiaId;
+    }
+
+    public void setGiaSach(int giaSach) {
+        this.giaSach = giaSach;
+    }
 
     public Sach() {
     }
@@ -210,6 +222,12 @@ public class Sach implements Serializable, ITableRowData {
         this.namXuatBan = (short) Helper.nhapSoNguyen("Năm xuất bản phải là số nguyên dương");
         System.out.println("Nhập tình trạng: ");
         this.tinhTrang = Helper.scanner.nextLine();
+        System.out.println("Nhập giá: ");
+        this.giaSach = Helper.nhapSoNguyen("Giá phải là số nguyên dương");
+        while (this.giaSach < 0) {
+            System.out.println("Giá phải là số nguyên dương");
+            this.giaSach = Helper.nhapSoNguyen("Giá phải là số nguyên dương");
+        }
         System.out.println("Nhập giới thiệu: ");
         this.gioiThieu = Helper.scanner.nextLine();
         boolean tiepTuc = true;
@@ -262,7 +280,7 @@ public class Sach implements Serializable, ITableRowData {
                 this.id + "",
                 this.tenSach,
                 this.tongSoTrang + "",
-                this.ngonNgu,
+                this.ngonNgu,this.giaSach+"",
                 this.getTacGia().getTenTacGia(),
                 this.getNhaXuatBan().getTenNXB(),
                 this.namXuatBan + "",
@@ -274,6 +292,6 @@ public class Sach implements Serializable, ITableRowData {
     }
     @Override
     public String[] getHeader() {
-        return new String[]{"Id", "Tên sách", "Tổng số trang", "Ngôn ngữ", "Tác giả", "Nhà xuất bản", "Năm xuất bản", "Tình trạng", "Giới thiệu","Tình trạng mượn", "Thể loại"};
+        return new String[]{"Id", "Tên sách", "Tổng số trang", "Ngôn ngữ","Giá sách", "Tác giả", "Nhà xuất bản", "Năm xuất bản", "Tình trạng", "Giới thiệu","Tình trạng mượn", "Thể loại"};
     }
 }

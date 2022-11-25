@@ -36,7 +36,7 @@ public class ThuThuView {
                 case 2 -> TongHopDuLieu.getKhoTheLoai().thuThuLamViec();
                 case 3 -> TongHopDuLieu.getDanhSachNhaXuatBan().thuThulamViec();
                 case 4 -> TongHopDuLieu.getDanhSachTacGia().thuThuLamViec();
-                case 5 -> TongHopDuLieu.getDanhSachDocGia().thuThuLamViec();
+                case 5 -> TongHopDuLieu.getDanhSachDocGia().lamViec();
                 case 6 -> TongHopDuLieu.getDanhSachPhieuMuonTra().thuThuLamViec();
                 case 7 -> System.out.println("Bye!");
 

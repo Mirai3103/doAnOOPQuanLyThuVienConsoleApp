@@ -33,14 +33,7 @@ public class DanhSachPhieuMuon  extends BaseDanhSach<MuonTra>{
     public MuonTra getById(int id){
         return data.stream().filter(s ->s.getIDmt() == id).findFirst().orElse(null);
     }
-    public void showMenu(){
-        System.out.println("1. Thêm phiếu mượn");
-        System.out.println("2. Xóa phiếu mượn");
-        System.out.println("3. Sửa phiếu mượn");
-        System.out.println("4. Hiển thị danh sách phiếu mượn");
-        System.out.println("5. Tìm kiếm phiếu mượn");
-        System.out.println("6. Quay lại");
-    }
+
     public void muonSach(){
         MuonTra muonTra = new MuonTra();
         muonTra.nhapPhieuMuonTra();
@@ -138,7 +131,55 @@ public class DanhSachPhieuMuon  extends BaseDanhSach<MuonTra>{
             System.out.println(Table.taoBang(dsDGQuaHan));
         }
     }
-
+    public void xoaPhieu(MuonTra phieu){
+        data.remove(phieu);
+    }
+    public void showMenu(){
+        System.out.println("1. Thêm phiếu mượn");
+        System.out.println("2. Xóa phiếu mượn");
+        System.out.println("3. Sửa phiếu mượn");
+        System.out.println("4. Hiển thị danh sách phiếu mượn");
+        System.out.println("5. Tìm kiếm phiếu mượn");
+        System.out.println("6. Quay lại");
+        System.out.println("Nhập lựa chọn của bạn: ");
+    }
     public void thuThuLamViec() {
+        int choose = -1;
+        do{
+            showMenu();
+            choose = Helper.nhapSoNguyen("Lựa chọn không hợp lệ!");
+            switch (choose){
+                case  1->{
+                    muonSach();
+                }
+                case 2 ->{
+                    System.out.println("Nhập id phiếu mươn: ");
+                    var id = Helper.nhapSoNguyen("id không hợp lệ,Nhập lại! ");
+                    var phieuMuon = getById(id);
+                    phieuMuon.xuatPhieu();
+                    System.out.println("Bạn có muốn xoá phiếu mượn: ");
+                    boolean y = Helper.scanner.nextLine().charAt(0)=='y';
+                    if(y){
+                        phieuMuon.xoaTatCaCtMuonTra();
+                        TongHopDuLieu.getDanhSachPhieuMuonTra().xoaPhieu(phieuMuon);
+                    }
+                    else {
+                        System.out.println("Bye");
+                    }
+                }
+                case 4->{
+                    TongHopDuLieu.getDanhSachPhieuMuonTra().getAll().forEach(e->{
+                        System.out.println("-----------------------------");
+                        e.xuatPhieu();
+                    });
+                }
+                case 5->{
+                    System.out.println("Nhập id phiếu mượn: ");
+                    var muontra= getById(Helper.nhapSoNguyen("Không hợp lệ, nhập lại"));
+                    muontra.xuatPhieu();
+                }
+
+            }
+        }while (choose!=6);
     }
 }

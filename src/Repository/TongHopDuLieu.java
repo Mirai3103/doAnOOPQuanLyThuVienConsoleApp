@@ -18,6 +18,17 @@ public final  class TongHopDuLieu  {
     private static DanhSachCTMuonTra danhSachCTMuonTra = null;
     private static DocGias danhSachDocGia = null;
     private static DanhSachTheThuVien danhSachTheThuVien = null;
+    private static DanhSachXuPhat danhSachXuPhat = null;
+
+    public static DanhSachXuPhat getDanhSachXuPhat() {
+        if(danhSachXuPhat == null){
+            danhSachXuPhat = new DanhSachXuPhat();
+            danhSachXuPhat.docFileBinary(DanhSachXuPhat.FILE_PATH);
+        }
+        return danhSachXuPhat;
+    }
+
+
 
     public static DanhSachTheThuVien getDanhSachTheThuVien() {
         if (danhSachTheThuVien == null) {

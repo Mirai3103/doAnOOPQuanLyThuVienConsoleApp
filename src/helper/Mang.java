@@ -21,12 +21,7 @@ public class Mang <T > implements Serializable {
         size=0;
 
     }
-    public Mang(List<? extends T> c) {
-        if (c.size() > 0) {
-            arr = (T[]) c.toArray();
-            size = arr.length;
-        }
-    }
+
     public T[] getAll(){
         return arr;
     }
@@ -96,9 +91,9 @@ public class Mang <T > implements Serializable {
     }
 
 
-    public boolean addAll(Collection<? extends T> c) {
-        for (T t : c) {
-            add(t);
+    public boolean addAll(Mang<T> c) {
+        for (int i = 0; i < c.size; i++) {
+            add(c.get(i));
         }
         return true;
     }

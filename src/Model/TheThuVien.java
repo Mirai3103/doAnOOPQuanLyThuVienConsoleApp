@@ -88,14 +88,17 @@ public class TheThuVien implements Serializable, ITableRowData{
 		System.out.print("Nhập ghi chú: ");
 		this.ghichu = Helper.scanner.nextLine();
 	}
-	public void xuatTheThuVien()
+	public void inThe()
 	{
-		System.out.println("IDthe: " + this.IDthe);
-		System.out.println("IDuser: " + this.IDuser);
+		var chuThe = getUser();
+		System.out.println("ID thẻ: "+IDthe);
+		System.out.println("ID user: "+IDuser);
+		System.out.println("Họ tên chủ thẻ: "+chuThe.getHoTen());
         System.out.println("Ngày bắt đầu: " + this.ngaybd);
         System.out.println("Ngày hết hạn: " + this.ngayhh);
         System.out.println("Ghi chú: " + this.ghichu);	
 	}
+
 	@Override
 	public String[] getRowData() {
 	    return new String[]{

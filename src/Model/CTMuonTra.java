@@ -1,23 +1,44 @@
 package Model;
 import java.awt.print.Book;
+import java.io.Serial;
 import java.io.Serializable;
 import java.time.LocalDate;
 
 import Repository.TongHopDuLieu;
 import helper.Helper;
 import helper.Xuat.ITableRowData;
-public class CTMuonTra implements ITableRowData {
+public class CTMuonTra implements ITableRowData,Serializable	{
+
+		@Serial
+		private static final long serialVersionUID = 40367639L;
 	protected int IdPhieuMuon;
-    protected int IDsach;
+    protected int IDsach =-1;
     protected int datra = 0;
     protected LocalDate ngayhentra;
     protected LocalDate ngaytra = null;
-    protected String ghichu;
-    public CTMuonTra()
+    protected int loiPhatId = -1;
+
+	public void setNgaytra(LocalDate ngaytra) {
+		this.ngaytra = ngaytra;
+	}
+
+	public int getLoiPhatId() {
+		return loiPhatId;
+	}
+
+	public void setLoiPhatId(int loiPhatId) {
+		this.loiPhatId = loiPhatId;
+	}
+
+	public CTMuonTra()
     {
     	super();
     }
-
+	public int getTienPhat() {
+		if(loiPhatId == -1) return 0;
+		var tienPhat =  TongHopDuLieu.getDanhSachXuPhat().getById(loiPhatId).getTienPhat();
+		return tienPhat ==-1 ? getBook().getGiaSach() : tienPhat;
+	}
 	public int getIdPhieuMuon() {
 		return IdPhieuMuon;
 	}
@@ -45,18 +66,23 @@ public class CTMuonTra implements ITableRowData {
 	public LocalDate getNgaytra() {
 		return ngaytra;
 	}
+	public XuPhat getXuPhat() {
+		if(loiPhatId == -1)
+			return null;
+		return TongHopDuLieu.getDanhSachXuPhat().getById(loiPhatId);
+	}
 
 
 
 
-	public CTMuonTra(int IdPhieuMuon, int IDsach, int datra, LocalDate ngayhentra, LocalDate ngaytra, String ghichu)
+	public CTMuonTra(int IdPhieuMuon, int IDsach, int datra, LocalDate ngayhentra, LocalDate ngaytra, int xuPhat)
     {
     	this.IdPhieuMuon=IdPhieuMuon;
     	this.IDsach=IDsach;
     	this.datra=datra;
     	this.ngayhentra=ngayhentra;
     	this.ngaytra=null;
-    	this.ghichu=ghichu;
+    	this.loiPhatId = xuPhat;
     }
     public void nhapCTMuonTra()
     {
@@ -71,14 +97,12 @@ public class CTMuonTra implements ITableRowData {
 			System.out.println("nhập lại:");
 		} while (true);
 		this.ngayhentra = Helper.parseDate(dateStr);
-		System.out.print("Nhập ghi chú: ");
-		this.ghichu=Helper.scanner.nextLine();
-
-
+		System.out.print("Nhập id lỗi phạt: ");
+		this.loiPhatId = Helper.nhapSoNguyen("id phải là số nguyên");
     }
 	@Override
 	public String toString() {
-		return "CTMuonTra [IdPhieuMuon=" + IdPhieuMuon + ", IDsach=" + IDsach + ", datra=" + datra + ", ghichu=" + ghichu + ", ngaytra=" + ngaytra + "]";
+		return "CTMuonTra [IdPhieuMuon=" + IdPhieuMuon + ", IDsach=" + IDsach + ", datra=" + datra + ", ghichu=" + getXuPhat().getTenLoi()+ ", ngaytra=" + ngaytra + "]";
 	}
 
 	public int getIDsach() {
@@ -89,13 +113,6 @@ public class CTMuonTra implements ITableRowData {
 		this.IDsach = IDsach;
 	}
 
-	public String getGhichu() {
-		return ghichu;
-	}
-
-	public void setGhichu(String ghichu) {
-		this.ghichu = ghichu;
-	}
 
 	public int getDatra() {
 		return datra;
@@ -108,16 +125,17 @@ public class CTMuonTra implements ITableRowData {
 	public String[] getRowData() {
 	    return new String[]{
 	    		this.IdPhieuMuon +"",
-	    		this.IDsach+"", 
+	    		this.IDsach+"",
+				this.getBook().getTenSach(),
 	    		this.datra+"",
 	    		this.ngayhentra.format(Helper.DATE_FORMAT),
 	    		this.ngaytra == null ? "Chưa trả" : this.ngaytra.format(Helper.DATE_FORMAT),
-	    		this.ghichu
+	    		this.getXuPhat() == null ?"":this.getXuPhat().getTenLoi()
 	        };
 	    }
 	 @Override
 	 public String[] getHeader() {
-	     return new String[]{"IDmt","IDsach","Tình trạng", "Ngày hẹn trả","Ngày trả","Ghi chú"};
+	     return new String[]{"IDmt","IDsach","Tên sách","Tình trạng", "Ngày hẹn trả","Ngày trả","Ghi chú"};
 	 }
 
 	public Sach getBook(){
