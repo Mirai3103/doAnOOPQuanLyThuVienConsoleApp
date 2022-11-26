@@ -4,6 +4,8 @@ import helper.Helper;
 import helper.Xuat.ITableRowData;
 
 import java.io.Serial;
+import java.time.LocalDate;
+
 public class DocGia extends ConNguoi implements Serializable, ITableRowData {
 	@Serial
 	private static final long serialVersionUID = -266706354210367639L;
@@ -29,6 +31,11 @@ public class DocGia extends ConNguoi implements Serializable, ITableRowData {
 
 	public void setIDdg(int IDdg) {
 		this.IDdg = IDdg;
+	}
+
+	public int phiTaoThe()
+	{
+		return LocalDate.now().getYear()- Helper.parseDate(this.getNgaySinh()).getYear() > 18 ? 50000 : 20000;
 	}
 
 

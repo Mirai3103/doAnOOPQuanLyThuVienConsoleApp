@@ -3,8 +3,10 @@ package Repository;
 
 import Model.NhaXuatBan;
 import helper.Helper;
+import helper.Xuat.Table;
 
 import java.io.Serial;
+import java.util.ArrayList;
 
 public class DanhSachNhaXuatBan extends BaseDanhSach<NhaXuatBan>  {
     @Serial
@@ -46,27 +48,14 @@ public class DanhSachNhaXuatBan extends BaseDanhSach<NhaXuatBan>  {
         do {
             showMenu();
             luaChon = Helper.nhapSoNguyen("Không hợp lệ, nhập lại:");
-            switch (luaChon){
-                case 1:
-                    themNhaXuatBan();
-                    break;
-                case 2:
-                    suaNhaXuatBan();
-                    break;
-                case 3:
-                    xoaNhaXuatBan();
-                    break;
-                case 4:
-                    xuatConsoleDangTable();
-                    break;
-                case 5:
-                    System.out.println("Thoat");
-                    break;
-                case 6:
-                    xuatFileBinary();
-                    break;
-                default:
-                    System.out.println("Lua chon khong hop le");
+            switch (luaChon) {
+                case 1 -> themNhaXuatBan();
+                case 2 -> suaNhaXuatBan();
+                case 3 -> xoaNhaXuatBan();
+                case 4 -> xuatConsoleDangTable();
+                case 5 -> System.out.println("Thoat");
+                case 6 -> xuatFileBinary();
+                default -> System.out.println("Lua chon khong hop le");
             }
         }while (luaChon != 5);
     }
@@ -108,7 +97,66 @@ DanhSachNhaXuatBan danhSachNhaXuatBan = (DanhSachNhaXuatBan) other;
         item.setId(idIdentity++);
         data.add(item);
     }
+    void showMenuThuThu(){
+        System.out.println("Tương tác với nhà xuất bản");
+        System.out.println("1. Xem danh sách nhà xuất bản");
+        System.out.println("2. Tìm sách theo nhà xuất bản");
+        System.out.println("3. Thoát");
+    }
 
     public void thuThulamViec() {
+        int luaChon;
+        do {
+            showMenuThuThu();
+            luaChon = Helper.nhapSoNguyen("Không hợp lệ, nhập lại:");
+            switch (luaChon) {
+                case 1 -> xuatConsoleDangTable();
+                case 2 -> {
+                    System.out.println("Bạn muốn tìm kiếm theo tên hay id");
+                    System.out.println("1. Tìm kiếm theo tên");
+                    System.out.println("2. Tìm kiếm theo id");
+                    int luaChon2 = Helper.nhapSoNguyen("Không hợp lệ, nhập lại:");
+                    NhaXuatBan nhaXuatBan = null;
+                    switch (luaChon2) {
+                        case 1 -> {
+                            System.out.println("Nhập tên nhà xuất bản cần tìm");
+                            String tenNXB = Helper.scanner.nextLine();
+                             nhaXuatBan = getByName(tenNXB);
+                            if (nhaXuatBan != null) {
+                                System.out.println(nhaXuatBan);
+                            } else {
+                                System.out.println("Không tìm thấy nhà xuất bản");
+                            }
+                        }
+                        case 2 -> {
+                            System.out.println("Nhập id nhà xuất bản cần tìm");
+                            int id = Helper.nhapSoNguyen("Không hợp lệ, nhập lại:");
+                             nhaXuatBan = getById(id);
+                            if (nhaXuatBan != null) {
+                                System.out.println(nhaXuatBan);
+                            } else {
+                                System.out.println("Không tìm thấy nhà xuất bản");
+                            }
+                        }
+
+                    }
+                    if (nhaXuatBan != null) {
+                        System.out.println("Bạn có muốn xem sách của nhà xuất bản này không");
+                        System.out.println("1. Có");
+                        System.out.println("2. Không");
+                        int luaChon3 = Helper.nhapSoNguyen("Không hợp lệ, nhập lại:");
+                        switch (luaChon3) {
+                            case 1 -> {
+                                System.out.println("Danh sách sách của nhà xuất bản");
+                                System.out.println(Table.taoBang(new ArrayList<>(nhaXuatBan.getSachDaXuatBan())));
+                            }
+                            case 2 -> System.out.println("Thoát");
+                            default -> System.out.println("Không hợp lệ");
+                        }
+                    }
+                }
+            }
+        }while (luaChon != 3);
+        xuatFileBinary();
     }
 }

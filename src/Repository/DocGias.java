@@ -31,9 +31,13 @@ public class DocGias  extends BaseDanhSach<DocGia> {
         var docGia = new DocGia();
         docGia.nhapDocGia();
         this.add(docGia);
+        System.out.println("Bắt đầu đăng ký thẻ thư viện");
         var theThuVien = new TheThuVien();
         theThuVien.themTheThuVien(docGia.getIDdg());
         docGia.setIDthe(theThuVien.getIDthe());
+        System.out.println("Đăng ký thành công");
+        System.out.println("Phí đăng ký thẻ là: " + docGia.phiTaoThe());
+        theThuVien.xuatTheThuVien();
     }
     public void showMenu(){
         System.out.println("1. Đăng ký thành viên");
@@ -70,6 +74,7 @@ public class DocGias  extends BaseDanhSach<DocGia> {
         }
         data.remove(docGia);
     }
+
     public void lamViec(){
         int chon;
         do {

@@ -52,7 +52,13 @@ public class Table {
 
        for (ITableRowData  rowData : data) {
            for (int j = 0; j < rowData.getRowData().length; j++) {
-               if ((rowData.getRowData())[j].length()> chieuRongCacCot[j]) {
+               int lengthCell = 1;
+               try {
+                   lengthCell=  rowData.getRowData()[j].length();
+               }catch (Exception ignored){
+                   rowData.getRowData()[j] = " ";
+               }
+               if (lengthCell> chieuRongCacCot[j]) {
                    chieuRongCacCot[j] = (rowData.getRowData())[j].length();
                }
            }
@@ -83,6 +89,9 @@ public class Table {
     private static String taoDongDuLieu(int[] chieuRongCacCot, String[] data) {
          StringBuilder sb = new StringBuilder();
          for (int i = 0; i < chieuRongCacCot.length; i++) {
+                if(data[i] == null){
+                    data[i] = " ";
+                }
               sb.append("| ");
               sb.append(data[i]);
              sb.append(" ".repeat(chieuRongCacCot[i] - data[i].length() + 1));

@@ -78,6 +78,23 @@ public class DanhSachPhieuMuon  extends BaseDanhSach<MuonTra>{
                     System.out.println("Trả sách thành công");
                     ctmt.getBook().setTheTVNguoiMuonId(null);
                 }
+                System.out.println("Có phạt không? (y/n)");
+                answer = Helper.scanner.nextLine().charAt(0);
+                if(answer == 'y'){
+                    TongHopDuLieu.getDanhSachXuPhat().xuatConsoleDangTable();
+                    System.out.println("Nhập id xử phạt");
+                    int idXuPhat =-1;
+                   do {
+                       idXuPhat = Helper.nhapSoNguyen("Id không hợp lệ, Nhập lại: ");
+                       var xuPhat = TongHopDuLieu.getDanhSachXuPhat().getById(idXuPhat);
+                       if(xuPhat == null){
+                           System.out.println("Không tìm thấy loại xử phạt");
+                           idXuPhat = -1;
+                       }else {
+                            ctmt.setLoiPhatId(xuPhat.getIdXuPhat());
+                       }
+                   }while (idXuPhat == -1);
+                }
             }
         }
     }
@@ -140,7 +157,10 @@ public class DanhSachPhieuMuon  extends BaseDanhSach<MuonTra>{
         System.out.println("3. Sửa phiếu mượn");
         System.out.println("4. Hiển thị danh sách phiếu mượn");
         System.out.println("5. Tìm kiếm phiếu mượn");
-        System.out.println("6. Quay lại");
+        System.out.println("6. Trả sách");
+        System.out.println("7. Gia hạn sách");
+        System.out.println("8. Hiển thị mượn sách quá hạn");
+        System.out.println("9. Thoát");
         System.out.println("Nhập lựa chọn của bạn: ");
     }
     public void thuThuLamViec() {
@@ -177,6 +197,18 @@ public class DanhSachPhieuMuon  extends BaseDanhSach<MuonTra>{
                     System.out.println("Nhập id phiếu mượn: ");
                     var muontra= getById(Helper.nhapSoNguyen("Không hợp lệ, nhập lại"));
                     muontra.xuatPhieu();
+                }
+                case 6->{
+                    traSach();
+                }
+                case 7->{
+                    giaHanSachDangMuon();
+                }
+                case 8->{
+                    hienThiQuaHan();
+                }
+                case 9->{
+                    System.out.println("Bye");
                 }
 
             }

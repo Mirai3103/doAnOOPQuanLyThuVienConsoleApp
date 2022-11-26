@@ -3,10 +3,13 @@ package Repository;
 
 import Model.TheThuVien;
 import helper.Helper;
+import helper.Mang;
+import helper.Xuat.Table;
 
 import java.io.Serial;
+import java.time.LocalDate;
 
-public class DanhSachTheThuVien extends BaseDanhSach<TheThuVien>{
+public class DanhSachTheThuVien extends BaseDanhSachArray<TheThuVien>{
     @Serial
     private static final long serialVersionUID = 1212121775752L;
     public static final String FILE_PATH = Helper.dirPath + "DanhSachTheThuVien.bin";
@@ -25,9 +28,84 @@ var otherTheThuViens = (DanhSachTheThuVien) other;
         data.add(item);
     }
     public TheThuVien getById(int id){
-        return data.stream().filter(s ->s.getIDthe() == id).findFirst().orElse(null);
+        for (int i = 0; i < data.size(); i++) {
+            if (data.get(i).getIDthe() == id) return data.get(i);
+        }
+        return null;
     }
     public void xuatFileBinary(){
         super.xuatFileBinary(FILE_PATH);
+    }
+    public void giaHanThe(){
+        System.out.println("Nhập id thẻ cần gia hạn");
+        var id = Helper.nhapSoNguyen("Id thẻ không hợp lệ!, nhập lại: ");
+        var theThuVien = getById(id);
+        if (theThuVien == null) {
+            System.out.println("Không tìm thấy thẻ có id " + id);
+            return;
+        }
+        theThuVien.giaHanThe();
+    }
+    public void xuatDanhSachTheHetHan(){
+        Mang<TheThuVien> theThuViensHetHan = new Mang<>();
+        for (int i = 0; i < data.size(); i++) {
+            if (data.get(i).checkHetHan()) theThuViensHetHan.add(data.get(i));
+        }
+    }
+    void showMenu() {
+        System.out.println("1. Tìm kiếm thẻ thư viện");
+        System.out.println("2. Sửa thông tin thẻ thư viện");
+        System.out.println("3. Xóa thẻ thư viện");
+        System.out.println("4. Gia hạn thẻ thư viện");
+        System.out.println("5. Xuất danh sách thẻ thư viện hết hạn");
+        System.out.println("6. Xuất danh sách thẻ thư viện");
+        System.out.println("7. Thoát");
+    }
+    public void lamViec(){
+        int luaChon;
+        do {
+            showMenu();
+            System.out.println("Nhập lựa chọn của bạn");
+            luaChon = Helper.nhapSoNguyen("Không hợp lệ: ");
+            switch (luaChon) {
+                case 1 -> {
+                    System.out.println("Nhập id thẻ cần tìm");
+                    var id = Helper.nhapSoNguyen("Id thẻ không hợp lệ!, nhập lại: ");
+                    var theThuVien = getById(id);
+                    if (theThuVien == null) {
+                        System.out.println("Không tìm thấy thẻ có id " + id);
+                        return;
+                    }
+                    System.out.println(Table.taoBang(theThuVien));
+                }
+                case 2 -> {
+                    System.out.println("Nhập id thẻ cần sửa");
+                    var id = Helper.nhapSoNguyen("Id thẻ không hợp lệ!, nhập lại: ");
+                    var theThuVien = getById(id);
+                    if (theThuVien == null) {
+                        System.out.println("Không tìm thấy thẻ có id " + id);
+                        return;
+                    }
+                    theThuVien.suaTheThuVien();
+                }
+                case 3 -> {
+                    System.out.println("Nhập id thẻ cần xóa");
+                    var id = Helper.nhapSoNguyen("Id thẻ không hợp lệ!, nhập lại: ");
+                    var theThuVien = getById(id);
+                    if (theThuVien == null) {
+                        System.out.println("Không tìm thấy thẻ có id " + id);
+                        return;
+                    }
+                    data.remove(theThuVien);
+                }
+                case 4 -> giaHanThe();
+                case 5 -> xuatDanhSachTheHetHan();
+                case 6 -> xuatConsoleDangTable();
+                case 7 -> {
+                    this.xuatFileBinary();
+                    System.out.println("Thoát");
+                }
+            }
+        } while (luaChon != 7);
     }
 }

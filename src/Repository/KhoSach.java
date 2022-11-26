@@ -50,6 +50,7 @@ public class KhoSach extends BaseDanhSach<Sach> {
         Sach sach = new Sach();
         sach.nhapSach();
         data.add(sach);
+        sach.nhapTheLoaiChoSach();
 
     }
 

@@ -19,7 +19,9 @@ public class ThuThuView {
         System.out.println("4. Tương tác với tác giả");
         System.out.println("5. Tương tác với độc giả");
         System.out.println("6. Tương tác với phiếu mượn");
-        System.out.println("7. Thoát");
+        System.out.println("7. Tương tác với thẻ thư viện");
+        System.out.println("8. Tương tác với lỗi phạt");
+        System.out.println("9. Thoát");
     }
 
 
@@ -38,9 +40,11 @@ public class ThuThuView {
                 case 4 -> TongHopDuLieu.getDanhSachTacGia().thuThuLamViec();
                 case 5 -> TongHopDuLieu.getDanhSachDocGia().lamViec();
                 case 6 -> TongHopDuLieu.getDanhSachPhieuMuonTra().thuThuLamViec();
-                case 7 -> System.out.println("Bye!");
+                case 7 -> TongHopDuLieu.getDanhSachTheThuVien().lamViec();
+                case 8 -> System.out.println("Chức năng chưa được cập nhật");
+                  case 9 -> System.out.println("Thoát");
 
             }
-        } while (luaChon !=7);
+        } while (luaChon !=9);
     }
 }

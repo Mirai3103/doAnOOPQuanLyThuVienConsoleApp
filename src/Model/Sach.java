@@ -230,10 +230,13 @@ public class Sach implements Serializable, ITableRowData {
         }
         System.out.println("Nhập giới thiệu: ");
         this.gioiThieu = Helper.scanner.nextLine();
+
+    }
+    public void nhapTheLoaiChoSach(){
         boolean tiepTuc = true;
         while (tiepTuc) {
             System.out.println("Nhập thể loại: ");
-           TongHopDuLieu.getKhoTheLoai().xuatConsoleDangTable();
+            TongHopDuLieu.getKhoTheLoai().xuatConsoleDangTable();
             System.out.println();
             System.out.println("Bạn muốn taọ thể loại mới không? (y/n)");
             if (Helper.scanner.nextLine().equals("y")) {
@@ -257,7 +260,6 @@ public class Sach implements Serializable, ITableRowData {
             tiepTuc = Helper.scanner.nextLine().equalsIgnoreCase("y");
         }
     }
-
     public void xuatSach() {
         System.out.println("Tên sách: " + this.tenSach);
         System.out.println("Tổng số trang: " + this.tongSoTrang);
@@ -275,7 +277,8 @@ public class Sach implements Serializable, ITableRowData {
 
     @Override
     public String[] getRowData() {
-        var theLoai =String.join("-", getTheLoais().stream().map(TheLoai::getTenTheLoai).toList());
+        var danhSachTheLoai = getTheLoais();
+        var theLoai =String.join(" - ", danhSachTheLoai.stream().map(TheLoai::getTenTheLoai).toList());
         return new String[]{
                 this.id + "",
                 this.tenSach,
