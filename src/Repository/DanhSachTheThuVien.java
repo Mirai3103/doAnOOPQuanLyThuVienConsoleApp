@@ -45,12 +45,18 @@ var otherTheThuViens = (DanhSachTheThuVien) other;
             return;
         }
         theThuVien.giaHanThe();
+        System.out.println("Gia hạn thành công");
     }
     public void xuatDanhSachTheHetHan(){
         Mang<TheThuVien> theThuViensHetHan = new Mang<>();
         for (int i = 0; i < data.size(); i++) {
             if (data.get(i).checkHetHan()) theThuViensHetHan.add(data.get(i));
         }
+        if (theThuViensHetHan.size() == 0) {
+            System.out.println("Không có thẻ nào hết hạn");
+            return;
+        }
+        System.out.println(Table.taoBang(theThuViensHetHan));
     }
     void showMenu() {
         System.out.println("1. Tìm kiếm thẻ thư viện");

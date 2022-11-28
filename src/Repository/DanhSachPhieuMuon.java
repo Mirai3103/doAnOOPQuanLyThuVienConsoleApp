@@ -126,7 +126,7 @@ public class DanhSachPhieuMuon  extends BaseDanhSach<MuonTra>{
         var dsQuaHan = new ArrayList<CTMuonTra>();
         for (var ctmt : danhSachSachMuon) {
             if(ctmt.getNgaytra()!= null){
-                if(ctmt.getNgayhentra().isBefore(LocalDate.now())){
+                if(ctmt.getNgayhentra().isBefore(LocalDate.now()) && ctmt.getNgaytra()!=null){
                     dsQuaHan.add(ctmt);
                 }
             }
@@ -162,6 +162,16 @@ public class DanhSachPhieuMuon  extends BaseDanhSach<MuonTra>{
         System.out.println("8. Hiển thị mượn sách quá hạn");
         System.out.println("9. Thoát");
         System.out.println("Nhập lựa chọn của bạn: ");
+    }
+    public void suaPhieuMuon() {
+        System.out.println("Nhập mã phiếu mượn");
+        var id = Helper.nhapSoNguyen("Id không hợp lệ");
+        var muonTra = getById(id);
+        if (muonTra == null) {
+            System.out.println("Không tìm thấy phiếu mượn");
+            return;
+        }
+
     }
     public void thuThuLamViec() {
         int choose = -1;
@@ -212,6 +222,7 @@ public class DanhSachPhieuMuon  extends BaseDanhSach<MuonTra>{
                 }
 
             }
-        }while (choose!=6);
+        }while (choose!=9);
+        xuatFileBinary(FILE_PATH);
     }
 }

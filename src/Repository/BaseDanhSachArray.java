@@ -3,6 +3,7 @@ package Repository;
 
 import helper.Mang;
 import helper.Xuat.ITableRowData;
+import helper.Xuat.Table;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -23,7 +24,7 @@ public abstract class BaseDanhSachArray<T extends ITableRowData> implements IDan
             System.out.println("Danh sách trống");
             return;
         }
-        System.out.println(data);
+        System.out.println(Table.taoBang(data));
     }
 
     @Override

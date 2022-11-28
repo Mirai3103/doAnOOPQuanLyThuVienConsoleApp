@@ -33,6 +33,51 @@ public class MuonTra implements Serializable, ITableRowData{
         this.ngayLapPhieu= LocalDate.parse(ngaymuon, formatter);
 
     }
+	public void suaPhieuMuon(){
+		xuatPhieu();
+		int choose;
+		do {
+			System.out.println("1. Sua ngay muon");
+			System.out.println("2. Sửa chi tiet muon tra");
+			System.out.println("3. Thoat");
+			System.out.println("Nhap lua chon: ");
+			choose = Helper.nhapSoNguyen("Lựa chọn không hợp lệ. Vui lòng nhập lại: ");
+			switch (choose) {
+				case 1:
+					System.out.println("Nhap ngay muon moi: ");
+					var isValidate = false;
+					do {
+						var ngaymuon = Helper.scanner.nextLine();
+						var formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+						try {
+							this.ngayLapPhieu = LocalDate.parse(ngaymuon, formatter);
+							isValidate = true;
+						} catch (Exception e) {
+							System.out.println("Ngày mượn không hợp lệ. Vui lòng nhập lại: ");
+						}
+					} while (!isValidate);
+					break;
+				case 2:
+					var dsctmt = getCTMuontras();
+					System.out.println(Table.taoBang(dsctmt));
+					System.out.println("Nhap id sach trong chi tiet muon tra can sua: ");
+					int id = Helper.nhapSoNguyen("Id khong hop le. Vui long nhap lai: ");
+					var ctmt = dsctmt.stream().filter(x -> x.getIDsach() == id).findFirst().orElse(null);
+					if (ctmt == null) {
+						System.out.println("Khong tim thay sach trong chi tiet muon tra");
+					} else {
+						ctmt.suaCTMuonTra();
+					}
+					break;
+				case 3:
+					System.out.println("Thoat");
+					break;
+				default:
+					System.out.println("Lua chon khong hop le. Vui long nhap lai: ");
+					break;
+			}
+		} while (choose != 3);
+	}
 	@Override
 	public String toString() {
 		return "MuonTra [ID=" + IDmt + ", IDthe=" + IDthe + ", IDnv=" + IDnv + ", ngaymuon=" + ngayLapPhieu + "]";

@@ -125,7 +125,9 @@ public class DanhSachTacGia extends BaseDanhSach<TacGia>  {
     }
     public void showMenuThuThu(){
         System.out.println("1. Xuất danh sách tác giả ");
-        System.out.println("2. Tìm kiếm tác giả");
+        System.out.println("2. Tìm kiếm tác giả");        System.out.println("3. Thoats");
+        System.out.println("Nhap lua chon: ");
+
     }
     public void thuThuLamViec() {
         int luaChon;
