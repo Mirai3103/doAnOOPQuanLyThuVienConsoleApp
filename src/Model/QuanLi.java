@@ -2,6 +2,9 @@ package Model;
 
 
 import helper.Helper;
+
+import java.util.Scanner;
+
 import Repository.NhanViens;
 import helper.Mang;
 import helper.Xuat.ITableRowData;
@@ -18,7 +21,6 @@ public class QuanLi extends NhanVien  {
         MaBaoMat = maBaoMat;
         DacQuyen = dacQuyen;
     }
-
     public QuanLi() {
         super();
         NamKinhNghiem = 0;
@@ -70,8 +72,10 @@ public class QuanLi extends NhanVien  {
             System.out.println("Nhập ngày nhận chức : ");
             NgayNhanChuc = Helper.scanner.nextLine();
         }while (!Helper.checkNgayThang(NgayNhanChuc));
+        do {
         System.out.println("Nhập năm kinh nghiệm: ");
         NamKinhNghiem=Helper.nhapSoNguyen("Phải là số nguyên!!! Yêu cầu nhập lại: ");
+        }while(NamKinhNghiem<0);
         System.out.println("Nhập mã bảo mật: ");
         MaBaoMat = Helper.scanner.nextLine();
         System.out.println("Nhập đặc quyền: ");
@@ -103,6 +107,130 @@ public class QuanLi extends NhanVien  {
     public void xuatDangBang(){
         System.out.println(Table.taoBang(this));
     }
+    
+    public void sua() {
+    	int j = 0;
+    	for(var i : getHeader()) {
+    		if(!(i.equalsIgnoreCase("Mã nhân viên")||i.equalsIgnoreCase("Chức vụ"))) {
+    		j++;
+    		System.out.printf(j + ". " + i +"\n");
+    		}
+    	}
+    	System.out.println("12. Thoát");
+    	System.out.println("Nhập thuộc tính cần sửa");
+    	int a = Helper.nhapSoNguyen("yêu cầu nhập số nguyên");
+    	switch (a) {
+		case 1: {
+			String HoTen;
+			System.out.println("Sửa Họ Tên: ");
+			HoTen = Helper.scanner.nextLine();
+			setHoTen(HoTen);	
+			break;
+		}
+		case 2: {
+			String NgaySinh;
+			System.out.println("Sửa ngay sinh: ");
+			do {
+				System.out.println("Nhập ngày sinh:");
+				NgaySinh = Helper.scanner.nextLine();
+				if(NgaySinh.equalsIgnoreCase("null")){
+					NgaySinh = "";
+					break;
+				}
+			}while (!Helper.checkNgayThang(NgaySinh));
+
+			setNgaySinh(NgaySinh);	
+			break;
+		}
+		case 3: {
+			String SDT;
+			System.out.println("Sửa SDT: ");
+			do {
+				System.out.println("Nhập số điện thoại:");
+				SDT = Helper.scanner.nextLine();
+				if(SDT.equalsIgnoreCase("null")){
+					SDT = "";
+					break;
+				}
+			}while (!checkSdt(SDT));
+			setSDT(SDT);
+			break;
+		}
+		case 4: {
+			String CMND;
+			System.out.println("Sửa CMND: ");
+			do {
+				System.out.println("Nhập số CMND/CCCD:");
+				CMND = Helper.scanner.nextLine();
+				if(CMND.equalsIgnoreCase("null")){
+					CMND = "";
+					break;
+				}
+			}while (!checkCMND(CMND));
+
+			setCMND(CMND);	
+			break;
+		}
+		case 5: {
+			DiaChi k = new DiaChi();
+			System.out.println("Sửa địa chỉ: ");
+			k.Nhap();
+			setDC(k);
+			break;
+		}
+		case 6: {
+			String MK;
+			System.out.println("Sửa Mật khẩu: ");
+			MK = Helper.scanner.nextLine();
+			setMK(MK);
+			break;
+		}
+		case 7: {
+			int Luong;
+			System.out.println("Sửa lương: ");
+			Luong = Helper.nhapSoNguyen("phải là số nguyên!! yêu cầu nhập lại : ");
+			while (Luong <0){
+				System.out.println("Lương không hợp lệ!, nhập lại");
+				Luong = Helper.nhapSoNguyen("phải là số nguyên dương!! yêu cầu nhập lại : ");
+			}
+			setLuong(Luong);
+			break;
+		}
+		case 8: {
+			String NC = new String();
+			System.out.println("Sửa ngày nhận chức: ");
+			do {
+	            System.out.println("Nhập ngày nhận chức : ");
+	            NgayNhanChuc = Helper.scanner.nextLine();
+	        }while (!Helper.checkNgayThang(NgayNhanChuc));
+			setNgayNhanChuc(NC);
+			break;
+		}
+		case 9:{
+			do {
+			System.out.println("Năn kinh nghiệm: ");
+			NamKinhNghiem=Helper.nhapSoNguyen("Phải là số nguyên!!! Yêu cầu nhập lại: ");
+			} while(NamKinhNghiem<0);
+			break;
+		}
+		case 10:{
+			System.out.println("Đặt quyền");
+			DacQuyen = Helper.scanner.nextLine();
+			break;
+		}
+		case 11:{
+			System.out.println("Nhập mã bảo mật: ");
+	        MaBaoMat = Helper.scanner.nextLine();
+	        break;
+		}
+		case 12 : {
+			break;
+		}
+		
+		default:
+			System.out.println("đối số truyền vào không đúng");;
+		}
+    }
     @Override
     public String[] getHeader() {
         String[] oldHeader = super.getHeader();
@@ -114,5 +242,9 @@ public class QuanLi extends NhanVien  {
         newHeader[i++] = "Đặc quyền";
         newHeader[i++] = "Mã bảo mật";
         return newHeader;
+    }
+    public static void main(String[] args) {
+    	QuanLi a = new QuanLi();
+    	a.sua();
     }
 }

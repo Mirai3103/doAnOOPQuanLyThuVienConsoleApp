@@ -65,6 +65,25 @@ public abstract class NhanVien extends ConNguoi implements ITableRowData {
 	public void setLuong(int luong) {
 		Luong = luong;
 	}
+	protected boolean checkCMND(String CMND){
+		if(CMND.matches("([\\d]{9})$"))
+		{
+			return true;
+		}else {
+			System.out.println("Số CMND/CCCD không hop lệ! ");
+			return  false;
+		}
+	}
+	 protected boolean checkSdt(String SDT ){
+			if(SDT.matches("^[\\d]{10,11}$"))
+			{
+
+				return true;
+			}else {
+				System.out.println("Số điện thoại không hop lệ! ");
+				return  false;
+			}
+		}
 
 	@Override
 	public void Nhap() {
@@ -109,6 +128,7 @@ public abstract class NhanVien extends ConNguoi implements ITableRowData {
 				String.valueOf(Luong)
 		};
 	}
+	
 
 	@Override
 	public String[] getHeader() {

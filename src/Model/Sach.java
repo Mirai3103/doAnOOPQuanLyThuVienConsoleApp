@@ -218,8 +218,10 @@ public class Sach implements Serializable, ITableRowData {
                 }
             }
         }
+        do {
         System.out.println("Nhập năm xuất bản: ");
         this.namXuatBan = (short) Helper.nhapSoNguyen("Năm xuất bản phải là số nguyên dương");
+        } while (this.namXuatBan < 0);
         System.out.println("Nhập tình trạng: ");
         this.tinhTrang = Helper.scanner.nextLine();
         System.out.println("Nhập giá: ");
@@ -296,5 +298,121 @@ public class Sach implements Serializable, ITableRowData {
     @Override
     public String[] getHeader() {
         return new String[]{"Id", "Tên sách", "Tổng số trang", "Ngôn ngữ","Giá sách", "Tác giả", "Nhà xuất bản", "Năm xuất bản", "Tình trạng", "Giới thiệu","Tình trạng mượn", "Thể loại"};
+    }
+    public void sua() {
+    	for( int i =1 ; i< getHeader().length;i++) {
+    		if(i!=10)
+    			System.out.printf(i + ". " + getHeader()[i] + "\n");
+    	}
+    	System.out.println("12.Thoát");
+    	System.out.println("Nhập thuộc tính cần sửa");
+    	int a = Helper.nhapSoNguyen("yêu cầu nhập số nguyên");
+    	switch(a) {
+    		case 1:{
+    			System.out.println("Sửa tên sách: ");
+    			this.tenSach = Helper.scanner.nextLine();
+    			break;}
+    		case 2: {
+    			System.out.println("Sửa tổng số trang: ");
+    			this.tongSoTrang = Helper.nhapSoNguyen("Yêu cầu người dùng nhập số nguyên dương");
+    			break;
+    		}
+    		case 3: {
+    			System.out.println("Sửa ngôn ngữ sách: ");
+    			this.ngonNgu = Helper.scanner.nextLine();
+    			break;
+    		}
+    		case 4:{
+    			System.out.println("Nhập giá: ");
+    	        this.giaSach = Helper.nhapSoNguyen("Giá phải là số nguyên dương");
+    	        while (this.giaSach < 0) {
+    	            System.out.println("Giá phải là số nguyên dương");
+    	            this.giaSach = Helper.nhapSoNguyen("Giá phải là số nguyên dương");
+    	        }
+    	        break;
+    		}
+    		case 5: {
+    			System.out.println("Nhập tác giả: ");
+    	        System.out.println("Bạn có muốn nhập tác giả mới không? (y/n)");
+    	        String chon = Helper.scanner.nextLine();
+    	        if ((chon.charAt(0) + "").equalsIgnoreCase("y")) {
+    	            TacGia tacGia = new TacGia();
+    	            tacGia.nhap();
+    	           TongHopDuLieu.getDanhSachTacGia().getAll().add(tacGia);
+    	            this.tacGiaId = tacGia.getId();
+    	        } else {
+    	            boolean validId = false;
+    	            while (!validId) {
+    	               TongHopDuLieu.getDanhSachTacGia().xuatConsoleDangTable();
+    	                System.out.println("Nhập id tác giả: ");
+    	                this.tacGiaId = Helper.nhapSoNguyen("Id phải là số nguyên dương");
+    	                //kiểm tra id có tồn tại trong danh sách tác giả không
+
+    	                if (TongHopDuLieu.getDanhSachNhaXuatBan().getById(this.tacGiaId) != null) {
+    	                    validId = true;
+    	                } else {
+    	                    System.out.println("Id không tồn tại trong danh sách tác giả");
+    	                }
+    	            }
+    	        }
+    	        break;
+    		}
+    		case 6: {
+    			System.out.println("Nhập nhà xuất bản: ");
+    	        System.out.println("Bạn có muốn nhập nhà xuất bản mới không? (y/n)");
+    	        String chon = Helper.scanner.nextLine();
+    	        if ((chon.charAt(0) + "").equalsIgnoreCase("y")) {
+    	            NhaXuatBan nhaXuatBan = new NhaXuatBan();
+    	            nhaXuatBan.nhap();
+    	           TongHopDuLieu.getDanhSachNhaXuatBan().add(nhaXuatBan);
+    	            this.nhaXuatBanId = nhaXuatBan.getId();
+    	        } else {
+    	            boolean validId = false;
+    	            while (!validId) {
+    	                TongHopDuLieu.getDanhSachNhaXuatBan().xuatConsoleDangTable();
+    	                System.out.println("Nhập id nhà xuất bản: ");
+    	                this.nhaXuatBanId = Helper.nhapSoNguyen("Id phải là số nguyên dương");
+    	                //kiểm tra id có tồn tại trong danh sách nhà xuất bản không
+
+    	                if (TongHopDuLieu.getDanhSachNhaXuatBan().getById(this.nhaXuatBanId) != null) {
+    	                    validId = true;
+    	                } else {
+    	                    System.out.println("Id không tồn tại trong danh sách nhà xuất bản");
+    	                }
+    	            }
+    	        }
+    	        break;
+    		}
+    		case 7: {
+    			do {
+    		        System.out.println("Nhập sửa năm xuất bản: ");
+    		        this.namXuatBan = (short) Helper.nhapSoNguyen("Năm xuất bản phải là số nguyên dương");
+    		        } while (this.namXuatBan < 0);
+    			break;
+    		}
+    		case 8:{
+    			System.out.println("Nhập tình trạng: ");
+    	        this.tinhTrang = Helper.scanner.nextLine();
+    	        break;
+    		}
+    		case 9: {
+    			System.out.println("Nhập giới thiệu: ");
+    	        this.gioiThieu = Helper.scanner.nextLine();
+    	        break;
+    		}
+    		case 11: {
+    			System.out.println("Nhập thể loại sách: ");
+    			nhapTheLoaiChoSach();
+    			break;
+    		}
+    		default:{
+    			System.out.println("đối số truyền vào không đúng");
+    		}
+    	}
+    	
+    }
+    public static void main(String[] args) {
+    	 Sach a  = new Sach();
+    	a.sua();
     }
 }

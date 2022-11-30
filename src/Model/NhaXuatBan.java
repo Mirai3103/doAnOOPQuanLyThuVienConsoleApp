@@ -16,7 +16,7 @@ public class NhaXuatBan implements Serializable , ITableRowData {
     private static final long serialVersionUID = 13457777644L;
     private  int id;
     private String tenNXB;
-    private DiaChi diaChi;
+    private DiaChi diaChi = new DiaChi();
     private String email;
     private String nguoiDaiDien;
     public NhaXuatBan() {
@@ -90,8 +90,10 @@ public class NhaXuatBan implements Serializable , ITableRowData {
         System.out.println("Nhap dia chi: ");
         this.diaChi = new DiaChi();
         this.diaChi.Nhap();
+        do {
         System.out.println("Nhap email: ");
         this.email = Helper.scanner.nextLine();
+        }while(!Helper.checkEmail(this.email));
         System.out.println("Nhap nguoi dai dien: ");
         this.nguoiDaiDien = Helper.scanner.nextLine();
     }
@@ -109,5 +111,42 @@ public class NhaXuatBan implements Serializable , ITableRowData {
     @Override
     public String toString() {
         return String.format("%s - %s - %s - %s - %s", this.id, this.tenNXB, this.diaChi.toString(), this.email, this.nguoiDaiDien);
+    }
+    public void sua(){
+        for(int i = 1; i<getHeader().length;i++){
+            System.out.printf(i + ". " + getHeader()[i] + "\n");
+        }
+        System.out.println("5 . Thoát");
+        System.out.println("Nhập thuộc tính cần sửa");
+        int a = Helper.nhapSoNguyen("yêu cầu nhập số nguyên");
+        switch (a){
+            case 1:
+                    System.out.println("Sửa tên NXB: ");
+                    this.tenNXB = Helper.scanner.nextLine();
+                    break;
+            case 2:
+                 System.out.println("Sửa Địa chỉ: ");
+                 diaChi.Nhap();
+                 break;
+            case 3:
+                do {
+                    System.out.println("Nhap email: ");
+                    this.email = Helper.scanner.nextLine();
+                }while(!Helper.checkEmail(this.email));
+                break;
+            case 4:
+                System.out.println("Sửa nguoi dai dien: ");
+                this.nguoiDaiDien = Helper.scanner.nextLine();
+                break;
+            case 5:{
+            	break;
+            }
+            default:
+                System.out.println("đối số truyền vào không đúng");
+        }
+    }
+    public static  void main(String[] thich){
+        NhaXuatBan a = new NhaXuatBan();
+        a.sua();
     }
 }

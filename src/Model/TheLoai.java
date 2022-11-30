@@ -88,5 +88,31 @@ public class TheLoai  implements Serializable, ITableRowData {
     public void xuatDangBang(){
         System.out.println(Table.taoBang(this));
     }
+    public void sua() {
+    	for(int i = 1 ; i<getHeader().length;i++)
+    		System.out.printf((i) + ". " + getHeader()[i] + "\n" );
+    	System.out.println("3. thoát");
+    	System.out.println("Nhập thuộc tính cần sửa");
+    	int a = Helper.nhapSoNguyen("yêu cầu nhập số nguyên");
+    	switch (a) {
+    	case 1 : {
+    		 System.out.println("Nhập tên thể loại: ");
+    	     this.tenTheLoai = Helper.scanner.nextLine();
+    	     break;
+    	}
+    	case 2 : {
+    		System.out.println("Nhập giới thiệu: ");
+            this.gioiThieu = Helper.scanner.nextLine();
+            break;
+    	}
+    	case 3 : {
+    		break;
+    	}
+    	default : {
+    		System.out.println("Đối số truyền vào không đúng.");
+    	}
+    	}
+    	
+    }
 
 }

@@ -103,4 +103,37 @@ public class TacGia implements Serializable, ITableRowData {
     public void xuatDangBang() {
         System.out.println(Table.taoBang(this));
     }
+    public void sua() {
+    	for(int i = 1 ; i<getHeader().length;i++)
+    		System.out.printf((i) + ". " + getHeader()[i] + "\n" );
+    	System.out.println("4. Thoát");
+    	System.out.println("Nhập thuộc tính cần sửa");
+    	int a = Helper.nhapSoNguyen("yêu cầu nhập số nguyên");
+    	switch (a) {
+    	case 1 :{
+    	System.out.println("Nhập tên tác giả: ");
+        this.tenTacGia = Helper.scanner.nextLine();
+        break;
+    	}
+    	case 2:{
+        System.out.println("Nhập website: ");
+        this.website = Helper.scanner.nextLine();
+        break;}
+    	case 3: {
+        System.out.println("Nhập giới thiệu: ");
+        this.gioiThieu = Helper.scanner.nextLine();
+        break;
+    	}
+    	case 4: {
+    		break;
+    	}
+    	default : {
+    		System.out.println("đối số truyền vào không đúng");
+    	}
+    	}
+    }
+    public static void main(String[] args) {
+   	 TacGia a  = new TacGia();
+   	a.sua();
+   }
 }

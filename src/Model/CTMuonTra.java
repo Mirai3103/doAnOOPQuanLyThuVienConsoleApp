@@ -175,4 +175,5 @@ public class CTMuonTra implements ITableRowData,Serializable	{
 	public Sach getBook(){
 		return TongHopDuLieu.getKhoSach().getById(this.IDsach);
 	}
+
 }

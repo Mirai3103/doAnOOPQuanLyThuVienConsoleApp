@@ -57,7 +57,7 @@ public class ConNguoi  implements Serializable {
 		CMND = cMND;
 		DC = dC;
 	}
-	private boolean checkSdt( ){
+	public boolean checkSdt( ){
 		if(this.SDT.matches("^[\\d]{10,11}$"))
 		{
 
@@ -140,6 +140,25 @@ public class ConNguoi  implements Serializable {
 		ConNguoi a = new ConNguoi();
 		a.Nhap();
 		a.Xuat();
+	}
+	protected boolean checkCMND(String CMND){
+		if(CMND.matches("([\\d]{9})$"))
+		{
+			return true;
+		}else {
+			System.out.println("Số CMND/CCCD không hop lệ! ");
+			return  false;
+		}
+	}
+	protected boolean checkSdt(String SDT ){
+		if(SDT.matches("^[\\d]{10,11}$"))
+		{
+
+			return true;
+		}else {
+			System.out.println("Số điện thoại không hop lệ! ");
+			return  false;
+		}
 	}
 
 }
