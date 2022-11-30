@@ -10,6 +10,8 @@ import helper.Helper;
 
 import java.io.File;
 import java.time.LocalDate;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Main {
     public static void removeAllData(){
@@ -86,14 +88,15 @@ var dsXuPhat = TongHopDuLieu.getDanhSachXuPhat();
         phieuMuon.setIDnv("thuthu");
         DanhSachPhieuMuon.add(phieuMuon);
         var ctPhieuMuon = new CTMuonTra();
+        phieuMuon.setNgayLapPhieu(LocalDate.now().minusDays(14));
         ctPhieuMuon.setIdPhieuMuon(phieuMuon.getIDmt());
         ctPhieuMuon.setIDsach(0);
-        ctPhieuMuon.setNgayhentra(LocalDate.now().plusDays(14));
+        ctPhieuMuon.setNgayhentra(LocalDate.now().minusDays(-1));
         DanhSachChiTietPhieuMuon.add(ctPhieuMuon);
         ctPhieuMuon = new CTMuonTra();
         ctPhieuMuon.setIdPhieuMuon(phieuMuon.getIDmt());
         ctPhieuMuon.setIDsach(4);
-        ctPhieuMuon.setNgayhentra(LocalDate.now().plusDays(14));
+        ctPhieuMuon.setNgayhentra(LocalDate.now().minusDays(14));
         DanhSachChiTietPhieuMuon.add(ctPhieuMuon);
         ctPhieuMuon = new CTMuonTra();
         ctPhieuMuon.setIdPhieuMuon(phieuMuon.getIDmt());
@@ -218,6 +221,7 @@ var dsXuPhat = TongHopDuLieu.getDanhSachXuPhat();
         TongHopDuLieu.getKhoTheLoai().add(new TheLoai("Người lớn","trên 18 tuổi"));
         TongHopDuLieu.getKhoTheLoai().add(new TheLoai("Văn học nước ngoài","văn học nước ngoài"));
         TongHopDuLieu.getKhoTheLoai().add(new TheLoai("Lịch sử","lịch sử"));
+        TongHopDuLieu.getKhoTheLoai().add(new TheLoai("Giáo trình","giao trình"));
 
 
     }
@@ -228,6 +232,10 @@ var dsXuPhat = TongHopDuLieu.getDanhSachXuPhat();
         TongHopDuLieu.getDanhSachTacGia().add(new TacGia("Hajime Kamoshida","abc.com","Tac gia tieu thuyet"));
         TongHopDuLieu.getDanhSachTacGia().add(new TacGia("J.K.Rowling","abc.com","Tac gia noi tieng"));
         TongHopDuLieu.getDanhSachTacGia().add(new TacGia("Vũ Tình","abc.com","Tac gia Viet Nam"));
+        TongHopDuLieu.getDanhSachTacGia().add(new TacGia("Vũ Đức Lợi","abc.com","Tac gia Viet Nam"));
+        TongHopDuLieu.getDanhSachTacGia().add(new TacGia("Trần Đức Thanh","abc.com","Tac gia Viet Nam"));
+        TongHopDuLieu.getDanhSachTacGia().add(new TacGia("PGS.TS. Nguyễn Thị Trường Giang","abc.com","Tac gia Viet Nam"));
+
     }
     public static void initNhaXuatBanData(){
 
@@ -239,7 +247,24 @@ var dsXuPhat = TongHopDuLieu.getDanhSachXuPhat();
 
     }
     public static void initSachData(){
-        Sach sach = new Sach("CÔ BẠN TÔI THẦM THÍCH LẠI QUÊN MANG KÍNH RỒI - TẬP 7",130,"Vi",TongHopDuLieu.getDanhSachTacGia().getByName("Koume Fujichika"),TongHopDuLieu.getDanhSachNhaXuatBan().getByName("NXB Kim Đồng"), (short) 2021,"Mới cứng","Cô bạn bàn bên lại quên kính rồi tap 7");
+        Sach sach = new Sach("Giáo Trình Thực Hành: Thực Vật – Dược Liệu – Dược Học Cổ Truyền ",130,"Vi",TongHopDuLieu.getDanhSachTacGia().getByName("Vũ Đức Lợi"),TongHopDuLieu.getDanhSachNhaXuatBan().getByName("NXB ĐHQG Hà Nội"), (short) 2021,"Mới cứng","sách cho giáo sư");
+        sach.setGiaSach(100000);
+        TongHopDuLieu.getKhoSach().add(sach);
+        sach.themTheLoai(TongHopDuLieu.getKhoTheLoai().getByName("Giáo dục"));
+        sach.themTheLoai(TongHopDuLieu.getKhoTheLoai().getByName("Giáo trình"));
+
+        sach = new Sach("Nhập Môn Du Lịch",130,"Vi",TongHopDuLieu.getDanhSachTacGia().getByName("Trần Đức Thanh"),TongHopDuLieu.getDanhSachNhaXuatBan().getByName("NXB ĐHQG Hà Nội"), (short) 2021,"Mới cứng","sách cho sinh viên ngành du lịch");
+        sach.setGiaSach(100000);
+        TongHopDuLieu.getKhoSach().add(sach);
+        sach.themTheLoai(TongHopDuLieu.getKhoTheLoai().getByName("Giáo dục"));
+        sach.themTheLoai(TongHopDuLieu.getKhoTheLoai().getByName("Giáo trình"));
+        sach = new Sach("Nhập Môn Du Lịch",130,"Vi",TongHopDuLieu.getDanhSachTacGia().getByName("PGS.TS. Nguyễn Thị Trường Giang"),TongHopDuLieu.getDanhSachNhaXuatBan().getByName("NXB ĐHQG Hà Nội"), (short) 2021,"Mới cứng","sách cho sinh viên ngành du lịch");
+        sach.setGiaSach(120000);
+        TongHopDuLieu.getKhoSach().add(sach);
+        sach.themTheLoai(TongHopDuLieu.getKhoTheLoai().getByName("Giáo dục"));
+        sach.themTheLoai(TongHopDuLieu.getKhoTheLoai().getByName("Lịch sử"));
+
+        sach = new Sach("CÔ BẠN TÔI THẦM THÍCH LẠI QUÊN MANG KÍNH RỒI - TẬP 7",130,"Vi",TongHopDuLieu.getDanhSachTacGia().getByName("Koume Fujichika"),TongHopDuLieu.getDanhSachNhaXuatBan().getByName("NXB Kim Đồng"), (short) 2021,"Mới cứng","Cô bạn bàn bên lại quên kính rồi tap 7");
         sach.setGiaSach(50000);
         TongHopDuLieu.getKhoSach().add(sach);
         sach.themTheLoai(TongHopDuLieu.getKhoTheLoai().getByName("Truyện tranh"));

@@ -92,9 +92,7 @@ public abstract class NhanVien extends ConNguoi implements ITableRowData {
 		System.out.printf("Mật khẩu: " + MK);
 		System.out.printf("Lương: " + Luong);
 	}
-	public void quanLyThongTinCaNhan(){
-		Xuat();
-	}
+
 	@Override
 	public String[] getRowData() {
 		return new String[] {
