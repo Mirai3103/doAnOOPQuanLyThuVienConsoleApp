@@ -11,6 +11,8 @@ import Model.NhanVien;
 import Model.QuanLi;
 import Model.ThuThu;
 import helper.Helper;
+import helper.Mang;
+import helper.Xuat.Table;
 
 
 public class NhanViens  extends BaseDanhSach<NhanVien>{
@@ -45,7 +47,25 @@ public class NhanViens  extends BaseDanhSach<NhanVien>{
 		}
 		return null;
 	}
-	
+	public void xuatToanBoNv(ArrayList<NhanVien> nhanViens){
+		Mang<ThuThu> a = new Mang<ThuThu>();
+		Mang<QuanLi> b = new Mang<QuanLi>();
+		for(var i : nhanViens) {
+			if(i instanceof ThuThu) {
+				a.add((ThuThu)i);
+			} else {
+				b.add((QuanLi)i);
+			}
+		}
+		System.out.println("Danh sách thủ thư: ");
+		System.out.println(Table.taoBang(a));
+		System.out.println("\n ------------------------------- \nDanh sách quản lý: ");
+		System.out.println(Table.taoBang(b));
+
+	}
+	public void xuatToanBoNv(){
+		this.xuatToanBoNv(data);
+	}
 	public NhanVien getByName(String name) {
 		for(NhanVien NV : data) {
 			if(NV.getHoTen().equalsIgnoreCase(name))
@@ -270,7 +290,7 @@ public class NhanViens  extends BaseDanhSach<NhanVien>{
 
 				break;
 			case 5:
-				xuatConsoleDangTable();
+				xuatToanBoNv();
 				break;
 			case 6:
 				this.xuatFileBinary(FILE_PATH);

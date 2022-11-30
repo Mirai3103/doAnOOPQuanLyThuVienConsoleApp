@@ -3,6 +3,7 @@ package Model;
 
 import helper.Helper;
 import Repository.NhanViens;
+import helper.Mang;
 import helper.Xuat.ITableRowData;
 import helper.Xuat.Table;
 
@@ -83,34 +84,35 @@ public class QuanLi extends NhanVien  {
         System.out.printf("\nNăm kinh nghiệm: " + NamKinhNghiem);
         System.out.printf("\nĐặc quyền: " + DacQuyen);
         System.out.printf("\nMã bảo mật: " + MaBaoMat);
+
     }
 
-//    @Override
-//    public String[] getRowData() {
-//        String[] oldRow = super.getRowData();
-//        String[] newRow = new  String[oldRow.length+4];
-//        System.arraycopy(oldRow, 0, newRow, 0, oldRow.length);
-//        int i = oldRow.length;
-//        newRow[i++] = NgayNhanChuc;
-//        newRow[i++] = String.valueOf(NamKinhNghiem);
-//        newRow[i++] = DacQuyen;
-//        newRow[i++] = MaBaoMat;
-//        return newRow;
+    @Override
+    public String[] getRowData() {
+        String[] oldRow = super.getRowData();
+        String[] newRow = new  String[oldRow.length+4];
+        System.arraycopy(oldRow, 0, newRow, 0, oldRow.length);
+        int i = oldRow.length;
+        newRow[i++] = NgayNhanChuc;
+        newRow[i++] = String.valueOf(NamKinhNghiem);
+        newRow[i++] = DacQuyen;
+        newRow[i++] = MaBaoMat;
+        return newRow;
 
-//    }
+    }
     public void xuatDangBang(){
         System.out.println(Table.taoBang(this));
     }
-//    @Override
-//    public String[] getHeader() {
-//        String[] oldHeader = super.getHeader();
-//        String[] newHeader = new  String[oldHeader.length+4];
-//        System.arraycopy(oldHeader, 0, newHeader, 0, oldHeader.length);
-//        int i = oldHeader.length;
-//        newHeader[i++] = "Ngày nhận chức";
-//        newHeader[i++] = "Năm kinh nghiệm";
-//        newHeader[i++] = "Đặc quyền";
-//        newHeader[i++] = "Mã bảo mật";
-//        return newHeader;
-//    }
+    @Override
+    public String[] getHeader() {
+        String[] oldHeader = super.getHeader();
+        String[] newHeader = new  String[oldHeader.length+4];
+        System.arraycopy(oldHeader, 0, newHeader, 0, oldHeader.length);
+        int i = oldHeader.length;
+        newHeader[i++] = "Ngày nhận chức";
+        newHeader[i++] = "Năm kinh nghiệm";
+        newHeader[i++] = "Đặc quyền";
+        newHeader[i++] = "Mã bảo mật";
+        return newHeader;
+    }
 }

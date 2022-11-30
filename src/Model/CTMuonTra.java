@@ -4,6 +4,7 @@ import java.io.Serial;
 import java.io.Serializable;
 import java.time.LocalDate;
 
+import Exceptions.SachDaMuonException;
 import Repository.DanhSachCTMuonTra;
 import Repository.TongHopDuLieu;
 import helper.Helper;
@@ -51,7 +52,7 @@ public class CTMuonTra implements ITableRowData,Serializable	{
 	public void setIDsach(int IDsach) throws RuntimeException {
 	    var sach =	TongHopDuLieu.getKhoSach().getById(IDsach);
 		if (sach.checkDangMuon())
-			throw new RuntimeException("Sách đã được mượn");
+			throw new SachDaMuonException();
 		this.IDsach = IDsach;
 		sach.setTheTVNguoiMuonId(IdPhieuMuon);
 	}
