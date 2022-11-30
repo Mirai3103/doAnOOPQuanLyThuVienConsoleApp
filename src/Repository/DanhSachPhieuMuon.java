@@ -44,7 +44,7 @@ public class DanhSachPhieuMuon extends BaseDanhSach<MuonTra> {
         int n = Helper.nhapSoNguyen("Số lượng sách không hợp lệ, nhập lại: ");
         for (int i = 0; i < n; i++) {
             var isOk = false;
-            while (isOk) {
+            while (!isOk) {
                 System.out.println(Table.taoBang(TongHopDuLieu.getKhoSach().laySachDangCoSan()));
                 System.out.println("Nhập id cuốn sách cần mượn thứ " + (i + 1) + " ");
                 var id = Helper.nhapSoNguyen("Id sách không hợp lệ!, nhập lại: ");
@@ -84,7 +84,17 @@ public class DanhSachPhieuMuon extends BaseDanhSach<MuonTra> {
             System.out.println("Không tìm thấy phiếu mượn");
             return;
         }
+
         var danhSachSachMuon = TongHopDuLieu.getDanhSachCTMuonTra().getChiTietPhieuMuong(muonTra.getIDmt());
+        boolean daTraHet = true;
+        for (var ctmt : danhSachSachMuon) {
+            if(ctmt.getNgaytra()!=null){
+                daTraHet = false;
+                break;
+            }
+        }if(daTraHet){
+            System.out.println("Sách đã trả hết!");
+        }
         for (var ctmt : danhSachSachMuon) {
             if (ctmt.getNgaytra() == null) {
                 System.out.println(Table.taoBang(ctmt.getBook()));
@@ -141,15 +151,7 @@ public class DanhSachPhieuMuon extends BaseDanhSach<MuonTra> {
     }
 
     public void hienThiQuaHan() {
-        var danhSachSachMuon = TongHopDuLieu.getDanhSachCTMuonTra().getAll();
-        var dsQuaHan = new ArrayList<CTMuonTra>();
-        for (var ctmt : danhSachSachMuon) {
-            if (ctmt.getNgaytra() != null) {
-                if (ctmt.getNgayhentra().isBefore(LocalDate.now()) && ctmt.getNgaytra() != null) {
-                    dsQuaHan.add(ctmt);
-                }
-            }
-        }
+        var dsQuaHan =TongHopDuLieu.getDanhSachCTMuonTra(). getDanhSachQuaHan();
         if (dsQuaHan.size() == 0) {
             System.out.println("Không có sách nào quá hạn");
             return;

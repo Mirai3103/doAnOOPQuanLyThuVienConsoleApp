@@ -91,8 +91,14 @@ public class NhanViens  extends BaseDanhSach<NhanVien>{
 			QuanLi QL = new QuanLi();
 			boolean maCoTrungHayK=false;
 			do {
-				System.out.println("Nhập mã nhân viên: ");
-				String maNV = Helper.scanner.nextLine();
+				System.out.println("Nhập mã nhân viên (6 kí tự): ");
+				String maNV ;
+				do {
+					 maNV = Helper.scanner.nextLine();
+					if(maNV.length() !=6){
+						System.out.println("Mã nhân viên không hợp lệ !");
+					}
+				}while (maNV.length() !=6);
 				if(checkId(maNV)) {
 					System.out.println("Mã nhân viên đã tồn tại, mời nhập lại: ");
 					maCoTrungHayK=true;
@@ -109,7 +115,13 @@ public class NhanViens  extends BaseDanhSach<NhanVien>{
 			boolean maCoTrungHayK1=false;
 			do {
 				System.out.println("Nhập mã nhân viên: ");
-				String maNV = Helper.scanner.nextLine();
+				String maNV ;
+				do {
+					maNV = Helper.scanner.nextLine();
+					if(maNV.length() !=6){
+						System.out.println("Mã nhân viên không hợp lệ !");
+					}
+				}while (maNV.length() !=6);
 				if(checkId(maNV)) {
 					System.out.println("Mã nhân viên đã tồn tại, mời nhập lại: ");
 					maCoTrungHayK1=true;

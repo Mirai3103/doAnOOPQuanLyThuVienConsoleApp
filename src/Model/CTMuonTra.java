@@ -128,8 +128,8 @@ public class CTMuonTra implements ITableRowData,Serializable	{
 
     	System.out.print("Nhập ngày hẹn trả(dd/MM/yyyy): ");
 		this.ngayhentra = Helper.inputDate();
-		System.out.print("Nhập id lỗi phạt: ");
-		this.loiPhatId = Helper.nhapSoNguyen("id phải là số nguyên");
+//		System.out.print("Nhập id lỗi phạt: ");
+//		this.loiPhatId = Helper.nhapSoNguyen("id phải là số nguyên");
     }
 	@Override
 	public String toString() {

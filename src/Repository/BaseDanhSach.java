@@ -13,7 +13,6 @@ public abstract class BaseDanhSach<T extends ITableRowData> implements IDanhSach
 protected ArrayList<T> data = new ArrayList<>();
 
 
-
     public ArrayList<T> getAll() {
         return  this.data;
     }

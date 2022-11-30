@@ -6,6 +6,7 @@ import Repository.TongHopDuLieu;
 import javax.swing.text.DateFormatter;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.Arrays;
 import java.util.Locale;
 import java.util.Scanner;
 import java.util.regex.Matcher;
@@ -29,6 +30,22 @@ public final class Helper {
         }
         return Integer.parseInt(number);
     }
+	public static int nhapSoTuNhien(String errorMessage){
+		String number = scanner.nextLine();
+		while (!number.matches(INTEGER_PATTERN) && Integer.parseInt(number) < 0){
+			System.out.println(errorMessage);
+			number = scanner.nextLine();
+		}
+		return Integer.parseInt(number);
+	}
+	public static String nhapTen(){
+		String number = scanner.nextLine();
+		while (Arrays.stream(number.split("")).map(t->t.charAt(0) >='0' && t.charAt(0)<='9').toList().size() !=0){
+			System.out.println("Tên khônng hopwj lệ! , nhập lại: ");
+			number = scanner.nextLine();
+		}
+		return number;
+	}
 	public static LocalDate inputDate(){
 		String dateStr;
 		var isDateValid = false;

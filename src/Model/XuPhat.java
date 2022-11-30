@@ -1,3 +1,6 @@
+
+
+
 package Model;
 
 
@@ -59,7 +62,7 @@ public class XuPhat implements ITableRowData, Serializable {
 
     @Override
     public String[] getRowData() {
-        return new String[] {idXuPhat+"",tenLoi,tienPhat+" VND"};
+        return new String[] {idXuPhat+"",tenLoi,tienPhat==-1?"phí bằng giá sách":tienPhat+""};
     }
 
     @Override

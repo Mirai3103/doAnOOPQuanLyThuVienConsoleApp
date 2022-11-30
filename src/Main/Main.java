@@ -32,7 +32,7 @@ public class Main {
         return true;
     }
     public static void main(String[] args) {
-
+    while (true){
         while (!Login()){
 
         }
@@ -42,6 +42,7 @@ public class Main {
         else{
             ThuThuView.run();
         }
+    }
     }
 
 

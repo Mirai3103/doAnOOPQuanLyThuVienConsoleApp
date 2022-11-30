@@ -1,4 +1,4 @@
-package Model;
+	package Model;
 import java.awt.print.Book;
 import java.io.*;
 import java.text.ParseException;
@@ -37,10 +37,10 @@ public class MuonTra implements Serializable, ITableRowData{
 		xuatPhieu();
 		int choose;
 		do {
-			System.out.println("1. Sua ngay muon");
-			System.out.println("2. Sửa chi tiet muon tra");
-			System.out.println("3. Thoat");
-			System.out.println("Nhap lua chon: ");
+			System.out.println("1. Sửa ngày mượn");
+			System.out.println("2. Sửa chi tiết mượn trả");
+			System.out.println("3. Thoát");
+			System.out.println("Nhập lựa chọn: ");
 			choose = Helper.nhapSoNguyen("Lựa chọn không hợp lệ. Vui lòng nhập lại: ");
 			switch (choose) {
 				case 1:
@@ -87,6 +87,10 @@ public class MuonTra implements Serializable, ITableRowData{
 		this.IDmt = IDmt;
 	}
 
+	public void setNgayLapPhieu(LocalDate ngayLapPhieu) {
+		this.ngayLapPhieu = ngayLapPhieu;
+	}
+
 	public int getIDmt() {
 		return IDmt;
 	}
@@ -121,6 +125,14 @@ public class MuonTra implements Serializable, ITableRowData{
 				break;
 			}
 		}
+
+	}
+	public void menuSua(){
+		System.out.println("1. Sửa id thẻ mượn");
+		System.out.println("2. Sửa id sửa id nhân viên cho mượn");
+		System.out.println("3. Sửa id sửa id nhân viên cho mượn");
+	}
+	public void sua() {
 
 	}
 
