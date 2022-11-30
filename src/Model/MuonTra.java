@@ -87,6 +87,10 @@ public class MuonTra implements Serializable, ITableRowData{
 		this.IDmt = IDmt;
 	}
 
+	public void setNgayLapPhieu(LocalDate ngayLapPhieu) {
+		this.ngayLapPhieu = ngayLapPhieu;
+	}
+
 	public int getIDmt() {
 		return IDmt;
 	}
@@ -121,6 +125,14 @@ public class MuonTra implements Serializable, ITableRowData{
 				break;
 			}
 		}
+
+	}
+	public void menuSua(){
+		System.out.println("1. Sửa id thẻ mượn");
+		System.out.println("2. Sửa id sửa id nhân viên cho mượn");
+		System.out.println("3. Sửa id sửa id nhân viên cho mượn");
+	}
+	public void sua() {
 
 	}
 

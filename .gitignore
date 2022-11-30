@@ -12,7 +12,7 @@ out/
 /dist/
 /nbdist/
 /.nb-gradle/
-
+*.bin
 ### VS Code ###
 .vscode/
 
@@ -68,7 +68,7 @@ cmake-build-*/
 
 # File-based project format
 *.iws
-
+*.bin
 # IntelliJ
 out/
 

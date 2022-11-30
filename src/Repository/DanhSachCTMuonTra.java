@@ -4,6 +4,7 @@ import Model.CTMuonTra;
 import helper.Helper;
 
 import java.io.Serial;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class DanhSachCTMuonTra extends BaseDanhSach<CTMuonTra> {
@@ -38,5 +39,14 @@ public class DanhSachCTMuonTra extends BaseDanhSach<CTMuonTra> {
                 break;
             }
         }
+    }
+    public ArrayList<CTMuonTra> getDanhSachQuaHan(){
+        ArrayList<CTMuonTra>list=new ArrayList<>();
+        for (CTMuonTra ctMuonTra : data) {
+            if(ctMuonTra.getNgaytra()==null && ctMuonTra.getNgayhentra().isBefore(LocalDate.now())){
+                list.add(ctMuonTra);
+            }
+        }
+        return list;
     }
 }
