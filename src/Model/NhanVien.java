@@ -73,6 +73,11 @@ public abstract class NhanVien extends ConNguoi implements ITableRowData {
 		MK = Helper.scanner.nextLine();
 		System.out.println("Nhập mức lương");
 		Luong = Helper.nhapSoNguyen("phải là số nguyên!! yêu cầu nhập lại : ");
+		while (Luong <0){
+			System.out.println("Lương không hợp lệ!, nhập lại");
+			Luong = Helper.nhapSoNguyen("phải là số nguyên!! yêu cầu nhập lại : ");
+
+		}
 	}
 	public void Nhap(String maNV) {
 		MaNV = maNV;
@@ -82,12 +87,14 @@ public abstract class NhanVien extends ConNguoi implements ITableRowData {
 
 	public void Xuat() {
 		super.Xuat();
-		System.out.printf("MÃ£ nhÃ¢n viÃªn: " + MaNV);
-		System.out.printf("Chá»©c vá»¥: " + ChucVu);
-		System.out.printf("Máº­t kháº©u: " + MK);
-		System.out.printf("LÆ°Æ¡ng" + Luong);
+		System.out.printf("Mã nhân viên: " + MaNV);
+		System.out.printf("Chức vụ: " + ChucVu);
+		System.out.printf("Mật khẩu: " + MK);
+		System.out.printf("Lương: " + Luong);
 	}
-
+	public void quanLyThongTinCaNhan(){
+		Xuat();
+	}
 	@Override
 	public String[] getRowData() {
 		return new String[] {

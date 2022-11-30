@@ -3,6 +3,8 @@ package DataLoader;
 
 import Model.*;
 
+import Repository.DanhSachCTMuonTra;
+import Repository.DanhSachPhieuMuon;
 import Repository.TongHopDuLieu;
 import helper.Helper;
 
@@ -21,6 +23,7 @@ public class Main {
 //chạy để tạo dữ liệu mẫu
     public static void main(String[] args) {
         removeAllData();
+        initXuPhatData();
         initTheLoaiData();
         initTacGiaData();
         initNhaXuatBanData();
@@ -35,9 +38,41 @@ public class Main {
         TongHopDuLieu.getNhanViens().xuatFileBinary();
         TongHopDuLieu.getDanhSachDocGia().xuatFileBinary();
         TongHopDuLieu.getDanhSachTheThuVien().xuatFileBinary();
+        TongHopDuLieu.getDanhSachPhieuMuonTra().xuatFileBinary(DanhSachPhieuMuon.FILE_PATH);
+        TongHopDuLieu.getDanhSachCTMuonTra().xuatFileBinary(DanhSachCTMuonTra.FILE_PATH);
+
+
 
     }
+    public static void initXuPhatData(){
+var dsXuPhat = TongHopDuLieu.getDanhSachXuPhat();
+        var s1 = new XuPhat();
+        s1.setTenLoi("Làm rách sách");
+        s1.setTienPhat(15000);
+        dsXuPhat.add(s1);
+        var s2 = new XuPhat();
+        s2.setTenLoi("Làm hỏng sách");
+        s2.setTienPhat(25000);
+        dsXuPhat.add(s2);
+        var s3 = new XuPhat();
+        s3.setTenLoi("Làm mất sách");
+        s3.setTienPhat(-1);
+        dsXuPhat.add(s3);
+        var s4 = new XuPhat();
+        s4.setTenLoi("Trả sách quá hạn");
+        s4.setTienPhat(10000);
+        dsXuPhat.add(s4);
+        var s5 = new XuPhat();
+        s5.setTenLoi("Không trả sách");
+        s5.setTienPhat(20000);
+        dsXuPhat.add(s5);
+        var s6 = new XuPhat();
+        s6.setTenLoi("Vẽ trên sách");
+        s6.setTienPhat(5000);
+        dsXuPhat.xuatFileBinary();
 
+
+    }
     private static void initPhieuMuonData() {
         var DanhSachPhieuMuon = TongHopDuLieu.getDanhSachPhieuMuonTra();
         var DanhSachDocGia = TongHopDuLieu.getDanhSachDocGia();
@@ -46,8 +81,7 @@ public class Main {
         var DanhSachTheThuVien = TongHopDuLieu.getDanhSachTheThuVien();
         var DanhSachChiTietPhieuMuon = TongHopDuLieu.getDanhSachCTMuonTra();
         var phieuMuon = new MuonTra();
-        // 0 -> 4
-        //
+
         phieuMuon.setIDthe(0);
         phieuMuon.setIDnv("thuthu");
         DanhSachPhieuMuon.add(phieuMuon);
@@ -64,7 +98,11 @@ public class Main {
         ctPhieuMuon = new CTMuonTra();
         ctPhieuMuon.setIdPhieuMuon(phieuMuon.getIDmt());
         ctPhieuMuon.setIDsach(2);
-        ctPhieuMuon.setNgayhentra(LocalDate.now().plusDays(14));
+        ctPhieuMuon.setNgayhentra(LocalDate.now().minusDays(2));
+        ctPhieuMuon.setDatra(1);
+        ctPhieuMuon.getBook().setTheTVNguoiMuonId(-1);
+        ctPhieuMuon.setNgaytra(LocalDate.now().minusDays(2));
+        ctPhieuMuon.setLoiPhatId(2);
         DanhSachChiTietPhieuMuon.add(ctPhieuMuon);
         phieuMuon = new MuonTra();
         // 1 -> 3
@@ -94,8 +132,8 @@ public class Main {
         TongHopDuLieu.getDanhSachDocGia().add(dg1);
         TheThuVien theThuVien1 = new TheThuVien();
         theThuVien1.setGhichu("");
-        theThuVien1.setNgaybd("01/01/2021");
-        theThuVien1.setNgayhh("01/01/2024");
+        theThuVien1.setNgaybd(Helper.parseDate("01/01/2021"));
+        theThuVien1.setNgayhh(Helper.parseDate("01/01/2022"));
         theThuVien1.setIDuser(dg1.getIDdg());
         TongHopDuLieu.getDanhSachTheThuVien().add(theThuVien1);
         DocGia dg2 = new DocGia();
@@ -107,8 +145,8 @@ public class Main {
         TongHopDuLieu.getDanhSachDocGia().add(dg2);
         TheThuVien theThuVien2 = new TheThuVien();
         theThuVien2.setGhichu("");
-        theThuVien2.setNgaybd("01/01/2022");
-        theThuVien2.setNgayhh("01/01/2023");
+        theThuVien2.setNgaybd(Helper.parseDate("01/01/2022"));
+        theThuVien2.setNgayhh(Helper.parseDate("01/01/2023"));
         theThuVien2.setIDuser(dg2.getIDdg());
         TongHopDuLieu.getDanhSachTheThuVien().add(theThuVien2);
         DocGia dg3 = new DocGia();
@@ -120,8 +158,8 @@ public class Main {
         TongHopDuLieu.getDanhSachDocGia().add(dg3);
         TheThuVien theThuVien3 = new TheThuVien();
         theThuVien3.setGhichu("");
-        theThuVien3.setNgaybd("01/01/2021");
-        theThuVien3.setNgayhh("01/01/2024");
+        theThuVien3.setNgaybd(Helper.parseDate("01/01/2021"));
+        theThuVien3.setNgayhh(Helper.parseDate("01/01/2023"));
         theThuVien3.setIDuser(dg3.getIDdg());
         TongHopDuLieu.getDanhSachTheThuVien().add(theThuVien3);
         DocGia dg4 = new DocGia();
@@ -133,8 +171,8 @@ public class Main {
         TongHopDuLieu.getDanhSachDocGia().add(dg4);
         TheThuVien theThuVien4 = new TheThuVien();
         theThuVien4.setGhichu("");
-        theThuVien4.setNgaybd("01/01/2021");
-        theThuVien4.setNgayhh("01/01/2022");
+        theThuVien4.setNgaybd(Helper.parseDate("01/01/2021"));
+        theThuVien4.setNgayhh(Helper.parseDate("01/01/2022"));
         theThuVien4.setIDuser(dg4.getIDdg());
         TongHopDuLieu.getDanhSachTheThuVien().add(theThuVien4);
         DocGia dg5 = new DocGia();
@@ -146,8 +184,8 @@ public class Main {
         TongHopDuLieu.getDanhSachDocGia().add(dg5);
         TheThuVien theThuVien5 = new TheThuVien();
         theThuVien5.setGhichu("");
-        theThuVien5.setNgaybd("01/01/2021");
-        theThuVien5.setNgayhh("01/01/2026");
+        theThuVien5.setNgaybd(Helper.parseDate("01/01/2021"));
+        theThuVien5.setNgayhh(Helper.parseDate("01/01/2026"));
         theThuVien5.setIDuser(dg5.getIDdg());
         TongHopDuLieu.getDanhSachTheThuVien().add(theThuVien5);
 
@@ -202,55 +240,64 @@ public class Main {
     }
     public static void initSachData(){
         Sach sach = new Sach("CÔ BẠN TÔI THẦM THÍCH LẠI QUÊN MANG KÍNH RỒI - TẬP 7",130,"Vi",TongHopDuLieu.getDanhSachTacGia().getByName("Koume Fujichika"),TongHopDuLieu.getDanhSachNhaXuatBan().getByName("NXB Kim Đồng"), (short) 2021,"Mới cứng","Cô bạn bàn bên lại quên kính rồi tap 7");
+        sach.setGiaSach(50000);
+        TongHopDuLieu.getKhoSach().add(sach);
         sach.themTheLoai(TongHopDuLieu.getKhoTheLoai().getByName("Truyện tranh"));
         sach.themTheLoai(TongHopDuLieu.getKhoTheLoai().getByName("Truyện dài"));
         sach.themTheLoai(TongHopDuLieu.getKhoTheLoai().getByName("Romance"));
         sach.themTheLoai(TongHopDuLieu.getKhoTheLoai().getByName("School life"));
-        TongHopDuLieu.getKhoSach().add(sach);
+
          sach = new Sach("CÔ BẠN TÔI THẦM THÍCH LẠI QUÊN MANG KÍNH RỒI - TẬP 1",146,"Vi",TongHopDuLieu.getDanhSachTacGia().getByName("Koume Fujichika"),TongHopDuLieu.getDanhSachNhaXuatBan().getByName("NXB Kim Đồng"), (short) 2021,"Mới cứng","Cô bạn bàn bên lại quên kính rồi Tap 1");
+        TongHopDuLieu.getKhoSach().add(sach);
         sach.themTheLoai(TongHopDuLieu.getKhoTheLoai().getByName("Truyện tranh"));
         sach.themTheLoai(TongHopDuLieu.getKhoTheLoai().getByName("Truyện dài"));
         sach.themTheLoai(TongHopDuLieu.getKhoTheLoai().getByName("Romance"));
         sach.themTheLoai(TongHopDuLieu.getKhoTheLoai().getByName("School life"));
-        TongHopDuLieu.getKhoSach().add(sach);
+        sach.setGiaSach(52000);
          sach = new Sach("NHỮNG ĐỨA TRẺ HẠNH PHÚC - LÀ CHÍNH MÌNH",20,"Vi",TongHopDuLieu.getDanhSachTacGia().getByName("Lê Anh Vinh"),TongHopDuLieu.getDanhSachNhaXuatBan().getByName("NXB Kim Đồng"), (short) 2022,"Mới cứng","Tập BẠN NHỎ DÂN TỘC KINH");
+        TongHopDuLieu.getKhoSach().add(sach);
         sach.themTheLoai(TongHopDuLieu.getKhoTheLoai().getByName("Truyện tranh"));
         sach.themTheLoai(TongHopDuLieu.getKhoTheLoai().getByName("Trẻ em"));
         sach.themTheLoai(TongHopDuLieu.getKhoTheLoai().getByName("Giáo dục"));
-        TongHopDuLieu.getKhoSach().add(sach);
+        sach.setGiaSach(20000);
             sach = new Sach("HỌC TOÁN CÙNG JENNY",32,"Vi",TongHopDuLieu.getDanhSachTacGia().getByName("Lê Anh Vinh"),TongHopDuLieu.getDanhSachNhaXuatBan().getByName("NXB Kim Đồng"), (short) 2021,"rách bìa trước  ","SÁCH DÀNH CHO HỌC SINH CHUẨN BỊ VÀO LỚP 1");
+        TongHopDuLieu.getKhoSach().add(sach);
         sach.themTheLoai(TongHopDuLieu.getKhoTheLoai().getByName("Trẻ em"));
         sach.themTheLoai(TongHopDuLieu.getKhoTheLoai().getByName("Giáo dục"));
         sach.themTheLoai(TongHopDuLieu.getKhoTheLoai().getByName("Toán"));
-        TongHopDuLieu.getKhoSach().add(sach);
+        sach.setGiaSach(24000);
         sach = new Sach("DORAEMON - NOBITA VÀ NGƯỜI KHỔNG LỒ XANH",194,"Vi",TongHopDuLieu.getDanhSachTacGia().getByName("Fujiko F Fujio"),TongHopDuLieu.getDanhSachNhaXuatBan().getByName("NXB Kim Đồng"), (short) 2016,"bị mất bìa ","NOBITA VÀ NGƯỜI KHỔNG LỒ XANH");
+        TongHopDuLieu.getKhoSach().add(sach);
         sach.themTheLoai(TongHopDuLieu.getKhoTheLoai().getByName("Truyện tranh"));
         sach.themTheLoai(TongHopDuLieu.getKhoTheLoai().getByName("Thiếu niên"));
         sach.themTheLoai(TongHopDuLieu.getKhoTheLoai().getByName("Truyện dài"));
-        TongHopDuLieu.getKhoSach().add(sach);
+        sach.setGiaSach(82000);
         sach = new Sach("DORAEMON TRUYỆN NGẮN - TẬP 19",192,"Vi",TongHopDuLieu.getDanhSachTacGia().getByName("Fujiko F Fujio"),TongHopDuLieu.getDanhSachNhaXuatBan().getByName("NXB Kim Đồng"), (short) 2021,"còn mới","Những câu chuyện về chú mèo máy thông minh Doraemon");
+        TongHopDuLieu.getKhoSach().add(sach);
         sach.themTheLoai(TongHopDuLieu.getKhoTheLoai().getByName("Truyện tranh"));
         sach.themTheLoai(TongHopDuLieu.getKhoTheLoai().getByName("Thiếu niên"));
         sach.themTheLoai(TongHopDuLieu.getKhoTheLoai().getByName("Truyện ngắn"));
-        TongHopDuLieu.getKhoSach().add(sach);
+        sach.setGiaSach(120000);
         sach = new Sach("HỘI CHỨNG TUỔI THANH XUÂN - TẬP 8",352,"Vi",TongHopDuLieu.getDanhSachTacGia().getByName("Hajime Kamoshida"),TongHopDuLieu.getDanhSachNhaXuatBan().getByName("NXB Kim Đồng"), (short) 2022,"còn mới","Đây chính là nguyên tác của bộ anime đình đám thống lĩnh mọi bảng xếp hạng anime năm 2018");
+        TongHopDuLieu.getKhoSach().add(sach);
         sach.themTheLoai(TongHopDuLieu.getKhoTheLoai().getByName("Tiểu thuyết"));
         sach.themTheLoai(TongHopDuLieu.getKhoTheLoai().getByName("Người lớn"));
         sach.themTheLoai(TongHopDuLieu.getKhoTheLoai().getByName("Văn học nước ngoài"));
         sach.themTheLoai(TongHopDuLieu.getKhoTheLoai().getByName("Giả tưởng"));
         sach.themTheLoai(TongHopDuLieu.getKhoTheLoai().getByName("School life"));
         sach.themTheLoai(TongHopDuLieu.getKhoTheLoai().getByName("Romance"));
-        TongHopDuLieu.getKhoSach().add(sach);
+        sach.setGiaSach(24000);
         sach = new Sach("HARRY POTTER VÀ HÒN ĐÁ PHÙ THUỶ",366,"Vi",TongHopDuLieu.getDanhSachTacGia().getByName("J.K.Rowling"),TongHopDuLieu.getDanhSachNhaXuatBan().getByName("NXB trẻ"), (short) 2015,"còn mới"," Harry Potter");
+        TongHopDuLieu.getKhoSach().add(sach);
         sach.themTheLoai(TongHopDuLieu.getKhoTheLoai().getByName("Tiểu thuyết"));
         sach.themTheLoai(TongHopDuLieu.getKhoTheLoai().getByName("Thiếu niên"));
         sach.themTheLoai(TongHopDuLieu.getKhoTheLoai().getByName("Văn học nước ngoài"));
         sach.themTheLoai(TongHopDuLieu.getKhoTheLoai().getByName("Giả tưởng"));
-        TongHopDuLieu.getKhoSach().add(sach);
+        sach.setGiaSach(65000);
         sach = new Sach("HỒ CHÍ MINH BÀN VỀ ĐẢNG",96,"Vi",TongHopDuLieu.getDanhSachTacGia().getByName("Vũ tình"),TongHopDuLieu.getDanhSachNhaXuatBan().getByName("NXB trẻ"), (short) 2018,"còn mới","gồm trích đoạn rất ngắn những phát biểu của Bác");
-
-        sach.themTheLoai(TongHopDuLieu.getKhoTheLoai().getByName("Lịch sử"));
         TongHopDuLieu.getKhoSach().add(sach);
+        sach.setGiaSach(250000);
+        sach.themTheLoai(TongHopDuLieu.getKhoTheLoai().getByName("Lịch sử"));
     }
 
 }

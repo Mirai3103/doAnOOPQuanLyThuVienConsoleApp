@@ -50,6 +50,7 @@ public class KhoSach extends BaseDanhSach<Sach> {
         Sach sach = new Sach();
         sach.nhapSach();
         data.add(sach);
+        sach.nhapTheLoaiChoSach();
 
     }
 
@@ -82,7 +83,7 @@ public class KhoSach extends BaseDanhSach<Sach> {
         System.out.println("7. Thoat");
     }
     public ArrayList<Sach> laySachDangMuon(){
-        return new ArrayList<>(data.stream().filter(s -> s.checkDangMuon()).toList());
+        return new ArrayList<>(data.stream().filter(Sach::checkDangMuon).toList());
     }
     public ArrayList<Sach> laySachDangCoSan(){
         return new ArrayList<>(data.stream().filter(s -> !s.checkDangMuon()).toList());
@@ -120,29 +121,21 @@ public class KhoSach extends BaseDanhSach<Sach> {
             showMenuThuThu();
             int choice = Helper.nhapSoNguyen("Lua chon khong hop le");
             switch (choice) {
-                case 1:
-                    xuatConsoleDangTable();
-                    break;
-                case 2:
-                    System.out.println(Table.taoBang(timTheoTen()));
-                    break;
-                case 3:
+                case 1 -> xuatConsoleDangTable();
+                case 2 -> System.out.println(Table.taoBang(timTheoTen()));
+                case 3 -> {
                     var a = timTheoTacGia();
                     if (a != null) {
                         System.out.println(Table.taoBang(a));
                     }
-                    break;
-                case 4:
-                    System.out.println(Table.taoBang(laySachDangCoSan()));
-                    break;
-                case 5:
-                    System.out.println(Table.taoBang(laySachDangMuon()));
-                    break;
-                case 6:
+                }
+                case 4 -> System.out.println(Table.taoBang(laySachDangCoSan()));
+                case 5 -> System.out.println(Table.taoBang(laySachDangMuon()));
+                case 6 -> {
                     xuatFileBinary();
                     return;
-                default:
-                    System.out.println("Lua chon khong hop le");
+                }
+                default -> System.out.println("Lua chon khong hop le");
             }
         }
     }

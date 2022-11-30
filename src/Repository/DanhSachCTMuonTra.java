@@ -31,4 +31,12 @@ public class DanhSachCTMuonTra extends BaseDanhSach<CTMuonTra> {
         }
         return list;
     }
+    public void xoaCTMuonTra(int idPhieuMuon, int idSach){
+        for (CTMuonTra ctMuonTra : data) {
+            if(ctMuonTra.getIdPhieuMuon()==idPhieuMuon && ctMuonTra.getIDsach()==idSach){
+                data.remove(ctMuonTra);
+                break;
+            }
+        }
+    }
 }

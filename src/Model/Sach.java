@@ -23,7 +23,19 @@ public class Sach implements Serializable, ITableRowData {
     private String tinhTrang;
     private String gioiThieu;
     private int theTVNguoiMuonId = -1;
+    private int giaSach;
 
+    public int getGiaSach() {
+        return giaSach;
+    }
+
+    public int getTacGiaId() {
+        return tacGiaId;
+    }
+
+    public void setGiaSach(int giaSach) {
+        this.giaSach = giaSach;
+    }
 
     public Sach() {
     }
@@ -210,12 +222,21 @@ public class Sach implements Serializable, ITableRowData {
         this.namXuatBan = (short) Helper.nhapSoNguyen("Năm xuất bản phải là số nguyên dương");
         System.out.println("Nhập tình trạng: ");
         this.tinhTrang = Helper.scanner.nextLine();
+        System.out.println("Nhập giá: ");
+        this.giaSach = Helper.nhapSoNguyen("Giá phải là số nguyên dương");
+        while (this.giaSach < 0) {
+            System.out.println("Giá phải là số nguyên dương");
+            this.giaSach = Helper.nhapSoNguyen("Giá phải là số nguyên dương");
+        }
         System.out.println("Nhập giới thiệu: ");
         this.gioiThieu = Helper.scanner.nextLine();
+
+    }
+    public void nhapTheLoaiChoSach(){
         boolean tiepTuc = true;
         while (tiepTuc) {
             System.out.println("Nhập thể loại: ");
-           TongHopDuLieu.getKhoTheLoai().xuatConsoleDangTable();
+            TongHopDuLieu.getKhoTheLoai().xuatConsoleDangTable();
             System.out.println();
             System.out.println("Bạn muốn taọ thể loại mới không? (y/n)");
             if (Helper.scanner.nextLine().equals("y")) {
@@ -239,7 +260,6 @@ public class Sach implements Serializable, ITableRowData {
             tiepTuc = Helper.scanner.nextLine().equalsIgnoreCase("y");
         }
     }
-
     public void xuatSach() {
         System.out.println("Tên sách: " + this.tenSach);
         System.out.println("Tổng số trang: " + this.tongSoTrang);
@@ -257,12 +277,13 @@ public class Sach implements Serializable, ITableRowData {
 
     @Override
     public String[] getRowData() {
-        var theLoai =String.join("-", getTheLoais().stream().map(TheLoai::getTenTheLoai).toList());
+        var danhSachTheLoai = getTheLoais();
+        var theLoai =String.join(" - ", danhSachTheLoai.stream().map(TheLoai::getTenTheLoai).toList());
         return new String[]{
                 this.id + "",
                 this.tenSach,
                 this.tongSoTrang + "",
-                this.ngonNgu,
+                this.ngonNgu,this.giaSach+"",
                 this.getTacGia().getTenTacGia(),
                 this.getNhaXuatBan().getTenNXB(),
                 this.namXuatBan + "",
@@ -274,6 +295,6 @@ public class Sach implements Serializable, ITableRowData {
     }
     @Override
     public String[] getHeader() {
-        return new String[]{"Id", "Tên sách", "Tổng số trang", "Ngôn ngữ", "Tác giả", "Nhà xuất bản", "Năm xuất bản", "Tình trạng", "Giới thiệu","Tình trạng mượn", "Thể loại"};
+        return new String[]{"Id", "Tên sách", "Tổng số trang", "Ngôn ngữ","Giá sách", "Tác giả", "Nhà xuất bản", "Năm xuất bản", "Tình trạng", "Giới thiệu","Tình trạng mượn", "Thể loại"};
     }
 }

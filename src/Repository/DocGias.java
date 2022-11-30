@@ -31,9 +31,13 @@ public class DocGias  extends BaseDanhSach<DocGia> {
         var docGia = new DocGia();
         docGia.nhapDocGia();
         this.add(docGia);
+        System.out.println("Bắt đầu đăng ký thẻ thư viện");
         var theThuVien = new TheThuVien();
         theThuVien.themTheThuVien(docGia.getIDdg());
         docGia.setIDthe(theThuVien.getIDthe());
+        System.out.println("Đăng ký thành công");
+        System.out.println("Phí đăng ký thẻ là: " + docGia.phiTaoThe());
+        theThuVien.xuatTheThuVien();
     }
     public void showMenu(){
         System.out.println("1. Đăng ký thành viên");
@@ -70,56 +74,46 @@ public class DocGias  extends BaseDanhSach<DocGia> {
         }
         data.remove(docGia);
     }
+
     public void lamViec(){
         int chon;
         do {
             showMenu();
             chon = Helper.nhapSoNguyen("Chọn chức năng không hợp lệ, nhập lại: ");
-            switch (chon){
-                case 1:
-                    dangKyThanhVien();
-                    break;
-                case 2:
-                    this.xuatConsoleDangTable();
-                    break;
-                case 3:
+            switch (chon) {
+                case 1 -> dangKyThanhVien();
+                case 2 -> this.xuatConsoleDangTable();
+                case 3 -> {
                     System.out.println("Bạn muốn tìm theo tên hay ID");
                     System.out.println("1. Tìm theo tên");
                     System.out.println("2. Tìm theo ID");
                     int chon2 = Helper.nhapSoNguyen("Chọn chức năng không hợp lệ, nhập lại: ");
-                    if(chon2 == 1){
+                    if (chon2 == 1) {
                         String name = Helper.scanner.nextLine();
                         var docGias = getByName(name);
 
-                        if(docGias.size() == 0){
+                        if (docGias.size() == 0) {
                             System.out.println("Không tìm thấy độc giả nào");
-                        }else {
+                        } else {
                             System.out.println("Có " + docGias.size() + " độc giả tên " + name);
                             System.out.println(Table.taoBang(docGias));
                         }
-                    }else if(chon2 == 2){
+                    } else if (chon2 == 2) {
                         int id = Helper.nhapSoNguyen("Nhập ID độc giả: ");
                         var docGia = getById(id);
-                        if(docGia == null){
+                        if (docGia == null) {
                             System.out.println("Không tìm thấy độc giả nào");
-                        }else {
+                        } else {
                             System.out.println(Table.taoBang(docGia));
                         }
-                    }
-                    else {
+                    } else {
                         System.out.println("Chọn chức năng không hợp lệ");
                     }
-                    break;
-                case 4:
-                    this.suaDocGia();
-                    break;
-                case 5:
-                    this.xoaDocGia();
-                    break;
-                case 6:
-                    break;
-                default:
-                    System.out.println("Chọn chức năng không hợp lệ, nhập lại: ");
+                }
+                case 4 -> this.suaDocGia();
+                case 5 -> this.xoaDocGia();
+                case 6 -> xuatFileBinary();
+                default -> System.out.println("Chọn chức năng không hợp lệ, nhập lại: ");
             }
         }while (chon != 6);
     }

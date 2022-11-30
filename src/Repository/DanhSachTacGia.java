@@ -2,9 +2,11 @@ package Repository;
 
 import Model.TacGia;
 import helper.Helper;
+import helper.Xuat.Table;
 
 import java.io.Serial;
 import java.io.Serializable;
+import java.util.ArrayList;
 
 
 public class DanhSachTacGia extends BaseDanhSach<TacGia>  {
@@ -121,7 +123,59 @@ public class DanhSachTacGia extends BaseDanhSach<TacGia>  {
         item.setId(idIdentity++);
         data.add(item);
     }
+    public void showMenuThuThu(){
+        System.out.println("1. Xuất danh sách tác giả ");
+        System.out.println("2. Tìm kiếm tác giả");        System.out.println("3. Thoats");
+        System.out.println("Nhap lua chon: ");
 
+    }
     public void thuThuLamViec() {
+        int luaChon;
+        do {
+            showMenuThuThu();
+            luaChon = Helper.nhapSoNguyen("Lua chon khong hop le, nhap lai: ");
+            switch (luaChon) {
+                case 1 -> xuatConsoleDangTable();
+                case 2 -> {
+                    System.out.println("Tìm theo tên hay id");
+                    System.out.println("1. Tìm theo tên");
+                    System.out.println("2. Tìm theo id");
+                    int luaChon2 = Helper.nhapSoNguyen("Lua chon khong hop le, nhap lai: ");
+                    TacGia tacGia = null;
+                    switch (luaChon2) {
+                        case 1 -> {
+                            System.out.println("Nhập tên tác giả cần tìm");
+                            String tenTacGia = Helper.scanner.nextLine();
+                             tacGia = getByName(tenTacGia);
+                            if (tacGia != null) {
+                                tacGia.xuat();
+                            } else {
+                                System.out.println("Không tìm thấy tác giả");
+                            }
+                        }
+                        case 2 -> {
+                            System.out.println("Nhập id tác giả cần tìm");
+                            int id = Helper.nhapSoNguyen("Id không hợp lệ, nhập lại: ");
+                             tacGia = getById(id);
+                            if (tacGia != null) {
+                                tacGia.xuat();
+                            } else {
+                                System.out.println("Không tìm thấy tác giả");
+                            }
+                        }
+                        default -> System.out.println("Lua chon khong hop le");
+                    }
+                    if (tacGia != null) {
+                        System.out.println("bạn có muốn xuất sách của tác giả này không y/n");
+                        char luaChon3 = Helper.scanner.nextLine().charAt(0) ;
+                        if (luaChon3 == 'y') {
+                            System.out.println(Table.taoBang(new ArrayList<>(tacGia.getSachs())));
+                        }
+                    }
+
+                }
+                default -> System.out.println("Lua chon khong hop le");
+            }
+        } while (luaChon != 3);
     }
 }

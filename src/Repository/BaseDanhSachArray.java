@@ -3,15 +3,13 @@ package Repository;
 
 import helper.Mang;
 import helper.Xuat.ITableRowData;
+import helper.Xuat.Table;
 
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
+import java.io.*;
 import java.util.ArrayList;
 
 
-public abstract class BaseDanhSachArray<T extends ITableRowData> implements IDanhSach<T> {
+public abstract class BaseDanhSachArray<T extends ITableRowData> implements IDanhSach<T>, Serializable {
     protected Mang<T> data = new Mang<>();
     public void copyFrom(BaseDanhSachArray<T> other){
         this.data = other.data;
@@ -26,7 +24,7 @@ public abstract class BaseDanhSachArray<T extends ITableRowData> implements IDan
             System.out.println("Danh sách trống");
             return;
         }
-        System.out.println(data);
+        System.out.println(Table.taoBang(data));
     }
 
     @Override

@@ -79,7 +79,8 @@ public class NhaXuatBan implements Serializable , ITableRowData {
     }
 
     public List<Sach> getSachDaXuatBan() {
-        return TongHopDuLieu.getKhoSach().getAll().stream().filter(s->s.getNhaXuatBanId()==this.id).toList();
+        var a = TongHopDuLieu.getKhoSach().getAll().stream().filter(s->s.getNhaXuatBanId()==this.id).toList();
+        return a;
     }
 
     public void nhap(){

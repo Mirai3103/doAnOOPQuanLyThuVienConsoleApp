@@ -29,6 +29,30 @@ public final class Helper {
         }
         return Integer.parseInt(number);
     }
+	public static LocalDate inputDate(){
+		String dateStr;
+		var isDateValid = false;
+		do {
+			System.out.print("Nhập ngày : ");
+			dateStr = Helper.scanner.nextLine();
+			isDateValid = Helper.checkNgayThang(dateStr);
+		}while (!isDateValid);
+		return LocalDate.parse(dateStr, DATE_FORMAT);
+	}
+
+	public static boolean checkEmail(String email){
+		return email.matches(EMAIL_PATTERN);
+	}
+	public static String inputEmail(String errorMgs){
+		String email = scanner.nextLine();
+		while (!checkEmail(email)){
+			System.out.println(errorMgs);
+			email = scanner.nextLine();
+		}
+		return email;
+	}
+
+
 	public static String dirPath = System.getProperty("user.dir")+"\\src\\data\\";
     // sau này cái sau này dùng xuất ra file excel đọc được ví dụ như để liệt kê các loại sách hay là lịch sử đọc của ai đó
     // dùng để đọc flie theo từng dòng thành String 
@@ -51,7 +75,7 @@ public final class Helper {
 //    	return listLine;
 //
 //    }
-    
+
     public static boolean checkNgayThang(String NgayThang){
 		Matcher matcher = Helper.DATE_PATTERN.matcher(NgayThang);
 		if(!matcher.find()) {

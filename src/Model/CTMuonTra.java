@@ -1,23 +1,46 @@
 package Model;
 import java.awt.print.Book;
+import java.io.Serial;
 import java.io.Serializable;
 import java.time.LocalDate;
 
+import Exceptions.SachDaMuonException;
+import Repository.DanhSachCTMuonTra;
 import Repository.TongHopDuLieu;
 import helper.Helper;
 import helper.Xuat.ITableRowData;
-public class CTMuonTra implements ITableRowData {
+public class CTMuonTra implements ITableRowData,Serializable	{
+
+		@Serial
+		private static final long serialVersionUID = 40367639L;
 	protected int IdPhieuMuon;
-    protected int IDsach;
+    protected int IDsach =-1;
     protected int datra = 0;
     protected LocalDate ngayhentra;
     protected LocalDate ngaytra = null;
-    protected String ghichu;
-    public CTMuonTra()
+    protected int loiPhatId = -1;
+
+	public void setNgaytra(LocalDate ngaytra) {
+		this.ngaytra = ngaytra;
+	}
+
+	public int getLoiPhatId() {
+		return loiPhatId;
+	}
+
+	public void setLoiPhatId(int loiPhatId) {
+		this.loiPhatId = loiPhatId;
+	}
+
+	public CTMuonTra()
     {
     	super();
     }
-
+	public int getTienPhat() {
+		if(loiPhatId == -1) return 0;
+		var tienPhat =  TongHopDuLieu.getDanhSachXuPhat().getById(loiPhatId).getTienPhat();
+		return tienPhat ==-1 ? getBook().getGiaSach() : tienPhat;
+	}
 	public int getIdPhieuMuon() {
 		return IdPhieuMuon;
 	}
@@ -29,11 +52,48 @@ public class CTMuonTra implements ITableRowData {
 	public void setIDsach(int IDsach) throws RuntimeException {
 	    var sach =	TongHopDuLieu.getKhoSach().getById(IDsach);
 		if (sach.checkDangMuon())
-			throw new RuntimeException("Sách đã được mượn");
+			throw new SachDaMuonException();
 		this.IDsach = IDsach;
 		sach.setTheTVNguoiMuonId(IdPhieuMuon);
 	}
+	public void showMenuSua() {
+		System.out.println("1. Sửa ngày hẹn trả");
+		System.out.println("2. trả sách");
+		System.out.println("3. Sửa lỗi phạt");
+		System.out.println("4. Xoá khỏi phiếu mượn");
+		System.out.println("4. Thoát");
+	}
+	public void suaCTMuonTra() {
+		int luaChon;
+		do {
+			showMenuSua();
+			luaChon = Helper.nhapSoNguyen("Lua chon khong hop le, nhap lai: ");
+			switch (luaChon) {
+				case 1 -> {
+					System.out.println("Nhập ngày hẹn trả mới");
+					ngayhentra = Helper.inputDate();
+				}
+				case 2 -> {
+					ngaytra = LocalDate.now();
+					datra = 1;
+					getBook().setTheTVNguoiMuonId(-1);
+					TongHopDuLieu.getKhoSach().xuatFileBinary();
+				}
+				case 3 -> {
+					TongHopDuLieu.getDanhSachXuPhat().xuatConsoleDangTable();
+					System.out.println("Nhập id lỗi phạt ");
+					loiPhatId = Helper.nhapSoNguyen("Id lỗi phạt không hợp lệ, nhập lại: ");
 
+				}
+				case 4 ->{
+					TongHopDuLieu.getDanhSachCTMuonTra().getAll().remove(this);
+					TongHopDuLieu.getDanhSachCTMuonTra().xuatFileBinary(DanhSachCTMuonTra.FILE_PATH);
+				}
+				case 5 -> System.out.println("Thoat");
+				default -> System.out.println("Lua chon khong hop le, nhap lai: ");
+			}
+		} while (luaChon != 5);
+	}
 	public LocalDate getNgayhentra() {
 		return ngayhentra;
 	}
@@ -45,40 +105,35 @@ public class CTMuonTra implements ITableRowData {
 	public LocalDate getNgaytra() {
 		return ngaytra;
 	}
+	public XuPhat getXuPhat() {
+		if(loiPhatId == -1)
+			return null;
+		return TongHopDuLieu.getDanhSachXuPhat().getById(loiPhatId);
+	}
 
 
 
 
-	public CTMuonTra(int IdPhieuMuon, int IDsach, int datra, LocalDate ngayhentra, LocalDate ngaytra, String ghichu)
+	public CTMuonTra(int IdPhieuMuon, int IDsach, int datra, LocalDate ngayhentra, LocalDate ngaytra, int xuPhat)
     {
     	this.IdPhieuMuon=IdPhieuMuon;
     	this.IDsach=IDsach;
     	this.datra=datra;
     	this.ngayhentra=ngayhentra;
     	this.ngaytra=null;
-    	this.ghichu=ghichu;
+    	this.loiPhatId = xuPhat;
     }
     public void nhapCTMuonTra()
     {
 
     	System.out.print("Nhập ngày hẹn trả(dd/MM/yyyy): ");
-		String dateStr = "";
-		do {
-			dateStr = Helper.scanner.nextLine();
-			if (Helper.checkNgayThang(dateStr)) {
-				break;
-			}
-			System.out.println("nhập lại:");
-		} while (true);
-		this.ngayhentra = Helper.parseDate(dateStr);
-		System.out.print("Nhập ghi chú: ");
-		this.ghichu=Helper.scanner.nextLine();
-
-
+		this.ngayhentra = Helper.inputDate();
+		System.out.print("Nhập id lỗi phạt: ");
+		this.loiPhatId = Helper.nhapSoNguyen("id phải là số nguyên");
     }
 	@Override
 	public String toString() {
-		return "CTMuonTra [IdPhieuMuon=" + IdPhieuMuon + ", IDsach=" + IDsach + ", datra=" + datra + ", ghichu=" + ghichu + ", ngaytra=" + ngaytra + "]";
+		return "CTMuonTra [IdPhieuMuon=" + IdPhieuMuon + ", IDsach=" + IDsach + ", datra=" + datra + ", ghichu=" + getXuPhat().getTenLoi()+ ", ngaytra=" + ngaytra + "]";
 	}
 
 	public int getIDsach() {
@@ -89,13 +144,6 @@ public class CTMuonTra implements ITableRowData {
 		this.IDsach = IDsach;
 	}
 
-	public String getGhichu() {
-		return ghichu;
-	}
-
-	public void setGhichu(String ghichu) {
-		this.ghichu = ghichu;
-	}
 
 	public int getDatra() {
 		return datra;
@@ -106,18 +154,22 @@ public class CTMuonTra implements ITableRowData {
 	}
 	@Override
 	public String[] getRowData() {
+		var phat = getXuPhat();
 	    return new String[]{
 	    		this.IdPhieuMuon +"",
-	    		this.IDsach+"", 
+	    		this.IDsach+"",
+				this.getBook().getTenSach(),
 	    		this.datra+"",
 	    		this.ngayhentra.format(Helper.DATE_FORMAT),
 	    		this.ngaytra == null ? "Chưa trả" : this.ngaytra.format(Helper.DATE_FORMAT),
-	    		this.ghichu
+				phat == null ?"":phat.getTenLoi(),
+				phat == null ?"":phat.getTienPhat() ==-1?getBook().getGiaSach()+"":phat.getTienPhat()+""
+
 	        };
 	    }
 	 @Override
 	 public String[] getHeader() {
-	     return new String[]{"IDmt","IDsach","Tình trạng", "Ngày hẹn trả","Ngày trả","Ghi chú"};
+	     return new String[]{"IDmt","IDsach","Tên sách","Tình trạng", "Ngày hẹn trả","Ngày trả","Ghi chú", "Tiền phạt"};
 	 }
 
 	public Sach getBook(){
