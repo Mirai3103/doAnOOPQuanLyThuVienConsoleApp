@@ -225,6 +225,10 @@ var dsXuPhat = TongHopDuLieu.getDanhSachXuPhat();
 
 
     }
+    
+    
+    
+    
     public static void initTacGiaData(){
         TongHopDuLieu.getDanhSachTacGia().add(new TacGia("Koume Fujichika","abc.com","Tac gia manga"));
         TongHopDuLieu.getDanhSachTacGia().add(new TacGia("Lê Anh Vinh","abc.com","Tac gia Viet Nam"));

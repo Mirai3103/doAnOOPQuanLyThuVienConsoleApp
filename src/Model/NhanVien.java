@@ -73,10 +73,9 @@ public abstract class NhanVien extends ConNguoi implements ITableRowData {
 		MK = Helper.scanner.nextLine();
 		System.out.println("Nhập mức lương");
 		Luong = Helper.nhapSoNguyen("phải là số nguyên!! yêu cầu nhập lại : ");
-		while (Luong <0){
+		while (Luong <0 ){
 			System.out.println("Lương không hợp lệ!, nhập lại");
 			Luong = Helper.nhapSoNguyen("phải là số nguyên!! yêu cầu nhập lại : ");
-
 		}
 	}
 	public void Nhap(String maNV) {

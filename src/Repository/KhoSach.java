@@ -100,17 +100,17 @@ public class KhoSach extends BaseDanhSach<Sach> {
     }
 
     public ArrayList<Sach> timTheoTen() {
-        System.out.println("Nhap ten sach can tim");
+        System.out.println("Nhập tên sách cần tìm");
         String name = Helper.scanner.nextLine();
         return getByName(name);
     }
 
     public ArrayList<Sach> timTheoTacGia() {
-        System.out.println("Nhap id tac gia can tim");
-        int id = Helper.nhapSoNguyen("Id khong hop le");
+        System.out.println("Nhap id tác giả cần tìm");
+        int id = Helper.nhapSoNguyen("Id không hợp lệ");
         TacGia tg = TongHopDuLieu.getDanhSachTacGia().getById(id);
         if (tg == null) {
-            System.out.println("Khong tim thay tac gia");
+            System.out.println("Không tìm thấy tác giả");
             return null;
         }
         return new ArrayList<>(timSachCuaTacGia(id));
@@ -119,7 +119,7 @@ public class KhoSach extends BaseDanhSach<Sach> {
     public void thuThuLamViec() {
         while (true) {
             showMenuThuThu();
-            int choice = Helper.nhapSoNguyen("Lua chon khong hop le");
+            int choice = Helper.nhapSoNguyen("Lựa chọn không hợp lệ");
             switch (choice) {
                 case 1 -> xuatConsoleDangTable();
                 case 2 -> System.out.println(Table.taoBang(timTheoTen()));
@@ -135,7 +135,7 @@ public class KhoSach extends BaseDanhSach<Sach> {
                     xuatFileBinary();
                     return;
                 }
-                default -> System.out.println("Lua chon khong hop le");
+                default -> System.out.println("Lựa chọn không hợp lệ");
             }
         }
     }
@@ -145,15 +145,15 @@ public class KhoSach extends BaseDanhSach<Sach> {
         Helper.clearScreen();
         do {
             showMenu();
-            chon = Helper.nhapSoNguyen("Chon khong hop le");
+            chon = Helper.nhapSoNguyen("Chọn không hợp lệ");
             switch (chon) {
                 case 1 -> themSach();
                 case 2 -> xoaSach();
                 case 3 -> suaSach();
                 case 4 -> xuatConsoleDangTable();
                 case 5 -> xuatFileBinary();
-                case 7 -> System.out.println("Thoat");
-                default -> System.out.println("Chon khong hop le");
+                case 7 -> System.out.println("Thoát");
+                default -> System.out.println("Chọn không hợp lệ");
             }
         } while (chon != 5);
     }
