@@ -66,12 +66,16 @@ public class NhanViens  extends BaseDanhSach<NhanVien>{
 	public void xuatToanBoNv(){
 		this.xuatToanBoNv(data);
 	}
-	public NhanVien getByName(String name) {
+	public Mang<NhanVien> getByName(String name) {
+		Mang<NhanVien> a = new Mang<NhanVien>();
 		for(NhanVien NV : data) {
-			if(NV.getHoTen().equalsIgnoreCase(name))
-				return NV;
+			if(NV.getHoTen().toUpperCase().contains(name.toUpperCase()))
+				a.add(NV);
 		}
-		return null;
+		if(a.size()!=0)
+			return a;
+		else 
+			return null;
 	}
 	public boolean checkId(String id) {
 		for(NhanVien NV : data) {
@@ -138,102 +142,39 @@ public class NhanViens  extends BaseDanhSach<NhanVien>{
 	}
 	
 	public void SuaNhanVien() {
-		Menu2();
-		System.out.println("Nhập phương thức sử dụng: ");
-		int chon = Helper.nhapSoNguyen("Lỗi!!!Nên nhập số nguyên: ");
-		switch (chon) {
-		case 1:
-			System.out.println("Nhập mã nhân viên cần sửa thông tin: ");
-			String MaNV = Helper.scanner.nextLine();
-			NhanVien NV = getByMaNV(MaNV);
-			if(NV != null) {
-				if(NV instanceof QuanLi QL) {
-					int flag1=1;
-		        	do {
-		    			flag1=1;
-		    			QL.Nhap();
-		    			if(data.stream().filter(s -> s.getMaNV()==QL.getMaNV()).findFirst().orElse(null)!=null) {
-		    				System.out.println("Mã nhân viên bị trùng lặp yêu cầu nhập lại mã nhân viên.");
-		    				flag1=0;
-		    			}
-		    			}while(flag1==0);
-				}else {
-					ThuThu TT = (ThuThu) NV;
-					int flag2=1;
-		        	do {
-		    			flag2=1;
-		    			TT.Nhap();
-		    			if(data.stream().filter(s -> s.getMaNV()==TT.getMaNV()).findFirst().orElse(null)!=null) {
-		    				System.out.println("Mã nhân viên bị trùng lặp yêu cầu nhập lại mã nhân viên.");
-		    				flag2=0;
-		    			}
-		    			}while(flag2==0);
-				}
-			}else
-				System.out.println("Nhân viên không tồn tại!!");
-			break;
-
-		default: 
-			System.out.println("Nhập Tên nhân viên cần sửa thông tin: ");
-			String name = Helper.scanner.nextLine();
-			NhanVien NV2 = getByName(name);
-			if(NV2 != null) {
-				if(NV2 instanceof QuanLi QL) { //https://codelearn.io/learning/lap-trinh-huong-doi-tuong-trong-java/11157048
-					int flag1=1;
-		        	do {
-		    			flag1=1;
-		    			QL.Nhap();
-		    			if(data.stream().filter(s -> s.getMaNV()==QL.getMaNV()).findFirst().orElse(null)!=null) {
-		    				System.out.println("Mã nhân viên bị trùng lặp yêu cầu nhập lại mã nhân viên.");
-		    				flag1=0;
-		    			}
-		    			}while(flag1==0);
-				}else {
-					ThuThu TT = (ThuThu) NV2;
-					int flag2=1;
-		        	do {
-		    			flag2=1;
-		    			TT.Nhap();
-		    			if(data.stream().filter(s -> s.getMaNV()==TT.getMaNV()).findFirst().orElse(null)!=null) {
-		    				System.out.println("Mã nhân viên bị trùng lặp yêu cầu nhập lại mã nhân viên.");
-		    				flag2=0;
-		    			}
-		    			}while(flag2==0);
-				}
-			}else
-				System.out.println("Nhân viên không tồn tại!!!");
-			break;
-			
+		System.out.println("Nhập mã nhân viên cần sửa thông tin");
+		String MaNV = Helper.scanner.nextLine();
+		if (checkId(MaNV)) {
+			NhanVien a = getByMaNV(MaNV);
+			if(a instanceof QuanLi) {
+				var k = new Mang<QuanLi>();
+				k.add((QuanLi)a);
+				System.out.println(Table.taoBang(k));
+				System.out.println();
+				((QuanLi) a).sua();
+			}
+			else {
+				var k = new Mang<ThuThu>();
+				k.add((ThuThu)a);
+				System.out.println(Table.taoBang(k));
+				((ThuThu) a).sua();
+			}
+		} else {
+			System.out.println("Nhân viên không tồn tại");
 		}
 	}
 	
 	public void XoaNhanVien() {
 
-		Menu2();
-		System.out.println("Nhập phương thức sử dụng: ");
-		int chon = Helper.nhapSoNguyen("Lỗi!!!Nên nhập số nguyên: ");
-		switch (chon) {
-		case 1:
-			System.out.println("Nhập mã nhân viên cần sửa thông tin: ");
+		
+			System.out.println("Nhập mã nhân viên cần xóa: ");
 			String MaNV = Helper.scanner.nextLine();
 			NhanVien NV = getByMaNV(MaNV);
 			if(NV != null) {
 				XoaNV(NV);
 			}else
 				System.out.println("Nhân viên không tồn tại!!");
-			break;
-
-		default: 
-			System.out.println("Nhập Tên nhân viên cần sửa thông tin: ");
-			String name = Helper.scanner.nextLine();
-			NhanVien NV2 = getByName(name);
-			if(NV2 != null) {
-				XoaNV(NV2);
-			}else
-				System.out.println("Nhân viên không tồn tại!!!");
-			break;
-			
-		}
+	
 	}
 	
 	public void ShowQL(QuanLi QL ) {
@@ -258,6 +199,52 @@ public class NhanViens  extends BaseDanhSach<NhanVien>{
 	    }
 	
 	//ghi file
+	public void TimKiemNV() {
+		Mang<QuanLi> QL = new Mang<QuanLi>();
+		Mang<ThuThu> TT = new Mang<ThuThu>();
+		Menu2();
+		System.out.println("Nhập phương thức cần chọn: ");
+		int q = Helper.nhapSoNguyen("yêu cầu nhập số 1 hoặc 2: ");
+		switch (q) {
+			case 1:{
+				System.out.println("Nhập mã nhân viên cần tìm kiếm thông tin: ");
+				String MaNV = Helper.scanner.nextLine();
+				if (checkId(MaNV)) {
+					NhanVien a = getByMaNV(MaNV);
+					if(a instanceof QuanLi) {
+						QL.add((QuanLi)a);
+					}
+					else {
+						TT.add((ThuThu)a);
+					}
+				} else {
+					System.out.println("Nhân viên không tồn tại");
+				}
+				break;
+			}
+			case 2:{
+				System.out.println("Nhập tên nhân viên muốn tìm thông tin: ");
+				String name = Helper.scanner.nextLine();
+				Mang<NhanVien> NV = getByName(name);
+				if(NV != null) {
+					
+					for(int i=0 ; i < NV.size();i++)
+						if(NV.get(i) instanceof QuanLi) {
+							QL.add((QuanLi)NV.get(i));
+						}else
+							TT.add((ThuThu) NV.get(i));
+				}
+					
+			}
+			default:
+				System.out.println("Tên nhân viên không tông tại");
+		}
+		System.out.println("Kết quả tìm kiếm: ");
+		System.out.println("Quản Lí: ");
+		System.out.println(Table.taoBang(QL));
+		System.out.println("Thủ thư: ");
+		System.out.println(Table.taoBang(TT));
+	}
 
 	
 	public void Menu1() {
@@ -269,8 +256,8 @@ public class NhanViens  extends BaseDanhSach<NhanVien>{
 		System.out.println("6.Thoát.");
 	}
 	public void Menu2() {
-		System.out.println("1.Với mã nhân viên.");
-		System.out.println("khác 1.với tên nhân viên( nhân viên đầu tiên có tên trong DS):");
+		System.out.println("1.Với mã nhân viên()tìm kiếm tuyệt đối).");
+		System.out.println("khác 1.với tên nhân viên( tìm kiếm tương đối):");
 	}
 	public void LamViec() {
 		int chon;
@@ -282,7 +269,6 @@ public class NhanViens  extends BaseDanhSach<NhanVien>{
 			case 1:
 				NhapNVM();
 				break;
-	//chưa xong
 			case 2:
 				SuaNhanVien();
 				break;
@@ -291,15 +277,7 @@ public class NhanViens  extends BaseDanhSach<NhanVien>{
 				break;
 	
 			case 4:
-				System.out.println("Nhập tên nhân viên cần tìm: "); // hoac id hay gi do
-				String name = Helper.scanner.nextLine();
-				NhanVien NV = getByName(name);
-				if(NV != null) {
-					System.out.println("Nhân viên có tên "+name+" là: ");
-					NV.Xuat();
-				}else
-					System.out.println("Nhân viên không tồn tại!!!");
-
+				TimKiemNV();
 				break;
 			case 5:
 				xuatToanBoNv();
