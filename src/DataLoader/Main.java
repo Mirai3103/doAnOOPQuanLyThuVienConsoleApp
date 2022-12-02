@@ -16,13 +16,16 @@ import java.util.Map;
 public class Main {
     public static void removeAllData(){
         File listFile = new File(Helper.dirPath);
+        if (!listFile.exists()) {
+            listFile.mkdir();
+        }
         String[]listFileName = listFile.list();
         for(String fname: listFileName){
             File currentFile = new File(listFile.getPath(),fname);
             currentFile.delete();
         }
     }
-//chạy để tạo dữ liệu mẫu
+    //chạy để tạo dữ liệu mẫu
     public static void main(String[] args) {
         removeAllData();
         initXuPhatData();
@@ -47,7 +50,7 @@ public class Main {
 
     }
     public static void initXuPhatData(){
-var dsXuPhat = TongHopDuLieu.getDanhSachXuPhat();
+        var dsXuPhat = TongHopDuLieu.getDanhSachXuPhat();
         var s1 = new XuPhat();
         s1.setTenLoi("Làm rách sách");
         s1.setTienPhat(15000);
@@ -225,10 +228,10 @@ var dsXuPhat = TongHopDuLieu.getDanhSachXuPhat();
 
 
     }
-    
-    
-    
-    
+
+
+
+
     public static void initTacGiaData(){
         TongHopDuLieu.getDanhSachTacGia().add(new TacGia("Koume Fujichika","abc.com","Tac gia manga"));
         TongHopDuLieu.getDanhSachTacGia().add(new TacGia("Lê Anh Vinh","abc.com","Tac gia Viet Nam"));
@@ -276,20 +279,20 @@ var dsXuPhat = TongHopDuLieu.getDanhSachXuPhat();
         sach.themTheLoai(TongHopDuLieu.getKhoTheLoai().getByName("Romance"));
         sach.themTheLoai(TongHopDuLieu.getKhoTheLoai().getByName("School life"));
 
-         sach = new Sach("CÔ BẠN TÔI THẦM THÍCH LẠI QUÊN MANG KÍNH RỒI - TẬP 1",146,"Vi",TongHopDuLieu.getDanhSachTacGia().getByName("Koume Fujichika"),TongHopDuLieu.getDanhSachNhaXuatBan().getByName("NXB Kim Đồng"), (short) 2021,"Mới cứng","Cô bạn bàn bên lại quên kính rồi Tap 1");
+        sach = new Sach("CÔ BẠN TÔI THẦM THÍCH LẠI QUÊN MANG KÍNH RỒI - TẬP 1",146,"Vi",TongHopDuLieu.getDanhSachTacGia().getByName("Koume Fujichika"),TongHopDuLieu.getDanhSachNhaXuatBan().getByName("NXB Kim Đồng"), (short) 2021,"Mới cứng","Cô bạn bàn bên lại quên kính rồi Tap 1");
         TongHopDuLieu.getKhoSach().add(sach);
         sach.themTheLoai(TongHopDuLieu.getKhoTheLoai().getByName("Truyện tranh"));
         sach.themTheLoai(TongHopDuLieu.getKhoTheLoai().getByName("Truyện dài"));
         sach.themTheLoai(TongHopDuLieu.getKhoTheLoai().getByName("Romance"));
         sach.themTheLoai(TongHopDuLieu.getKhoTheLoai().getByName("School life"));
         sach.setGiaSach(52000);
-         sach = new Sach("NHỮNG ĐỨA TRẺ HẠNH PHÚC - LÀ CHÍNH MÌNH",20,"Vi",TongHopDuLieu.getDanhSachTacGia().getByName("Lê Anh Vinh"),TongHopDuLieu.getDanhSachNhaXuatBan().getByName("NXB Kim Đồng"), (short) 2022,"Mới cứng","Tập BẠN NHỎ DÂN TỘC KINH");
+        sach = new Sach("NHỮNG ĐỨA TRẺ HẠNH PHÚC - LÀ CHÍNH MÌNH",20,"Vi",TongHopDuLieu.getDanhSachTacGia().getByName("Lê Anh Vinh"),TongHopDuLieu.getDanhSachNhaXuatBan().getByName("NXB Kim Đồng"), (short) 2022,"Mới cứng","Tập BẠN NHỎ DÂN TỘC KINH");
         TongHopDuLieu.getKhoSach().add(sach);
         sach.themTheLoai(TongHopDuLieu.getKhoTheLoai().getByName("Truyện tranh"));
         sach.themTheLoai(TongHopDuLieu.getKhoTheLoai().getByName("Trẻ em"));
         sach.themTheLoai(TongHopDuLieu.getKhoTheLoai().getByName("Giáo dục"));
         sach.setGiaSach(20000);
-            sach = new Sach("HỌC TOÁN CÙNG JENNY",32,"Vi",TongHopDuLieu.getDanhSachTacGia().getByName("Lê Anh Vinh"),TongHopDuLieu.getDanhSachNhaXuatBan().getByName("NXB Kim Đồng"), (short) 2021,"rách bìa trước  ","SÁCH DÀNH CHO HỌC SINH CHUẨN BỊ VÀO LỚP 1");
+        sach = new Sach("HỌC TOÁN CÙNG JENNY",32,"Vi",TongHopDuLieu.getDanhSachTacGia().getByName("Lê Anh Vinh"),TongHopDuLieu.getDanhSachNhaXuatBan().getByName("NXB Kim Đồng"), (short) 2021,"rách bìa trước  ","SÁCH DÀNH CHO HỌC SINH CHUẨN BỊ VÀO LỚP 1");
         TongHopDuLieu.getKhoSach().add(sach);
         sach.themTheLoai(TongHopDuLieu.getKhoTheLoai().getByName("Trẻ em"));
         sach.themTheLoai(TongHopDuLieu.getKhoTheLoai().getByName("Giáo dục"));

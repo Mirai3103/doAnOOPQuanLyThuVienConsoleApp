@@ -99,7 +99,8 @@ public class DocGias  extends BaseDanhSach<DocGia> {
                             System.out.println(Table.taoBang(docGias));
                         }
                     } else if (chon2 == 2) {
-                        int id = Helper.nhapSoNguyen("Nhập ID độc giả: ");
+                        System.out.println("Nhập ID độc giả cần tìm");
+                        int id = Helper.nhapSoNguyen("Id không hop  lệ,nhập lại: ");
                         var docGia = getById(id);
                         if (docGia == null) {
                             System.out.println("Không tìm thấy độc giả nào");

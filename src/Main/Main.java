@@ -7,7 +7,6 @@ import Model.QuanLi;
 import Repository.TongHopDuLieu;
 import helper.Helper;
 
-import java.time.LocalDate;
 
 public class Main {
     public static NhanVien nguoiDung = null;
@@ -32,17 +31,17 @@ public class Main {
         return true;
     }
     public static void main(String[] args) {
-    while (true){
-        while (!Login()){
+        while (true){
+            while (!Login()){
 
+            }
+            if(nguoiDung instanceof QuanLi){
+                QuanLyView.run();
+            }
+            else{
+                ThuThuView.run();
+            }
         }
-        if(nguoiDung instanceof QuanLi){
-            QuanLyView.run();
-        }
-        else{
-            ThuThuView.run();
-        }
-    }
     }
 
 

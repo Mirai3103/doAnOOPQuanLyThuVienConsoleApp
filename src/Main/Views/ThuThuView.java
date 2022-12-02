@@ -2,12 +2,8 @@ package Main.Views;
 
 
 import Main.Main;
-import Model.*;
+import Model.ThuThu;
 import Repository.TongHopDuLieu;
-import helper.Helper;
-import helper.Xuat.Table;
-
-import java.time.LocalDate;
 
 public class ThuThuView {
     private static void menu() {
@@ -23,8 +19,6 @@ public class ThuThuView {
 
         System.out.println("10. Thoát");
     }
-
-
 
 
     public static void run() {
@@ -47,9 +41,9 @@ public class ThuThuView {
                     System.out.println("Thông tin cá nhân");
                     nguoiDung.thongTinCaNhan();
                 }
-                  case 10 -> System.out.println("Thoát");
+                case 10 -> System.out.println("Thoát");
 
             }
-        } while (luaChon !=9);
+        } while (luaChon != 9);
     }
 }
