@@ -46,9 +46,9 @@ public class KhoSach extends BaseDanhSach<Sach> {
     public void themSach() {
         Sach sach = new Sach();
         sach.nhapSach();
-        System.out.println("Bạn nhập bao nhiêu cuốn này vào kho?");
         add(sach);
         sach.nhapTheLoaiChoSach();
+        System.out.println("Bạn nhập bao nhiêu cuốn này vào kho?");
         int soLuong = Helper.nhapSoTuNhien("Số lượng không hợp lệ, vui lòng nhập lại");
         for (int i =1; i < soLuong; i++) {
             Sach s = new Sach(sach);

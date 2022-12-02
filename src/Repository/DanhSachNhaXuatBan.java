@@ -18,7 +18,7 @@ public class DanhSachNhaXuatBan extends BaseDanhSach<NhaXuatBan>  {
     public void themNhaXuatBan(){
         NhaXuatBan nhaXuatBan = new NhaXuatBan();
         nhaXuatBan.nhap();
-       this.add(nhaXuatBan);
+        this.add(nhaXuatBan);
     }
 
 
@@ -90,7 +90,7 @@ public class DanhSachNhaXuatBan extends BaseDanhSach<NhaXuatBan>  {
 
     @Override
     public void copyFrom(IDanhSach<NhaXuatBan> other) {
-DanhSachNhaXuatBan danhSachNhaXuatBan = (DanhSachNhaXuatBan) other;
+        DanhSachNhaXuatBan danhSachNhaXuatBan = (DanhSachNhaXuatBan) other;
         this.data = danhSachNhaXuatBan.data;this.idIdentity = danhSachNhaXuatBan.idIdentity;
     }
 
@@ -123,7 +123,7 @@ DanhSachNhaXuatBan danhSachNhaXuatBan = (DanhSachNhaXuatBan) other;
                         case 1 -> {
                             System.out.println("Nhập tên nhà xuất bản cần tìm");
                             String tenNXB = Helper.scanner.nextLine();
-                             nhaXuatBan = getByName(tenNXB);
+                            nhaXuatBan = getByName(tenNXB);
                             if (nhaXuatBan != null) {
                                 System.out.println(nhaXuatBan);
                             } else {
@@ -133,7 +133,7 @@ DanhSachNhaXuatBan danhSachNhaXuatBan = (DanhSachNhaXuatBan) other;
                         case 2 -> {
                             System.out.println("Nhập id nhà xuất bản cần tìm");
                             int id = Helper.nhapSoNguyen("Không hợp lệ, nhập lại:");
-                             nhaXuatBan = getById(id);
+                            nhaXuatBan = getById(id);
                             if (nhaXuatBan != null) {
                                 System.out.println(nhaXuatBan);
                             } else {

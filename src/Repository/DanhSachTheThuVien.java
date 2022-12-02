@@ -17,7 +17,7 @@ public class DanhSachTheThuVien extends BaseDanhSachArray<TheThuVien>{
 
     @Override
     public void copyFrom(IDanhSach<TheThuVien> other) {
-var otherTheThuViens = (DanhSachTheThuVien) other;
+        var otherTheThuViens = (DanhSachTheThuVien) other;
         this.idIdentity = otherTheThuViens.idIdentity;
         this.data = otherTheThuViens.data;
     }

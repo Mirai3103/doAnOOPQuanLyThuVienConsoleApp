@@ -3,6 +3,7 @@ package Repository;
 
 import Model.XuPhat;
 import helper.Helper;
+import helper.Xuat.Table;
 
 import java.io.Serial;
 
@@ -49,6 +50,7 @@ public class DanhSachXuPhat extends BaseDanhSachArray<XuPhat> {
         this.xuatConsoleDangTable();
     }
     public void sua(){
+        xuatConsoleDangTable();
         System.out.println("Nhập id lỗi phạt cần sửa");
         int id = Helper.nhapSoNguyen("id lỗi phạt không hợp lệ!, nhập lại: ");
         var item = getById(id);
@@ -56,6 +58,7 @@ public class DanhSachXuPhat extends BaseDanhSachArray<XuPhat> {
             System.out.println("Không tìm thấy lỗi phạt");
             return;
         }
+        System.out.println(Table.taoBang(item));
         item.nhapXuPhat();
     }
     public void xoa() {
@@ -68,7 +71,7 @@ public class DanhSachXuPhat extends BaseDanhSachArray<XuPhat> {
         }
         data.remove(item);
     }
-     public  void lamViec(){
+    public  void lamViec(){
         char c = ' ';
         do {
             showMenu();

@@ -44,6 +44,6 @@ public class ThuThuView {
                 case 10 -> System.out.println("Thoát");
 
             }
-        } while (luaChon != 9);
+        } while (luaChon != 10);
     }
 }
