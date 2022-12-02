@@ -1,10 +1,8 @@
 package Main.Views;
 
 
-import Model.CTMuonTra;
-import Model.DocGia;
-import Model.MuonTra;
-import Model.TheThuVien;
+import Main.Main;
+import Model.*;
 import Repository.TongHopDuLieu;
 import helper.Helper;
 import helper.Xuat.Table;
@@ -43,8 +41,12 @@ public class ThuThuView {
                 case 5 -> TongHopDuLieu.getDanhSachDocGia().lamViec();
                 case 6 -> TongHopDuLieu.getDanhSachPhieuMuonTra().thuThuLamViec();
                 case 7 -> TongHopDuLieu.getDanhSachTheThuVien().lamViec();
-                case 8 -> System.out.println("Chức năng chưa được cập nhật");
-                case 9 -> System.out.println("Chức năng chưa được cập nhật");
+                case 8 -> TongHopDuLieu.getDanhSachXuPhat().lamViec();
+                case 9 -> {
+                    ThuThu nguoiDung = (ThuThu) Main.nguoiDung;
+                    System.out.println("Thông tin cá nhân");
+                    nguoiDung.thongTinCaNhan();
+                }
                   case 10 -> System.out.println("Thoát");
 
             }

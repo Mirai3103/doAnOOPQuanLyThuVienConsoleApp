@@ -15,6 +15,7 @@ public class KhoTheLoai extends BaseDanhSach<TheLoai> {
     private int idIdentity = 0;
 
     //toDo: crud
+
     public void showMenu() {
         System.out.println("Tương tác với thể loại");
         System.out.println("1. Them the loai");
@@ -40,15 +41,9 @@ public class KhoTheLoai extends BaseDanhSach<TheLoai> {
             showMenuThuThu();
             luaChon = Helper.nhapSoNguyen("Lua chon khong hop le, nhap lai: ");
             switch (luaChon) {
-                case 1:
-                    timKiemTheLoai();
-                    break;
-                case 2:
-                    xuatConsoleDangTable();
-                    break;
-                case 3:
-                    System.out.println("Thoat");
-                    break;
+                case 1 -> timKiemTheLoai();
+                case 2 -> xuatConsoleDangTable();
+                case 3 -> System.out.println("Thoat");
             }
         } while (luaChon != 3);
     }
@@ -59,15 +54,15 @@ public class KhoTheLoai extends BaseDanhSach<TheLoai> {
         System.out.println("2. Tìm theo id");
         int luaChon = Helper.nhapSoNguyen("Lua chon khong hop le, nhap lai: ");
         switch (luaChon) {
-            case 1:
+            case 1 -> {
                 System.out.println("Nhập tên: ");
                 String ten = Helper.scanner.nextLine();
                 ArrayList<TheLoai> theLoaiArrayList = this.getAllByName(ten);
                 if (theLoaiArrayList.size() == 0) {
                     System.out.println("Không tìm thấy");
                 }
-                break;
-            case 2:
+            }
+            case 2 -> {
                 System.out.println("Nhập id: ");
                 int id = Helper.nhapSoNguyen("Id không hợp lệ, nhập lại: ");
                 TheLoai theLoai = this.getById(id);
@@ -80,16 +75,13 @@ public class KhoTheLoai extends BaseDanhSach<TheLoai> {
                     if (luaChon2 == 'y') {
                         var khoSach = theLoai.getSachs();
                         System.out.println(Table.taoBang(khoSach));
-                    }
-                    else{
+                    } else {
                         System.out.println("bye");
                     }
 
                 }
-                break;
-            default:
-                System.out.println("Lua chon khong hop le: ");
-                break;
+            }
+            default -> System.out.println("Lua chon khong hop le: ");
         }
     }
 
@@ -101,6 +93,7 @@ public class KhoTheLoai extends BaseDanhSach<TheLoai> {
         return theLoai.getId();
     }
 
+
     public TheLoai getByName(String name) {
         return this.data.stream().filter(s -> s.getTenTheLoai().toLowerCase().contains(name.toLowerCase())).findFirst().orElse(null);
     }
@@ -110,6 +103,11 @@ public class KhoTheLoai extends BaseDanhSach<TheLoai> {
     }
 
     public void add(TheLoai theLoai) {
+        var exist = getByName(theLoai.getTenTheLoai());
+        if (exist != null) {
+            theLoai.setId(exist.getId());
+            return;
+        }
         theLoai.setId(idIdentity++);
         data.add(theLoai);
     }
@@ -124,12 +122,26 @@ public class KhoTheLoai extends BaseDanhSach<TheLoai> {
             switch (luaChon) {
                 case 1 -> themVaNhapTheLoai();
                 case 2 -> {
-                    System.out.println("Nhap id the loai can sua");
-                    update(new java.util.Scanner(System.in).nextInt());
+                    xuatConsoleDangTable();
+                    System.out.println("Nhap id thể loại muốn sửa: ");
+                    int id = Helper.nhapSoNguyen("Id không hợp lệ, nhập lại: ");
+                    TheLoai theLoai = this.getById(id);
+                    if (theLoai == null) {
+                        System.out.println("Không tìm thấy");
+                    } else {
+                        theLoai.sua();
+                    }
+
                 }
                 case 3 -> {
-                    System.out.println("Nhap id the loai can xoa");
-                    delete(new java.util.Scanner(System.in).nextInt());
+                    System.out.println("Nhap id thể loại muốn xóa: ");
+                    int id = Helper.nhapSoNguyen("Id không hợp lệ, nhập lại: ");
+                    TheLoai theLoai = this.getById(id);
+                    if (theLoai == null) {
+                        System.out.println("Không tìm thấy");
+                    } else {
+                        this.data.remove(theLoai);
+                    }
                 }
                 case 4 -> xuatConsoleDangTable();
                 case 5 -> System.out.println("Thoat");

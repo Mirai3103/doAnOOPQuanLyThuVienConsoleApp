@@ -38,10 +38,53 @@ public final class Helper {
 		}
 		return Integer.parseInt(number);
 	}
+	public static String nhapEmail(){
+		System.out.println("Nhập email: ");
+		String email = scanner.nextLine();
+		while (!email.matches(EMAIL_PATTERN)){
+			System.out.println("Email không hợp lệ. Vui lòng nhập lại: ");
+			email = scanner.nextLine();
+		}
+		return email;
+	}
 	public static String nhapTen(){
 		String number = scanner.nextLine();
 		while (Arrays.stream(number.split("")).map(t->t.charAt(0) >='0' && t.charAt(0)<='9').toList().size() !=0){
 			System.out.println("Tên khônng hopwj lệ! , nhập lại: ");
+			number = scanner.nextLine();
+		}
+		return number;
+	}
+	public static boolean checkSdt(String SDT) {
+		if (SDT.matches("^[\\d]{10,11}$")) {
+			return true;
+		} else {
+			System.out.println("Số điện thoại không hop lệ! ");
+			return false;
+		}
+	}
+	public static String nhapSdt(){
+		System.out.println("Nhập số điện thoại: ");
+		String number = scanner.nextLine();
+		while (!checkSdt(number)){
+			System.out.println("nhập lại: ");
+			number = scanner.nextLine();
+		}
+		return number;
+	}
+	public static boolean checkCMND(String CMND) {
+		if (CMND.matches("([\\d]{9})$")) {
+			return true;
+		} else {
+			System.out.println("Số CMND/CCCD không hop lệ! ");
+			return false;
+		}
+	}
+	public static String nhapCMND(){
+		System.out.println("Nhập CMND/CCCD: ");
+		String number = scanner.nextLine();
+		while (!checkCMND(number)){
+			System.out.println("nhập lại: ");
 			number = scanner.nextLine();
 		}
 		return number;

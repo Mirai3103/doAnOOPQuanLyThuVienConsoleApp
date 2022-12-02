@@ -13,7 +13,6 @@ public class QuanLyView {
         System.out.println("7. Quản lí phiếu mượn");
         System.out.println("8. Quản lí lỗi phạt");
         System.out.println("9. Thoát");
-        //toDo: thêm các chức năng khác
     }
     public static void run(){
         int luaChon;

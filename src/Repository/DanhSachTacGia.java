@@ -91,7 +91,7 @@ public class DanhSachTacGia extends BaseDanhSach<TacGia>  {
     public void update(int id) {
         TacGia tacGia = getById(id);
         if(tacGia != null){
-            tacGia.nhap();
+            tacGia.sua();
         }else {
             System.out.println("Khong tim thay tac gia");
         }

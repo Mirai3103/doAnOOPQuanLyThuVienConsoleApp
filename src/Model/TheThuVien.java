@@ -53,6 +53,7 @@ public class TheThuVien implements Serializable, ITableRowData{
 	public void setIDuser(int IDuser)
 	{
 		this.IDuser=IDuser;
+		TongHopDuLieu.getDanhSachDocGia().getById(IDuser).setIDthe(IDthe);
 	}
 	public LocalDate getNgayHetHan()
 	{

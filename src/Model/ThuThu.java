@@ -2,16 +2,14 @@ package Model;
 
 
 import helper.Helper;
-import Repository.KhoSach;
 import helper.Xuat.Table;
 
 import java.io.Serial;
-import java.lang.reflect.Array;
 
-public class ThuThu extends NhanVien{
+public class ThuThu extends NhanVien {
     @Serial
     private static final long serialVersionUID = 321299L;
-    private String NoiLamViec,NgayNhanChuc,NgayLamViec;
+    private String NoiLamViec, NgayNhanChuc, NgayLamViec;
     private int NamKinhNghiem;
     private boolean Truong;
 
@@ -24,9 +22,8 @@ public class ThuThu extends NhanVien{
     }
 
 
-
-    public ThuThu(String hoTen, String ngaySinh, String sDT, String cMND, DiaChi dC,String maNV, String chucVu, String mK, int luong,String noiLamViec, String ngayNhanChuc, String ngayLamViec, int namKinhNghiem, boolean truong) {
-        super(hoTen,ngaySinh,sDT,cMND,dC,maNV,chucVu,mK,luong);
+    public ThuThu(String hoTen, String ngaySinh, String sDT, String cMND, DiaChi dC, String maNV, String chucVu, String mK, int luong, String noiLamViec, String ngayNhanChuc, String ngayLamViec, int namKinhNghiem, boolean truong) {
+        super(hoTen, ngaySinh, sDT, cMND, dC, maNV, chucVu, mK, luong);
         NoiLamViec = noiLamViec;
         NgayNhanChuc = ngayNhanChuc;
         NgayLamViec = ngayLamViec;
@@ -79,34 +76,37 @@ public class ThuThu extends NhanVien{
     public void Nhap() {
         super.Nhap();
         System.out.println("Nhập nơi làm việc: ");
-        NoiLamViec=Helper.scanner.nextLine();
+        NoiLamViec = Helper.scanner.nextLine();
         do {
             System.out.println("Nhập ngày nhận chức: ");
             NgayNhanChuc = Helper.scanner.nextLine();
-        }while (!Helper.checkNgayThang(NgayNhanChuc));
+        } while (!Helper.checkNgayThang(NgayNhanChuc));
         do {
             System.out.println("Nhập ngày làm việc: ");
             NgayLamViec = Helper.scanner.nextLine();
-        }while (!Helper.checkNgayThang(NgayLamViec));
+        } while (!Helper.checkNgayThang(NgayLamViec));
         System.out.println("Nhập năm kinh nghiệm: ");
-        NamKinhNghiem= Helper.nhapSoNguyen("Phải là số nguyên!! yêu cầu nhập lại: ");
+        NamKinhNghiem = Helper.nhapSoNguyen("Phải là số nguyên!! yêu cầu nhập lại: ");
         System.out.println("Nhấn y nếu đó là trưởng (y/n): ");
-        Truong=Helper.scanner.nextLine().toLowerCase().charAt(0) == 'y';
+        Truong = Helper.scanner.nextLine().toLowerCase().charAt(0) == 'y';
     }
+
 
     public void Xuat() {
 
         super.Xuat();
-        System.out.printf("Nhập nga lam: " + NoiLamViec);
-        System.out.printf("NgÃ y nháº­n chá»©c: " + NgayNhanChuc);
-        System.out.printf("NgÃ y lÃ m viá»‡c: " + NgayLamViec);
-        System.out.printf("NÄƒm kinh nghiá»‡m: " + NamKinhNghiem);
-        System.out.printf("TrÆ°á»Ÿng phÃ²ng: " + Truong);
+        System.out.printf("Nơi làm việc: %s\n", NoiLamViec);
+        System.out.printf("Ngày nhận chức: %s\n", NgayNhanChuc);
+        System.out.printf("Ngày làm việc: %s\n", NgayLamViec);
+        System.out.printf("Năm kinh nghiệm: %d\n", NamKinhNghiem);
+        if(Truong) System.out.println("Trưởng phòng");
     }
-    public void xuatDangBang(){
-        System.out.println(Table.taoBang(this));;
+
+    public void xuatDangBang() {
+        System.out.println(Table.taoBang(this));
+        ;
     }
-    
+
 
     @Override
     public String[] getRowData() {
@@ -119,7 +119,7 @@ public class ThuThu extends NhanVien{
         newRowData[i++] = NgayNhanChuc;
         newRowData[i++] = NgayLamViec;
         newRowData[i++] = String.valueOf(NamKinhNghiem);
-        newRowData[i] = Truong? "Trưởng phòng" : "";
+        newRowData[i] = Truong ? "Trưởng phòng" : "";
         return newRowData;
     }
 
@@ -135,139 +135,116 @@ public class ThuThu extends NhanVien{
         newHeader[i++] = "Năm kinh nghiệm";
         newHeader[i] = "Trưởng phòng";
         return newHeader;
-}
+    }
+
+    @Override
+    public void menuSua() {
+
+        System.out.println("1. Sửa họ tên");
+        System.out.println("2. Sửa ngày sinh");
+        System.out.println("3. Sửa số điện thoại");
+        System.out.println("4. Sửa CMND");
+        System.out.println("5. Sửa địa chỉ");
+        System.out.println("6. Sửa mật khẩu");
+        System.out.println("7. Sửa lương");
+        System.out.println("8. Sửa nơi làm việc");
+        System.out.println("9. Sửa ngày nhận chức");
+        System.out.println("10. Sửa ngày làm việc");
+        System.out.println("11. Sửa năm kinh nghiệm");
+        System.out.println("12. Sửa trưởng phòng");
+        System.out.println("13. Thoát");
+    }
+    public void thongTinCaNhan(){
+        Xuat();
+        System.out.println("Bạn có muốn sửa thông tin cá nhân không? (y/n)");
+        if(Helper.scanner.nextLine().charAt(0)=='y'){
+            sua();
+        }else {
+            System.out.println("bye");
+        }
+    }
     public void sua() {
-    	int j = 0;
-    	for(var i : getHeader()) {
-    		if(!(i.equalsIgnoreCase("Mã nhân viên")||i.equalsIgnoreCase("Chức vụ"))) {
-    		j++;
-    		System.out.printf(j + ". " + i +"\n");
-    		}
-    	}
-    	System.out.println("3. Thoát");
-    	System.out.println("Nhập thuộc tính cần sửa");
-    	int a = Helper.nhapSoNguyen("yêu cầu nhập số nguyên");
-    	switch (a) {
-		case 1: {
-			String HoTen;
-			System.out.println("Sửa Họ Tên: ");
-			HoTen = Helper.scanner.nextLine();
-			setHoTen(HoTen);	
-			break;
-		}
-		case 2: {
-			String NgaySinh;
-			System.out.println("Sửa ngay sinh: ");
-			do {
-				System.out.println("Nhập ngày sinh:");
-				NgaySinh = Helper.scanner.nextLine();
-				if(NgaySinh.equalsIgnoreCase("null")){
-					NgaySinh = "";
-					break;
-				}
-			}while (!Helper.checkNgayThang(NgaySinh));
+        int choose;
+        do {
+            menuSua();
+            System.out.println("Nhập lựa chọn: ");
+            choose = Helper.nhapSoNguyen("Lựa chọn không hop lệ !! yêu cầu nhập lại: ");
+            switch (choose) {
+                case 1 -> {
+                    String HoTen;
+                    System.out.println("Sửa Họ Tên: ");
+                    HoTen = Helper.scanner.nextLine();
+                    setHoTen(HoTen);
+                }
+                case 2 -> {
+                    System.out.println("Sửa ngay sinh: ");
+                    setNgaySinh(Helper.inputDate().format(Helper.DATE_FORMAT));
+                }
+                case 3 -> {
+                    System.out.println("Sửa số điện thoại: ");
+                    setSDT(Helper.nhapSdt());
+                }
+                case 4 -> {
+                    System.out.println("Sửa CMND: ");
+                    setCMND(Helper.nhapCMND());
+                }
+                case 5 -> {
+                    DiaChi k = new DiaChi();
+                    System.out.println("Sửa địa chỉ: ");
+                    k.Nhap();
+                    setDC(k);
+                }
+                case 6 -> {
+                    String MK;
+                    System.out.println("Sửa Mật khẩu: ");
+                    System.out.println("Nhập mật khẩu mới: ");
+                    MK = Helper.scanner.nextLine();
+                    setMK(MK);
+                }
+                case 7 -> {
+                    int Luong;
+                    System.out.println("Sửa lương: ");
+                    System.out.println("Nhập lương: ");
+                    Luong = Helper.nhapSoTuNhien("Phải là số nguyên >=0!! yêu cầu nhập lại: ");
+                    setLuong(Luong);
+                }
+                case 8 -> {
+                    System.out.println("Nhập nơi làm việc: ");
+                    NoiLamViec = Helper.scanner.nextLine();
+                }
+                case 9 -> {
+                    System.out.println("Sửa ngày nhận chức: ");
+                    System.out.println("Nhập ngày nhận chức: ");
+                    setNgayNhanChuc(Helper.inputDate().format(Helper.DATE_FORMAT));
+                }
+                case 10 -> {
+                    System.out.println("Sửa ngày làm việc: ");
+                    System.out.println("Nhập ngày làm việc: ");
+                    setNgayLamViec(Helper.inputDate().format(Helper.DATE_FORMAT));
+                }
+                case 11 -> {
+                    System.out.println("Sửa năm kinh nghiệm: ");
+                    NamKinhNghiem = Helper.nhapSoNguyen("Phải là số nguyên >=0!! yêu cầu nhập lại: ");
+                }
+                case 12 -> {
+                    System.out.println("Trưởng phòng: ");
+                    System.out.println("Nhấn y nếu đó là trưởng (y/n): ");
+                    Truong = Helper.scanner.nextLine().toLowerCase().charAt(0) == 'y';
+                }
+                case 13 -> {
+                    System.out.println("Thoát sửa!");
+                }
+                default -> {
+                    System.out.println("đối số truyền vào không đúng");
+                    ;
+                }
+            }
+        } while (choose != 13);
 
-			setNgaySinh(NgaySinh);	
-			break;
-		}
-		case 3: {
-			String SDT;
-			System.out.println("Sửa SDT: ");
-			do {
-				System.out.println("Nhập số điện thoại:");
-				SDT = Helper.scanner.nextLine();
-				if(SDT.equalsIgnoreCase("null")){
-					SDT = "";
-					break;
-				}
-			}while (!checkSdt(SDT));
-			setSDT(SDT);
-			break;
-		}
-		case 4: {
-			String CMND;
-			System.out.println("Sửa CMND: ");
-			do {
-				System.out.println("Nhập số CMND/CCCD:");
-				CMND = Helper.scanner.nextLine();
-				if(CMND.equalsIgnoreCase("null")){
-					CMND = "";
-					break;
-				}
-			}while (!checkCMND(CMND));
+    }
 
-			setCMND(CMND);	
-			break;
-		}
-		case 5: {
-			DiaChi k = new DiaChi();
-			System.out.println("Sửa địa chỉ: ");
-			k.Nhap();
-			setDC(k);
-			break;
-		}
-		case 6: {
-			String MK;
-			System.out.println("Sửa Mật khẩu: ");
-			MK = Helper.scanner.nextLine();
-			setMK(MK);
-			break;
-		}
-		case 7: {
-			int Luong;
-			System.out.println("Sửa lương: ");
-			Luong = Helper.nhapSoNguyen("phải là số nguyên!! yêu cầu nhập lại : ");
-			while (Luong <0){
-				System.out.println("Lương không hợp lệ!, nhập lại");
-				Luong = Helper.nhapSoNguyen("phải là số nguyên dương!! yêu cầu nhập lại : ");
-			}
-			setLuong(Luong);
-			break;
-		}
-		case 8:{
-			System.out.println("Nhập nơi làm việc: ");
-	        NoiLamViec=Helper.scanner.nextLine();
-	        break;
-		}
-		case 9: {
-			String NC = new String();
-			System.out.println("Sửa ngày nhận chức: ");
-			do {
-	            System.out.println("Nhập ngày nhận chức : ");
-	            NgayNhanChuc = Helper.scanner.nextLine();
-	        }while (!Helper.checkNgayThang(NgayNhanChuc));
-			setNgayNhanChuc(NC);
-			break;
-		}
-		case 10:{
-			 do {
-		            System.out.println("Sửa ngày làm việc: ");
-		            NgayLamViec = Helper.scanner.nextLine();
-		        }while (!Helper.checkNgayThang(NgayLamViec));
-			 break;
-		}
-		case 11:{
-			do {
-			System.out.println("Năm kinh nghiệm: ");
-			NamKinhNghiem=Helper.nhapSoNguyen("Phải là số nguyên!!! Yêu cầu nhập lại: ");
-			} while(NamKinhNghiem<0);
-			break;
-		}
-		case 12 : {
-			System.out.println("Trưởng phòng: ");
-			System.out.println("Nhấn y nếu đó là trưởng (y/n): ");
-	        Truong=Helper.scanner.nextLine().toLowerCase().charAt(0) == 'y';
-	        break;
-		}
-		case 13: {
-			break;
-		}
-		
-		default:
-			System.out.println("đối số truyền vào không đúng");;
-		}}
     public static void main(String[] a) {
-    	ThuThu k = new ThuThu();
-    	k.sua();
+        ThuThu k = new ThuThu();
+        k.sua();
     }
 }

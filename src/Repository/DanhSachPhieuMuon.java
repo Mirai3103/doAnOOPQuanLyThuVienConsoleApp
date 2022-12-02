@@ -194,6 +194,8 @@ public class DanhSachPhieuMuon extends BaseDanhSach<MuonTra> {
         if (muonTra == null) {
             System.out.println("Không tìm thấy phiếu mượn");
             return;
+        }else {
+            muonTra.suaPhieuMuon();
         }
 
     }
@@ -220,6 +222,9 @@ public class DanhSachPhieuMuon extends BaseDanhSach<MuonTra> {
                     } else {
                         System.out.println("Bye");
                     }
+                }
+                case 3-> {
+                    suaPhieuMuon();
                 }
                 case 4 -> {
                     TongHopDuLieu.getDanhSachPhieuMuonTra().getAll().forEach(e -> {

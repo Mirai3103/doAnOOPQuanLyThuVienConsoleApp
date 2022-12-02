@@ -81,8 +81,10 @@ public class DanhSachNhaXuatBan extends BaseDanhSach<NhaXuatBan>  {
     }
     public void update(int id) {
         NhaXuatBan nhaXuatBan = getById(id);
-        if(nhaXuatBan != null){
-            nhaXuatBan.nhap();
+        if(nhaXuatBan != null) {
+            nhaXuatBan.sua();
+        }else {
+            System.out.println("Không tìm thấy nhà xuất bản");
         }
     }
 

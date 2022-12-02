@@ -61,7 +61,7 @@ public class DocGias  extends BaseDanhSach<DocGia> {
             System.out.println("Không tìm thấy độc giả");
             return;
         }
-        docGia.nhapDocGia();
+        docGia.sua();
 
     }
     public void xoaDocGia(){

@@ -33,7 +33,7 @@ public class KhoSach extends BaseDanhSach<Sach> {
 
         Sach sach = getById(id);
         if (sach != null) {
-            sach.nhapSach();
+            sach.sua();
         }
     }
 
@@ -42,15 +42,20 @@ public class KhoSach extends BaseDanhSach<Sach> {
         return new ArrayList<>(data.stream().filter(s -> s.getTenSach().toLowerCase().contains(name.toLowerCase())).toList());
     }
 
-    // doi them class DocGia
-//    public List<Sach> timCacSachCoTaiThuVien(){
-//        return data.stream().filter(s ->s.get).toList();
-//    }
+
     public void themSach() {
         Sach sach = new Sach();
         sach.nhapSach();
-        data.add(sach);
+        System.out.println("Bạn nhập bao nhiêu cuốn này vào kho?");
+        add(sach);
         sach.nhapTheLoaiChoSach();
+        int soLuong = Helper.nhapSoTuNhien("Số lượng không hợp lệ, vui lòng nhập lại");
+        for (int i =1; i < soLuong; i++) {
+            Sach s = new Sach(sach);
+            add(s);
+            s.copyTheLoai(sach);
+        }
+
 
     }
 
@@ -63,6 +68,7 @@ public class KhoSach extends BaseDanhSach<Sach> {
     }
 
     public void xoaSach() {
+        xuatConsoleDangTable();
         System.out.println("Nhap id sach can xoa");
         int id = Helper.nhapSoNguyen("Id khong hop le");
         delete(id);
@@ -79,7 +85,7 @@ public class KhoSach extends BaseDanhSach<Sach> {
         System.out.println("2. Xoa sach");
         System.out.println("3. Sua sach");
         System.out.println("4. Xuat sach");
-        System.out.println("6. Lưu vào file");
+        System.out.println("5. Lưu vào file");
         System.out.println("7. Thoat");
     }
     public ArrayList<Sach> laySachDangMuon(){
