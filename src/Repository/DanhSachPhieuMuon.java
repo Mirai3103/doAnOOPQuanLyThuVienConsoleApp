@@ -31,13 +31,31 @@ public class DanhSachPhieuMuon extends BaseDanhSach<MuonTra> {
         data.add(item);
     }
 
+    public ArrayList<MuonTra> getByTheThuVienId(int idThe) {
+        ArrayList<MuonTra> result = new ArrayList<>();
+        for (MuonTra item : data) {
+            if (item.getIDthe() == idThe) {
+                result.add(item);
+            }
+        }
+        return result;
+    }
+
     public MuonTra getById(int id) {
         return data.stream().filter(s -> s.getIDmt() == id).findFirst().orElse(null);
     }
 
     public void muonSach() {
+
         MuonTra muonTra = new MuonTra();
-        muonTra.nhapPhieuMuonTra();
+
+        try {
+
+            muonTra.nhapPhieuMuonTra();
+        } catch (Exception e) {
+            System.err.println(e.getMessage());
+            return;
+        }
         muonTra.setIDnv(Main.Main.nguoiDung.getMaNV());
         System.out.println("Bạn muốn mượn bao nhiêu cuôn sách");
         this.add(muonTra);
@@ -88,20 +106,23 @@ public class DanhSachPhieuMuon extends BaseDanhSach<MuonTra> {
         var danhSachSachMuon = TongHopDuLieu.getDanhSachCTMuonTra().getChiTietPhieuMuong(muonTra.getIDmt());
         boolean daTraHet = true;
         for (var ctmt : danhSachSachMuon) {
-            if(ctmt.getNgaytra()!=null){
+            if (ctmt.getNgaytra() == null) {
                 daTraHet = false;
                 break;
             }
-        }if(daTraHet){
-            System.out.println("Sách đã trả hết!");
         }
+        if (daTraHet) {
+            System.out.println("Sách đã trả hết!");
+            return;
+        }
+        int tienPhat = 0;
         for (var ctmt : danhSachSachMuon) {
             if (ctmt.getNgaytra() == null) {
                 System.out.println(Table.taoBang(ctmt.getBook()));
                 System.out.println("Bạn có muốn trả sách này không? (y/n)");
                 var answer = Helper.scanner.nextLine().charAt(0);
                 if (answer == 'y') {
-                    ctmt.setNgayhentra(LocalDate.now());
+                    ctmt.setNgaytra(LocalDate.now());
                     System.out.println("Trả sách thành công");
                     ctmt.getBook().setTheTVNguoiMuonId(null);
                 }
@@ -119,11 +140,13 @@ public class DanhSachPhieuMuon extends BaseDanhSach<MuonTra> {
                             idXuPhat = -1;
                         } else {
                             ctmt.setLoiPhatId(xuPhat.getIdXuPhat());
+                            tienPhat += ctmt.getTienPhat();
                         }
                     } while (idXuPhat == -1);
                 }
             }
         }
+        System.out.println("Tiền phạt phải trả là: " + tienPhat);
     }
 
     public void giaHanSachDangMuon() {
@@ -151,7 +174,7 @@ public class DanhSachPhieuMuon extends BaseDanhSach<MuonTra> {
     }
 
     public void hienThiQuaHan() {
-        var dsQuaHan =TongHopDuLieu.getDanhSachCTMuonTra(). getDanhSachQuaHan();
+        var dsQuaHan = TongHopDuLieu.getDanhSachCTMuonTra().getDanhSachQuaHan();
         if (dsQuaHan.size() == 0) {
             System.out.println("Không có sách nào quá hạn");
             return;
@@ -194,7 +217,7 @@ public class DanhSachPhieuMuon extends BaseDanhSach<MuonTra> {
         if (muonTra == null) {
             System.out.println("Không tìm thấy phiếu mượn");
             return;
-        }else {
+        } else {
             muonTra.suaPhieuMuon();
         }
 
@@ -223,7 +246,7 @@ public class DanhSachPhieuMuon extends BaseDanhSach<MuonTra> {
                         System.out.println("Bye");
                     }
                 }
-                case 3-> {
+                case 3 -> {
                     suaPhieuMuon();
                 }
                 case 4 -> {

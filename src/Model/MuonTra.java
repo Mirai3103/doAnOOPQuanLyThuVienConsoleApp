@@ -119,9 +119,23 @@ public class MuonTra implements Serializable, ITableRowData {
             System.out.print("Nhập số thẻ: ");
             IDthe = Integer.parseInt(Helper.scanner.nextLine());
             var theTv = TongHopDuLieu.getDanhSachTheThuVien().getById(IDthe);
+
             if (theTv == null) {
                 System.out.println("Không tìm thấy thẻ thư viện");
             } else {
+                var dsPhieu = TongHopDuLieu.getDanhSachPhieuMuonTra().getByTheThuVienId(IDthe);
+                if (dsPhieu.size() == 0) {
+                    return;
+                }
+                dsPhieu.forEach(x -> {
+                    x.getCTMuontras().forEach(y -> {
+                        if (y.getNgaytra() == null) {
+                            x.xuatPhieu();
+                            throw new RuntimeException("Bạn đang mượn sách. Vui lòng trả sách trước khi mượn sách mới");
+                        }
+                    });
+                });
+
                 break;
             }
         }

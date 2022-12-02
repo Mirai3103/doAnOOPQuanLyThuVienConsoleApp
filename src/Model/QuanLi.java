@@ -182,11 +182,12 @@ public class QuanLi extends NhanVien  {
 					System.out.println("Nhập đặc quyền: ");
 					DacQuyen = Helper.scanner.nextLine();
 				}
+                case 11->{}
 				default -> {
 					System.out.println("đối số truyền vào không đúng");
 				}
 			}
-		} while (choose != 13);
+		} while (choose != 11); 
 
 	}
 

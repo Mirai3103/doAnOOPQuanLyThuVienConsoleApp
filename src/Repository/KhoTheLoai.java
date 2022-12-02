@@ -23,7 +23,6 @@ public class KhoTheLoai extends BaseDanhSach<TheLoai> {
         System.out.println("3. Xoa the loai");
         System.out.println("4. Xem danh sach the loai");
         System.out.println("5. Thoat");
-        System.out.println("7. Lưu dữ liệu");
 
     }
 
@@ -144,11 +143,11 @@ public class KhoTheLoai extends BaseDanhSach<TheLoai> {
                     }
                 }
                 case 4 -> xuatConsoleDangTable();
-                case 5 -> System.out.println("Thoat");
-                case 7 -> {
+                case 5 -> {
                     this.xuatFileBinary();
                     System.out.println("Lưu dữ liệu thành công");
                 }
+
 
                 default -> System.out.println("Lua chon khong hop le");
             }

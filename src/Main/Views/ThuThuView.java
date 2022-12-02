@@ -18,6 +18,7 @@ public class ThuThuView {
         System.out.println("9. Thông tin cá nhân");
 
         System.out.println("10. Thoát");
+        System.out.println("11. Đăng xuất");
     }
 
 
@@ -41,9 +42,16 @@ public class ThuThuView {
                     System.out.println("Thông tin cá nhân");
                     nguoiDung.thongTinCaNhan();
                 }
-                case 10 -> System.out.println("Thoát");
+                case 10 ->{
+                    System.out.println("Thoát");
+                    System.exit(0);
+                }
+                case 11 -> {
+                    System.out.println("Đăng xuất");
+                    Main.nguoiDung = null;
+                }
 
             }
-        } while (luaChon != 10);
+        } while (luaChon != 11);
     }
 }
