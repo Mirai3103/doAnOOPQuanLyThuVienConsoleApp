@@ -161,7 +161,7 @@ public class KhoSach extends BaseDanhSach<Sach> {
                 case 7 -> System.out.println("Thoát");
                 default -> System.out.println("Chọn không hợp lệ");
             }
-        } while (chon != 5);
+        } while (chon != 7);
     }
 
     public void xuatFileBinary() {
