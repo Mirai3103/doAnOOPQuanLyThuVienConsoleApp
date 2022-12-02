@@ -1,5 +1,6 @@
 package Main.Views;
 
+import Main.Main;
 import Repository.TongHopDuLieu;
 
 public class QuanLyView {
@@ -13,7 +14,7 @@ public class QuanLyView {
         System.out.println("7. Quản lí phiếu mượn");
         System.out.println("8. Quản lí lỗi phạt");
         System.out.println("9. Thoát");
-        //toDo: thêm các chức năng khác
+        System.out.println("10. Đăng xuất");
     }
     public static void run(){
         int luaChon;
@@ -30,9 +31,13 @@ public class QuanLyView {
                 case 6 -> TongHopDuLieu.getDanhSachDocGia().lamViec();
                 case 7 -> TongHopDuLieu.getDanhSachPhieuMuonTra().thuThuLamViec();
                 case 8 -> TongHopDuLieu.getDanhSachXuPhat().lamViec();
-                case 9 -> System.out.println("Bye!");
+                case 9 -> System.exit(0);
+                case 10 -> {
+                    System.out.println("Đăng xuất thành công");
+                    Main.nguoiDung = null;
+                }
                 default -> System.out.println("Lựa chọn không hợp lệ");
             }
-        }while (luaChon != 6);
+        }while (luaChon != 10);
     }
 }

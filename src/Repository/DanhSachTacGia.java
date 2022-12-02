@@ -91,7 +91,7 @@ public class DanhSachTacGia extends BaseDanhSach<TacGia>  {
     public void update(int id) {
         TacGia tacGia = getById(id);
         if(tacGia != null){
-            tacGia.nhap();
+            tacGia.sua();
         }else {
             System.out.println("Khong tim thay tac gia");
         }
@@ -146,7 +146,7 @@ public class DanhSachTacGia extends BaseDanhSach<TacGia>  {
                         case 1 -> {
                             System.out.println("Nhập tên tác giả cần tìm");
                             String tenTacGia = Helper.scanner.nextLine();
-                             tacGia = getByName(tenTacGia);
+                            tacGia = getByName(tenTacGia);
                             if (tacGia != null) {
                                 tacGia.xuat();
                             } else {
@@ -156,7 +156,7 @@ public class DanhSachTacGia extends BaseDanhSach<TacGia>  {
                         case 2 -> {
                             System.out.println("Nhập id tác giả cần tìm");
                             int id = Helper.nhapSoNguyen("Id không hợp lệ, nhập lại: ");
-                             tacGia = getById(id);
+                            tacGia = getById(id);
                             if (tacGia != null) {
                                 tacGia.xuat();
                             } else {

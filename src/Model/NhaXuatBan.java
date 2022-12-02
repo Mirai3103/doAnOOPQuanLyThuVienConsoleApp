@@ -113,36 +113,35 @@ public class NhaXuatBan implements Serializable , ITableRowData {
         return String.format("%s - %s - %s - %s - %s", this.id, this.tenNXB, this.diaChi.toString(), this.email, this.nguoiDaiDien);
     }
     public void sua(){
+        System.out.println("Sửa NXB: ");
         for(int i = 1; i<getHeader().length;i++){
             System.out.printf(i + ". " + getHeader()[i] + "\n");
         }
         System.out.println("5 . Thoát");
         System.out.println("Nhập thuộc tính cần sửa");
         int a = Helper.nhapSoNguyen("yêu cầu nhập số nguyên");
-        switch (a){
-            case 1:
-                    System.out.println("Sửa tên NXB: ");
-                    this.tenNXB = Helper.scanner.nextLine();
-                    break;
-            case 2:
-                 System.out.println("Sửa Địa chỉ: ");
-                 diaChi.Nhap();
-                 break;
-            case 3:
-                do {
-                    System.out.println("Nhap email: ");
-                    this.email = Helper.scanner.nextLine();
-                }while(!Helper.checkEmail(this.email));
-                break;
-            case 4:
-                System.out.println("Sửa nguoi dai dien: ");
-                this.nguoiDaiDien = Helper.scanner.nextLine();
-                break;
-            case 5:{
-            	break;
+        switch (a) {
+            case 1 -> {
+                System.out.println("Sửa tên NXB: ");
+                System.out.println("Nhập tên NXB mới: ");
+                this.tenNXB = Helper.nhapTen();
             }
-            default:
-                System.out.println("đối số truyền vào không đúng");
+            case 2 -> {
+                System.out.println("Sửa Địa chỉ: ");
+                diaChi.Nhap();
+            }
+            case 3 -> {
+                System.out.println("Sửa Email: ");
+                this.email =  Helper.nhapEmail();
+            }
+            case 4 -> {
+                System.out.println("Sửa tên người đại diện: ");
+                this.nguoiDaiDien = Helper.nhapTen();
+            }
+            case 5 -> {
+                System.out.println("Thoát");
+            }
+            default -> System.out.println("đối số truyền vào không đúng");
         }
     }
     public static  void main(String[] thich){
