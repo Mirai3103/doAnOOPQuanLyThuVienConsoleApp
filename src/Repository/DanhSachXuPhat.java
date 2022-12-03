@@ -3,6 +3,7 @@ import java.util.Scanner;
 
 import Model.XuPhat;
 import helper.Helper;
+import helper.Xuat.Table;
 
 import java.io.Serial;
 
@@ -50,6 +51,7 @@ public class DanhSachXuPhat extends BaseDanhSachArray<XuPhat> {
         this.xuatConsoleDangTable();
     }
     public void sua(){
+        xuatConsoleDangTable();
         System.out.println("Nhập id lỗi phạt cần sửa");
         int id = Helper.nhapSoNguyen("id lỗi phạt không hợp lệ!, nhập lại: ");
         var item = getById(id);
@@ -57,7 +59,16 @@ public class DanhSachXuPhat extends BaseDanhSachArray<XuPhat> {
             System.out.println("Không tìm thấy lỗi phạt");
             return;
         }
+        System.out.println(Table.taoBang(item));
         item.nhapXuPhat();
+    }
+    public XuPhat getByName(String name){
+        for (int i = 0; i < data.size(); i++) {
+            if(data.get(i).getTenLoi().toLowerCase().trim().contains(name.toLowerCase().trim())){
+                return data.get(i);
+            }
+        }
+        return null;
     }
     public void xoa() {
         System.out.println("Nhập id lỗi phạt cần xóa");
@@ -75,11 +86,12 @@ public class DanhSachXuPhat extends BaseDanhSachArray<XuPhat> {
         System.out.println("Đã hủy xóa!!");
         return;  
     }
-     public  void lamViec(){
+    public  void lamViec(){
         char c = ' ';
         do {
             showMenu();
-            c = Helper.scanner.nextLine().charAt(0);
+            String a = Helper.scanner.nextLine();
+            c = a.charAt(0);
             switch (c) {
                 case '1' -> add();
                 case '2' -> show();

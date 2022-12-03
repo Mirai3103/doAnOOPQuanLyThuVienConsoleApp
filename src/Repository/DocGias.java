@@ -24,7 +24,7 @@ public class DocGias  extends BaseDanhSach<DocGia> {
 
     @Override
     public void add(DocGia item) {
-       item.setIDdg(idIdentity++);
+        item.setIDdg(idIdentity++);
         data.add(item);
     }
     public  void dangKyThanhVien() {
@@ -33,6 +33,8 @@ public class DocGias  extends BaseDanhSach<DocGia> {
         this.add(docGia);
         System.out.println("Bắt đầu đăng ký thẻ thư viện");
         var theThuVien = new TheThuVien();
+        TongHopDuLieu.getDanhSachTheThuVien().add(theThuVien);
+
         theThuVien.themTheThuVien(docGia.getIDdg());
         docGia.setIDthe(theThuVien.getIDthe());
         System.out.println("Đăng ký thành công");
@@ -51,7 +53,7 @@ public class DocGias  extends BaseDanhSach<DocGia> {
         return data.stream().filter(s ->s.getIDdg() == id).findFirst().orElse(null);
     }
     public ArrayList<DocGia> getByName(String name){
-       return  new ArrayList<>( data.stream().filter(s ->s.getHoTen().toLowerCase().contains(name.toLowerCase())).toList());
+        return  new ArrayList<>( data.stream().filter(s ->s.getHoTen().toLowerCase().contains(name.toLowerCase())).toList());
     }
     public void suaDocGia(){
         System.out.println("Nhập ID độc giả cần sửa");
@@ -61,7 +63,7 @@ public class DocGias  extends BaseDanhSach<DocGia> {
             System.out.println("Không tìm thấy độc giả");
             return;
         }
-        docGia.nhapDocGia();
+        docGia.sua();
 
     }
     public void xoaDocGia(){
@@ -105,7 +107,8 @@ public class DocGias  extends BaseDanhSach<DocGia> {
                             System.out.println(Table.taoBang(docGias));
                         }
                     } else if (chon2 == 2) {
-                        int id = Helper.nhapSoNguyen("Nhập ID độc giả: ");
+                        System.out.println("Nhập ID độc giả cần tìm");
+                        int id = Helper.nhapSoNguyen("Id không hop  lệ,nhập lại: ");
                         var docGia = getById(id);
                         if (docGia == null) {
                             System.out.println("Không tìm thấy độc giả nào");

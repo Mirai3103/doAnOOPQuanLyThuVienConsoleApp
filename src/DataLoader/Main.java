@@ -25,7 +25,7 @@ public class Main {
             currentFile.delete();
         }
     }
-//chạy để tạo dữ liệu mẫu
+    //chạy để tạo dữ liệu mẫu
     public static void main(String[] args) {
         removeAllData();
         initXuPhatData();
@@ -50,7 +50,7 @@ public class Main {
 
     }
     public static void initXuPhatData(){
-var dsXuPhat = TongHopDuLieu.getDanhSachXuPhat();
+        var dsXuPhat = TongHopDuLieu.getDanhSachXuPhat();
         var s1 = new XuPhat();
         s1.setTenLoi("Làm rách sách");
         s1.setTienPhat(15000);
@@ -80,10 +80,7 @@ var dsXuPhat = TongHopDuLieu.getDanhSachXuPhat();
     }
     private static void initPhieuMuonData() {
         var DanhSachPhieuMuon = TongHopDuLieu.getDanhSachPhieuMuonTra();
-        var DanhSachDocGia = TongHopDuLieu.getDanhSachDocGia();
-        var DanhSachSach = TongHopDuLieu.getKhoSach();
-        var DanhSachNhanVien = TongHopDuLieu.getNhanViens();
-        var DanhSachTheThuVien = TongHopDuLieu.getDanhSachTheThuVien();
+
         var DanhSachChiTietPhieuMuon = TongHopDuLieu.getDanhSachCTMuonTra();
         var phieuMuon = new MuonTra();
 
@@ -91,23 +88,23 @@ var dsXuPhat = TongHopDuLieu.getDanhSachXuPhat();
         phieuMuon.setIDnv("thuthu");
         DanhSachPhieuMuon.add(phieuMuon);
         var ctPhieuMuon = new CTMuonTra();
-        phieuMuon.setNgayLapPhieu(LocalDate.now().minusDays(14));
+        phieuMuon.setNgayLapPhieu(Helper.parseDate("01/12/2022"));
         ctPhieuMuon.setIdPhieuMuon(phieuMuon.getIDmt());
         ctPhieuMuon.setIDsach(0);
-        ctPhieuMuon.setNgayhentra(LocalDate.now().minusDays(-1));
+        ctPhieuMuon.setNgayhentra(Helper.parseDate("16/12/2022"));
         DanhSachChiTietPhieuMuon.add(ctPhieuMuon);
         ctPhieuMuon = new CTMuonTra();
         ctPhieuMuon.setIdPhieuMuon(phieuMuon.getIDmt());
         ctPhieuMuon.setIDsach(4);
-        ctPhieuMuon.setNgayhentra(LocalDate.now().minusDays(14));
+        ctPhieuMuon.setNgayhentra(Helper.parseDate("16/12/2022"));
         DanhSachChiTietPhieuMuon.add(ctPhieuMuon);
         ctPhieuMuon = new CTMuonTra();
         ctPhieuMuon.setIdPhieuMuon(phieuMuon.getIDmt());
         ctPhieuMuon.setIDsach(2);
-        ctPhieuMuon.setNgayhentra(LocalDate.now().minusDays(2));
+        ctPhieuMuon.setNgayhentra(Helper.parseDate("02/12/2022"));
         ctPhieuMuon.setDatra(1);
         ctPhieuMuon.getBook().setTheTVNguoiMuonId(-1);
-        ctPhieuMuon.setNgaytra(LocalDate.now().minusDays(2));
+        ctPhieuMuon.setNgaytra(Helper.parseDate("02/12/2022"));
         ctPhieuMuon.setLoiPhatId(2);
         DanhSachChiTietPhieuMuon.add(ctPhieuMuon);
         phieuMuon = new MuonTra();
@@ -116,14 +113,40 @@ var dsXuPhat = TongHopDuLieu.getDanhSachXuPhat();
         phieuMuon.setIDnv("thuthu");
         DanhSachPhieuMuon.add(phieuMuon);
         ctPhieuMuon = new CTMuonTra();
+        phieuMuon.setNgayLapPhieu(LocalDate.now().minusDays(24));
         ctPhieuMuon.setIdPhieuMuon(phieuMuon.getIDmt());
         ctPhieuMuon.setIDsach(1);
-        ctPhieuMuon.setNgayhentra(LocalDate.now().plusDays(14));
+        ctPhieuMuon.setNgayhentra(LocalDate.now().minusDays(14));
+        ctPhieuMuon.setNgaytra(LocalDate.now().minusDays(17));
+        ctPhieuMuon.setDatra(1);
+
         DanhSachChiTietPhieuMuon.add(ctPhieuMuon);
         ctPhieuMuon = new CTMuonTra();
         ctPhieuMuon.setIdPhieuMuon(phieuMuon.getIDmt());
         ctPhieuMuon.setIDsach(3);
-        ctPhieuMuon.setNgayhentra(LocalDate.now().plusDays(14));
+        ctPhieuMuon.setNgayhentra(LocalDate.now().minusDays(14));
+        ctPhieuMuon.setNgaytra(LocalDate.now().minusDays(10));
+        ctPhieuMuon.setDatra(1);
+        ctPhieuMuon.setLoiPhatId(3);
+
+        DanhSachChiTietPhieuMuon.add(ctPhieuMuon);
+        phieuMuon = new MuonTra();
+        // 1 -> 3
+        phieuMuon.setIDthe(2);
+        phieuMuon.setIDnv("thuthu");
+        DanhSachPhieuMuon.add(phieuMuon);
+        ctPhieuMuon = new CTMuonTra();
+        phieuMuon.setNgayLapPhieu(LocalDate.now().minusDays(14));
+        ctPhieuMuon.setIdPhieuMuon(phieuMuon.getIDmt());
+        ctPhieuMuon.setIDsach(7);
+        ctPhieuMuon.setNgayhentra(LocalDate.now().minusDays(4));
+
+        DanhSachChiTietPhieuMuon.add(ctPhieuMuon);
+        ctPhieuMuon = new CTMuonTra();
+        ctPhieuMuon.setIdPhieuMuon(phieuMuon.getIDmt());
+        ctPhieuMuon.setIDsach(5);
+        ctPhieuMuon.setNgayhentra(LocalDate.now().minusDays(4));
+
         DanhSachChiTietPhieuMuon.add(ctPhieuMuon);
     }
 
@@ -228,10 +251,10 @@ var dsXuPhat = TongHopDuLieu.getDanhSachXuPhat();
 
 
     }
-    
-    
-    
-    
+
+
+
+
     public static void initTacGiaData(){
         TongHopDuLieu.getDanhSachTacGia().add(new TacGia("Koume Fujichika","abc.com","Tac gia manga"));
         TongHopDuLieu.getDanhSachTacGia().add(new TacGia("Lê Anh Vinh","abc.com","Tac gia Viet Nam"));
@@ -279,20 +302,20 @@ var dsXuPhat = TongHopDuLieu.getDanhSachXuPhat();
         sach.themTheLoai(TongHopDuLieu.getKhoTheLoai().getByName("Romance"));
         sach.themTheLoai(TongHopDuLieu.getKhoTheLoai().getByName("School life"));
 
-         sach = new Sach("CÔ BẠN TÔI THẦM THÍCH LẠI QUÊN MANG KÍNH RỒI - TẬP 1",146,"Vi",TongHopDuLieu.getDanhSachTacGia().getByName("Koume Fujichika"),TongHopDuLieu.getDanhSachNhaXuatBan().getByName("NXB Kim Đồng"), (short) 2021,"Mới cứng","Cô bạn bàn bên lại quên kính rồi Tap 1");
+        sach = new Sach("CÔ BẠN TÔI THẦM THÍCH LẠI QUÊN MANG KÍNH RỒI - TẬP 1",146,"Vi",TongHopDuLieu.getDanhSachTacGia().getByName("Koume Fujichika"),TongHopDuLieu.getDanhSachNhaXuatBan().getByName("NXB Kim Đồng"), (short) 2021,"Mới cứng","Cô bạn bàn bên lại quên kính rồi Tap 1");
         TongHopDuLieu.getKhoSach().add(sach);
         sach.themTheLoai(TongHopDuLieu.getKhoTheLoai().getByName("Truyện tranh"));
         sach.themTheLoai(TongHopDuLieu.getKhoTheLoai().getByName("Truyện dài"));
         sach.themTheLoai(TongHopDuLieu.getKhoTheLoai().getByName("Romance"));
         sach.themTheLoai(TongHopDuLieu.getKhoTheLoai().getByName("School life"));
         sach.setGiaSach(52000);
-         sach = new Sach("NHỮNG ĐỨA TRẺ HẠNH PHÚC - LÀ CHÍNH MÌNH",20,"Vi",TongHopDuLieu.getDanhSachTacGia().getByName("Lê Anh Vinh"),TongHopDuLieu.getDanhSachNhaXuatBan().getByName("NXB Kim Đồng"), (short) 2022,"Mới cứng","Tập BẠN NHỎ DÂN TỘC KINH");
+        sach = new Sach("NHỮNG ĐỨA TRẺ HẠNH PHÚC - LÀ CHÍNH MÌNH",20,"Vi",TongHopDuLieu.getDanhSachTacGia().getByName("Lê Anh Vinh"),TongHopDuLieu.getDanhSachNhaXuatBan().getByName("NXB Kim Đồng"), (short) 2022,"Mới cứng","Tập BẠN NHỎ DÂN TỘC KINH");
         TongHopDuLieu.getKhoSach().add(sach);
         sach.themTheLoai(TongHopDuLieu.getKhoTheLoai().getByName("Truyện tranh"));
         sach.themTheLoai(TongHopDuLieu.getKhoTheLoai().getByName("Trẻ em"));
         sach.themTheLoai(TongHopDuLieu.getKhoTheLoai().getByName("Giáo dục"));
         sach.setGiaSach(20000);
-            sach = new Sach("HỌC TOÁN CÙNG JENNY",32,"Vi",TongHopDuLieu.getDanhSachTacGia().getByName("Lê Anh Vinh"),TongHopDuLieu.getDanhSachNhaXuatBan().getByName("NXB Kim Đồng"), (short) 2021,"rách bìa trước  ","SÁCH DÀNH CHO HỌC SINH CHUẨN BỊ VÀO LỚP 1");
+        sach = new Sach("HỌC TOÁN CÙNG JENNY",32,"Vi",TongHopDuLieu.getDanhSachTacGia().getByName("Lê Anh Vinh"),TongHopDuLieu.getDanhSachNhaXuatBan().getByName("NXB Kim Đồng"), (short) 2021,"rách bìa trước  ","SÁCH DÀNH CHO HỌC SINH CHUẨN BỊ VÀO LỚP 1");
         TongHopDuLieu.getKhoSach().add(sach);
         sach.themTheLoai(TongHopDuLieu.getKhoTheLoai().getByName("Trẻ em"));
         sach.themTheLoai(TongHopDuLieu.getKhoTheLoai().getByName("Giáo dục"));

@@ -61,7 +61,7 @@ public class CTMuonTra implements ITableRowData,Serializable	{
 		System.out.println("2. trả sách");
 		System.out.println("3. Sửa lỗi phạt");
 		System.out.println("4. Xoá khỏi phiếu mượn");
-		System.out.println("4. Thoát");
+		System.out.println("5. Thoát");
 	}
 	public void suaCTMuonTra() {
 		int luaChon;
@@ -151,6 +151,7 @@ public class CTMuonTra implements ITableRowData,Serializable	{
 
 	public void setDatra(int datra) {
 		this.datra = datra;
+		getBook().setTheTVNguoiMuonId(-1);
 	}
 	@Override
 	public String[] getRowData() {

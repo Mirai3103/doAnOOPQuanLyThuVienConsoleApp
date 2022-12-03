@@ -1,15 +1,9 @@
 package Main.Views;
 
 
-import Model.CTMuonTra;
-import Model.DocGia;
-import Model.MuonTra;
-import Model.TheThuVien;
+import Main.Main;
+import Model.ThuThu;
 import Repository.TongHopDuLieu;
-import helper.Helper;
-import helper.Xuat.Table;
-
-import java.time.LocalDate;
 
 public class ThuThuView {
     private static void menu() {
@@ -24,9 +18,8 @@ public class ThuThuView {
         System.out.println("9. Thông tin cá nhân");
 
         System.out.println("10. Thoát");
+        System.out.println("11. Đăng xuất");
     }
-
-
 
 
     public static void run() {
@@ -43,11 +36,22 @@ public class ThuThuView {
                 case 5 -> TongHopDuLieu.getDanhSachDocGia().lamViec();
                 case 6 -> TongHopDuLieu.getDanhSachPhieuMuonTra().thuThuLamViec();
                 case 7 -> TongHopDuLieu.getDanhSachTheThuVien().lamViec();
-                case 8 -> System.out.println("Chức năng chưa được cập nhật");
-                case 9 -> System.out.println("Chức năng chưa được cập nhật");
-                case 10 -> System.out.println("Thoát");
 
+                case 8 -> TongHopDuLieu.getDanhSachXuPhat().lamViec();
+                case 9 -> {
+                    ThuThu nguoiDung = (ThuThu) Main.nguoiDung;
+                    System.out.println("Thông tin cá nhân");
+                    nguoiDung.thongTinCaNhan();
+                }
+                case 10 ->{
+                    System.out.println("Thoát");
+                    System.exit(0);
+                }
+                case 11 -> {
+                    System.out.println("Đăng xuất");
+                    Main.nguoiDung = null;
+                }
             }
-        } while (luaChon !=9);
+        } while (luaChon != 11);
     }
 }

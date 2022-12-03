@@ -1,7 +1,9 @@
 package helper.Xuat;
 
 
-public interface ITableRowData {
+import java.io.Serializable;
+
+public interface ITableRowData extends Serializable {
     public String[] getRowData();
     public  String[] getHeader();
 }

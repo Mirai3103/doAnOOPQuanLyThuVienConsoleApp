@@ -51,8 +51,6 @@ public class DanhSachTheLoai_Sach implements Serializable {
             finput.close();
 
         } catch (Exception ignored) {
-
-
         }
     }
 
