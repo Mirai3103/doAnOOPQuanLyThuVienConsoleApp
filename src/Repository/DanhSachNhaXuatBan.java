@@ -77,7 +77,16 @@ public class DanhSachNhaXuatBan extends BaseDanhSach<NhaXuatBan>  {
     }
 
     public void delete(int id) {
-        data.removeIf(n -> n.getId() == id);
+        NhaXuatBan nhaXuatBan = getById(id);
+        if(nhaXuatBan == null){
+            System.out.println("Không tìm thấy nhà xuất bản");
+            return;
+        }
+        if(nhaXuatBan.getSachDaXuatBan().size() > 0){
+            System.out.println("Không thể xóa nhà xuất bản này vì đã có sách xuất bản");
+            return;
+        }
+        data.remove(nhaXuatBan);
     }
     public void update(int id) {
         NhaXuatBan nhaXuatBan = getById(id);
