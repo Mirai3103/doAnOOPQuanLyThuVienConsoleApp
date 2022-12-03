@@ -51,11 +51,7 @@ public abstract class BaseDanhSachArray<T extends ITableRowData> implements IDan
             objinput.close();
             finput.close();
         } catch (Exception ignored) {
-            if(ignored instanceof FileNotFoundException){
-                return;
-            }
 
-            ignored.printStackTrace();
         }
     }
 

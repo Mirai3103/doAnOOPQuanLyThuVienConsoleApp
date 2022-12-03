@@ -179,6 +179,9 @@ public class DanhSachPhieuMuon extends BaseDanhSach<MuonTra> {
             System.out.println("Không có sách nào quá hạn");
             return;
         }
+        for (int i = 0; i < dsQuaHan.size(); i++) {
+            dsQuaHan.get(i).setLoiPhatId(TongHopDuLieu.getDanhSachXuPhat().getByName("Trả sách quá hạn").getIdXuPhat());
+        }
         System.out.println(Table.taoBang(dsQuaHan));
         System.out.println("Bạn có muốn hiển thị độc giả vi pham (y/n");
         var awnser = Helper.scanner.nextLine().toLowerCase().charAt(0) == 'y';

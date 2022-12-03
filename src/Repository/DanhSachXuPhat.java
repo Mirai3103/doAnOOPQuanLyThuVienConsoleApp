@@ -61,6 +61,14 @@ public class DanhSachXuPhat extends BaseDanhSachArray<XuPhat> {
         System.out.println(Table.taoBang(item));
         item.nhapXuPhat();
     }
+    public XuPhat getByName(String name){
+        for (int i = 0; i < data.size(); i++) {
+            if(data.get(i).getTenLoi().toLowerCase().trim().contains(name.toLowerCase().trim())){
+                return data.get(i);
+            }
+        }
+        return null;
+    }
     public void xoa() {
         System.out.println("Nhập id lỗi phạt cần xóa");
         int id = Helper.nhapSoNguyen("id lỗi phạt không hợp lệ!, nhập lại: ");
@@ -75,7 +83,8 @@ public class DanhSachXuPhat extends BaseDanhSachArray<XuPhat> {
         char c = ' ';
         do {
             showMenu();
-            c = Helper.scanner.nextLine().charAt(0);
+            String a = Helper.scanner.nextLine();
+            c = a.charAt(0);
             switch (c) {
                 case '1' -> add();
                 case '2' -> show();

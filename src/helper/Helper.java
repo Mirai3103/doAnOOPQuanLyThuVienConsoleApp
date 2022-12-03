@@ -32,9 +32,22 @@ public final class Helper {
 	}
 	public static int nhapSoTuNhien(String errorMessage){
 		String number = scanner.nextLine();
-		while (!number.matches(INTEGER_PATTERN) && Integer.parseInt(number) < 0){
+		boolean continueLoop = true;
+		if(number.matches(INTEGER_PATTERN)){
+			int numberInt = Integer.parseInt(number);
+			if(numberInt > 0){
+				continueLoop = false;
+			}
+		}
+		while ( continueLoop){
 			System.out.println(errorMessage);
 			number = scanner.nextLine();
+			if(number.matches(INTEGER_PATTERN)){
+				int numberInt = Integer.parseInt(number);
+				if(numberInt > 0){
+					continueLoop = false;
+				}
+			}
 		}
 		return Integer.parseInt(number);
 	}
