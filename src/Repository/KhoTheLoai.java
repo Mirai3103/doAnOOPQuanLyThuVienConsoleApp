@@ -139,6 +139,7 @@ public class KhoTheLoai extends BaseDanhSach<TheLoai> {
                     if (theLoai == null) {
                         System.out.println("Không tìm thấy");
                     } else {
+                        TongHopDuLieu.getDanhSachTheLoai_sach().getTheLoai_saches().removeIf(s -> s.getTheLoaiId()== id);
                         this.data.remove(theLoai);
                     }
                 }
