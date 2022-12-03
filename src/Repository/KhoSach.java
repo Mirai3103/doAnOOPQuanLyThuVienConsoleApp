@@ -1,5 +1,5 @@
 package Repository;
-
+import java.util.Scanner;
 
 import Model.Sach;
 import Model.TacGia;
@@ -15,7 +15,7 @@ public class KhoSach extends BaseDanhSach<Sach> {
     private static final long serialVersionUID = 1221313121212L;
     public static String FILE_PATH = Helper.dirPath + "KhoSach.bin";
     private int idIdentity = 0;
-
+    Scanner sc = new Scanner(System.in);
     public KhoSach() {
     }
 
@@ -71,7 +71,14 @@ public class KhoSach extends BaseDanhSach<Sach> {
         xuatConsoleDangTable();
         System.out.println("Nhap id sach can xoa");
         int id = Helper.nhapSoNguyen("Id khong hop le");
-        delete(id);
+        System.out.print("Bạn có chắc muốn xóa không (y/n): ");
+        if(sc.nextLine().equals("y")) {
+        	System.out.println("Đã xóa!!");
+        	delete(id);
+        } 	
+        System.out.println("Đã hủy xóa!!");
+        
+        
     }
 
     public void suaSach() {

@@ -36,6 +36,7 @@ public class ThuThuView {
                 case 5 -> TongHopDuLieu.getDanhSachDocGia().lamViec();
                 case 6 -> TongHopDuLieu.getDanhSachPhieuMuonTra().thuThuLamViec();
                 case 7 -> TongHopDuLieu.getDanhSachTheThuVien().lamViec();
+
                 case 8 -> TongHopDuLieu.getDanhSachXuPhat().lamViec();
                 case 9 -> {
                     ThuThu nguoiDung = (ThuThu) Main.nguoiDung;
@@ -50,7 +51,6 @@ public class ThuThuView {
                     System.out.println("Đăng xuất");
                     Main.nguoiDung = null;
                 }
-
             }
         } while (luaChon != 11);
     }

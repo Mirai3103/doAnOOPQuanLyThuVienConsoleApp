@@ -4,6 +4,7 @@ package helper;
 import Repository.TongHopDuLieu;
 
 import javax.swing.text.DateFormatter;
+import java.nio.file.Files;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
@@ -62,10 +63,11 @@ public final class Helper {
 	}
 	public static String nhapTen(){
 		String number = scanner.nextLine();
-		while (Arrays.stream(number.split("")).map(t->t.charAt(0) >='0' && t.charAt(0)<='9').toList().size() !=0){
-			System.out.println("Tên khônng hopwj lệ! , nhập lại: ");
+		while (Arrays.stream(number.split("")).map(t->t.charAt(0) >='0' && t.charAt(0)<='9').toList().size() !=0 && Pattern.matches("[a-zA-Z\\s]+$",number)){
+			System.out.println("Tên khônng hợp lệ! , nhập lại: ");
 			number = scanner.nextLine();
 		}
+
 		return number;
 	}
 	public static boolean checkSdt(String SDT) {

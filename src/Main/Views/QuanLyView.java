@@ -38,6 +38,7 @@ public class QuanLyView {
                 }
                 default -> System.out.println("Lựa chọn không hợp lệ");
             }
+
         }while (luaChon != 10);
     }
 }
