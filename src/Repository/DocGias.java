@@ -33,6 +33,8 @@ public class DocGias  extends BaseDanhSach<DocGia> {
         this.add(docGia);
         System.out.println("Bắt đầu đăng ký thẻ thư viện");
         var theThuVien = new TheThuVien();
+        TongHopDuLieu.getDanhSachTheThuVien().add(theThuVien);
+
         theThuVien.themTheThuVien(docGia.getIDdg());
         docGia.setIDthe(theThuVien.getIDthe());
         System.out.println("Đăng ký thành công");

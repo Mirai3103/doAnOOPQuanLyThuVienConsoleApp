@@ -13,7 +13,7 @@ import java.util.ListIterator;
 public class Mang <T > implements Serializable {
 
     @Serial
-    private static final long serialVersionUID = 134224000119L;
+    private static final long serialVersionUID = 13422433000119L;
     private T[] arr ;
     private int size ;
     public Mang(){
