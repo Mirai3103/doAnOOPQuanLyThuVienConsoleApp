@@ -13,11 +13,11 @@ public abstract class BaseDanhSach<T extends ITableRowData> implements IDanhSach
 protected ArrayList<T> data = new ArrayList<>();
 
 
-    public ArrayList<T> getAll() {
+    public final ArrayList<T> getAll() {
         return  this.data;
     }
     @Override
-    public void xuatConsoleDangTable(){
+    public final void xuatConsoleDangTable(){
         if(data.size() == 0){
             System.out.println("Danh sách trống");
             return;
@@ -26,7 +26,7 @@ protected ArrayList<T> data = new ArrayList<>();
     }
 
     @Override
-    public void xuatFileBinary(String filePath ){
+    public final void xuatFileBinary(String filePath ){
         if(data.size() == 0){
             System.out.println("Danh sách trống, không thể xuất file");
             return;
@@ -44,7 +44,7 @@ protected ArrayList<T> data = new ArrayList<>();
         }
     }
     @Override
-    public   void docFileBinary(String filePath){
+    public final void docFileBinary(String filePath){
         try {
             FileInputStream finput = new FileInputStream(filePath);
             ObjectInputStream objinput = new ObjectInputStream(finput);

@@ -14,16 +14,11 @@ public class DanhSachTheThuVien extends BaseDanhSachArray<TheThuVien>{
     private static final long serialVersionUID = 1212121775752L;
     public static final String FILE_PATH = Helper.dirPath + "DanhSachTheThuVien.bin";
     private int idIdentity = 0;
-<<<<<<< Updated upstream
-    @Override
-    public void copyFrom(IDanhSach<TheThuVien> other) {
-        var otherTheThuViens = (DanhSachTheThuVien) other;
-=======
+
     Scanner sc = new Scanner(System.in);
     @Override
     public void copyFrom(IDanhSach<TheThuVien> other) {
     	var otherTheThuViens = (DanhSachTheThuVien) other;
->>>>>>> Stashed changes
         this.idIdentity = otherTheThuViens.idIdentity;
         this.data = otherTheThuViens.data;
     }
