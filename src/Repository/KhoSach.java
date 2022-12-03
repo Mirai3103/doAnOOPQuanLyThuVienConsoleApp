@@ -3,6 +3,7 @@ package Repository;
 
 import Model.Sach;
 import Model.TacGia;
+import Report.SachThinhHanh;
 import helper.Helper;
 import helper.Xuat.Table;
 
@@ -50,7 +51,7 @@ public class KhoSach extends BaseDanhSach<Sach> {
         sach.nhapTheLoaiChoSach();
         System.out.println("Bạn nhập bao nhiêu cuốn này vào kho?");
         int soLuong = Helper.nhapSoTuNhien("Số lượng không hợp lệ, vui lòng nhập lại");
-        for (int i =1; i < soLuong; i++) {
+        for (int i = 1; i < soLuong; i++) {
             Sach s = new Sach(sach);
             add(s);
             s.copyTheLoai(sach);
@@ -88,19 +89,55 @@ public class KhoSach extends BaseDanhSach<Sach> {
         System.out.println("5. Lưu vào file");
         System.out.println("7. Thoat");
     }
-    public ArrayList<Sach> laySachDangMuon(){
+
+    public ArrayList<Sach> laySachDangMuon() {
         return new ArrayList<>(data.stream().filter(Sach::checkDangMuon).toList());
     }
-    public ArrayList<Sach> laySachDangCoSan(){
+
+    public ArrayList<Sach> laySachDangCoSan() {
         return new ArrayList<>(data.stream().filter(s -> !s.checkDangMuon()).toList());
     }
+
+    public void inThongKeSachMuonNhieu() {
+        ArrayList<SachThinhHanh> sachThinhHanhs = new ArrayList<>();
+        TongHopDuLieu.getDanhSachCTMuonTra().data.forEach(ct -> {
+            SachThinhHanh sachThinhHanh = new SachThinhHanh();
+            var esxist = sachThinhHanhs.stream().filter(s -> s.getTenSach().equalsIgnoreCase(ct.getBook().getTenSach()) ).findFirst().orElse(null);
+            if (esxist != null) {
+                esxist.setSoLanMuon(esxist.getSoLanMuon() + 1);
+            } else {
+                sachThinhHanh.setTenSach(ct.getBook().getTenSach());
+                sachThinhHanh.setSoLanMuon(1);
+                sachThinhHanhs.add(sachThinhHanh);
+
+            }
+        });
+        TongHopDuLieu.getKhoSach().data.forEach(s -> {
+            var esxist =sachThinhHanhs.stream().filter(th -> th.getTenSach().equalsIgnoreCase(s.getTenSach())).findFirst().orElse(null);
+            if (esxist == null) {
+                SachThinhHanh sachThinhHanh = new SachThinhHanh();
+                sachThinhHanh.setTenSach(s.getTenSach());
+                sachThinhHanh.setSoLanMuon(0);
+                sachThinhHanhs.add(sachThinhHanh);
+            }
+        });
+        sachThinhHanhs.sort((o1, o2) -> o2.getSoLanMuon() - o1.getSoLanMuon());
+        // set stt
+        for (int i = 0; i < sachThinhHanhs.size(); i++) {
+            sachThinhHanhs.get(i).setStt(i + 1);
+        }
+        System.out.println("Sách mượn nhiều nhất");
+        System.out.println(Table.taoBang(sachThinhHanhs));
+    }
+
     public void showMenuThuThu() {
         System.out.println("1. Xuất toàn bộ sách");
         System.out.println("2. Tìm kiếm sách theo tên");
         System.out.println("3. Tìm kiếm sách theo tác giả");
         System.out.println("4. Xuất sách chưa được mượn");
         System.out.println("5. Xuất sách đã được mượn");
-        System.out.println("6. Thoát");
+        System.out.println("6. Thống kê sách mượn nhiều nhất");
+        System.out.println("7. Thoát");
 
 
     }
@@ -137,7 +174,8 @@ public class KhoSach extends BaseDanhSach<Sach> {
                 }
                 case 4 -> System.out.println(Table.taoBang(laySachDangCoSan()));
                 case 5 -> System.out.println(Table.taoBang(laySachDangMuon()));
-                case 6 -> {
+                case 6 -> inThongKeSachMuonNhieu();
+                case 7 -> {
                     xuatFileBinary();
                     return;
                 }

@@ -2,6 +2,8 @@ package Repository;
 
 
 import Model.TheLoai;
+import Report.SachThinhHanh;
+import Report.TheLoaiThinhHanh;
 import helper.Helper;
 import helper.Xuat.Table;
 
@@ -30,9 +32,34 @@ public class KhoTheLoai extends BaseDanhSach<TheLoai> {
         System.out.println("Tương tác với thể loại");
         System.out.println("1. tìm kiếm thể loại");
         System.out.println("2. Xem danh sach the loai");
-        System.out.println("3. Thoat");
-    }
+        System.out.println("3. Thống kê thể loại yêu thích");
 
+        System.out.println("4. Thoat");
+    }
+    public void inThongKeTheLoaiYeuThich(){
+        ArrayList<TheLoaiThinhHanh> theLoaiYeuThich = new ArrayList<>();
+        TongHopDuLieu.getDanhSachCTMuonTra().data.forEach(ct -> {
+           ct.getBook().getTheLoais().forEach(theLoai -> {
+               var theLoaiYT = new TheLoaiThinhHanh();
+               var theLoaiExist = theLoaiYeuThich.stream().filter(tl -> tl.getTenTheLoai().equals(theLoai.getTenTheLoai())).findFirst().orElse(null);
+                if (theLoaiExist == null) {
+                    theLoaiYT.setTenTheLoai(theLoai.getTenTheLoai());
+                    theLoaiYT.setSoLanMuon(1);
+                    theLoaiYeuThich.add(theLoaiYT);
+                } else {
+                    theLoaiExist.setSoLanMuon(theLoaiExist.getSoLanMuon() + 1);
+                }
+           });
+        });
+        // sap xep theo so lan muon
+        theLoaiYeuThich.sort((o1, o2) -> o2.getSoLanMuon() - o1.getSoLanMuon());
+        // set stt
+        for (int i = 0; i < theLoaiYeuThich.size(); i++) {
+            theLoaiYeuThich.get(i).setStt(i + 1);
+        }
+        System.out.println(Table.taoBang(theLoaiYeuThich));
+
+    }
     public void thuThuLamViec() {
         int luaChon;
         Helper.clearScreen();
@@ -42,7 +69,9 @@ public class KhoTheLoai extends BaseDanhSach<TheLoai> {
             switch (luaChon) {
                 case 1 -> timKiemTheLoai();
                 case 2 -> xuatConsoleDangTable();
-                case 3 -> System.out.println("Thoat");
+                case 3 -> inThongKeTheLoaiYeuThich();
+                case 4 -> System.out.println("Thoat");
+                default -> System.out.println("Lua chon khong hop le, nhap lai: ");
             }
         } while (luaChon != 3);
     }
@@ -80,6 +109,7 @@ public class KhoTheLoai extends BaseDanhSach<TheLoai> {
 
                 }
             }
+
             default -> System.out.println("Lua chon khong hop le: ");
         }
     }
