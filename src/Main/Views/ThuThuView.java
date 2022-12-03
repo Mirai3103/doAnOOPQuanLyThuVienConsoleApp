@@ -36,6 +36,12 @@ public class ThuThuView {
                 case 5 -> TongHopDuLieu.getDanhSachDocGia().lamViec();
                 case 6 -> TongHopDuLieu.getDanhSachPhieuMuonTra().thuThuLamViec();
                 case 7 -> TongHopDuLieu.getDanhSachTheThuVien().lamViec();
+<<<<<<< Updated upstream
+=======
+                case 8 -> System.out.println("Chức năng chưa được cập nhật");
+                case 9 -> System.out.println("Chức năng chưa được cập nhật");
+                case 10 -> System.out.println("Thoát");
+>>>>>>> Stashed changes
 
                 case 8 -> TongHopDuLieu.getDanhSachXuPhat().lamViec();
                 case 9 -> {

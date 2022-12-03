@@ -38,7 +38,11 @@ public class QuanLyView {
                 }
                 default -> System.out.println("Lựa chọn không hợp lệ");
             }
+<<<<<<< Updated upstream
 
         }while (luaChon != 10);
+=======
+        }while (luaChon != 9);
+>>>>>>> Stashed changes
     }
 }

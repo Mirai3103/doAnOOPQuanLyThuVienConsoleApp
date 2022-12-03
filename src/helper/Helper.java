@@ -65,6 +65,7 @@ public final class Helper {
 		String number = scanner.nextLine();
 		while (Arrays.stream(number.split("")).map(t->t.charAt(0) >='0' && t.charAt(0)<='9').toList().size() !=0 && Pattern.matches("[a-zA-Z\\s]+$",number)){
 			System.out.println("Tên khônng hợp lệ! , nhập lại: ");
+<<<<<<< Updated upstream
 			number = scanner.nextLine();
 		}
 
@@ -100,8 +101,11 @@ public final class Helper {
 		String number = scanner.nextLine();
 		while (!checkCMND(number)){
 			System.out.println("nhập lại: ");
+=======
+>>>>>>> Stashed changes
 			number = scanner.nextLine();
 		}
+
 		return number;
 	}
 	public static LocalDate inputDate(){
