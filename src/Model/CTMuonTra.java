@@ -151,6 +151,7 @@ public class CTMuonTra implements ITableRowData,Serializable	{
 
 	public void setDatra(int datra) {
 		this.datra = datra;
+		getBook().setTheTVNguoiMuonId(-1);
 	}
 	@Override
 	public String[] getRowData() {

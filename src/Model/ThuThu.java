@@ -143,16 +143,9 @@ public class ThuThu extends NhanVien {
         System.out.println("1. Sửa họ tên");
         System.out.println("2. Sửa ngày sinh");
         System.out.println("3. Sửa số điện thoại");
-        System.out.println("4. Sửa CMND");
-        System.out.println("5. Sửa địa chỉ");
-        System.out.println("6. Sửa mật khẩu");
-        System.out.println("7. Sửa lương");
-        System.out.println("8. Sửa nơi làm việc");
-        System.out.println("9. Sửa ngày nhận chức");
-        System.out.println("10. Sửa ngày làm việc");
-        System.out.println("11. Sửa năm kinh nghiệm");
-        System.out.println("12. Sửa trưởng phòng");
-        System.out.println("13. Thoát");
+        System.out.println("4. Sửa địa chỉ");
+        System.out.println("5. Sửa mật khẩu");
+        System.out.println("6. Thoát");
     }
     public void thongTinCaNhan(){
         Xuat();
@@ -184,54 +177,21 @@ public class ThuThu extends NhanVien {
                     System.out.println("Sửa số điện thoại: ");
                     setSDT(Helper.nhapSdt());
                 }
+
                 case 4 -> {
-                    System.out.println("Sửa CMND: ");
-                    setCMND(Helper.nhapCMND());
-                }
-                case 5 -> {
                     DiaChi k = new DiaChi();
                     System.out.println("Sửa địa chỉ: ");
                     k.Nhap();
                     setDC(k);
                 }
-                case 6 -> {
+                case 5 -> {
                     String MK;
                     System.out.println("Sửa Mật khẩu: ");
                     System.out.println("Nhập mật khẩu mới: ");
                     MK = Helper.scanner.nextLine();
                     setMK(MK);
                 }
-                case 7 -> {
-                    int Luong;
-                    System.out.println("Sửa lương: ");
-                    System.out.println("Nhập lương: ");
-                    Luong = Helper.nhapSoTuNhien("Phải là số nguyên >=0!! yêu cầu nhập lại: ");
-                    setLuong(Luong);
-                }
-                case 8 -> {
-                    System.out.println("Nhập nơi làm việc: ");
-                    NoiLamViec = Helper.scanner.nextLine();
-                }
-                case 9 -> {
-                    System.out.println("Sửa ngày nhận chức: ");
-                    System.out.println("Nhập ngày nhận chức: ");
-                    setNgayNhanChuc(Helper.inputDate().format(Helper.DATE_FORMAT));
-                }
-                case 10 -> {
-                    System.out.println("Sửa ngày làm việc: ");
-                    System.out.println("Nhập ngày làm việc: ");
-                    setNgayLamViec(Helper.inputDate().format(Helper.DATE_FORMAT));
-                }
-                case 11 -> {
-                    System.out.println("Sửa năm kinh nghiệm: ");
-                    NamKinhNghiem = Helper.nhapSoNguyen("Phải là số nguyên >=0!! yêu cầu nhập lại: ");
-                }
-                case 12 -> {
-                    System.out.println("Trưởng phòng: ");
-                    System.out.println("Nhấn y nếu đó là trưởng (y/n): ");
-                    Truong = Helper.scanner.nextLine().toLowerCase().charAt(0) == 'y';
-                }
-                case 13 -> {
+                case 6 -> {
                     System.out.println("Thoát sửa!");
                 }
                 default -> {
@@ -239,7 +199,7 @@ public class ThuThu extends NhanVien {
                     ;
                 }
             }
-        } while (choose != 13);
+        } while (choose !=6 );
 
     }
 

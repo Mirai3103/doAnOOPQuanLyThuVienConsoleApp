@@ -80,10 +80,7 @@ public class Main {
     }
     private static void initPhieuMuonData() {
         var DanhSachPhieuMuon = TongHopDuLieu.getDanhSachPhieuMuonTra();
-        var DanhSachDocGia = TongHopDuLieu.getDanhSachDocGia();
-        var DanhSachSach = TongHopDuLieu.getKhoSach();
-        var DanhSachNhanVien = TongHopDuLieu.getNhanViens();
-        var DanhSachTheThuVien = TongHopDuLieu.getDanhSachTheThuVien();
+
         var DanhSachChiTietPhieuMuon = TongHopDuLieu.getDanhSachCTMuonTra();
         var phieuMuon = new MuonTra();
 
@@ -91,23 +88,23 @@ public class Main {
         phieuMuon.setIDnv("thuthu");
         DanhSachPhieuMuon.add(phieuMuon);
         var ctPhieuMuon = new CTMuonTra();
-        phieuMuon.setNgayLapPhieu(LocalDate.now().minusDays(14));
+        phieuMuon.setNgayLapPhieu(Helper.parseDate("01/12/2022"));
         ctPhieuMuon.setIdPhieuMuon(phieuMuon.getIDmt());
         ctPhieuMuon.setIDsach(0);
-        ctPhieuMuon.setNgayhentra(LocalDate.now().minusDays(-1));
+        ctPhieuMuon.setNgayhentra(Helper.parseDate("16/12/2022"));
         DanhSachChiTietPhieuMuon.add(ctPhieuMuon);
         ctPhieuMuon = new CTMuonTra();
         ctPhieuMuon.setIdPhieuMuon(phieuMuon.getIDmt());
         ctPhieuMuon.setIDsach(4);
-        ctPhieuMuon.setNgayhentra(LocalDate.now().minusDays(14));
+        ctPhieuMuon.setNgayhentra(Helper.parseDate("16/12/2022"));
         DanhSachChiTietPhieuMuon.add(ctPhieuMuon);
         ctPhieuMuon = new CTMuonTra();
         ctPhieuMuon.setIdPhieuMuon(phieuMuon.getIDmt());
         ctPhieuMuon.setIDsach(2);
-        ctPhieuMuon.setNgayhentra(LocalDate.now().minusDays(2));
+        ctPhieuMuon.setNgayhentra(Helper.parseDate("02/12/2022"));
         ctPhieuMuon.setDatra(1);
         ctPhieuMuon.getBook().setTheTVNguoiMuonId(-1);
-        ctPhieuMuon.setNgaytra(LocalDate.now().minusDays(2));
+        ctPhieuMuon.setNgaytra(Helper.parseDate("02/12/2022"));
         ctPhieuMuon.setLoiPhatId(2);
         DanhSachChiTietPhieuMuon.add(ctPhieuMuon);
         phieuMuon = new MuonTra();
@@ -116,14 +113,40 @@ public class Main {
         phieuMuon.setIDnv("thuthu");
         DanhSachPhieuMuon.add(phieuMuon);
         ctPhieuMuon = new CTMuonTra();
+        phieuMuon.setNgayLapPhieu(LocalDate.now().minusDays(24));
         ctPhieuMuon.setIdPhieuMuon(phieuMuon.getIDmt());
         ctPhieuMuon.setIDsach(1);
-        ctPhieuMuon.setNgayhentra(LocalDate.now().plusDays(14));
+        ctPhieuMuon.setNgayhentra(LocalDate.now().minusDays(14));
+        ctPhieuMuon.setNgaytra(LocalDate.now().minusDays(17));
+        ctPhieuMuon.setDatra(1);
+
         DanhSachChiTietPhieuMuon.add(ctPhieuMuon);
         ctPhieuMuon = new CTMuonTra();
         ctPhieuMuon.setIdPhieuMuon(phieuMuon.getIDmt());
         ctPhieuMuon.setIDsach(3);
-        ctPhieuMuon.setNgayhentra(LocalDate.now().plusDays(14));
+        ctPhieuMuon.setNgayhentra(LocalDate.now().minusDays(14));
+        ctPhieuMuon.setNgaytra(LocalDate.now().minusDays(10));
+        ctPhieuMuon.setDatra(1);
+        ctPhieuMuon.setLoiPhatId(3);
+
+        DanhSachChiTietPhieuMuon.add(ctPhieuMuon);
+        phieuMuon = new MuonTra();
+        // 1 -> 3
+        phieuMuon.setIDthe(2);
+        phieuMuon.setIDnv("thuthu");
+        DanhSachPhieuMuon.add(phieuMuon);
+        ctPhieuMuon = new CTMuonTra();
+        phieuMuon.setNgayLapPhieu(LocalDate.now().minusDays(14));
+        ctPhieuMuon.setIdPhieuMuon(phieuMuon.getIDmt());
+        ctPhieuMuon.setIDsach(7);
+        ctPhieuMuon.setNgayhentra(LocalDate.now().minusDays(4));
+
+        DanhSachChiTietPhieuMuon.add(ctPhieuMuon);
+        ctPhieuMuon = new CTMuonTra();
+        ctPhieuMuon.setIdPhieuMuon(phieuMuon.getIDmt());
+        ctPhieuMuon.setIDsach(5);
+        ctPhieuMuon.setNgayhentra(LocalDate.now().minusDays(4));
+
         DanhSachChiTietPhieuMuon.add(ctPhieuMuon);
     }
 

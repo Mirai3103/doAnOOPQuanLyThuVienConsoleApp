@@ -189,7 +189,7 @@ public class MuonTra implements Serializable, ITableRowData {
         System.out.println("ID thẻ: " + this.IDthe);
         System.out.println("ID nhân viên: " + this.IDnv);
         System.out.println("Ngày mượn: " + this.ngayLapPhieu);
-        System.out.println("Người mượn:" + TongHopDuLieu.getDanhSachTheThuVien().getById(this.IDthe).getUser().getHoTen());
+        System.out.println("Người mượn: " + TongHopDuLieu.getDanhSachTheThuVien().getById(this.IDthe).getUser().getHoTen());
         ArrayList<CTMuonTra> ctMuonTras = getCTMuontras();
         System.out.println("Danh sách sách mượn: ");
         System.out.println(Table.taoBang(ctMuonTras));
