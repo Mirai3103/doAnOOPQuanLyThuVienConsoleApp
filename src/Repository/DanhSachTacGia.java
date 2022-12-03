@@ -30,18 +30,18 @@ public class DanhSachTacGia extends BaseDanhSach<TacGia>  {
     }
 
     public void suaTacGia(){
-        System.out.println("Nhap id tac gia can sua:");
+        System.out.println("Nhập id tác giả cần sửa:");
         update(Helper.nhapSoNguyen("Id không hợp lệ, nhập lại: "));
     }
 
     public void showMenu() {
         System.out.println("Tương tác với tác giả");
-        System.out.println("1. Them tac gia");
-        System.out.println("2. Sua tac gia");
-        System.out.println("3. Xoa tac gia");
-        System.out.println("4. Xem danh sach tac gia");
-        System.out.println("5. Thoat");
-        System.out.println("5. Luu vao file");
+        System.out.println("1. Thêm tác giả");
+        System.out.println("2. Sửa tác giả");
+        System.out.println("3. Xóa tác giả");
+        System.out.println("4. Xem danh sách tác giả");
+        System.out.println("5. Thoát");
+        System.out.println("5. Lưu vào file");
 
     }
     public void lamViec(){
