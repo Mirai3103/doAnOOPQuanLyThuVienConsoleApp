@@ -42,27 +42,14 @@ public class DanhSachTacGia extends BaseDanhSach<TacGia>  {
         do {
             showMenu();
             luaChon = Helper.nhapSoNguyen("Lua chon khong hop le, nhap lai: ");
-            switch (luaChon){
-                case 1:
-                    nhapVaThemTacGia();
-                    break;
-                case 2:
-                    suaTacGia();
-                    break;
-                case 3:
-                    xoaTacGia();
-                    break;
-                case 4:
-                    xuatConsoleDangTable();
-                    break;
-                case 5:
-                    System.out.println("Thoat");
-                    break;
-                case 6:
-                    xuatFileBinary();
-                    break;
-                default:
-                    System.out.println("Lua chon khong hop le, nhap lai");
+            switch (luaChon) {
+                case 1 -> nhapVaThemTacGia();
+                case 2 -> suaTacGia();
+                case 3 -> xoaTacGia();
+                case 4 -> xuatConsoleDangTable();
+                case 5 -> System.out.println("Thoat");
+                case 6 -> xuatFileBinary();
+                default -> System.out.println("Lua chon khong hop le, nhap lai");
             }
         }while (luaChon != 5);
     }
@@ -85,7 +72,16 @@ public class DanhSachTacGia extends BaseDanhSach<TacGia>  {
     }
 
     public void delete(int id) {
-        data.removeIf(t -> t.getId() == id);
+        TacGia tacGia = getById(id);
+        if (tacGia ==null) {
+            System.out.println("Không tìm thấy tác giả");
+            return;
+        }
+        if(tacGia.getSachs().size() > 0){
+            System.out.println("Không thể xóa tác giả này vì tác giả này đã có sách");
+            return;
+        }
+        data.remove(tacGia);
     }
 
     public void update(int id) {

@@ -239,6 +239,10 @@ public class DanhSachPhieuMuon extends BaseDanhSach<MuonTra> {
                     System.out.println("Nhập id phiếu mươn: ");
                     var id = Helper.nhapSoNguyen("id không hợp lệ,Nhập lại! ");
                     var phieuMuon = getById(id);
+                    if(phieuMuon == null) {
+                        System.out.println("Không tìm thấy phiếu mượn");
+                        return;
+                    }
                     phieuMuon.xuatPhieu();
                     System.out.println("Bạn có muốn xoá phiếu mượn: ");
                     boolean y = Helper.scanner.nextLine().charAt(0) == 'y';
