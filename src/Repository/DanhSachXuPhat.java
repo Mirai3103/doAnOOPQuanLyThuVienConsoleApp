@@ -83,7 +83,8 @@ public class DanhSachXuPhat extends BaseDanhSachArray<XuPhat> {
         char c = ' ';
         do {
             showMenu();
-            c = Helper.scanner.nextLine().charAt(0);
+            String a = Helper.scanner.nextLine();
+            c = a.charAt(0);
             switch (c) {
                 case '1' -> add();
                 case '2' -> show();
