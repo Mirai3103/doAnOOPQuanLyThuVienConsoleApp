@@ -6,14 +6,11 @@ import helper.Xuat.ITableRowData;
 import helper.Xuat.Table;
 
 import java.io.*;
-import java.util.ArrayList;
 
 
 public abstract class BaseDanhSachArray<T extends ITableRowData> implements IDanhSach<T>, Serializable {
     protected Mang<T> data = new Mang<>();
-    public void copyFrom(BaseDanhSachArray<T> other){
-        this.data = other.data;
-    }
+
     public T[] getAll() {
         return data.getAll();
     }
@@ -41,6 +38,7 @@ public abstract class BaseDanhSachArray<T extends ITableRowData> implements IDan
             objout.close();
             fout.close();
         } catch (Exception ignored) {
+            ignored.printStackTrace();
         }
     }
     @Override
@@ -49,10 +47,15 @@ public abstract class BaseDanhSachArray<T extends ITableRowData> implements IDan
             FileInputStream finput = new FileInputStream(filePath);
             ObjectInputStream objinput = new ObjectInputStream(finput);
             BaseDanhSachArray<T> duLieuDocDuoc = (BaseDanhSachArray<T>) objinput.readObject();
-            this.copyFrom(duLieuDocDuoc);
+            copyFrom(duLieuDocDuoc);
             objinput.close();
             finput.close();
         } catch (Exception ignored) {
+            if(ignored instanceof FileNotFoundException){
+                return;
+            }
+
+            ignored.printStackTrace();
         }
     }
 

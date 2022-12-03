@@ -15,6 +15,8 @@ public class DanhSachTheThuVien extends BaseDanhSachArray<TheThuVien>{
     public static final String FILE_PATH = Helper.dirPath + "DanhSachTheThuVien.bin";
     private int idIdentity = 0;
 
+
+
     @Override
     public void copyFrom(IDanhSach<TheThuVien> other) {
         var otherTheThuViens = (DanhSachTheThuVien) other;
