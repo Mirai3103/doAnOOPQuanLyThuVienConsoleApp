@@ -1,6 +1,6 @@
 package Repository;
 
-
+import java.util.Scanner;
 import Model.TheLoai;
 import helper.Helper;
 import helper.Xuat.Table;
@@ -13,7 +13,7 @@ public class KhoTheLoai extends BaseDanhSach<TheLoai> {
     private static final long serialVersionUID = 121211232112L;
     public static String FILE_PATH = Helper.dirPath + "KhoTheLoai.bin";
     private int idIdentity = 0;
-
+    Scanner sc=new Scanner(System.in);
     //toDo: crud
     public void showMenu() {
         System.out.println("Tương tác với thể loại");
@@ -84,7 +84,6 @@ public class KhoTheLoai extends BaseDanhSach<TheLoai> {
                     else{
                         System.out.println("bye");
                     }
-
                 }
                 break;
             default:
@@ -143,7 +142,6 @@ public class KhoTheLoai extends BaseDanhSach<TheLoai> {
         } while (luaChon != 5);
     }
 
-
     public TheLoai getById(int id) {
         for (TheLoai theLoai : this.data) {
             if (theLoai.getId() == id) {
@@ -155,9 +153,19 @@ public class KhoTheLoai extends BaseDanhSach<TheLoai> {
 
 
     public void delete(int id) {
+    	if(getById(id)==null){
+    		System.out.println("Không có trong kho thể loại!!");
+    		return;
+    	}
         TheLoai theLoai = getById(id);
         if (theLoai != null) {
-            data.remove(theLoai);
+        	System.out.print("Bạn có chắc muốn xóa không (y/n): ");
+        	if(sc.nextLine().equals("y")) {
+            	System.out.println("Đã xóa!!");
+            	data.remove(theLoai);
+            } 	
+            System.out.println("Đã hủy xóa!!");
+            
         }
     }
 

@@ -33,6 +33,6 @@ public class QuanLyView {
                 case 9 -> System.out.println("Bye!");
                 default -> System.out.println("Lựa chọn không hợp lệ");
             }
-        }while (luaChon != 6);
+        }while (luaChon != 9);
     }
 }

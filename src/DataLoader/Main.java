@@ -16,6 +16,9 @@ import java.util.Map;
 public class Main {
     public static void removeAllData(){
         File listFile = new File(Helper.dirPath);
+        if (!listFile.exists()) {
+            listFile.mkdir();
+        }
         String[]listFileName = listFile.list();
         for(String fname: listFileName){
             File currentFile = new File(listFile.getPath(),fname);

@@ -45,7 +45,7 @@ public class ThuThuView {
                 case 7 -> TongHopDuLieu.getDanhSachTheThuVien().lamViec();
                 case 8 -> System.out.println("Chức năng chưa được cập nhật");
                 case 9 -> System.out.println("Chức năng chưa được cập nhật");
-                  case 10 -> System.out.println("Thoát");
+                case 10 -> System.out.println("Thoát");
 
             }
         } while (luaChon !=9);
