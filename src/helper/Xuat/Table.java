@@ -105,8 +105,11 @@ public class Table {
     }
 
     public static void xuatFileExcel(ArrayList<? extends ITableRowData> data , String fileName){
+        // remove file extension
+        fileName = fileName.replaceFirst("[.][^.]+$", "");
+
        try {
-           Writer fileWriter = new OutputStreamWriter(new FileOutputStream(fileName), StandardCharsets.UTF_8);
+           Writer fileWriter = new OutputStreamWriter(new FileOutputStream(fileName+".csv"), StandardCharsets.UTF_8);
            fileWriter.write(String.join(",",data.get(0).getHeader())+"\n");
            for (ITableRowData  rowData : data) {
                fileWriter.write(String.join(",",rowData.getRowData())+"\n");
@@ -114,24 +117,19 @@ public class Table {
            fileWriter.flush();
            fileWriter.close();
        }catch (IOException ignored){
-
        }
     }
-    public static ArrayList<String> docFileExcel(String fileName){
-        ArrayList<String> data=new ArrayList<>();
-        try {
-            BufferedReader fileReader = new BufferedReader(new InputStreamReader(new FileInputStream(fileName), StandardCharsets.UTF_8));
-            String line = fileReader.readLine();//ignore header
-
-            while ((line=fileReader.readLine())!=null){
-               if(line.trim().charAt(0)!='\n'){
-                   data.add(line);
-               }
-            }
-            fileReader.close();
-        }catch (IOException ignored){
-
+    public static void xuatFileExcel(Mang<? extends ITableRowData> m , String fileName){
+        // remove file extension
+        if(fileName.contains(".")){
+            fileName = fileName.substring(0,fileName.lastIndexOf("."));
         }
-        return data;
+        var data = new ArrayList<ITableRowData>();
+        for (int i = 0; i < m.size(); i++) {
+            data.add(m.get(i));
+        }
+
+        xuatFileExcel(data,fileName);
     }
+
 }

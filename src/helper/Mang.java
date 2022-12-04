@@ -25,6 +25,7 @@ public class Mang <T > implements Serializable {
     public T[] getAll(){
         return arr;
     }
+
     public T get(int index){
         return  arr[index];
     }

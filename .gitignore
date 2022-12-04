@@ -69,6 +69,8 @@ cmake-build-*/
 # File-based project format
 *.iws
 *.bin
+*.csv
+
 # IntelliJ
 out/
 

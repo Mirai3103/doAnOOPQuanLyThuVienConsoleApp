@@ -2,8 +2,11 @@ package Repository;
 
 
 import Model.*;
+import helper.Helper;
+import helper.Xuat.Table;
 
 import java.io.*;
+import java.util.ArrayList;
 
 public final  class TongHopDuLieu  {
 
@@ -105,6 +108,38 @@ public final  class TongHopDuLieu  {
         }
         return nhanViens;
     }
+    public void fastXuatFile(){
+        getKhoSach().xuatFileBinary(KhoSach.FILE_PATH);
+        getKhoTheLoai().xuatFileBinary(KhoTheLoai.FILE_PATH);
+        getDanhSachTheLoai_sach().xuatFileBinary();
+        getDanhSachTacGia().xuatFileBinary(DanhSachTacGia.FILE_PATH);
+        getDanhSachNhaXuatBan().xuatFileBinary(DanhSachNhaXuatBan.FILE_PATH);
+        getNhanViens().xuatFileBinary(NhanViens.FILE_PATH);
+        getDanhSachPhieuMuonTra().xuatFileBinary(DanhSachPhieuMuon.FILE_PATH);
+        getDanhSachCTMuonTra().xuatFileBinary(DanhSachCTMuonTra.FILE_PATH);
+        getDanhSachDocGia().xuatFileBinary(DocGias.FILE_PATH);
+        getDanhSachTheThuVien().xuatFileBinary(DanhSachTheThuVien.FILE_PATH);
+        getDanhSachXuPhat().xuatFileBinary(DanhSachXuPhat.FILE_PATH);
 
+    }
+    public static void fastXuatCsv(){
+        Table.xuatFileExcel(getKhoSach().getAll(), KhoSach.FILE_PATH);
+        Table.xuatFileExcel(getKhoTheLoai().getAll(), KhoTheLoai.FILE_PATH);
+        Table.xuatFileExcel(new ArrayList<TheLoai_Sach>(getDanhSachTheLoai_sach().getTheLoai_saches()), DanhSachTheLoai_Sach.FILE_PATH);
+        Table.xuatFileExcel(getDanhSachTacGia().getAll(), DanhSachTacGia.FILE_PATH);
+        Table.xuatFileExcel(getDanhSachNhaXuatBan().getAll(), DanhSachNhaXuatBan.FILE_PATH);
+        Table.xuatFileExcel(getNhanViens().getAll(), NhanViens.FILE_PATH);
+        Table.xuatFileExcel(getDanhSachPhieuMuonTra().getAll(), DanhSachPhieuMuon.FILE_PATH);
+        Table.xuatFileExcel(getDanhSachCTMuonTra().getAll(), DanhSachCTMuonTra.FILE_PATH);
+        Table.xuatFileExcel(getDanhSachDocGia().getAll(), DocGias.FILE_PATH);
+        Table.xuatFileExcel(getDanhSachTheThuVien().data, DanhSachTheThuVien.FILE_PATH);
+        Table.xuatFileExcel(getDanhSachXuPhat().data, DanhSachXuPhat.FILE_PATH);
+
+
+    }
+
+    public static void main(String[] args) {
+        TongHopDuLieu.fastXuatCsv();
+    }
 
 }
