@@ -1,5 +1,6 @@
 package Model;
 
+import Repository.TongHopDuLieu;
 import helper.Helper;
 
 import java.io.Serial;
@@ -106,6 +107,11 @@ public class ConNguoi  implements Serializable {
 			if(CMND.equalsIgnoreCase("null")){
 				CMND = "";
 				break;
+			}
+			if(TongHopDuLieu.getNhanViens().getAll().stream().filter(x->x.getCMND().equalsIgnoreCase(CMND)).count() > 0){
+				System.out.println("CMND đã tồn tại!");
+				CMND = "";
+				continue;
 			}
 		}while (!checkCMND());
 		System.out.println("Bạn có muốn nhập địa chỉ không? (y/n)");

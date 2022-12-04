@@ -27,14 +27,14 @@ public abstract class BaseDanhSachArray<T extends ITableRowData> implements IDan
     @Override
     public void xuatFileBinary(String filePath ){
         if(data.size() == 0){
-            System.out.println("Danh sách trống, không thể xuất file");
+            System.out.println("Danh sách trống, không  xuất file");
             return;
         }
         try {
             FileOutputStream fout = new FileOutputStream(filePath);
             ObjectOutputStream objout = new ObjectOutputStream(fout);
             objout.writeObject(this);
-            System.out.println("Lưu thành công!");
+//            System.out.println("Lưu thành công!");
             objout.close();
             fout.close();
         } catch (Exception ignored) {

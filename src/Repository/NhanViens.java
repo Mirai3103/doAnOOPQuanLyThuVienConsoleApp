@@ -88,7 +88,7 @@ public class NhanViens  extends BaseDanhSach<NhanVien>{
 		System.out.println("0.Là Quản lí");
 		System.out.println("khác 0. Là thủ thư: ");
 		System.out.println("Nhân Viên mới là: ");
-		int chon = Helper.nhapSoNguyen("Nhập số nguyên: ");
+		int chon = Helper.nhapSoNguyen("Lỗi! vui lòng nhập số nguyên: ");
 		switch (chon) {
 		case 0:
 			QuanLi QL = new QuanLi();
@@ -117,7 +117,7 @@ public class NhanViens  extends BaseDanhSach<NhanVien>{
 			ThuThu TT = new ThuThu();
 			boolean maCoTrungHayK1=false;
 			do {
-				System.out.println("Nhập mã nhân viên: ");
+				System.out.println("Nhập mã nhân viên (6 kí tự): ");
 				String maNV ;
 				do {
 					maNV = Helper.scanner.nextLine();

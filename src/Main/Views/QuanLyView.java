@@ -33,7 +33,10 @@ public class QuanLyView {
                 case 6 -> TongHopDuLieu.getDanhSachDocGia().lamViec();
                 case 7 -> TongHopDuLieu.getDanhSachPhieuMuonTra().thuThuLamViec();
                 case 8 -> TongHopDuLieu.getDanhSachXuPhat().lamViec();
-                case 10 -> System.exit(0);
+                case 10 -> {
+                    TongHopDuLieu.fastXuatFile();
+                    System.exit(0);
+                }
                 case 9 -> ThuThuView.run();
                 case 11 -> {
                     System.out.println("Đăng xuất thành công");
@@ -43,6 +46,7 @@ public class QuanLyView {
             }
         }while (luaChon != 11);
 
+        TongHopDuLieu.fastXuatFile();
 
     }
 }

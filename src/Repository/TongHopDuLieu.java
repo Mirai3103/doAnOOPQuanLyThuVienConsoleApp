@@ -108,7 +108,7 @@ public final  class TongHopDuLieu  {
         }
         return nhanViens;
     }
-    public void fastXuatFile(){
+    public static void fastXuatFile(){
         getKhoSach().xuatFileBinary(KhoSach.FILE_PATH);
         getKhoTheLoai().xuatFileBinary(KhoTheLoai.FILE_PATH);
         getDanhSachTheLoai_sach().xuatFileBinary();

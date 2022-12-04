@@ -21,6 +21,7 @@ public class QuanLi extends NhanVien  {
         MaBaoMat = maBaoMat;
         DacQuyen = dacQuyen;
     }
+
     public QuanLi() {
         super();
         NamKinhNghiem = 0;
