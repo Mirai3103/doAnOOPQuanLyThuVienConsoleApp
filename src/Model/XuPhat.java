@@ -53,9 +53,9 @@ public class XuPhat implements ITableRowData, Serializable {
     }
 
     public void nhapXuPhat(){
-        System.out.println("Nhap ten loi: ");
+        System.out.println("Nhập tên lỗi: ");
         tenLoi = Helper.scanner.nextLine();
-        System.out.println("Nhap tien phat: ");
+        System.out.println("Nhập tiền phạt: ");
         tienPhat = Helper.nhapSoTuNhien("Tien phat khong hop le, vui long nhap lai: ");
     }
 

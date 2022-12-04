@@ -44,6 +44,8 @@ public class DocGias  extends BaseDanhSach<DocGia> {
         theThuVien.xuatTheThuVien();
     }
     public void showMenu(){
+        Helper.clearScreen();
+
         System.out.println("1. Đăng ký thành viên");
         System.out.println("2. Hiển thị danh sách độc giả");
         System.out.println("3. Tìm kiếm độc giả");

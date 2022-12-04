@@ -311,6 +311,8 @@ public class Sach implements Serializable, ITableRowData {
     }
 
     public void sua() {
+        Helper.clearScreen();
+        System.out.println(Table.taoBang(this));
         for (int i = 1; i < getHeader().length; i++) {
             if (i != 10)
                 System.out.printf(i + ". Sửa" + getHeader()[i] + "\n");

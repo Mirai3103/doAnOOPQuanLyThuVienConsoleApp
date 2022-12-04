@@ -56,6 +56,8 @@ public class DanhSachNhaXuatBan extends BaseDanhSach<NhaXuatBan>  {
         update(id);
     }
     public void showMenu(){
+        Helper.clearScreen();
+
         System.out.println("Tương tác với nhà xuất bản");
         System.out.println("1. Thêm nhà xuất bản");
         System.out.println("2. Sửa nhà xuất bản");
@@ -132,6 +134,8 @@ public class DanhSachNhaXuatBan extends BaseDanhSach<NhaXuatBan>  {
         data.add(item);
     }
     void showMenuThuThu(){
+        Helper.clearScreen();
+
         System.out.println("Tương tác với nhà xuất bản");
         System.out.println("1. Xem danh sách nhà xuất bản");
         System.out.println("2. Tìm sách theo nhà xuất bản");

@@ -41,6 +41,8 @@ public class DanhSachXuPhat extends BaseDanhSachArray<XuPhat> {
         return null;
     }
     public void showMenu() {
+        Helper.clearScreen();
+
         System.out.println("1. Thêm lỗi phạt");
         System.out.println("2. Xem danh sách lỗi phạt");
         System.out.println("3. Sửa lỗi phạt");

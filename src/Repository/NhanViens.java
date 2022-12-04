@@ -262,6 +262,8 @@ public class NhanViens  extends BaseDanhSach<NhanVien>{
 
 	
 	public void Menu1() {
+		Helper.clearScreen();
+
 		System.out.println("1.Nhập nhân viên mới.");
 		System.out.println("2.sửa nhân viên.");
 		System.out.println("3.Xóa nhân viên.");
@@ -270,6 +272,7 @@ public class NhanViens  extends BaseDanhSach<NhanVien>{
 		System.out.println("6.Thoát.");
 	}
 	public void Menu2() {
+
 		System.out.println("1.Với mã nhân viên()tìm kiếm tuyệt đối).");
 		System.out.println("khác 1.với tên nhân viên (tìm kiếm tương đối):");
 	}
