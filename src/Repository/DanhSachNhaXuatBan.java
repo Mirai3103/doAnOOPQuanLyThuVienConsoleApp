@@ -68,7 +68,7 @@ public class DanhSachNhaXuatBan extends BaseDanhSach<NhaXuatBan>  {
     }
     public void lamViec(){
         int luaChon;
-        Helper.clearScreen();
+        
         do {
             showMenu();
             luaChon = Helper.nhapSoNguyen("Không hợp lệ, nhập lại:");
@@ -142,7 +142,7 @@ public class DanhSachNhaXuatBan extends BaseDanhSach<NhaXuatBan>  {
 
     public void thuThulamViec() {
         int luaChon;
-        Helper.clearScreen();
+        
 
         do {
             showMenuThuThu();

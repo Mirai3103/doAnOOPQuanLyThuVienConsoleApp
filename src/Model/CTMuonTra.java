@@ -71,7 +71,7 @@ public class CTMuonTra implements ITableRowData,Serializable	{
 	public void suaCTMuonTra() {
 		int luaChon;
 		do {
-			Helper.clearScreen();
+			
 			System.out.println(Table.taoBang(this));
 			System.out.println("Bạn muốn sửa gì?");
 			showMenuSua();

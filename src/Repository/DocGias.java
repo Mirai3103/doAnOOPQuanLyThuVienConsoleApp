@@ -137,7 +137,7 @@ public class DocGias  extends BaseDanhSach<DocGia> {
 
     public void lamViec(){
         int chon;
-        Helper.clearScreen();
+        
 
         do {
             showMenu();

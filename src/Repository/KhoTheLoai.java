@@ -65,7 +65,7 @@ public class KhoTheLoai extends BaseDanhSach<TheLoai> {
     }
     public void thuThuLamViec() {
         int luaChon;
-        Helper.clearScreen();
+        
         do {
             showMenuThuThu();
             luaChon = Helper.nhapSoNguyen("Lua chon khong hop le, nhap lai: ");
@@ -145,7 +145,7 @@ public class KhoTheLoai extends BaseDanhSach<TheLoai> {
 
     public void lamViecVoiDanhSachTheLoai() {
         int luaChon;
-        Helper.clearScreen();
+        
         do {
             showMenu();
             System.out.println("Nhập lựa chọn của bạn");

@@ -70,7 +70,7 @@ public class DanhSachTheThuVien extends BaseDanhSachArray<TheThuVien>{
     }
     public void lamViec(){
         int luaChon;
-        Helper.clearScreen();
+        
 
         do {
             showMenu();

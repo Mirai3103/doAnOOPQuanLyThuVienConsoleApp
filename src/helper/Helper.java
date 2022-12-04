@@ -106,7 +106,7 @@ public final class Helper {
 
 		return number;
 	}
-	public static LocalDate inputDate(){
+	public static LocalDate inputDate(boolean isAfterNow){
 		String dateStr;
 		var isDateValid = false;
 		do {
@@ -114,9 +114,18 @@ public final class Helper {
 			dateStr = Helper.scanner.nextLine();
 			isDateValid = Helper.checkNgayThang(dateStr);
 		}while (!isDateValid);
-		return LocalDate.parse(dateStr, DATE_FORMAT);
+		var date = LocalDate.parse(dateStr, DATE_FORMAT);
+		if(isAfterNow){
+			if (date.isBefore(LocalDate.now())){
+				System.out.println("Không hợp lệ! phải sau ngày hiện hôm nay");
+				return inputDate(true);
+			}
+		}
+		return date;
 	}
-
+	public static LocalDate inputDate(){
+	 return inputDate(false);
+	}
 	public static boolean checkEmail(String email){
 		return email.matches(EMAIL_PATTERN);
 	}
@@ -131,27 +140,6 @@ public final class Helper {
 
 
 	public static String dirPath = System.getProperty("user.dir")+"\\data\\";
-	// sau này cái sau này dùng xuất ra file excel đọc được ví dụ như để liệt kê các loại sách hay là lịch sử đọc của ai đó
-	// dùng để đọc flie theo từng dòng thành String
-	// vào hàm của ai thì cắt cái String đó ra bằng lệnh str.split(" ")
-//    public static ArrayList<String> DocFile(String Path){
-//      ArrayList<String> listLine = new ArrayList<>();
-//      try {
-//          FileReader f = new FileReader(Path);
-//          BufferedReader B = new BufferedReader(f);
-//          String Line;
-//          while ((Line = B.readLine())!=null) {
-//              listLine.add(Line);
-//          }
-//      } catch (FileNotFoundException E) {
-//          E.printStackTrace();
-//      } catch ( IOException E) {
-//          E.printStackTrace();
-//      }
-
-//      return listLine;
-//
-//    }
 
 	public static boolean checkNgayThang(String NgayThang){
 		Matcher matcher = Helper.DATE_PATTERN.matcher(NgayThang);

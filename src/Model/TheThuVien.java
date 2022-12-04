@@ -131,7 +131,7 @@ public class TheThuVien implements Serializable, ITableRowData{
 	}
 	public void suaTheThuVien()
 	{
-		Helper.clearScreen();
+		
 
 		System.out.println("1. Sửa ngày hết hạn");
 		System.out.println("2. Sửa ghi chú");

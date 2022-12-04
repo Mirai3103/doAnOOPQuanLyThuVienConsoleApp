@@ -277,7 +277,7 @@ public class NhanViens  extends BaseDanhSach<NhanVien>{
 	}
 	public void LamViec() {
 		int chon;
-		Helper.clearScreen();
+		
 
 		do {
 			Menu1();

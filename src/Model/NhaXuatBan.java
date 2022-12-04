@@ -114,7 +114,7 @@ public class NhaXuatBan implements Serializable , ITableRowData {
         return String.format("%s - %s - %s - %s - %s", this.id, this.tenNXB, this.diaChi.toString(), this.email, this.nguoiDaiDien);
     }
     public void sua(){
-        Helper.clearScreen();
+        
         System.out.println(Table.taoBang(this));
         System.out.println("Sửa NXB: ");
         for(int i = 1; i<getHeader().length;i++){
