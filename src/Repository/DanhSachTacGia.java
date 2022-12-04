@@ -41,7 +41,15 @@ public class DanhSachTacGia extends BaseDanhSach<TacGia>  {
 
     public void suaTacGia(){
         System.out.println("Nhập id tác giả cần sửa:");
-        update(Helper.nhapSoNguyen("Id không hợp lệ, nhập lại: "));
+        int id=Helper.nhapSoNguyen("Id không hợp lệ, nhập lại: ");
+        System.out.println("Đây là tác giả bạn sắp sửa");
+        Mang<TacGia> TacGiaSapXoa = new Mang<>();
+        TacGiaSapXoa.add(getById(id));
+        if (TacGiaSapXoa.size() == 0) {
+            return;
+        }
+        System.out.println(Table.taoBang(TacGiaSapXoa));
+        update(id);
     }
 
     public void showMenu() {
