@@ -59,6 +59,8 @@ public class DanhSachTheThuVien extends BaseDanhSachArray<TheThuVien>{
         System.out.println(Table.taoBang(theThuViensHetHan));
     }
     void showMenu() {
+        Helper.clearScreen();
+
         System.out.println("1. Tìm kiếm thẻ thư viện");
         System.out.println("2. Sửa thông tin thẻ thư viện");
         System.out.println("3. Xóa thẻ thư viện");

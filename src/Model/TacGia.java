@@ -104,6 +104,8 @@ public class TacGia implements Serializable, ITableRowData {
     }
 
     public void sua() {
+        Helper.clearScreen();
+
         xuatDangBang();
         for (int i = 1; i < getHeader().length; i++)
             System.out.printf((i) + ". " + getHeader()[i] + "\n");

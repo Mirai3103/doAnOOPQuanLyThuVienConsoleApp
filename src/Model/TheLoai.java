@@ -92,6 +92,8 @@ public class TheLoai implements Serializable, ITableRowData {
     }
 
     public void sua() {
+        Helper.clearScreen();
+        xuatDangBang();
         for (int i = 1; i < getHeader().length; i++)
             System.out.printf((i) + ". " + getHeader()[i] + "\n");
         System.out.println("3. thoát");

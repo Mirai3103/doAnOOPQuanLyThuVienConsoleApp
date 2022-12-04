@@ -202,6 +202,8 @@ public class DanhSachPhieuMuon extends BaseDanhSach<MuonTra> {
     }
 
     public void showMenu() {
+        Helper.clearScreen();
+
         System.out.println("1. Thêm phiếu mượn");
         System.out.println("2. Xóa phiếu mượn");
         System.out.println("3. Sửa phiếu mượn");

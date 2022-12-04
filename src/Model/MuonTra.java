@@ -36,7 +36,9 @@ public class MuonTra implements Serializable, ITableRowData {
     }
 
     public void suaPhieuMuon() {
+        Helper.clearScreen();
         xuatPhieu();
+
         int choose;
         do {
             System.out.println("1. Sửa ngày mượn");

@@ -126,6 +126,8 @@ public class QuanLi extends NhanVien  {
 	public void sua() {
 		int choose;
 		do {
+            Helper.clearScreen();
+            this.xuatDangBang();
 			menuSua();
 			System.out.println("Nhập lựa chọn: ");
 			choose = Helper.nhapSoNguyen("Lựa chọn không hop lệ !! yêu cầu nhập lại: ");

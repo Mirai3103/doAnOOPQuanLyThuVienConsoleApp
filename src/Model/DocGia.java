@@ -3,6 +3,7 @@ package Model;
 import Repository.TongHopDuLieu;
 import helper.Helper;
 import helper.Xuat.ITableRowData;
+import helper.Xuat.Table;
 
 import java.io.Serial;
 import java.io.Serializable;
@@ -81,7 +82,11 @@ public class DocGia extends ConNguoi implements Serializable, ITableRowData {
     public void sua() {
 
         int chon;
+
         do {
+            Helper.clearScreen();
+            System.out.println(Table.taoBang(this));
+            System.out.println("Sửa thông tin độc giả");
             menuSua();
             chon = Helper.nhapSoNguyen("Không hợp lệ. Nhập lại: ");
             switch (chon) {

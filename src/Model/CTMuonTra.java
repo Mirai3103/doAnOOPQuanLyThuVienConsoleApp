@@ -9,6 +9,8 @@ import Repository.DanhSachCTMuonTra;
 import Repository.TongHopDuLieu;
 import helper.Helper;
 import helper.Xuat.ITableRowData;
+import helper.Xuat.Table;
+
 public class CTMuonTra implements ITableRowData,Serializable	{
 
 		@Serial
@@ -69,6 +71,9 @@ public class CTMuonTra implements ITableRowData,Serializable	{
 	public void suaCTMuonTra() {
 		int luaChon;
 		do {
+			Helper.clearScreen();
+			System.out.println(Table.taoBang(this));
+			System.out.println("Bạn muốn sửa gì?");
 			showMenuSua();
 			luaChon = Helper.nhapSoNguyen("Lua chon khong hop le, nhap lai: ");
 			switch (luaChon) {

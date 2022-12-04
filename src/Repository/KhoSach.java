@@ -106,6 +106,8 @@ public class KhoSach extends BaseDanhSach<Sach> {
     }
 
     public void showMenu() {
+        Helper.clearScreen();
+
         System.out.println("1. Them sach");
         System.out.println("2. Xoa sach");
         System.out.println("3. Sua sach");
@@ -155,6 +157,8 @@ public class KhoSach extends BaseDanhSach<Sach> {
     }
 
     public void showMenuThuThu() {
+        Helper.clearScreen();
+
         System.out.println("1. Xuất toàn bộ sách");
         System.out.println("2. Tìm kiếm sách theo tên");
         System.out.println("3. Tìm kiếm sách theo tác giả");
