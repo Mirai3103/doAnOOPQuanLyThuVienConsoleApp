@@ -411,7 +411,7 @@ public class Sach implements Serializable, ITableRowData {
                 this.tacGiaId = Helper.nhapSoNguyen("Id phải là số nguyên dương");
                 //kiểm tra id có tồn tại trong danh sách tác giả không
 
-                if (TongHopDuLieu.getDanhSachNhaXuatBan().getById(this.tacGiaId) != null) {
+                if (TongHopDuLieu.getDanhSachTacGia().getById(this.tacGiaId) != null) {
                     validId = true;
                 } else {
                     System.out.println("Id không tồn tại trong danh sách tác giả");
