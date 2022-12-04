@@ -45,7 +45,6 @@ public class DanhSachTacGia extends BaseDanhSach<TacGia>  {
     }
 
     public void showMenu() {
-        Helper.clearScreen();
 
         System.out.println("Tương tác với tác giả");
         System.out.println("1. Thêm tác giả");
@@ -58,6 +57,8 @@ public class DanhSachTacGia extends BaseDanhSach<TacGia>  {
     }
     public void lamViec(){
         int luaChon;
+        Helper.clearScreen();
+
         do {
             showMenu();
             luaChon = Helper.nhapSoNguyen("Lua chon khong hop le, nhap lai: ");
@@ -146,7 +147,6 @@ public class DanhSachTacGia extends BaseDanhSach<TacGia>  {
         data.add(item);
     }
     public void showMenuThuThu(){
-        Helper.clearScreen();
 
         System.out.println("1. Xuất danh sách tác giả ");
         System.out.println("2. Tìm kiếm tác giả");        System.out.println("3. Thoats");
@@ -155,6 +155,8 @@ public class DanhSachTacGia extends BaseDanhSach<TacGia>  {
     }
     public void thuThuLamViec() {
         int luaChon;
+        Helper.clearScreen();
+
         do {
             showMenuThuThu();
             luaChon = Helper.nhapSoNguyen("Lua chon khong hop le, nhap lai: ");

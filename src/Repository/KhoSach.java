@@ -157,7 +157,6 @@ public class KhoSach extends BaseDanhSach<Sach> {
     }
 
     public void showMenuThuThu() {
-        Helper.clearScreen();
 
         System.out.println("1. Xuất toàn bộ sách");
         System.out.println("2. Tìm kiếm sách theo tên");
@@ -188,6 +187,8 @@ public class KhoSach extends BaseDanhSach<Sach> {
     }
 
     public void thuThuLamViec() {
+        Helper.clearScreen();
+
         while (true) {
             showMenuThuThu();
             int choice = Helper.nhapSoNguyen("Lựa chọn không hợp lệ");
