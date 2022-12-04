@@ -171,7 +171,12 @@ public class NhanViens  extends BaseDanhSach<NhanVien>{
 			String MaNV = Helper.scanner.nextLine();
 			NhanVien NV = getByMaNV(MaNV);
 			if(NV != null) {
-				XoaNV(NV);
+				 System.out.print("Bạn có chắc muốn xóa không (y/n): ");
+			        if(Helper.scanner.nextLine().equals("y")) {
+			        	System.out.println("Đã xóa!!");
+			        	XoaNV(NV);
+			        } 	
+			        System.out.println("Đã hủy xóa!!");
 			}else
 				System.out.println("Nhân viên không tồn tại!!");
 	
@@ -257,7 +262,7 @@ public class NhanViens  extends BaseDanhSach<NhanVien>{
 	}
 	public void Menu2() {
 		System.out.println("1.Với mã nhân viên()tìm kiếm tuyệt đối).");
-		System.out.println("khác 1.với tên nhân viên( tìm kiếm tương đối):");
+		System.out.println("khác 1.với tên nhân viên (tìm kiếm tương đối):");
 	}
 	public void LamViec() {
 		int chon;

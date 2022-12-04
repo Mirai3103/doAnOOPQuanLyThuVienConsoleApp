@@ -3,7 +3,7 @@ package Repository;
 import Model.TacGia;
 import helper.Helper;
 import helper.Xuat.Table;
-
+import java.util.Scanner;
 import java.io.Serial;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -15,10 +15,18 @@ public class DanhSachTacGia extends BaseDanhSach<TacGia>  {
     public static String FILE_PATH = Helper.dirPath + "DanhSachTacGia.bin";
     private int idIdentity = 0;
 
-
     public void xoaTacGia(){
         System.out.println("Nhap id tac gia can xoa:");
-        this.delete(Helper.nhapSoNguyen("Id không hợp lệ, nhập lại: "));
+        int id=Helper.nhapSoNguyen("Id không hợp lệ, nhập lại: ");
+//        Hàm hiển thị dữ liệu
+        System.out.print("Bạn có chắc muốn xóa không (y/n): ");
+        if(Helper.scanner.nextLine().equals("y")) {
+        	System.out.println("Đã xóa!!");
+        	this.delete(id);
+            return;
+        } 	
+        System.out.println("Đã hủy xóa!!");
+        
     }
 
     public void suaTacGia(){

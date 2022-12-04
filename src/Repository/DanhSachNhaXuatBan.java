@@ -4,7 +4,7 @@ package Repository;
 import Model.NhaXuatBan;
 import helper.Helper;
 import helper.Xuat.Table;
-
+import java.util.Scanner;
 import java.io.Serial;
 import java.util.ArrayList;
 
@@ -13,7 +13,6 @@ public class DanhSachNhaXuatBan extends BaseDanhSach<NhaXuatBan>  {
     private static final long serialVersionUID = 19068362L;
     public static String FILE_PATH = Helper.dirPath + "DanhSachNhaXuatBan.bin";
     private int idIdentity = 0;
-
 
     public void themNhaXuatBan(){
         NhaXuatBan nhaXuatBan = new NhaXuatBan();
@@ -25,7 +24,14 @@ public class DanhSachNhaXuatBan extends BaseDanhSach<NhaXuatBan>  {
     public void xoaNhaXuatBan(){
         System.out.println("Nhap id nha xuat ban can xoa");
         int id = Helper.nhapSoNguyen("Lỗi!! id là số nguyên :");
-        delete(id);
+        System.out.print("Bạn có chắc muốn xóa không (y/n): ");
+        if(Helper.scanner.nextLine().equals("y")) {
+        	System.out.println("Đã xóa!!");
+        	delete(id);
+            return;
+        } 	
+        System.out.println("Đã hủy xóa!!");
+        
     }
     public void suaNhaXuatBan(){
         System.out.println("Nhap id nha xuat ban can sua");

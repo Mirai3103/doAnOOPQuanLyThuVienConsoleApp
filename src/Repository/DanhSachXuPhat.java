@@ -1,5 +1,5 @@
 package Repository;
-
+import java.util.Scanner;
 
 import Model.XuPhat;
 import helper.Helper;
@@ -77,7 +77,14 @@ public class DanhSachXuPhat extends BaseDanhSachArray<XuPhat> {
             System.out.println("Không tìm thấy lỗi phạt");
             return;
         }
-        data.remove(item);
+        System.out.print("Bạn có chắc muốn xóa không (y/n): ");
+        if(Helper.scanner.nextLine().equals("y")) {
+        	System.out.println("Đã xóa!!");
+        	data.remove(item);
+            return;
+        } 	
+        System.out.println("Đã hủy xóa!!");
+        return;  
     }
     public  void lamViec(){
         char c = ' ';

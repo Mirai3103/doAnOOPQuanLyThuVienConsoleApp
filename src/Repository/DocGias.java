@@ -8,13 +8,12 @@ import helper.Xuat.Table;
 
 import java.io.Serial;
 import java.util.ArrayList;
-
+import java.util.Scanner;
 public class DocGias  extends BaseDanhSach<DocGia> {
     @Serial
     private static final long serialVersionUID = 121246565461212L;
     public static final String FILE_PATH = Helper.dirPath + "DanhSachDocGia.bin";
     private int idIdentity = 0;
-
     @Override
     public void copyFrom(IDanhSach<DocGia> other) {
         var otherDocGias = (DocGias) other;
@@ -74,7 +73,14 @@ public class DocGias  extends BaseDanhSach<DocGia> {
             System.out.println("Không tìm thấy độc giả");
             return;
         }
-        data.remove(docGia);
+        System.out.print("Bạn có chắc muốn xóa không (y/n): ");
+        if(Helper.scanner.nextLine().equals("y")) {
+        	System.out.println("Đã xóa!!");
+        	data.remove(docGia);
+            return;
+        } 	
+        System.out.println("Đã hủy xóa!!");
+        
     }
 
     public void lamViec(){

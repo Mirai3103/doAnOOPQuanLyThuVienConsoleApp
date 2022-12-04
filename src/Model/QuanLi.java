@@ -87,9 +87,14 @@ public class QuanLi extends NhanVien  {
 		System.out.println("1. Sửa họ tên");
 		System.out.println("2. Sửa ngày sinh");
 		System.out.println("3. Sửa số điện thoại");
-		System.out.println("4. Sửa địa chỉ");
-		System.out.println("5. Sửa mật khẩu");
-		System.out.println("6. Thoát");
+        System.out.println("4. Sửa CMND");
+        System.out.println("5. Sửa địa chỉ");
+        System.out.println("6. Sửa mật khẩu");
+        System.out.println("7. Sửa lương");
+        System.out.println("8. Sửa năm kinh nghiệm");
+        System.out.println("9. Sửa ngày nhận chức");
+        System.out.println("10. Sửa đặc quyền ");
+        System.out.println("11. Thoát");
 	}
 
 	public void Xuat() {
@@ -140,28 +145,52 @@ public class QuanLi extends NhanVien  {
 					setSDT(Helper.nhapSdt());
 				}
 
-				case 4 -> {
-					DiaChi k = new DiaChi();
-					System.out.println("Sửa địa chỉ: ");
-					k.Nhap();
-					setDC(k);
-				}
-				case 5 -> {
-					String MK;
-					System.out.println("Sửa Mật khẩu: ");
-					System.out.println("Nhập mật khẩu mới: ");
-					MK = Helper.scanner.nextLine();
-					setMK(MK);
-				}
+                case 4 -> {
+                    System.out.println("Sửa CMND: ");
+                    setCMND(Helper.nhapCMND());
+                }
+                case 5 -> {
+                    DiaChi k = new DiaChi();
+                    System.out.println("Sửa địa chỉ: ");
+                    k.Nhap();
+                    setDC(k);
+                }
+                case 6 -> {
+                    String MK;
+                    System.out.println("Sửa Mật khẩu: ");
+                    System.out.println("Nhập mật khẩu mới: ");
+                    MK = Helper.scanner.nextLine();
+                    setMK(MK);
+                }
+                case 7 -> {
+                    int Luong;
+                    System.out.println("Sửa lương: ");
+                    System.out.println("Nhập lương: ");
+                    Luong = Helper.nhapSoTuNhien("Phải là số nguyên >=0!! yêu cầu nhập lại: ");
+                    setLuong(Luong);
+                }
+                case 8 -> {
+                    System.out.println("Nhập năm kinh nghiệm: ");
+                    NamKinhNghiem = Helper.nhapSoTuNhien("Phải là số nguyên >=0!! yêu cầu nhập lại: ");
+                }
+                case 9 -> {
+                    System.out.println("Sửa ngày nhận chức: ");
+                    System.out.println("Nhập ngày nhận chức: ");
+                    setNgayNhanChuc(Helper.inputDate().format(Helper.DATE_FORMAT));
+                }
+                case 10 -> {
+                    System.out.println("Sửa đặc quyền: ");
+                    System.out.println("Nhập đặc quyền: ");
+                    DacQuyen = Helper.scanner.nextLine();
+                }
+                case 11->{}
+                default -> {
+                    System.out.println("đối số truyền vào không đúng");
+                }
+            }
+        } while (choose != 11);
 
-                case 6->{}
-				default -> {
-					System.out.println("đối số truyền vào không đúng");
-				}
-			}
-		} while (choose != 6);
-
-	}
+    }
 
     @Override
     public String[] getHeader() {
