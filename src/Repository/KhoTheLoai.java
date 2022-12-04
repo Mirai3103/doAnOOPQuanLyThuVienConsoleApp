@@ -42,9 +42,9 @@ public class KhoTheLoai extends BaseDanhSach<TheLoai> {
     public void inThongKeTheLoaiYeuThich(){
         ArrayList<TheLoaiThinhHanh> theLoaiYeuThich = new ArrayList<>();
         TongHopDuLieu.getDanhSachCTMuonTra().data.forEach(ct -> {
-           ct.getBook().getTheLoais().forEach(theLoai -> {
-               var theLoaiYT = new TheLoaiThinhHanh();
-               var theLoaiExist = theLoaiYeuThich.stream().filter(tl -> tl.getTenTheLoai().equals(theLoai.getTenTheLoai())).findFirst().orElse(null);
+            ct.getBook().getTheLoais().forEach(theLoai -> {
+                var theLoaiYT = new TheLoaiThinhHanh();
+                var theLoaiExist = theLoaiYeuThich.stream().filter(tl -> tl.getTenTheLoai().equals(theLoai.getTenTheLoai())).findFirst().orElse(null);
                 if (theLoaiExist == null) {
                     theLoaiYT.setTenTheLoai(theLoai.getTenTheLoai());
                     theLoaiYT.setSoLanMuon(1);
@@ -52,7 +52,7 @@ public class KhoTheLoai extends BaseDanhSach<TheLoai> {
                 } else {
                     theLoaiExist.setSoLanMuon(theLoaiExist.getSoLanMuon() + 1);
                 }
-           });
+            });
         });
         // sap xep theo so lan muon
         theLoaiYeuThich.sort((o1, o2) -> o2.getSoLanMuon() - o1.getSoLanMuon());
@@ -65,7 +65,7 @@ public class KhoTheLoai extends BaseDanhSach<TheLoai> {
     }
     public void thuThuLamViec() {
         int luaChon;
-        
+
         do {
             showMenuThuThu();
             luaChon = Helper.nhapSoNguyen("Lua chon khong hop le, nhap lai: ");
@@ -145,7 +145,7 @@ public class KhoTheLoai extends BaseDanhSach<TheLoai> {
 
     public void lamViecVoiDanhSachTheLoai() {
         int luaChon;
-        
+
         do {
             showMenu();
             System.out.println("Nhập lựa chọn của bạn");
@@ -199,10 +199,10 @@ public class KhoTheLoai extends BaseDanhSach<TheLoai> {
 
 
     public void delete(int id) {
-    	if(getById(id)==null){
-    		System.out.println("Không có trong kho thể loại!!");
-    		return;
-    	}
+        if(getById(id)==null){
+            System.out.println("Không có trong kho thể loại!!");
+            return;
+        }
         TheLoai theLoai = getById(id);
         if (theLoai != null) {
 
@@ -213,14 +213,14 @@ public class KhoTheLoai extends BaseDanhSach<TheLoai> {
                 return;
             }
             System.out.println(Table.taoBang(TheLoaiSapXoa));
-        	System.out.print("Bạn có chắc muốn xóa không (y/n): ");
-        	if(Helper.scanner.nextLine().equals("y")) {
-            	System.out.println("Đã xóa!!");
-            	data.remove(theLoai);
-              return;
-            } 	
+            System.out.print("Bạn có chắc muốn xóa không (y/n): ");
+            if(Helper.scanner.nextLine().equals("y")) {
+                System.out.println("Đã xóa!!");
+                data.remove(theLoai);
+                return;
+            }
             System.out.println("Đã hủy xóa!!");
-            
+
         }
     }
 

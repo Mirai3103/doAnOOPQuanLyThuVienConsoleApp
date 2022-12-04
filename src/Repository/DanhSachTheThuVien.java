@@ -17,7 +17,7 @@ public class DanhSachTheThuVien extends BaseDanhSachArray<TheThuVien>{
 
     @Override
     public void copyFrom(IDanhSach<TheThuVien> other) {
-    	var otherTheThuViens = (DanhSachTheThuVien) other;
+        var otherTheThuViens = (DanhSachTheThuVien) other;
         this.idIdentity = otherTheThuViens.idIdentity;
         this.data = otherTheThuViens.data;
     }
@@ -70,7 +70,7 @@ public class DanhSachTheThuVien extends BaseDanhSachArray<TheThuVien>{
     }
     public void lamViec(){
         int luaChon;
-        
+
 
         do {
             showMenu();
@@ -121,10 +121,10 @@ public class DanhSachTheThuVien extends BaseDanhSachArray<TheThuVien>{
                     System.out.println(Table.taoBang(theThuVienSapXoa));
                     System.out.print("Bạn có chắc muốn xóa không (y/n): ");
                     if(Helper.scanner.nextLine().equals("y")) {
-                    	System.out.println("Đã xóa!!");
-                    	data.remove(theThuVien);
-                    } 	
-                    System.out.println("Đã hủy xóa!!");   
+                        System.out.println("Đã xóa!!");
+                        data.remove(theThuVien);
+                    }
+                    System.out.println("Đã hủy xóa!!");
                 }
                 case 4 -> giaHanThe();
                 case 5 -> xuatDanhSachTheHetHan();

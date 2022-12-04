@@ -126,18 +126,18 @@ public class DocGias  extends BaseDanhSach<DocGia> {
         }
         System.out.println(Table.taoBang(DocGiaSapXoa));
         System.out.print("Bạn có chắc muốn xóa không (y/n): ");
-         if(Helper.scanner.nextLine().equals("y")) {
-        	System.out.println("Đã xóa!!");
-        	data.remove(docGia);
+        if(Helper.scanner.nextLine().equals("y")) {
+            System.out.println("Đã xóa!!");
+            data.remove(docGia);
             return;
-        } 	
+        }
         System.out.println("Đã hủy xóa!!");
-        
+
     }
 
     public void lamViec(){
         int chon;
-        
+
 
         do {
             showMenu();

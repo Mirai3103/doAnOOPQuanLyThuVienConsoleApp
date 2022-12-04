@@ -29,14 +29,14 @@ public class DanhSachTacGia extends BaseDanhSach<TacGia>  {
         }
         System.out.println(Table.taoBang(TacGiaSapXoa));
         System.out.print("Bạn có chắc muốn xóa không (y/n): ");
-         if(Helper.scanner.nextLine().equals("y")) {
-        	System.out.println("Đã xóa!!");
-        	this.delete(id);
+        if(Helper.scanner.nextLine().equals("y")) {
+            System.out.println("Đã xóa!!");
+            this.delete(id);
             return;
 
-        } 	
+        }
         System.out.println("Đã hủy xóa!!");
-        
+
     }
 
     public void suaTacGia(){
@@ -57,7 +57,7 @@ public class DanhSachTacGia extends BaseDanhSach<TacGia>  {
     }
     public void lamViec(){
         int luaChon;
-        
+
 
         do {
             showMenu();
@@ -155,7 +155,7 @@ public class DanhSachTacGia extends BaseDanhSach<TacGia>  {
     }
     public void thuThuLamViec() {
         int luaChon;
-        
+
 
         do {
             showMenuThuThu();

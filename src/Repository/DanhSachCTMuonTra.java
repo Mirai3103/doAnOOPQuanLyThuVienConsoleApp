@@ -34,11 +34,11 @@ public class DanhSachCTMuonTra extends BaseDanhSach<CTMuonTra> {
     public void xoaCTMuonTra(int idPhieuMuon, int idSach){
         for (CTMuonTra ctMuonTra : data) {
             if(ctMuonTra.getIdPhieuMuon()==idPhieuMuon && ctMuonTra.getIDsach()==idSach){
-            	System.out.print("Bạn có chắc muốn xóa không (y/n): ");
+                System.out.print("Bạn có chắc muốn xóa không (y/n): ");
                 if(Helper.scanner.nextLine().equals("y")) {
-                	System.out.println("Đã xóa!!");
-                	data.remove(ctMuonTra);
-                } 	
+                    System.out.println("Đã xóa!!");
+                    data.remove(ctMuonTra);
+                }
                 System.out.println("Đã hủy xóa!!");
                 break;
             }

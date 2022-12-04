@@ -118,11 +118,11 @@ public class DocGia extends ConNguoi implements Serializable, ITableRowData {
                 }
                 case 6 -> {
                     TheThuVien theThuVien = new TheThuVien();
+                    TongHopDuLieu.getDanhSachTheThuVien().add(theThuVien);
                     theThuVien.setNgaybd(LocalDate.now());
                     theThuVien.setNgayhh(LocalDate.now().plusYears(1));
                     theThuVien.setIDuser(this.IDdg);
                     theThuVien.inThe();
-                    TongHopDuLieu.getDanhSachTheThuVien().add(theThuVien);
                     System.out.println("Tạo thẻ thành công, phí tạo thẻ là: " + phiTaoThe());
 
                 }
