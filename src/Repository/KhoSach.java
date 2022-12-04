@@ -106,7 +106,6 @@ public class KhoSach extends BaseDanhSach<Sach> {
     }
 
     public void showMenu() {
-        Helper.clearScreen();
 
         System.out.println("1. Them sach");
         System.out.println("2. Xoa sach");
@@ -187,7 +186,7 @@ public class KhoSach extends BaseDanhSach<Sach> {
     }
 
     public void thuThuLamViec() {
-        Helper.clearScreen();
+        
 
         while (true) {
             showMenuThuThu();
@@ -215,7 +214,7 @@ public class KhoSach extends BaseDanhSach<Sach> {
 
     public void lamViec() {
         int chon;
-        Helper.clearScreen();
+        
         do {
             showMenu();
             chon = Helper.nhapSoNguyen("Chọn không hợp lệ");

@@ -6,7 +6,7 @@ import helper.Helper;
 
 public class TestThemXoaSua {
     public static void showMenu(){
-        Helper.clearScreen();
+        
         System.out.println("1. Làm việc voi sách");
         System.out.println("2. Làm việc voi thể loại");
         System.out.println("3. Làm việc voi tác giả");

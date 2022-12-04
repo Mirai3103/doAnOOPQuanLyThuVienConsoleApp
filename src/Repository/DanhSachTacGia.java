@@ -57,7 +57,7 @@ public class DanhSachTacGia extends BaseDanhSach<TacGia>  {
     }
     public void lamViec(){
         int luaChon;
-        Helper.clearScreen();
+        
 
         do {
             showMenu();
@@ -155,7 +155,7 @@ public class DanhSachTacGia extends BaseDanhSach<TacGia>  {
     }
     public void thuThuLamViec() {
         int luaChon;
-        Helper.clearScreen();
+        
 
         do {
             showMenuThuThu();

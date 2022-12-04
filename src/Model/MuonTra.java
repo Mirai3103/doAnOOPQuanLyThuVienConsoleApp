@@ -36,7 +36,7 @@ public class MuonTra implements Serializable, ITableRowData {
     }
 
     public void suaPhieuMuon() {
-        Helper.clearScreen();
+        
         xuatPhieu();
 
         int choose;
