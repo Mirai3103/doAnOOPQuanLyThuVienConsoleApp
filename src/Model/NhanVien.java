@@ -111,10 +111,10 @@ public abstract class NhanVien extends ConNguoi implements ITableRowData {
 
     public void Xuat() {
         super.Xuat();
-        System.out.printf("Mã nhân viên: " + MaNV);
-        System.out.printf("Chức vụ: " + ChucVu);
-        System.out.printf("Mật khẩu: " + MK);
-        System.out.printf("Lương: " + Luong);
+        System.out.println("Mã nhân viên: " + MaNV);
+        System.out.println("Chức vụ: " + ChucVu);
+        System.out.println("Mật khẩu: " + MK);
+        System.out.println("Lương: " + Luong);
     }
 
     @Override
@@ -122,7 +122,59 @@ public abstract class NhanVien extends ConNguoi implements ITableRowData {
         return new String[]{MaNV, getHoTen(), getNgaySinh(), getSDT(), getCMND(), getDC().toString(), ChucVu, MK, String.valueOf(Luong)};
     }
 
+    public void suaThongTinCaNhan() {
+        int choose;
+        do {
+            menuSua();
+            System.out.println("Nhập lựa chọn: ");
+            choose = Helper.nhapSoNguyen("Lựa chọn không hop lệ !! yêu cầu nhập lại: ");
+            switch (choose) {
+                case 1 -> {
+                    String HoTen;
+                    System.out.println("Sửa Họ Tên: ");
+                    HoTen = Helper.scanner.nextLine();
+                    setHoTen(HoTen);
+                }
+                case 2 -> {
+                    System.out.println("Sửa ngay sinh: ");
+                    setNgaySinh(Helper.inputDate().format(Helper.DATE_FORMAT));
+                }
+                case 3 -> {
+                    System.out.println("Sửa số điện thoại: ");
+                    setSDT(Helper.nhapSdt());
+                }
 
+                case 4 -> {
+                    DiaChi k = new DiaChi();
+                    System.out.println("Sửa địa chỉ: ");
+                    k.Nhap();
+                    setDC(k);
+                }
+                case 5 -> {
+                    String MK;
+                    System.out.println("Sửa Mật khẩu: ");
+                    System.out.println("Nhập mật khẩu mới: ");
+                    MK = Helper.scanner.nextLine();
+                    setMK(MK);
+                }
+
+                case 6->{}
+                default -> {
+                    System.out.println("đối số truyền vào không đúng");
+                }
+            }
+        } while (choose != 6);
+
+    }
+    public void thongTinCaNhan(){
+        Xuat();
+        System.out.println("Bạn có muốn sửa thông tin cá nhân không? (y/n)");
+        if(Helper.scanner.nextLine().charAt(0)=='y'){
+            suaThongTinCaNhan();
+        }else {
+            System.out.println("bye");
+        }
+    }
     @Override
     public String[] getHeader() {
         return new String[]{"Mã nhân viên", "Họ tên", "Ngày sinh", "Số điện thoại", "CMND", "Địa chỉ", "Chức vụ", "Mật khẩu", "Lương"};

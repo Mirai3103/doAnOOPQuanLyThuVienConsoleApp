@@ -15,11 +15,12 @@ public class DanhSachTacGia extends BaseDanhSach<TacGia>  {
     private static final long serialVersionUID = 132434645712L;
     public static String FILE_PATH = Helper.dirPath + "DanhSachTacGia.bin";
     private int idIdentity = 0;
-    Scanner sc= new Scanner(System.in);
+
 
     public void xoaTacGia(){
         System.out.println("Nhap id tac gia can xoa:");
         int id=Helper.nhapSoNguyen("Id không hợp lệ, nhập lại: ");
+
         System.out.println("Đây là tác giả bạn sắp xóa");
         Mang<TacGia> TacGiaSapXoa = new Mang<>();
         TacGiaSapXoa.add(getById(id));
@@ -28,9 +29,11 @@ public class DanhSachTacGia extends BaseDanhSach<TacGia>  {
         }
         System.out.println(Table.taoBang(TacGiaSapXoa));
         System.out.print("Bạn có chắc muốn xóa không (y/n): ");
-        if(sc.nextLine().equals("y")) {
+         if(Helper.scanner.nextLine().equals("y")) {
         	System.out.println("Đã xóa!!");
         	this.delete(id);
+            return;
+
         } 	
         System.out.println("Đã hủy xóa!!");
         

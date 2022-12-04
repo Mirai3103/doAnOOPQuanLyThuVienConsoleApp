@@ -171,6 +171,7 @@ public class NhanViens  extends BaseDanhSach<NhanVien>{
 			String MaNV = Helper.scanner.nextLine();
 			NhanVien NV = getByMaNV(MaNV);
 			if(NV != null) {
+
 				System.out.println("Đây là nhân viên sắp xóa");
 				Mang<NhanVien> NhanVienSapXoa = new Mang<>();
 				NhanVienSapXoa.add(getByMaNV(MaNV));
@@ -179,9 +180,10 @@ public class NhanViens  extends BaseDanhSach<NhanVien>{
 				}
 				System.out.println(Table.taoBang(NhanVienSapXoa));
 				 System.out.print("Bạn có chắc muốn xóa không (y/n): ");
-			        if(sc.nextLine().equals("y")) {
+			       if(Helper.scanner.nextLine().equals("y")) {
 			        	System.out.println("Đã xóa!!");
 			        	XoaNV(NV);
+                return;
 			        } 	
 			        System.out.println("Đã hủy xóa!!");
 			}else

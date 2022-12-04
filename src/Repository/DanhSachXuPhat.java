@@ -85,6 +85,7 @@ public class DanhSachXuPhat extends BaseDanhSachArray<XuPhat> {
             System.out.println("Không tìm thấy lỗi phạt");
             return;
         }
+
         System.out.println("Đây là lỗi phạt sắp xóa");
         Mang<XuPhat> XuaPhatSapXoa = new Mang<>();
         XuaPhatSapXoa.add(getById(id));
@@ -93,9 +94,10 @@ public class DanhSachXuPhat extends BaseDanhSachArray<XuPhat> {
         }
         System.out.println(Table.taoBang(XuaPhatSapXoa));
         System.out.print("Bạn có chắc muốn xóa không (y/n): ");
-        if(sc.nextLine().equals("y")) {
+         if(Helper.scanner.nextLine().equals("y")) {
         	System.out.println("Đã xóa!!");
         	data.remove(item);
+            return;
         } 	
         System.out.println("Đã hủy xóa!!");
         return;  

@@ -39,9 +39,8 @@ public class ThuThuView {
 
                 case 8 -> TongHopDuLieu.getDanhSachXuPhat().lamViec();
                 case 9 -> {
-                    ThuThu nguoiDung = (ThuThu) Main.nguoiDung;
                     System.out.println("Thông tin cá nhân");
-                    nguoiDung.thongTinCaNhan();
+                    Main.nguoiDung.thongTinCaNhan();
                 }
                 case 10 ->{
                     System.out.println("Thoát");

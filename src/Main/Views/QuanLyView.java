@@ -13,8 +13,10 @@ public class QuanLyView {
         System.out.println("6. Quản lí độc giả");
         System.out.println("7. Quản lí phiếu mượn");
         System.out.println("8. Quản lí lỗi phạt");
-        System.out.println("9. Thoát");
-        System.out.println("10. Đăng xuất");
+        System.out.println("9. Làm việc với tư cách thủ thư");
+        System.out.println("10. Thoát");
+
+        System.out.println("11. Đăng xuất");
     }
     public static void run(){
         int luaChon;
@@ -31,14 +33,16 @@ public class QuanLyView {
                 case 6 -> TongHopDuLieu.getDanhSachDocGia().lamViec();
                 case 7 -> TongHopDuLieu.getDanhSachPhieuMuonTra().thuThuLamViec();
                 case 8 -> TongHopDuLieu.getDanhSachXuPhat().lamViec();
-                case 9 -> System.exit(0);
-                case 10 -> {
+                case 10 -> System.exit(0);
+                case 9 -> ThuThuView.run();
+                case 11 -> {
                     System.out.println("Đăng xuất thành công");
                     Main.nguoiDung = null;
                 }
                 default -> System.out.println("Lựa chọn không hợp lệ");
             }
-        }while (luaChon != 10);
+        }while (luaChon != 11);
+
 
     }
 }

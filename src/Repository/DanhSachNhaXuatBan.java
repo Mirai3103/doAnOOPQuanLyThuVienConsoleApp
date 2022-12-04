@@ -14,7 +14,6 @@ public class DanhSachNhaXuatBan extends BaseDanhSach<NhaXuatBan>  {
     private static final long serialVersionUID = 19068362L;
     public static String FILE_PATH = Helper.dirPath + "DanhSachNhaXuatBan.bin";
     private int idIdentity = 0;
-    Scanner sc= new Scanner(System.in);
 
     public void themNhaXuatBan(){
         NhaXuatBan nhaXuatBan = new NhaXuatBan();
@@ -26,6 +25,7 @@ public class DanhSachNhaXuatBan extends BaseDanhSach<NhaXuatBan>  {
     public void xoaNhaXuatBan(){
         System.out.println("Nhap id nha xuat ban can xoa");
         int id = Helper.nhapSoNguyen("Lỗi!! id là số nguyên :");
+
         System.out.println("Đây là nhà xuất bản bạn sắp xóa");
         Mang<NhaXuatBan> NXBSapXoa = new Mang<>();
         NXBSapXoa.add(getById(id));
@@ -34,9 +34,11 @@ public class DanhSachNhaXuatBan extends BaseDanhSach<NhaXuatBan>  {
         }
         System.out.println(Table.taoBang(NXBSapXoa));
         System.out.print("Bạn có chắc muốn xóa không (y/n): ");
-        if(sc.nextLine().equals("y")) {
+          if(Helper.scanner.nextLine().equals("y")) {
         	System.out.println("Đã xóa!!");
         	delete(id);
+           return;
+
         } 	
         System.out.println("Đã hủy xóa!!");
         

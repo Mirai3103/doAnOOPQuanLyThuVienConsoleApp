@@ -117,10 +117,10 @@ public class ConNguoi  implements Serializable {
 	}
 
 	public void Xuat() {
-		System.out.printf("Họ và tên: " + HoTen);
-		System.out.printf("\nNgày sinh: " + NgaySinh);
-		System.out.printf("Số điện thoại: " + SDT);
-		System.out.printf("Số CMND/CCCD: " + CMND);
+		System.out.println("Họ và tên: " + HoTen);
+		System.out.println("Ngày sinh: " + NgaySinh);
+		System.out.println("Số điện thoại: " + SDT);
+		System.out.println("Số CMND/CCCD: " + CMND);
 		DC.Xuat();
 
 	}

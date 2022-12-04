@@ -83,10 +83,10 @@ public class DiaChi implements Serializable {
 
     public void Xuat() {
         System.out.printf("số nhà: " + SoNha);
-        System.out.printf("\n Đường: " + Duong);
-        System.out.printf("\nPhường: " + Phuong);
-        System.out.printf("Quận: " + Quan);
-        System.out.printf("\nTỉnh: " + Tinh);
+        System.out.printf(" Đường: " + Duong);
+        System.out.printf(" Phường: " + Phuong);
+        System.out.printf(" Quận: " + Quan);
+        System.out.printf(" Tỉnh: " + Tinh);
     }
 
 

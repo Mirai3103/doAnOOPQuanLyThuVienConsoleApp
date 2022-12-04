@@ -15,7 +15,7 @@ public class DocGias  extends BaseDanhSach<DocGia> {
     private static final long serialVersionUID = 121246565461212L;
     public static final String FILE_PATH = Helper.dirPath + "DanhSachDocGia.bin";
     private int idIdentity = 0;
-    Scanner sc= new Scanner(System.in);
+
     @Override
     public void copyFrom(IDanhSach<DocGia> other) {
         var otherDocGias = (DocGias) other;
@@ -82,6 +82,7 @@ public class DocGias  extends BaseDanhSach<DocGia> {
             System.out.println("Không tìm thấy độc giả");
             return;
         }
+
         System.out.println("Đây là độc giả sắp Xóa");
         Mang<DocGia> DocGiaSapXoa = new Mang<>();
         DocGiaSapXoa.add(getById(id));
@@ -90,9 +91,10 @@ public class DocGias  extends BaseDanhSach<DocGia> {
         }
         System.out.println(Table.taoBang(DocGiaSapXoa));
         System.out.print("Bạn có chắc muốn xóa không (y/n): ");
-        if(sc.nextLine().equals("y")) {
+         if(Helper.scanner.nextLine().equals("y")) {
         	System.out.println("Đã xóa!!");
         	data.remove(docGia);
+            re
         } 	
         System.out.println("Đã hủy xóa!!");
         
