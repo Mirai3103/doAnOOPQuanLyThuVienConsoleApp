@@ -247,6 +247,7 @@ public class NhanViens  extends BaseDanhSach<NhanVien>{
 						}else
 							TT.add((ThuThu) NV.get(i));
 				}
+				break;
 					
 			}
 			default:
