@@ -5,6 +5,7 @@ import Model.TheLoai;
 import Report.SachThinhHanh;
 import Report.TheLoaiThinhHanh;
 import helper.Helper;
+import helper.Mang;
 import helper.Xuat.Table;
 
 import java.io.Serial;
@@ -15,6 +16,7 @@ public class KhoTheLoai extends BaseDanhSach<TheLoai> {
     private static final long serialVersionUID = 121211232112L;
     public static String FILE_PATH = Helper.dirPath + "KhoTheLoai.bin";
     private int idIdentity = 0;
+
     //toDo: crud
 
     public void showMenu() {
@@ -168,6 +170,7 @@ public class KhoTheLoai extends BaseDanhSach<TheLoai> {
                         System.out.println("Không tìm thấy");
                     } else {
                         TongHopDuLieu.getDanhSachTheLoai_sach().getTheLoai_saches().removeIf(s -> s.getTheLoaiId()== id);
+
                         this.data.remove(theLoai);
                     }
                 }
@@ -200,10 +203,19 @@ public class KhoTheLoai extends BaseDanhSach<TheLoai> {
     	}
         TheLoai theLoai = getById(id);
         if (theLoai != null) {
+
+            System.out.println("Đây là thể loại sắp xóa");
+            Mang<TheLoai> TheLoaiSapXoa = new Mang<>();
+            TheLoaiSapXoa.add(getById(id));
+            if (TheLoaiSapXoa.size() == 0) {
+                return;
+            }
+            System.out.println(Table.taoBang(TheLoaiSapXoa));
         	System.out.print("Bạn có chắc muốn xóa không (y/n): ");
         	if(Helper.scanner.nextLine().equals("y")) {
             	System.out.println("Đã xóa!!");
             	data.remove(theLoai);
+              return;
             } 	
             System.out.println("Đã hủy xóa!!");
             
@@ -213,6 +225,13 @@ public class KhoTheLoai extends BaseDanhSach<TheLoai> {
     public void update(int id) {
         TheLoai theLoai = getById(id);
         if (theLoai != null) {
+            System.out.println("Đây là thể loại sắp chỉnh sửa");
+            Mang<TheLoai> TheLoaiSapCS = new Mang<>();
+            TheLoaiSapCS.add(getById(id));
+            if (TheLoaiSapCS.size() == 0) {
+                return;
+            }
+            System.out.println(Table.taoBang(TheLoaiSapCS));
             theLoai.nhap();
         } else {
             System.out.println("Khong tim thay the loai");

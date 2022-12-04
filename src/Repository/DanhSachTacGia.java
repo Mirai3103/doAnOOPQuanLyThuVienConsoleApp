@@ -2,6 +2,7 @@ package Repository;
 
 import Model.TacGia;
 import helper.Helper;
+import helper.Mang;
 import helper.Xuat.Table;
 import java.util.Scanner;
 import java.io.Serial;
@@ -15,33 +16,42 @@ public class DanhSachTacGia extends BaseDanhSach<TacGia>  {
     public static String FILE_PATH = Helper.dirPath + "DanhSachTacGia.bin";
     private int idIdentity = 0;
 
+
     public void xoaTacGia(){
         System.out.println("Nhap id tac gia can xoa:");
         int id=Helper.nhapSoNguyen("Id không hợp lệ, nhập lại: ");
-//        Hàm hiển thị dữ liệu
+
+        System.out.println("Đây là tác giả bạn sắp xóa");
+        Mang<TacGia> TacGiaSapXoa = new Mang<>();
+        TacGiaSapXoa.add(getById(id));
+        if (TacGiaSapXoa.size() == 0) {
+            return;
+        }
+        System.out.println(Table.taoBang(TacGiaSapXoa));
         System.out.print("Bạn có chắc muốn xóa không (y/n): ");
-        if(Helper.scanner.nextLine().equals("y")) {
+         if(Helper.scanner.nextLine().equals("y")) {
         	System.out.println("Đã xóa!!");
         	this.delete(id);
             return;
+
         } 	
         System.out.println("Đã hủy xóa!!");
         
     }
 
     public void suaTacGia(){
-        System.out.println("Nhap id tac gia can sua:");
+        System.out.println("Nhập id tác giả cần sửa:");
         update(Helper.nhapSoNguyen("Id không hợp lệ, nhập lại: "));
     }
 
     public void showMenu() {
         System.out.println("Tương tác với tác giả");
-        System.out.println("1. Them tac gia");
-        System.out.println("2. Sua tac gia");
-        System.out.println("3. Xoa tac gia");
-        System.out.println("4. Xem danh sach tac gia");
-        System.out.println("5. Thoat");
-        System.out.println("5. Luu vao file");
+        System.out.println("1. Thêm tác giả");
+        System.out.println("2. Sửa tác giả");
+        System.out.println("3. Xóa tác giả");
+        System.out.println("4. Xem danh sách tác giả");
+        System.out.println("5. Thoát");
+        System.out.println("5. Lưu vào file");
 
     }
     public void lamViec(){
@@ -95,6 +105,13 @@ public class DanhSachTacGia extends BaseDanhSach<TacGia>  {
     public void update(int id) {
         TacGia tacGia = getById(id);
         if(tacGia != null){
+            System.out.println("Đây là tác giả bạn sắp chỉnh sửa");
+            Mang<TacGia> TacGiaSapCS = new Mang<>();
+            TacGiaSapCS.add(getById(id));
+            if (TacGiaSapCS.size() == 0) {
+                return;
+            }
+            System.out.println(Table.taoBang(TacGiaSapCS));
             tacGia.sua();
         }else {
             System.out.println("Khong tim thay tac gia");

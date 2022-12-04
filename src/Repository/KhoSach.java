@@ -5,6 +5,7 @@ import Model.Sach;
 import Model.TacGia;
 import Report.SachThinhHanh;
 import helper.Helper;
+import helper.Mang;
 import helper.Xuat.Table;
 
 import java.io.Serial;
@@ -16,6 +17,7 @@ public class KhoSach extends BaseDanhSach<Sach> {
     private static final long serialVersionUID = 1221313121212L;
     public static String FILE_PATH = Helper.dirPath + "KhoSach.bin";
     private int idIdentity = 0;
+
     public KhoSach() {
     }
 
@@ -71,8 +73,16 @@ public class KhoSach extends BaseDanhSach<Sach> {
         xuatConsoleDangTable();
         System.out.println("Nhap id sach can xoa");
         int id = Helper.nhapSoNguyen("Id khong hop le");
+
+        System.out.println("Đây là sách sắp xóa");
+        Mang<Sach> sachSapXoa = new Mang<>();
+        sachSapXoa.add(getById(id));
+        if (sachSapXoa.size() == 0) {
+            return;
+        }
+        System.out.println(Table.taoBang(sachSapXoa));
         System.out.print("Bạn có chắc muốn xóa không (y/n): ");
-        if(Helper.scanner.nextLine().equals("y")) {
+      if(Helper.scanner.nextLine().equals("y")) {
         	System.out.println("Đã xóa!!");
         	delete(id);
             return;
@@ -85,6 +95,13 @@ public class KhoSach extends BaseDanhSach<Sach> {
     public void suaSach() {
         System.out.println("Nhap id sach can sua");
         int id = Helper.nhapSoNguyen("Id khong hop le");
+        System.out.println("Đây là sách sắp chỉnh sửa");
+        Mang<Sach> sachSapCS = new Mang<>();
+        sachSapCS.add(getById(id));
+        if (sachSapCS.size() == 0) {
+            return;
+        }
+        System.out.println(Table.taoBang(sachSapCS));
         update(id);
     }
 

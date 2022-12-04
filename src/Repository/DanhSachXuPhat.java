@@ -3,6 +3,7 @@ import java.util.Scanner;
 
 import Model.XuPhat;
 import helper.Helper;
+import helper.Mang;
 import helper.Xuat.Table;
 
 import java.io.Serial;
@@ -12,6 +13,7 @@ public class DanhSachXuPhat extends BaseDanhSachArray<XuPhat> {
     private static final long serialVersionUID = 1212121775752L;
     public static final String FILE_PATH = Helper.dirPath + "DanhSachLoiPhat.bin";
     private int idIdentity = 0;
+    Scanner sc= new Scanner(System.in);
     @Override
     public void copyFrom(IDanhSach<XuPhat> other) {
         var otherXuPhats = (DanhSachXuPhat) other;
@@ -58,7 +60,13 @@ public class DanhSachXuPhat extends BaseDanhSachArray<XuPhat> {
             System.out.println("Không tìm thấy lỗi phạt");
             return;
         }
-        System.out.println(Table.taoBang(item));
+        System.out.println("Đây là lỗi phạt sắp chỉnh sửa");
+        Mang<XuPhat> XuaPhatSapCS = new Mang<>();
+        XuaPhatSapCS.add(getById(id));
+        if (XuaPhatSapCS.size() == 0) {
+            return;
+        }
+        System.out.println(Table.taoBang(XuaPhatSapCS));
         item.nhapXuPhat();
     }
     public XuPhat getByName(String name){
@@ -77,8 +85,16 @@ public class DanhSachXuPhat extends BaseDanhSachArray<XuPhat> {
             System.out.println("Không tìm thấy lỗi phạt");
             return;
         }
+
+        System.out.println("Đây là lỗi phạt sắp xóa");
+        Mang<XuPhat> XuaPhatSapXoa = new Mang<>();
+        XuaPhatSapXoa.add(getById(id));
+        if (XuaPhatSapXoa.size() == 0) {
+            return;
+        }
+        System.out.println(Table.taoBang(XuaPhatSapXoa));
         System.out.print("Bạn có chắc muốn xóa không (y/n): ");
-        if(Helper.scanner.nextLine().equals("y")) {
+         if(Helper.scanner.nextLine().equals("y")) {
         	System.out.println("Đã xóa!!");
         	data.remove(item);
             return;

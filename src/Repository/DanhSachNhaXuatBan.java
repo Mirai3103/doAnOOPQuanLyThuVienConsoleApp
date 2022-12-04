@@ -3,6 +3,7 @@ package Repository;
 
 import Model.NhaXuatBan;
 import helper.Helper;
+import helper.Mang;
 import helper.Xuat.Table;
 import java.util.Scanner;
 import java.io.Serial;
@@ -24,11 +25,20 @@ public class DanhSachNhaXuatBan extends BaseDanhSach<NhaXuatBan>  {
     public void xoaNhaXuatBan(){
         System.out.println("Nhap id nha xuat ban can xoa");
         int id = Helper.nhapSoNguyen("Lỗi!! id là số nguyên :");
+
+        System.out.println("Đây là nhà xuất bản bạn sắp xóa");
+        Mang<NhaXuatBan> NXBSapXoa = new Mang<>();
+        NXBSapXoa.add(getById(id));
+        if (NXBSapXoa.size() == 0) {
+            return;
+        }
+        System.out.println(Table.taoBang(NXBSapXoa));
         System.out.print("Bạn có chắc muốn xóa không (y/n): ");
-        if(Helper.scanner.nextLine().equals("y")) {
+          if(Helper.scanner.nextLine().equals("y")) {
         	System.out.println("Đã xóa!!");
         	delete(id);
-            return;
+           return;
+
         } 	
         System.out.println("Đã hủy xóa!!");
         
@@ -36,17 +46,24 @@ public class DanhSachNhaXuatBan extends BaseDanhSach<NhaXuatBan>  {
     public void suaNhaXuatBan(){
         System.out.println("Nhap id nha xuat ban can sua");
         int id = Helper.nhapSoNguyen("Lỗi!! Bạn nên nhập số nguyên :");
+        System.out.println("Đây là nhà xuất bản bạn sắp chỉnh sửa");
+        Mang<NhaXuatBan> NXBSapCS = new Mang<>();
+        NXBSapCS.add(getById(id));
+        if (NXBSapCS.size() == 0) {
+            return;
+        }
+        System.out.println(Table.taoBang(NXBSapCS));
         update(id);
     }
     public void showMenu(){
         System.out.println("Tương tác với nhà xuất bản");
-        System.out.println("1. Them nha xuat ban");
-        System.out.println("2. Sua nha xuat ban");
-        System.out.println("3. Xoa nha xuat ban");
-        System.out.println("4. Xem danh sach nha xuat ban");
-        System.out.println("5. Thoat");
-        System.out.println("6. Luu vao file");
-        System.out.println("Nhap lua chon cua ban:");
+        System.out.println("1. Thêm nhà xuất bản");
+        System.out.println("2. Sửa nhà xuất bản");
+        System.out.println("3. Xóa nhà xuất bản");
+        System.out.println("4. Xem danh sách nhà xuất bản");
+        System.out.println("5. Thoát");
+        System.out.println("6. Lưu vào file");
+        System.out.print("Nhập lựa chọn của bạn: ");
     }
     public void lamViec(){
         int luaChon;
@@ -59,9 +76,9 @@ public class DanhSachNhaXuatBan extends BaseDanhSach<NhaXuatBan>  {
                 case 2 -> suaNhaXuatBan();
                 case 3 -> xoaNhaXuatBan();
                 case 4 -> xuatConsoleDangTable();
-                case 5 -> System.out.println("Thoat");
+                case 5 -> System.out.println("Thoát");
                 case 6 -> xuatFileBinary();
-                default -> System.out.println("Lua chon khong hop le");
+                default -> System.out.println("Lựa chọn không hợp lệ");
             }
         }while (luaChon != 5);
     }

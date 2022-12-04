@@ -19,7 +19,7 @@ public class NhanViens  extends BaseDanhSach<NhanVien>{
 	@Serial
 	private static final long serialVersionUID = 12121212L;
 	public static String FILE_PATH = Helper.dirPath + "NhanViens.bin";
-
+	Scanner sc = new Scanner(System.in);
 	public void xuatFileBinary() {
 		super.xuatFileBinary(FILE_PATH);
 	}
@@ -171,10 +171,19 @@ public class NhanViens  extends BaseDanhSach<NhanVien>{
 			String MaNV = Helper.scanner.nextLine();
 			NhanVien NV = getByMaNV(MaNV);
 			if(NV != null) {
+
+				System.out.println("Đây là nhân viên sắp xóa");
+				Mang<NhanVien> NhanVienSapXoa = new Mang<>();
+				NhanVienSapXoa.add(getByMaNV(MaNV));
+				if (NhanVienSapXoa.size() == 0) {
+					return;
+				}
+				System.out.println(Table.taoBang(NhanVienSapXoa));
 				 System.out.print("Bạn có chắc muốn xóa không (y/n): ");
-			        if(Helper.scanner.nextLine().equals("y")) {
+			       if(Helper.scanner.nextLine().equals("y")) {
 			        	System.out.println("Đã xóa!!");
 			        	XoaNV(NV);
+                return;
 			        } 	
 			        System.out.println("Đã hủy xóa!!");
 			}else

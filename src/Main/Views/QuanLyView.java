@@ -43,5 +43,6 @@ public class QuanLyView {
             }
         }while (luaChon != 11);
 
+
     }
 }

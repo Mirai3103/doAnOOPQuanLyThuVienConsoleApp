@@ -100,8 +100,10 @@ public final class Helper {
 		String number = scanner.nextLine();
 		while (!checkCMND(number)){
 			System.out.println("nhập lại: ");
+
 			number = scanner.nextLine();
 		}
+
 		return number;
 	}
 	public static LocalDate inputDate(){

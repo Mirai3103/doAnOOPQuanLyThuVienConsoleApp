@@ -1,6 +1,6 @@
 package Repository;
 
-
+import java.util.Scanner;
 import Model.TheThuVien;
 import helper.Helper;
 import helper.Mang;
@@ -15,11 +15,10 @@ public class DanhSachTheThuVien extends BaseDanhSachArray<TheThuVien>{
     public static final String FILE_PATH = Helper.dirPath + "DanhSachTheThuVien.bin";
     private int idIdentity = 0;
 
-
-
+    Scanner sc = new Scanner(System.in);
     @Override
     public void copyFrom(IDanhSach<TheThuVien> other) {
-        var otherTheThuViens = (DanhSachTheThuVien) other;
+    	var otherTheThuViens = (DanhSachTheThuVien) other;
         this.idIdentity = otherTheThuViens.idIdentity;
         this.data = otherTheThuViens.data;
     }
@@ -94,6 +93,13 @@ public class DanhSachTheThuVien extends BaseDanhSachArray<TheThuVien>{
                         System.out.println("Không tìm thấy thẻ có id " + id);
                         return;
                     }
+                    System.out.println("Đây là thẻ thư viện sắp chỉnh sửa");
+                    Mang<TheThuVien> theThuVienSapCS = new Mang<>();
+                    theThuVienSapCS.add(getById(id));
+                    if (theThuVienSapCS.size() == 0) {
+                        return;
+                    }
+                    System.out.println(Table.taoBang(theThuVienSapCS));
                     theThuVien.suaTheThuVien();
                 }
                 case 3 -> {
@@ -104,7 +110,19 @@ public class DanhSachTheThuVien extends BaseDanhSachArray<TheThuVien>{
                         System.out.println("Không tìm thấy thẻ có id " + id);
                         return;
                     }
-                    data.remove(theThuVien);
+                    System.out.println("Đây là thẻ thư viện sắp xóa");
+                    Mang<TheThuVien> theThuVienSapXoa = new Mang<>();
+                    theThuVienSapXoa.add(getById(id));
+                    if (theThuVienSapXoa.size() == 0) {
+                        return;
+                    }
+                    System.out.println(Table.taoBang(theThuVienSapXoa));
+                    System.out.print("Bạn có chắc muốn xóa không (y/n): ");
+                    if(sc.nextLine().equals("y")) {
+                    	System.out.println("Đã xóa!!");
+                    	data.remove(theThuVien);
+                    } 	
+                    System.out.println("Đã hủy xóa!!");   
                 }
                 case 4 -> giaHanThe();
                 case 5 -> xuatDanhSachTheHetHan();
