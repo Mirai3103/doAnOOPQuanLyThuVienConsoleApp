@@ -248,6 +248,8 @@ public class NhanViens  extends BaseDanhSach<NhanVien>{
 							TT.add((ThuThu) NV.get(i));
 				}
 
+				break;
+
 			}
 			default:
 				System.out.println("Tên nhân viên không tông tại");
