@@ -98,6 +98,13 @@ public class DanhSachTheThuVien extends BaseDanhSachArray<TheThuVien>{
                         System.out.println("Không tìm thấy thẻ có id " + id);
                         return;
                     }
+                    System.out.println("Đây là thẻ thư viện sắp chỉnh sửa");
+                    Mang<TheThuVien> theThuVienSapCS = new Mang<>();
+                    theThuVienSapCS.add(getById(id));
+                    if (theThuVienSapCS.size() == 0) {
+                        return;
+                    }
+                    System.out.println(Table.taoBang(theThuVienSapCS));
                     theThuVien.suaTheThuVien();
                 }
                 case 3 -> {
@@ -108,6 +115,13 @@ public class DanhSachTheThuVien extends BaseDanhSachArray<TheThuVien>{
                         System.out.println("Không tìm thấy thẻ có id " + id);
                         return;
                     }
+                    System.out.println("Đây là thẻ thư viện sắp xóa");
+                    Mang<TheThuVien> theThuVienSapXoa = new Mang<>();
+                    theThuVienSapXoa.add(getById(id));
+                    if (theThuVienSapXoa.size() == 0) {
+                        return;
+                    }
+                    System.out.println(Table.taoBang(theThuVienSapXoa));
                     System.out.print("Bạn có chắc muốn xóa không (y/n): ");
                     if(sc.nextLine().equals("y")) {
                     	System.out.println("Đã xóa!!");

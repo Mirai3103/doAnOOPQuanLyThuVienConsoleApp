@@ -4,6 +4,7 @@ import Model.DocGia;
 import Model.TacGia;
 import Model.TheThuVien;
 import helper.Helper;
+import helper.Mang;
 import helper.Xuat.Table;
 
 import java.io.Serial;
@@ -63,6 +64,13 @@ public class DocGias  extends BaseDanhSach<DocGia> {
             System.out.println("Không tìm thấy độc giả");
             return;
         }
+        System.out.println("Đây là độc giả sắp chỉnh sửa");
+        Mang<DocGia> DocGiaSapCS = new Mang<>();
+        DocGiaSapCS.add(getById(id));
+        if (DocGiaSapCS.size() == 0) {
+            return;
+        }
+        System.out.println(Table.taoBang(DocGiaSapCS));
         docGia.sua();
 
     }
@@ -74,6 +82,13 @@ public class DocGias  extends BaseDanhSach<DocGia> {
             System.out.println("Không tìm thấy độc giả");
             return;
         }
+        System.out.println("Đây là độc giả sắp Xóa");
+        Mang<DocGia> DocGiaSapXoa = new Mang<>();
+        DocGiaSapXoa.add(getById(id));
+        if (DocGiaSapXoa.size() == 0) {
+            return;
+        }
+        System.out.println(Table.taoBang(DocGiaSapXoa));
         System.out.print("Bạn có chắc muốn xóa không (y/n): ");
         if(sc.nextLine().equals("y")) {
         	System.out.println("Đã xóa!!");

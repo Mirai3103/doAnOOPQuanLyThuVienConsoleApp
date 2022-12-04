@@ -3,6 +3,7 @@ package Repository;
 
 import Model.NhaXuatBan;
 import helper.Helper;
+import helper.Mang;
 import helper.Xuat.Table;
 import java.util.Scanner;
 import java.io.Serial;
@@ -25,6 +26,13 @@ public class DanhSachNhaXuatBan extends BaseDanhSach<NhaXuatBan>  {
     public void xoaNhaXuatBan(){
         System.out.println("Nhap id nha xuat ban can xoa");
         int id = Helper.nhapSoNguyen("Lỗi!! id là số nguyên :");
+        System.out.println("Đây là nhà xuất bản bạn sắp xóa");
+        Mang<NhaXuatBan> NXBSapXoa = new Mang<>();
+        NXBSapXoa.add(getById(id));
+        if (NXBSapXoa.size() == 0) {
+            return;
+        }
+        System.out.println(Table.taoBang(NXBSapXoa));
         System.out.print("Bạn có chắc muốn xóa không (y/n): ");
         if(sc.nextLine().equals("y")) {
         	System.out.println("Đã xóa!!");
@@ -36,6 +44,13 @@ public class DanhSachNhaXuatBan extends BaseDanhSach<NhaXuatBan>  {
     public void suaNhaXuatBan(){
         System.out.println("Nhap id nha xuat ban can sua");
         int id = Helper.nhapSoNguyen("Lỗi!! Bạn nên nhập số nguyên :");
+        System.out.println("Đây là nhà xuất bản bạn sắp chỉnh sửa");
+        Mang<NhaXuatBan> NXBSapCS = new Mang<>();
+        NXBSapCS.add(getById(id));
+        if (NXBSapCS.size() == 0) {
+            return;
+        }
+        System.out.println(Table.taoBang(NXBSapCS));
         update(id);
     }
     public void showMenu(){
