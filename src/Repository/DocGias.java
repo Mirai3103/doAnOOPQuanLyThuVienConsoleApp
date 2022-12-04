@@ -44,7 +44,6 @@ public class DocGias  extends BaseDanhSach<DocGia> {
         theThuVien.xuatTheThuVien();
     }
     public void showMenu(){
-        Helper.clearScreen();
 
         System.out.println("1. Đăng ký thành viên");
         System.out.println("2. Hiển thị danh sách độc giả");
@@ -138,6 +137,8 @@ public class DocGias  extends BaseDanhSach<DocGia> {
 
     public void lamViec(){
         int chon;
+        Helper.clearScreen();
+
         do {
             showMenu();
             chon = Helper.nhapSoNguyen("Chọn chức năng không hợp lệ, nhập lại: ");

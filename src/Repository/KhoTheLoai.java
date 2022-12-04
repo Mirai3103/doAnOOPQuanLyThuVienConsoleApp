@@ -20,7 +20,6 @@ public class KhoTheLoai extends BaseDanhSach<TheLoai> {
     //toDo: crud
 
     public void showMenu() {
-        Helper.clearScreen();
 
         System.out.println("Tương tác với thể loại");
         System.out.println("1. Them the loai");
@@ -32,7 +31,6 @@ public class KhoTheLoai extends BaseDanhSach<TheLoai> {
     }
 
     public void showMenuThuThu() {
-        Helper.clearScreen();
 
         System.out.println("Tương tác với thể loại");
         System.out.println("1. tìm kiếm thể loại");
