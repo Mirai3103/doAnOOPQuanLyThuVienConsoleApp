@@ -15,7 +15,6 @@ public class DanhSachTheThuVien extends BaseDanhSachArray<TheThuVien>{
     public static final String FILE_PATH = Helper.dirPath + "DanhSachTheThuVien.bin";
     private int idIdentity = 0;
 
-    Scanner sc = new Scanner(System.in);
     @Override
     public void copyFrom(IDanhSach<TheThuVien> other) {
     	var otherTheThuViens = (DanhSachTheThuVien) other;
@@ -118,7 +117,7 @@ public class DanhSachTheThuVien extends BaseDanhSachArray<TheThuVien>{
                     }
                     System.out.println(Table.taoBang(theThuVienSapXoa));
                     System.out.print("Bạn có chắc muốn xóa không (y/n): ");
-                    if(sc.nextLine().equals("y")) {
+                    if(Helper.scanner.nextLine().equals("y")) {
                     	System.out.println("Đã xóa!!");
                     	data.remove(theThuVien);
                     } 	

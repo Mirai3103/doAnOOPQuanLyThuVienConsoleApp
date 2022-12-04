@@ -19,7 +19,6 @@ public class NhanViens  extends BaseDanhSach<NhanVien>{
 	@Serial
 	private static final long serialVersionUID = 12121212L;
 	public static String FILE_PATH = Helper.dirPath + "NhanViens.bin";
-	Scanner sc = new Scanner(System.in);
 	public void xuatFileBinary() {
 		super.xuatFileBinary(FILE_PATH);
 	}

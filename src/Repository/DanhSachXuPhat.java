@@ -13,7 +13,6 @@ public class DanhSachXuPhat extends BaseDanhSachArray<XuPhat> {
     private static final long serialVersionUID = 1212121775752L;
     public static final String FILE_PATH = Helper.dirPath + "DanhSachLoiPhat.bin";
     private int idIdentity = 0;
-    Scanner sc= new Scanner(System.in);
     @Override
     public void copyFrom(IDanhSach<XuPhat> other) {
         var otherXuPhats = (DanhSachXuPhat) other;

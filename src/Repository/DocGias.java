@@ -94,7 +94,7 @@ public class DocGias  extends BaseDanhSach<DocGia> {
          if(Helper.scanner.nextLine().equals("y")) {
         	System.out.println("Đã xóa!!");
         	data.remove(docGia);
-            re
+            return;
         } 	
         System.out.println("Đã hủy xóa!!");
         

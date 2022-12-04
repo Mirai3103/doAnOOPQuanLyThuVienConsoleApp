@@ -11,7 +11,6 @@ public class DanhSachCTMuonTra extends BaseDanhSach<CTMuonTra> {
     @Serial
     private static final long serialVersionUID = 142343249212L;
     public static final String FILE_PATH = Helper.dirPath+ "DanhSachCTMuonTra.bin";
-    Scanner sc = new Scanner(System.in);
 
     @Override
     public void copyFrom(IDanhSach<CTMuonTra> other) {
@@ -36,7 +35,7 @@ public class DanhSachCTMuonTra extends BaseDanhSach<CTMuonTra> {
         for (CTMuonTra ctMuonTra : data) {
             if(ctMuonTra.getIdPhieuMuon()==idPhieuMuon && ctMuonTra.getIDsach()==idSach){
             	System.out.print("Bạn có chắc muốn xóa không (y/n): ");
-                if(sc.nextLine().equals("y")) {
+                if(Helper.scanner.nextLine().equals("y")) {
                 	System.out.println("Đã xóa!!");
                 	data.remove(ctMuonTra);
                 } 	
