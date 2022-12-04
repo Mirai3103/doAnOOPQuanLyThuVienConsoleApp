@@ -42,7 +42,7 @@ public class NhaXuatBan implements Serializable , ITableRowData {
         this.nguoiDaiDien = nguoiDaiDien;
     }
 
-    
+
     public int getId() {
         return id;
     }
@@ -92,8 +92,8 @@ public class NhaXuatBan implements Serializable , ITableRowData {
         this.diaChi = new DiaChi();
         this.diaChi.Nhap();
         do {
-        System.out.println("Nhap email: ");
-        this.email = Helper.scanner.nextLine();
+            System.out.println("Nhap email: ");
+            this.email = Helper.scanner.nextLine();
         }while(!Helper.checkEmail(this.email));
         System.out.println("Nhap nguoi dai dien: ");
         this.nguoiDaiDien = Helper.scanner.nextLine();
@@ -114,7 +114,7 @@ public class NhaXuatBan implements Serializable , ITableRowData {
         return String.format("%s - %s - %s - %s - %s", this.id, this.tenNXB, this.diaChi.toString(), this.email, this.nguoiDaiDien);
     }
     public void sua(){
-        
+
         System.out.println(Table.taoBang(this));
         System.out.println("Sửa NXB: ");
         for(int i = 1; i<getHeader().length;i++){

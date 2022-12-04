@@ -41,7 +41,7 @@ public class DanhSachXuPhat extends BaseDanhSachArray<XuPhat> {
         return null;
     }
     public void showMenu() {
-        
+
 
         System.out.println("1. Thêm lỗi phạt");
         System.out.println("2. Xem danh sách lỗi phạt");
@@ -95,13 +95,13 @@ public class DanhSachXuPhat extends BaseDanhSachArray<XuPhat> {
         }
         System.out.println(Table.taoBang(XuaPhatSapXoa));
         System.out.print("Bạn có chắc muốn xóa không (y/n): ");
-         if(Helper.scanner.nextLine().equals("y")) {
-        	System.out.println("Đã xóa!!");
-        	data.remove(item);
+        if(Helper.scanner.nextLine().equals("y")) {
+            System.out.println("Đã xóa!!");
+            data.remove(item);
             return;
-        } 	
+        }
         System.out.println("Đã hủy xóa!!");
-        return;  
+        return;
     }
     public  void lamViec(){
         char c = ' ';

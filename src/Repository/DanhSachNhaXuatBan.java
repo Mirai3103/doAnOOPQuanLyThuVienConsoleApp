@@ -34,14 +34,14 @@ public class DanhSachNhaXuatBan extends BaseDanhSach<NhaXuatBan>  {
         }
         System.out.println(Table.taoBang(NXBSapXoa));
         System.out.print("Bạn có chắc muốn xóa không (y/n): ");
-          if(Helper.scanner.nextLine().equals("y")) {
-        	System.out.println("Đã xóa!!");
-        	delete(id);
-           return;
+        if(Helper.scanner.nextLine().equals("y")) {
+            System.out.println("Đã xóa!!");
+            delete(id);
+            return;
 
-        } 	
+        }
         System.out.println("Đã hủy xóa!!");
-        
+
     }
     public void suaNhaXuatBan(){
         System.out.println("Nhap id nha xuat ban can sua");
@@ -68,7 +68,7 @@ public class DanhSachNhaXuatBan extends BaseDanhSach<NhaXuatBan>  {
     }
     public void lamViec(){
         int luaChon;
-        
+
         do {
             showMenu();
             luaChon = Helper.nhapSoNguyen("Không hợp lệ, nhập lại:");
@@ -142,7 +142,7 @@ public class DanhSachNhaXuatBan extends BaseDanhSach<NhaXuatBan>  {
 
     public void thuThulamViec() {
         int luaChon;
-        
+
 
         do {
             showMenuThuThu();

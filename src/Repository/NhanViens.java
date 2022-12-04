@@ -30,15 +30,15 @@ public class NhanViens  extends BaseDanhSach<NhanVien>{
 	public void setNVs(ArrayList<NhanVien> nVs) {
 		data = nVs;
 	}
-	
+
 	public void ThemNV(NhanVien e) {
 		data.add(e);
 	}
-	
+
 	public void XoaNV(NhanVien e) {
 		data.remove(e);
 	}
-	
+
 	public NhanVien getByMaNV(String MaNV) {
 		for(NhanVien NV : data) {
 			if(NV.getMaNV().equalsIgnoreCase(MaNV))
@@ -73,7 +73,7 @@ public class NhanViens  extends BaseDanhSach<NhanVien>{
 		}
 		if(a.size()!=0)
 			return a;
-		else 
+		else
 			return null;
 	}
 	public boolean checkId(String id) {
@@ -83,63 +83,63 @@ public class NhanViens  extends BaseDanhSach<NhanVien>{
 		}
 		return false;
 	}
-	
+
 	public void NhapNVM() {
 		System.out.println("0.Là Quản lí");
 		System.out.println("khác 0. Là thủ thư: ");
 		System.out.println("Nhân Viên mới là: ");
 		int chon = Helper.nhapSoNguyen("Lỗi! vui lòng nhập số nguyên: ");
 		switch (chon) {
-		case 0:
-			QuanLi QL = new QuanLi();
-			boolean maCoTrungHayK=false;
-			do {
-				System.out.println("Nhập mã nhân viên (6 kí tự): ");
-				String maNV ;
+			case 0:
+				QuanLi QL = new QuanLi();
+				boolean maCoTrungHayK=false;
 				do {
-					 maNV = Helper.scanner.nextLine();
-					if(maNV.length() !=6){
-						System.out.println("Mã nhân viên không hợp lệ !");
+					System.out.println("Nhập mã nhân viên (6 kí tự): ");
+					String maNV ;
+					do {
+						maNV = Helper.scanner.nextLine();
+						if(maNV.length() !=6){
+							System.out.println("Mã nhân viên không hợp lệ !");
+						}
+					}while (maNV.length() !=6);
+					if(checkId(maNV)) {
+						System.out.println("Mã nhân viên đã tồn tại, mời nhập lại: ");
+						maCoTrungHayK=true;
 					}
-				}while (maNV.length() !=6);
-				if(checkId(maNV)) {
-					System.out.println("Mã nhân viên đã tồn tại, mời nhập lại: ");
-					maCoTrungHayK=true;
-				}
-				else {
-					QL.Nhap(maNV);
-					maCoTrungHayK=false;
-				}
-			}while(maCoTrungHayK);
-        	data.add(QL);
-			break;
-		default:
-			ThuThu TT = new ThuThu();
-			boolean maCoTrungHayK1=false;
-			do {
-				System.out.println("Nhập mã nhân viên (6 kí tự): ");
-				String maNV ;
+					else {
+						QL.Nhap(maNV);
+						maCoTrungHayK=false;
+					}
+				}while(maCoTrungHayK);
+				data.add(QL);
+				break;
+			default:
+				ThuThu TT = new ThuThu();
+				boolean maCoTrungHayK1=false;
 				do {
-					maNV = Helper.scanner.nextLine();
-					if(maNV.length() !=6){
-						System.out.println("Mã nhân viên không hợp lệ !");
+					System.out.println("Nhập mã nhân viên (6 kí tự): ");
+					String maNV ;
+					do {
+						maNV = Helper.scanner.nextLine();
+						if(maNV.length() !=6){
+							System.out.println("Mã nhân viên không hợp lệ !");
+						}
+					}while (maNV.length() !=6);
+					if(checkId(maNV)) {
+						System.out.println("Mã nhân viên đã tồn tại, mời nhập lại: ");
+						maCoTrungHayK1=true;
 					}
-				}while (maNV.length() !=6);
-				if(checkId(maNV)) {
-					System.out.println("Mã nhân viên đã tồn tại, mời nhập lại: ");
-					maCoTrungHayK1=true;
-				}
-				else {
-					TT.Nhap(maNV);
-					maCoTrungHayK1=false;
-				}
-			} while (maCoTrungHayK1);
-        	data.add(TT);
-			break;
+					else {
+						TT.Nhap(maNV);
+						maCoTrungHayK1=false;
+					}
+				} while (maCoTrungHayK1);
+				data.add(TT);
+				break;
 		}
-		
+
 	}
-	
+
 	public void SuaNhanVien() {
 		System.out.println("Nhập mã nhân viên cần sửa thông tin");
 		String MaNV = Helper.scanner.nextLine();
@@ -162,55 +162,55 @@ public class NhanViens  extends BaseDanhSach<NhanVien>{
 			System.out.println("Nhân viên không tồn tại");
 		}
 	}
-	
+
 	public void XoaNhanVien() {
 
-		
-			System.out.println("Nhập mã nhân viên cần xóa: ");
-			String MaNV = Helper.scanner.nextLine();
-			NhanVien NV = getByMaNV(MaNV);
-			if(NV != null) {
 
-				System.out.println("Đây là nhân viên sắp xóa");
-				Mang<NhanVien> NhanVienSapXoa = new Mang<>();
-				NhanVienSapXoa.add(getByMaNV(MaNV));
-				if (NhanVienSapXoa.size() == 0) {
-					return;
-				}
-				System.out.println(Table.taoBang(NhanVienSapXoa));
-				 System.out.print("Bạn có chắc muốn xóa không (y/n): ");
-			       if(Helper.scanner.nextLine().equals("y")) {
-			        	System.out.println("Đã xóa!!");
-			        	XoaNV(NV);
-                return;
-			        } 	
-			        System.out.println("Đã hủy xóa!!");
-			}else
-				System.out.println("Nhân viên không tồn tại!!");
-	
+		System.out.println("Nhập mã nhân viên cần xóa: ");
+		String MaNV = Helper.scanner.nextLine();
+		NhanVien NV = getByMaNV(MaNV);
+		if(NV != null) {
+
+			System.out.println("Đây là nhân viên sắp xóa");
+			Mang<NhanVien> NhanVienSapXoa = new Mang<>();
+			NhanVienSapXoa.add(getByMaNV(MaNV));
+			if (NhanVienSapXoa.size() == 0) {
+				return;
+			}
+			System.out.println(Table.taoBang(NhanVienSapXoa));
+			System.out.print("Bạn có chắc muốn xóa không (y/n): ");
+			if(Helper.scanner.nextLine().equals("y")) {
+				System.out.println("Đã xóa!!");
+				XoaNV(NV);
+				return;
+			}
+			System.out.println("Đã hủy xóa!!");
+		}else
+			System.out.println("Nhân viên không tồn tại!!");
+
 	}
-	
+
 	public void ShowQL(QuanLi QL ) {
 		System.out.println("");
 		// thấy có hàm xuất bản nhưng không biết dùng :))
-		
+
 	}
-	
+
 
 	public List<NhanVien> DocFile() {
-	        try {
-	            FileInputStream finput = new FileInputStream("E:\\data.obj");
-	            ObjectInputStream objinput = new ObjectInputStream(finput);
-	            ArrayList<NhanVien> DATA = (ArrayList<NhanVien>) objinput.readObject();
-	            return DATA;
+		try {
+			FileInputStream finput = new FileInputStream("E:\\data.obj");
+			ObjectInputStream objinput = new ObjectInputStream(finput);
+			ArrayList<NhanVien> DATA = (ArrayList<NhanVien>) objinput.readObject();
+			return DATA;
 
-	        } catch (Exception e) {
+		} catch (Exception e) {
 
-	            e.printStackTrace();
-	            return null;
-	        }
-	    }
-	
+			e.printStackTrace();
+			return null;
+		}
+	}
+
 	//ghi file
 	public void TimKiemNV() {
 		Mang<QuanLi> QL = new Mang<QuanLi>();
@@ -240,15 +240,16 @@ public class NhanViens  extends BaseDanhSach<NhanVien>{
 				String name = Helper.scanner.nextLine();
 				Mang<NhanVien> NV = getByName(name);
 				if(NV != null) {
-					
+
 					for(int i=0 ; i < NV.size();i++)
 						if(NV.get(i) instanceof QuanLi) {
 							QL.add((QuanLi)NV.get(i));
 						}else
 							TT.add((ThuThu) NV.get(i));
 				}
+
 				break;
-					
+
 			}
 			default:
 				System.out.println("Tên nhân viên không tông tại");
@@ -260,7 +261,7 @@ public class NhanViens  extends BaseDanhSach<NhanVien>{
 		System.out.println(Table.taoBang(TT));
 	}
 
-	
+
 	public void Menu1() {
 
 		System.out.println("1.Nhập nhân viên mới.");
@@ -277,40 +278,40 @@ public class NhanViens  extends BaseDanhSach<NhanVien>{
 	}
 	public void LamViec() {
 		int chon;
-		
+
 
 		do {
 			Menu1();
 			System.out.println("chọn thao tác: ");
 			chon = Helper.nhapSoNguyen("Yêu cầu nhập số nguyên:");
 			switch (chon) {
-			case 1:
-				NhapNVM();
-				break;
-			case 2:
-				SuaNhanVien();
-				break;
-			case 3:
-				XoaNhanVien();
-				break;
-	
-			case 4:
-				TimKiemNV();
-				break;
-			case 5:
-				xuatToanBoNv();
-				break;
-			case 6:
-				this.xuatFileBinary(FILE_PATH);
-				break;
-			default:
-				System.out.println("Đối số truyền vào không đúng.");
+				case 1:
+					NhapNVM();
+					break;
+				case 2:
+					SuaNhanVien();
+					break;
+				case 3:
+					XoaNhanVien();
+					break;
+
+				case 4:
+					TimKiemNV();
+					break;
+				case 5:
+					xuatToanBoNv();
+					break;
+				case 6:
+					this.xuatFileBinary(FILE_PATH);
+					break;
+				default:
+					System.out.println("Đối số truyền vào không đúng.");
 			}
 		}while(chon!=6);
 	}
 
 	public static void main(String[] args) {
-	   TongHopDuLieu.getNhanViens().LamViec();
+		TongHopDuLieu.getNhanViens().LamViec();
 	}
 
 	@Override

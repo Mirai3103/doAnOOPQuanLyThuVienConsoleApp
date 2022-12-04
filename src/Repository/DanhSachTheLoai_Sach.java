@@ -34,7 +34,6 @@ public class DanhSachTheLoai_Sach implements Serializable {
             FileOutputStream fout = new FileOutputStream(FILE_PATH);
             ObjectOutputStream objout = new ObjectOutputStream(fout);
             objout.writeObject(this.theLoai_saches);
-            System.out.println("Lưu thành công!");
             objout.close();
             fout.close();
         } catch (Exception e) {

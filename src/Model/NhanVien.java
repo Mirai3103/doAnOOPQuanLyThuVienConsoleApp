@@ -167,7 +167,7 @@ public abstract class NhanVien extends ConNguoi implements ITableRowData {
 
     }
     public void thongTinCaNhan(){
-        
+
         System.out.println("Thông tin cá nhân");
         Xuat();
         System.out.println("Bạn có muốn sửa thông tin cá nhân không? (y/n)");

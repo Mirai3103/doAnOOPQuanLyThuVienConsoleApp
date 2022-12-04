@@ -13,14 +13,14 @@ import helper.Xuat.Table;
 
 public class CTMuonTra implements ITableRowData,Serializable	{
 
-		@Serial
-		private static final long serialVersionUID = 40367639L;
+	@Serial
+	private static final long serialVersionUID = 40367639L;
 	protected int IdPhieuMuon;
-    protected int IDsach =-1;
-    protected int datra = 0;
-    protected LocalDate ngayhentra;
-    protected LocalDate ngaytra = null;
-    protected int loiPhatId = -1;
+	protected int IDsach =-1;
+	protected int datra = 0;
+	protected LocalDate ngayhentra;
+	protected LocalDate ngaytra = null;
+	protected int loiPhatId = -1;
 
 	public void setNgaytra(LocalDate ngaytra) {
 		this.ngaytra = ngaytra;
@@ -35,9 +35,9 @@ public class CTMuonTra implements ITableRowData,Serializable	{
 	}
 
 	public CTMuonTra()
-    {
-    	super();
-    }
+	{
+		super();
+	}
 	public int getTienPhat() {
 		if(loiPhatId == -1) return 0;
 		var tienPhat =  TongHopDuLieu.getDanhSachXuPhat().getById(loiPhatId).getTienPhat();
@@ -55,7 +55,7 @@ public class CTMuonTra implements ITableRowData,Serializable	{
 	}
 
 	public void setIDsach(int IDsach) throws RuntimeException {
-	    var sach =	TongHopDuLieu.getKhoSach().getById(IDsach);
+		var sach =	TongHopDuLieu.getKhoSach().getById(IDsach);
 		if (sach.checkDangMuon())
 			throw new SachDaMuonException();
 		this.IDsach = IDsach;
@@ -71,7 +71,7 @@ public class CTMuonTra implements ITableRowData,Serializable	{
 	public void suaCTMuonTra() {
 		int luaChon;
 		do {
-			
+
 			System.out.println(Table.taoBang(this));
 			System.out.println("Bạn muốn sửa gì?");
 			showMenuSua();
@@ -123,22 +123,22 @@ public class CTMuonTra implements ITableRowData,Serializable	{
 
 
 	public CTMuonTra(int IdPhieuMuon, int IDsach, int datra, LocalDate ngayhentra, LocalDate ngaytra, int xuPhat)
-    {
-    	this.IdPhieuMuon=IdPhieuMuon;
-    	this.IDsach=IDsach;
-    	this.datra=datra;
-    	this.ngayhentra=ngayhentra;
-    	this.ngaytra=null;
-    	this.loiPhatId = xuPhat;
-    }
-    public void nhapCTMuonTra()
-    {
+	{
+		this.IdPhieuMuon=IdPhieuMuon;
+		this.IDsach=IDsach;
+		this.datra=datra;
+		this.ngayhentra=ngayhentra;
+		this.ngaytra=null;
+		this.loiPhatId = xuPhat;
+	}
+	public void nhapCTMuonTra()
+	{
 
-    	System.out.print("Nhập ngày hẹn trả(dd/MM/yyyy): ");
-		this.ngayhentra = Helper.inputDate();
+		System.out.print("Nhập ngày hẹn trả(dd/MM/yyyy): ");
+		this.ngayhentra = Helper.inputDate(true);
 //		System.out.print("Nhập id lỗi phạt: ");
 //		this.loiPhatId = Helper.nhapSoNguyen("id phải là số nguyên");
-    }
+	}
 	@Override
 	public String toString() {
 		return "CTMuonTra [IdPhieuMuon=" + IdPhieuMuon + ", IDsach=" + IDsach + ", datra=" + datra + ", ghichu=" + getXuPhat().getTenLoi()+ ", ngaytra=" + ngaytra + "]";
@@ -164,22 +164,22 @@ public class CTMuonTra implements ITableRowData,Serializable	{
 	@Override
 	public String[] getRowData() {
 		var phat = getXuPhat();
-	    return new String[]{
-	    		this.IdPhieuMuon +"",
-	    		this.IDsach+"",
+		return new String[]{
+				this.IdPhieuMuon +"",
+				this.IDsach+"",
 				this.getBook().getTenSach(),
-	    		this.datra+"",
-	    		this.ngayhentra.format(Helper.DATE_FORMAT),
-	    		this.ngaytra == null ? "Chưa trả" : this.ngaytra.format(Helper.DATE_FORMAT),
+				this.datra+"",
+				this.ngayhentra.format(Helper.DATE_FORMAT),
+				this.ngaytra == null ? "Chưa trả" : this.ngaytra.format(Helper.DATE_FORMAT),
 				phat == null ?"":phat.getTenLoi(),
 				phat == null ?"":phat.getTienPhat() ==-1?getBook().getGiaSach()+"":phat.getTienPhat()+""
 
-	        };
-	    }
-	 @Override
-	 public String[] getHeader() {
-	     return new String[]{"IDmt","IDsach","Tên sách","Tình trạng", "Ngày hẹn trả","Ngày trả","Ghi chú", "Tiền phạt"};
-	 }
+		};
+	}
+	@Override
+	public String[] getHeader() {
+		return new String[]{"IDmt","IDsach","Tên sách","Tình trạng", "Ngày hẹn trả","Ngày trả","Ghi chú", "Tiền phạt"};
+	}
 
 	public Sach getBook(){
 		return TongHopDuLieu.getKhoSach().getById(this.IDsach);

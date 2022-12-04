@@ -82,14 +82,14 @@ public class KhoSach extends BaseDanhSach<Sach> {
         }
         System.out.println(Table.taoBang(sachSapXoa));
         System.out.print("Bạn có chắc muốn xóa không (y/n): ");
-      if(Helper.scanner.nextLine().equals("y")) {
-        	System.out.println("Đã xóa!!");
-        	delete(id);
+        if(Helper.scanner.nextLine().equals("y")) {
+            System.out.println("Đã xóa!!");
+            delete(id);
             return;
-        } 	
+        }
         System.out.println("Đã hủy xóa!!");
-        
-        
+
+
     }
 
     public void suaSach() {
@@ -180,7 +180,7 @@ public class KhoSach extends BaseDanhSach<Sach> {
     }
 
     public void thuThuLamViec() {
-        
+
 
         while (true) {
             showMenuThuThu();
@@ -208,7 +208,7 @@ public class KhoSach extends BaseDanhSach<Sach> {
 
     public void lamViec() {
         int chon;
-        
+
         do {
             showMenu();
             chon = Helper.nhapSoNguyen("Chọn không hợp lệ");

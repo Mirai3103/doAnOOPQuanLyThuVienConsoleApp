@@ -74,8 +74,8 @@ public class QuanLi extends NhanVien  {
             NgayNhanChuc = Helper.scanner.nextLine();
         }while (!Helper.checkNgayThang(NgayNhanChuc));
         do {
-        System.out.println("Nhập năm kinh nghiệm: ");
-        NamKinhNghiem=Helper.nhapSoNguyen("Phải là số nguyên!!! Yêu cầu nhập lại: ");
+            System.out.println("Nhập năm kinh nghiệm: ");
+            NamKinhNghiem=Helper.nhapSoNguyen("Phải là số nguyên!!! Yêu cầu nhập lại: ");
         }while(NamKinhNghiem<0);
         System.out.println("Nhập mã bảo mật: ");
         MaBaoMat = Helper.scanner.nextLine();
@@ -83,11 +83,11 @@ public class QuanLi extends NhanVien  {
         DacQuyen = Helper.scanner.nextLine();
     }
 
-	@Override
-	public void menuSua() {
-		System.out.println("1. Sửa họ tên");
-		System.out.println("2. Sửa ngày sinh");
-		System.out.println("3. Sửa số điện thoại");
+    @Override
+    public void menuSua() {
+        System.out.println("1. Sửa họ tên");
+        System.out.println("2. Sửa ngày sinh");
+        System.out.println("3. Sửa số điện thoại");
         System.out.println("4. Sửa CMND");
         System.out.println("5. Sửa địa chỉ");
         System.out.println("6. Sửa mật khẩu");
@@ -96,9 +96,9 @@ public class QuanLi extends NhanVien  {
         System.out.println("9. Sửa ngày nhận chức");
         System.out.println("10. Sửa đặc quyền ");
         System.out.println("11. Thoát");
-	}
+    }
 
-	public void Xuat() {
+    public void Xuat() {
         super.Xuat();
         System.out.printf("\nNgày nhận chức: " + NgayNhanChuc);
         System.out.printf("\nNăm kinh nghiệm: " + NamKinhNghiem);
@@ -124,29 +124,29 @@ public class QuanLi extends NhanVien  {
         System.out.println(Table.taoBang(this));
     }
 
-	public void sua() {
-		int choose;
-		do {
-            
+    public void sua() {
+        int choose;
+        do {
+
             this.xuatDangBang();
-			menuSua();
-			System.out.println("Nhập lựa chọn: ");
-			choose = Helper.nhapSoNguyen("Lựa chọn không hop lệ !! yêu cầu nhập lại: ");
-			switch (choose) {
-				case 1 -> {
-					String HoTen;
-					System.out.println("Sửa Họ Tên: ");
-					HoTen = Helper.scanner.nextLine();
-					setHoTen(HoTen);
-				}
-				case 2 -> {
-					System.out.println("Sửa ngay sinh: ");
-					setNgaySinh(Helper.inputDate().format(Helper.DATE_FORMAT));
-				}
-				case 3 -> {
-					System.out.println("Sửa số điện thoại: ");
-					setSDT(Helper.nhapSdt());
-				}
+            menuSua();
+            System.out.println("Nhập lựa chọn: ");
+            choose = Helper.nhapSoNguyen("Lựa chọn không hop lệ !! yêu cầu nhập lại: ");
+            switch (choose) {
+                case 1 -> {
+                    String HoTen;
+                    System.out.println("Sửa Họ Tên: ");
+                    HoTen = Helper.scanner.nextLine();
+                    setHoTen(HoTen);
+                }
+                case 2 -> {
+                    System.out.println("Sửa ngay sinh: ");
+                    setNgaySinh(Helper.inputDate().format(Helper.DATE_FORMAT));
+                }
+                case 3 -> {
+                    System.out.println("Sửa số điện thoại: ");
+                    setSDT(Helper.nhapSdt());
+                }
 
                 case 4 -> {
                     System.out.println("Sửa CMND: ");
@@ -208,7 +208,7 @@ public class QuanLi extends NhanVien  {
         return newHeader;
     }
     public static void main(String[] args) {
-    	QuanLi a = new QuanLi();
-    	a.sua();
+        QuanLi a = new QuanLi();
+        a.sua();
     }
 }

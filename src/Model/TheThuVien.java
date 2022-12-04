@@ -13,23 +13,23 @@ public class TheThuVien implements Serializable, ITableRowData{
 	@Serial
 	private static final long serialVersionUID = -266706354210367639L;
 	private  int IDthe;
-    private int IDuser;
-    private LocalDate ngaybd;
-    private LocalDate ngayhh;
-    private String ghichu;
-    public TheThuVien()
-    {
-        Date date = new Date();
-        ngaybd = LocalDate.now();
+	private int IDuser;
+	private LocalDate ngaybd;
+	private LocalDate ngayhh;
+	private String ghichu;
+	public TheThuVien()
+	{
+		Date date = new Date();
+		ngaybd = LocalDate.now();
 		ngayhh = LocalDate.now().plusYears(1);
-    }
-    public TheThuVien(String IDthe,LocalDate ngaybd,int IDuser,LocalDate ngayhh,String ghichu)
-    {
-        this.IDuser=IDuser;
-    	this.ngaybd=ngaybd;
-    	this.ngayhh=ngayhh;
-    	this.ghichu=ghichu;	
-    }
+	}
+	public TheThuVien(String IDthe,LocalDate ngaybd,int IDuser,LocalDate ngayhh,String ghichu)
+	{
+		this.IDuser=IDuser;
+		this.ngaybd=ngaybd;
+		this.ngayhh=ngayhh;
+		this.ghichu=ghichu;
+	}
 	public void giaHanThe()
 	{
 		this.ngayhh = this.ngayhh.plusYears(1);
@@ -86,18 +86,18 @@ public class TheThuVien implements Serializable, ITableRowData{
 	public void themTheThuVien()
 	{
 		System.out.print("Nhập IDuser: ");
-	    this.IDuser = Integer.parseInt(Helper.scanner.nextLine());
+		this.IDuser = Integer.parseInt(Helper.scanner.nextLine());
 		String dateStr;
 		var isDateValid = false;
-        do {
+		do {
 			System.out.print("Nhập ngày hết hạn(dd/MM/yyyy): ");
 			dateStr = Helper.scanner.nextLine();
 			isDateValid = Helper.checkNgayThang(dateStr);
 		}while (!isDateValid);
 
 
-        System.out.print("Nhập ghi chú: ");
-        this.ghichu = Helper.scanner.nextLine();
+		System.out.print("Nhập ghi chú: ");
+		this.ghichu = Helper.scanner.nextLine();
 	}
 	public DocGia getUser(){
 		return TongHopDuLieu.getDanhSachDocGia().getById(IDuser);
@@ -121,9 +121,9 @@ public class TheThuVien implements Serializable, ITableRowData{
 		System.out.println("ID thẻ: "+IDthe);
 		System.out.println("ID user: "+IDuser);
 		System.out.println("Họ tên chủ thẻ: "+chuThe.getHoTen());
-        System.out.println("Ngày bắt đầu: " + this.ngaybd);
-        System.out.println("Ngày hết hạn: " + this.ngayhh);
-        System.out.println("Ghi chú: " + this.ghichu);	
+		System.out.println("Ngày bắt đầu: " + this.ngaybd);
+		System.out.println("Ngày hết hạn: " + this.ngayhh);
+		System.out.println("Ghi chú: " + this.ghichu);
 	}
 	public boolean checkHetHan()
 	{
@@ -131,7 +131,7 @@ public class TheThuVien implements Serializable, ITableRowData{
 	}
 	public void suaTheThuVien()
 	{
-		
+
 
 		System.out.println("1. Sửa ngày hết hạn");
 		System.out.println("2. Sửa ghi chú");
@@ -159,18 +159,18 @@ public class TheThuVien implements Serializable, ITableRowData{
 	}
 	@Override
 	public String[] getRowData() {
-	    return new String[]{
-	           this.IDthe + "",
-	           this.IDuser + "",
-	           this.ngaybd.format(Helper.DATE_FORMAT),
-	           this.ngayhh.format(Helper.DATE_FORMAT),
-	           this.ghichu,     
-	        };
-	    }
-	 @Override
-	 public String[] getHeader() {
-	     return new String[]{"IDthe", "IDuser", "Ngày bắt đầu", "Ngày hết hạn", "Ghi chú"};
-	 }
-	 	 
-	 
+		return new String[]{
+				this.IDthe + "",
+				this.IDuser + "",
+				this.ngaybd.format(Helper.DATE_FORMAT),
+				this.ngayhh.format(Helper.DATE_FORMAT),
+				this.ghichu,
+		};
+	}
+	@Override
+	public String[] getHeader() {
+		return new String[]{"IDthe", "IDuser", "Ngày bắt đầu", "Ngày hết hạn", "Ghi chú"};
+	}
+
+
 }

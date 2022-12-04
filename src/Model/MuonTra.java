@@ -36,7 +36,7 @@ public class MuonTra implements Serializable, ITableRowData {
     }
 
     public void suaPhieuMuon() {
-        
+
         xuatPhieu();
 
         int choose;
@@ -48,7 +48,7 @@ public class MuonTra implements Serializable, ITableRowData {
             choose = Helper.nhapSoNguyen("Lựa chọn không hợp lệ. Vui lòng nhập lại: ");
             switch (choose) {
                 case 1 -> {
-                    System.out.println("Nhap ngay muon moi: ");
+                    System.out.println("Nhập ngày mượn mới: ");
                     var isValidate = false;
                     do {
                         var ngaymuon = Helper.scanner.nextLine();

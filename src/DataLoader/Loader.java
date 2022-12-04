@@ -288,11 +288,12 @@ public class Loader {
         dg1.setDC(new DiaChi("16 ","Hàng Chuối","Phạm Đình Hổ","Hai Bà Trưng"," TP HCM"));
         TongHopDuLieu.getDanhSachDocGia().add(dg1);
         TheThuVien theThuVien1 = new TheThuVien();
+        TongHopDuLieu.getDanhSachTheThuVien().add(theThuVien1);
+
         theThuVien1.setGhichu("");
         theThuVien1.setNgaybd(Helper.parseDate("01/01/2021"));
         theThuVien1.setNgayhh(Helper.parseDate("01/01/2022"));
         theThuVien1.setIDuser(dg1.getIDdg());
-        TongHopDuLieu.getDanhSachTheThuVien().add(theThuVien1);
         DocGia dg2 = new DocGia();
         dg2.setHoTen("Lê thị B");
         dg2.setNgaySinh("04/02/2002");
@@ -301,11 +302,12 @@ public class Loader {
         dg2.setDC(new DiaChi("273","An dương vương","P4","Q5"," TP HCM"));
         TongHopDuLieu.getDanhSachDocGia().add(dg2);
         TheThuVien theThuVien2 = new TheThuVien();
+        TongHopDuLieu.getDanhSachTheThuVien().add(theThuVien2);
+
         theThuVien2.setGhichu("");
         theThuVien2.setNgaybd(Helper.parseDate("01/01/2022"));
         theThuVien2.setNgayhh(Helper.parseDate("01/01/2023"));
         theThuVien2.setIDuser(dg2.getIDdg());
-        TongHopDuLieu.getDanhSachTheThuVien().add(theThuVien2);
         DocGia dg3 = new DocGia();
         dg3.setHoTen("Cao Văn C");
         dg3.setNgaySinh("12/12/2000");
@@ -314,11 +316,12 @@ public class Loader {
         dg3.setDC(new DiaChi("23","An dương vương","P4","Q5"," TP HCM"));
         TongHopDuLieu.getDanhSachDocGia().add(dg3);
         TheThuVien theThuVien3 = new TheThuVien();
+        TongHopDuLieu.getDanhSachTheThuVien().add(theThuVien3);
+
         theThuVien3.setGhichu("");
         theThuVien3.setNgaybd(Helper.parseDate("01/01/2021"));
         theThuVien3.setNgayhh(Helper.parseDate("01/01/2023"));
         theThuVien3.setIDuser(dg3.getIDdg());
-        TongHopDuLieu.getDanhSachTheThuVien().add(theThuVien3);
         DocGia dg4 = new DocGia();
         dg4.setHoTen("Trương Bảo D");
         dg4.setNgaySinh("13/12/2000");
@@ -327,11 +330,12 @@ public class Loader {
         dg4.setDC(new DiaChi("29","Trần Bình trọng","P3","Q7"," TP HCM"));
         TongHopDuLieu.getDanhSachDocGia().add(dg4);
         TheThuVien theThuVien4 = new TheThuVien();
+        TongHopDuLieu.getDanhSachTheThuVien().add(theThuVien4);
+
         theThuVien4.setGhichu("");
         theThuVien4.setNgaybd(Helper.parseDate("01/01/2021"));
         theThuVien4.setNgayhh(Helper.parseDate("01/01/2022"));
         theThuVien4.setIDuser(dg4.getIDdg());
-        TongHopDuLieu.getDanhSachTheThuVien().add(theThuVien4);
         DocGia dg5 = new DocGia();
         dg5.setHoTen("Trần thủ đức");
         dg5.setNgaySinh("13/02/1999");
@@ -340,11 +344,12 @@ public class Loader {
         dg5.setDC(new DiaChi("25","ABC ","P3","Q12"," TP HCM"));
         TongHopDuLieu.getDanhSachDocGia().add(dg5);
         TheThuVien theThuVien5 = new TheThuVien();
+        TongHopDuLieu.getDanhSachTheThuVien().add(theThuVien5);
+
         theThuVien5.setGhichu("");
         theThuVien5.setNgaybd(Helper.parseDate("01/01/2021"));
         theThuVien5.setNgayhh(Helper.parseDate("01/01/2026"));
         theThuVien5.setIDuser(dg5.getIDdg());
-        TongHopDuLieu.getDanhSachTheThuVien().add(theThuVien5);
         DocGia dg6 = new DocGia();
         dg6.setHoTen("Trần Minh");
         dg6.setNgaySinh("13/07/2003");
@@ -353,11 +358,12 @@ public class Loader {
         dg6.setDC(new DiaChi("25","ABC ","P3","Q12"," TP HCM"));
         TongHopDuLieu.getDanhSachDocGia().add(dg6);
         TheThuVien theThuVien6 = new TheThuVien();
+        TongHopDuLieu.getDanhSachTheThuVien().add(theThuVien6);
+
         theThuVien6.setGhichu("");
         theThuVien6.setNgaybd(Helper.parseDate("01/01/2022"));
         theThuVien6.setNgayhh(Helper.parseDate("01/01/2027"));
         theThuVien6.setIDuser(dg6.getIDdg());
-        TongHopDuLieu.getDanhSachTheThuVien().add(theThuVien6);
         DocGia dg7 = new DocGia();
         dg7.setHoTen("Cao Thu");
         dg7.setNgaySinh("9/02/2004");
@@ -366,11 +372,12 @@ public class Loader {
         dg7.setDC(new DiaChi("67","Lạc Long Quân","P3","Q5"," TP HCM"));
         TongHopDuLieu.getDanhSachDocGia().add(dg7);
         TheThuVien theThuVien7 = new TheThuVien();
+        TongHopDuLieu.getDanhSachTheThuVien().add(theThuVien7);
+
         theThuVien7.setGhichu("");
         theThuVien7.setNgaybd(Helper.parseDate("01/05/2022"));
         theThuVien7.setNgayhh(Helper.parseDate("01/01/2026"));
         theThuVien7.setIDuser(dg7.getIDdg());
-        TongHopDuLieu.getDanhSachTheThuVien().add(theThuVien7);
 
         DocGia dg8 = new DocGia();
         dg8.setHoTen("Diệp Lâm");
@@ -380,11 +387,12 @@ public class Loader {
         dg8.setDC(new DiaChi("89","Đinh Bộ Lĩnh","P3","Q.Bình Thạnh"," TP HCM"));
         TongHopDuLieu.getDanhSachDocGia().add(dg8);
         TheThuVien theThuVien8 = new TheThuVien();
+        TongHopDuLieu.getDanhSachTheThuVien().add(theThuVien8);
+
         theThuVien8.setGhichu("");
         theThuVien8.setNgaybd(Helper.parseDate("05/03/2018"));
         theThuVien8.setNgayhh(Helper.parseDate("01/01/2021"));
         theThuVien8.setIDuser(dg8.getIDdg());
-        TongHopDuLieu.getDanhSachTheThuVien().add(theThuVien8);
 
         DocGia dg9 = new DocGia();
         dg9.setHoTen("Trần Đức Bo");
@@ -394,11 +402,12 @@ public class Loader {
         dg9.setDC(new DiaChi("1/2","Mạc Đĩnh Chi","P8","Q9"," TP HCM"));
         TongHopDuLieu.getDanhSachDocGia().add(dg9);
         TheThuVien theThuVien9 = new TheThuVien();
+        TongHopDuLieu.getDanhSachTheThuVien().add(theThuVien9);
+
         theThuVien9.setGhichu("");
         theThuVien9.setNgaybd(Helper.parseDate("01/08/2016"));
         theThuVien9.setNgayhh(Helper.parseDate("01/01/2020"));
         theThuVien9.setIDuser(dg9.getIDdg());
-        TongHopDuLieu.getDanhSachTheThuVien().add(theThuVien9);
 
         DocGia dg10 = new DocGia();
         dg10.setHoTen("Nguyễn Thanh Thanh");
@@ -408,11 +417,12 @@ public class Loader {
         dg10.setDC(new DiaChi("48","Trần Cao Vân","An Phú","Thủ Đức"," TP HCM"));
         TongHopDuLieu.getDanhSachDocGia().add(dg10);
         TheThuVien theThuVien10 = new TheThuVien();
+        TongHopDuLieu.getDanhSachTheThuVien().add(theThuVien10);
+
         theThuVien10.setGhichu("");
         theThuVien10.setNgaybd(Helper.parseDate("09/09/2010"));
         theThuVien10.setNgayhh(Helper.parseDate("01/09/2020"));
         theThuVien10.setIDuser(dg10.getIDdg());
-        TongHopDuLieu.getDanhSachTheThuVien().add(theThuVien10);
 
         DocGia dg11 = new DocGia();
         dg11.setHoTen("Cao Minh Quân");
@@ -422,11 +432,12 @@ public class Loader {
         dg11.setDC(new DiaChi("","","La Hai","Tây Hoa","Phú Yên"));
         TongHopDuLieu.getDanhSachDocGia().add(dg11);
         TheThuVien theThuVien11 = new TheThuVien();
+        TongHopDuLieu.getDanhSachTheThuVien().add(theThuVien11);
+
         theThuVien11.setGhichu("");
         theThuVien11.setNgaybd(Helper.parseDate("01/07/2019"));
         theThuVien11.setNgayhh(Helper.parseDate("01/01/2023"));
         theThuVien11.setIDuser(dg11.getIDdg());
-        TongHopDuLieu.getDanhSachTheThuVien().add(theThuVien11);
 
         DocGia dg12 = new DocGia();
         dg12.setHoTen("Nguyễn Hồng");
@@ -436,11 +447,12 @@ public class Loader {
         dg12.setDC(new DiaChi("","","Xã Cac Hóa","Huyện Hoa Mai","Quảng Ninh"));
         TongHopDuLieu.getDanhSachDocGia().add(dg12);
         TheThuVien theThuVien12 = new TheThuVien();
+        TongHopDuLieu.getDanhSachTheThuVien().add(theThuVien12);
+
         theThuVien12.setGhichu("");
         theThuVien12.setNgaybd(Helper.parseDate("01/06/2015"));
         theThuVien12.setNgayhh(Helper.parseDate("01/01/2026"));
         theThuVien12.setIDuser(dg5.getIDdg());
-        TongHopDuLieu.getDanhSachTheThuVien().add(theThuVien12);
 
         DocGia dg13 = new DocGia();
         dg13.setHoTen("Hứa Kiệt");
@@ -450,11 +462,12 @@ public class Loader {
         dg13.setDC(new DiaChi("","","Xã Minh Hà","Huyện Minh Hải","Sơn La"));
         TongHopDuLieu.getDanhSachDocGia().add(dg13);
         TheThuVien theThuVien13 = new TheThuVien();
+        TongHopDuLieu.getDanhSachTheThuVien().add(theThuVien13);
+
         theThuVien13.setGhichu("");
         theThuVien13.setNgaybd(Helper.parseDate("01/01/2022"));
         theThuVien13.setNgayhh(Helper.parseDate("01/01/2028"));
         theThuVien13.setIDuser(dg13.getIDdg());
-        TongHopDuLieu.getDanhSachTheThuVien().add(theThuVien13);
 
         DocGia dg14 = new DocGia();
         dg14.setHoTen("Hoàng minh");
@@ -464,11 +477,12 @@ public class Loader {
         dg14.setDC(new DiaChi("55","Hoàng Hoa Thám","P3","Q1"," TP HCM"));
         TongHopDuLieu.getDanhSachDocGia().add(dg14);
         TheThuVien theThuVien14 = new TheThuVien();
+        TongHopDuLieu.getDanhSachTheThuVien().add(theThuVien14);
+
         theThuVien14.setGhichu("");
         theThuVien14.setNgaybd(Helper.parseDate("01/02/2020"));
         theThuVien14.setNgayhh(Helper.parseDate("01/01/2029"));
         theThuVien14.setIDuser(dg14.getIDdg());
-        TongHopDuLieu.getDanhSachTheThuVien().add(theThuVien14);
 
         DocGia dg15 = new DocGia();
         dg15.setHoTen("Minh Kiệt");
@@ -478,11 +492,12 @@ public class Loader {
         dg15.setDC(new DiaChi("87","Quốc Lộ A1","An Bình","Dĩ An","Bình Dương"));
         TongHopDuLieu.getDanhSachDocGia().add(dg15);
         TheThuVien theThuVien15 = new TheThuVien();
+        TongHopDuLieu.getDanhSachTheThuVien().add(theThuVien15);
+
         theThuVien15.setGhichu("");
         theThuVien15.setNgaybd(Helper.parseDate("09/12/2020"));
         theThuVien15.setNgayhh(Helper.parseDate("01/01/2024"));
         theThuVien15.setIDuser(dg15.getIDdg());
-        TongHopDuLieu.getDanhSachTheThuVien().add(theThuVien15);
 
         DocGia dg16 = new DocGia();
         dg16.setHoTen("Phạm Len");
@@ -492,11 +507,11 @@ public class Loader {
         dg16.setDC(new DiaChi("","","Xã Spa","Spa"," Sơn La"));
         TongHopDuLieu.getDanhSachDocGia().add(dg16);
         TheThuVien theThuVien16 = new TheThuVien();
+        TongHopDuLieu.getDanhSachTheThuVien().add(theThuVien16);
         theThuVien16.setGhichu("");
         theThuVien16.setNgaybd(Helper.parseDate("01/01/2015"));
         theThuVien16.setNgayhh(Helper.parseDate("01/01/2026"));
         theThuVien16.setIDuser(dg16.getIDdg());
-        TongHopDuLieu.getDanhSachTheThuVien().add(theThuVien16);
 
         DocGia dg17 = new DocGia();
         dg17.setHoTen("Huynh Tấn Tài");
@@ -505,12 +520,14 @@ public class Loader {
         dg17.setCMND("984358439");
         dg17.setDC(new DiaChi("6","Hoàng Diệu","P2","Thủ Đức","TP HCM"));
         TongHopDuLieu.getDanhSachDocGia().add(dg17);
+
         TheThuVien theThuVien17 = new TheThuVien();
+        TongHopDuLieu.getDanhSachTheThuVien().add(theThuVien17);
+
         theThuVien17.setGhichu("");
         theThuVien17.setNgaybd(Helper.parseDate("01/01/2021"));
         theThuVien17.setNgayhh(Helper.parseDate("01/01/2025"));
         theThuVien17.setIDuser(dg17.getIDdg());
-        TongHopDuLieu.getDanhSachTheThuVien().add(theThuVien17);
 
         DocGia dg18 = new DocGia();
         dg18.setHoTen("Huỳnh Liên");
@@ -520,11 +537,12 @@ public class Loader {
         dg18.setDC(new DiaChi("43","Trần Cao Vân","P3","Q1"," TP HCM"));
         TongHopDuLieu.getDanhSachDocGia().add(dg18);
         TheThuVien theThuVien18 = new TheThuVien();
+        TongHopDuLieu.getDanhSachTheThuVien().add(theThuVien18);
+
         theThuVien18.setGhichu("");
         theThuVien18.setNgaybd(Helper.parseDate("01/01/2020"));
         theThuVien18.setNgayhh(Helper.parseDate("01/01/2029"));
         theThuVien18.setIDuser(dg18.getIDdg());
-        TongHopDuLieu.getDanhSachTheThuVien().add(theThuVien18);
 
         DocGia dg19 = new DocGia();
         dg19.setHoTen("Đào Tiến");
@@ -534,11 +552,12 @@ public class Loader {
         dg19.setDC(new DiaChi("8","Nguyễn Thị Minh Khai","P3","Q1"," TP HCM"));
         TongHopDuLieu.getDanhSachDocGia().add(dg19);
         TheThuVien theThuVien19 = new TheThuVien();
+        TongHopDuLieu.getDanhSachTheThuVien().add(theThuVien19);
+
         theThuVien19.setGhichu("");
         theThuVien19.setNgaybd(Helper.parseDate("01/01/2021"));
         theThuVien19.setNgayhh(Helper.parseDate("01/01/2026"));
         theThuVien19.setIDuser(dg19.getIDdg());
-        TongHopDuLieu.getDanhSachTheThuVien().add(theThuVien19);
 
         DocGia dg20 = new DocGia();
         dg20.setHoTen("Trúc Linh");
@@ -548,11 +567,12 @@ public class Loader {
         dg20.setDC(new DiaChi("7","Đinh Bộ Lĩnh","P3","Q.Bình Thạnh"," TP HCM"));
         TongHopDuLieu.getDanhSachDocGia().add(dg20);
         TheThuVien theThuVien20 = new TheThuVien();
+        TongHopDuLieu.getDanhSachTheThuVien().add(theThuVien20);
+
         theThuVien20.setGhichu("");
         theThuVien20.setNgaybd(Helper.parseDate("01/01/2021"));
         theThuVien20.setNgayhh(Helper.parseDate("01/09/2026"));
         theThuVien20.setIDuser(dg20.getIDdg());
-        TongHopDuLieu.getDanhSachTheThuVien().add(theThuVien20);
 
         DocGia dg21 = new DocGia();
         dg21.setHoTen("Như Quỳnh");
@@ -562,11 +582,11 @@ public class Loader {
         dg21.setDC(new DiaChi("","","Phú Thứ","Tây Hòa"," Phú Yên"));
         TongHopDuLieu.getDanhSachDocGia().add(dg21);
         TheThuVien theThuVien21 = new TheThuVien();
+        TongHopDuLieu.getDanhSachTheThuVien().add(theThuVien21);
         theThuVien21.setGhichu("");
         theThuVien21.setNgaybd(Helper.parseDate("01/12/2021"));
         theThuVien21.setNgayhh(Helper.parseDate("01/09/2027"));
         theThuVien21.setIDuser(dg21.getIDdg());
-        TongHopDuLieu.getDanhSachTheThuVien().add(theThuVien21);
 
 
     }
@@ -653,11 +673,11 @@ public class Loader {
         thuThu.setCMND("3232469971");
         thuThu.setSDT("0345297890");
         thuThu.setDC(new DiaChi("273","An dương vương","P4","Q5","TP HCM"));
-        thuThu.setLuong(100000);
+        thuThu.setLuong(1000);
         thuThu.setNgaySinh("22/09/1997");
         ((ThuThu) thuThu).setNgayNhanChuc("25/9/2020");
         ((ThuThu) thuThu).setNoiLamViec("Khu D");
-        ((ThuThu) thuThu).setNamKinhNghiem(1);
+        ((ThuThu) thuThu).setNamKinhNghiem(0);
         ((ThuThu) thuThu).setNgayLamViec("29/9/2020");
         ((ThuThu) thuThu).setTruong(false);
         TongHopDuLieu.getNhanViens().add(thuThu);

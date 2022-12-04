@@ -92,7 +92,7 @@ public class TheLoai implements Serializable, ITableRowData {
     }
 
     public void sua() {
-        
+
         xuatDangBang();
         for (int i = 1; i < getHeader().length; i++)
             System.out.printf((i) + ". " + getHeader()[i] + "\n");
