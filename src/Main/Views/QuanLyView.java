@@ -1,6 +1,6 @@
 package Main.Views;
 
-import Main.Main;
+import Main.MainApp;
 import Repository.TongHopDuLieu;
 
 public class QuanLyView {
@@ -37,7 +37,7 @@ public class QuanLyView {
                 case 9 -> ThuThuView.run();
                 case 11 -> {
                     System.out.println("Đăng xuất thành công");
-                    Main.nguoiDung = null;
+                    MainApp.nguoiDung = null;
                 }
                 default -> System.out.println("Lựa chọn không hợp lệ");
             }

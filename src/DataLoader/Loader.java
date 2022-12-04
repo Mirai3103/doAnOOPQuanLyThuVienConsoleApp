@@ -10,10 +10,8 @@ import helper.Helper;
 
 import java.io.File;
 import java.time.LocalDate;
-import java.util.HashMap;
-import java.util.Map;
 
-public class Main {
+public class Loader {
     public static void removeAllData(){
         File listFile = new File(Helper.dirPath);
         if (!listFile.exists()) {

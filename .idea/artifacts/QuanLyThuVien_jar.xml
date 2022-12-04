@@ -1,6 +1,6 @@
 <component name="ArtifactManager">
-  <artifact type="jar" name="doAnOOP:jar">
-    <output-path>$PROJECT_DIR$/out/artifacts/doAnOOP_jar</output-path>
+  <artifact type="jar" name="QuanLyThuVien:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/QuanLyThuVien_jar</output-path>
     <root id="archive" name="doAnOOP.jar">
       <element id="module-output" name="doAnOOP" />
     </root>

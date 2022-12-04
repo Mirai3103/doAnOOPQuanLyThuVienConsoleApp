@@ -130,7 +130,7 @@ public final class Helper {
 	}
 
 
-	public static String dirPath = System.getProperty("user.dir")+"\\src\\data\\";
+	public static String dirPath = System.getProperty("user.dir")+"\\data\\";
 	// sau này cái sau này dùng xuất ra file excel đọc được ví dụ như để liệt kê các loại sách hay là lịch sử đọc của ai đó
 	// dùng để đọc flie theo từng dòng thành String
 	// vào hàm của ai thì cắt cái String đó ra bằng lệnh str.split(" ")
