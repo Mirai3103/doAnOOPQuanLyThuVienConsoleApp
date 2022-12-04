@@ -43,6 +43,8 @@ public class ThuThuView {
                 }
                 case 10 ->{
                     System.out.println("Thoát");
+                    TongHopDuLieu.fastXuatFile();
+
                     System.exit(0);
                 }
                 case 11 -> {
@@ -51,5 +53,7 @@ public class ThuThuView {
                 }
             }
         } while (luaChon != 11);
+        TongHopDuLieu.fastXuatFile();
+
     }
 }
