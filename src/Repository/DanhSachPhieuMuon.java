@@ -1,5 +1,6 @@
 package Repository;
 
+import Main.MainApp;
 import Model.CTMuonTra;
 import Model.DocGia;
 import Model.MuonTra;
@@ -56,7 +57,7 @@ public class DanhSachPhieuMuon extends BaseDanhSach<MuonTra> {
             System.err.println(e.getMessage());
             return;
         }
-        muonTra.setIDnv(Main.Main.nguoiDung.getMaNV());
+        muonTra.setIDnv(MainApp.nguoiDung.getMaNV());
         System.out.println("Bạn muốn mượn bao nhiêu cuôn sách");
         this.add(muonTra);
         int n = Helper.nhapSoNguyen("Số lượng sách không hợp lệ, nhập lại: ");

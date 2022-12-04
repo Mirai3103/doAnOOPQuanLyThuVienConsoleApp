@@ -8,7 +8,7 @@ import Repository.TongHopDuLieu;
 import helper.Helper;
 
 
-public class Main {
+public class MainApp {
     public static NhanVien nguoiDung = null;
     private static boolean Login(){
         System.out.println("\t ĐĂNG NHẬP");

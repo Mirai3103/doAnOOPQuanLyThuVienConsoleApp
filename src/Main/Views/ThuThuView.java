@@ -1,8 +1,7 @@
 package Main.Views;
 
 
-import Main.Main;
-import Model.ThuThu;
+import Main.MainApp;
 import Repository.TongHopDuLieu;
 
 public class ThuThuView {
@@ -40,7 +39,7 @@ public class ThuThuView {
                 case 8 -> TongHopDuLieu.getDanhSachXuPhat().lamViec();
                 case 9 -> {
                     System.out.println("Thông tin cá nhân");
-                    Main.nguoiDung.thongTinCaNhan();
+                    MainApp.nguoiDung.thongTinCaNhan();
                 }
                 case 10 ->{
                     System.out.println("Thoát");
@@ -48,7 +47,7 @@ public class ThuThuView {
                 }
                 case 11 -> {
                     System.out.println("Đăng xuất");
-                    Main.nguoiDung = null;
+                    MainApp.nguoiDung = null;
                 }
             }
         } while (luaChon != 11);
