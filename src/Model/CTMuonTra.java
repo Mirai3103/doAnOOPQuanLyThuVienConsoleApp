@@ -48,6 +48,9 @@ public class CTMuonTra implements ITableRowData,Serializable	{
 	public void setIdPhieuMuon(int idPhieuMuon) {
 		IdPhieuMuon = idPhieuMuon;
 	}
+	public MuonTra getMuonTra() {
+		return TongHopDuLieu.getDanhSachPhieuMuonTra().getById(IdPhieuMuon);
+	}
 
 	public void setIDsach(int IDsach) throws RuntimeException {
 	    var sach =	TongHopDuLieu.getKhoSach().getById(IDsach);

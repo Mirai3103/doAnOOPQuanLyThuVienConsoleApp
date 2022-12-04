@@ -3,6 +3,7 @@ package Repository;
 import Model.DocGia;
 import Model.TacGia;
 import Model.TheThuVien;
+import Report.ThongKeDocGia;
 import helper.Helper;
 import helper.Mang;
 import helper.Xuat.Table;
@@ -48,7 +49,40 @@ public class DocGias  extends BaseDanhSach<DocGia> {
         System.out.println("3. Tìm kiếm độc giả");
         System.out.println("4. Sửa thông tin độc giả");
         System.out.println("5. Xóa độc giả");
-        System.out.println("6. Quay lại");
+        System.out.println("6. Thống kê độc giả");
+        System.out.println("7. Quay lại");
+    }
+    public void  inThongKe(){
+        ArrayList<ThongKeDocGia> list = new ArrayList<>();
+        var ctMuonTras = TongHopDuLieu.getDanhSachCTMuonTra().getAll();
+        for(var ctMuonTra : ctMuonTras){
+            var tk = new ThongKeDocGia();
+            tk.setMaThe(ctMuonTra.getMuonTra().getIDthe());
+            tk.setMaDocGia(ctMuonTra.getMuonTra().getTheThuVien().getIDuser());
+            tk.setHoTen(ctMuonTra.getMuonTra().getTheThuVien().getUser().getHoTen());
+            var exist = list.stream().filter(x -> x.getMaDocGia() == tk.getMaDocGia()).findFirst().orElse(null);
+            if(exist == null){
+                tk.setSoSachMuon(1);
+                tk.setSoLanViPham(0);
+                if(ctMuonTra.getLoiPhatId() != -1){
+                    tk.setSoLanViPham(1);
+                }
+                list.add(tk);
+            }else {
+                exist.setSoSachMuon(exist.getSoSachMuon() + 1);
+                if(ctMuonTra.getLoiPhatId() != -1){
+                    exist.setSoLanViPham(exist.getSoLanViPham() + 1);
+                }
+            }
+        }
+        //Sắp xếp theo số sách mượn
+        list.sort((x, y) -> y.getSoSachMuon() - x.getSoSachMuon());
+        //set STT
+        for(int i = 0; i < list.size(); i++){
+            list.get(i).setStt(i + 1);
+        }
+        System.out.println("Thống kê độc giả");
+        System.out.println(Table.taoBang(list));
     }
     public DocGia getById(int id){
         return data.stream().filter(s ->s.getIDdg() == id).findFirst().orElse(null);
@@ -138,7 +172,8 @@ public class DocGias  extends BaseDanhSach<DocGia> {
                 }
                 case 4 -> this.suaDocGia();
                 case 5 -> this.xoaDocGia();
-                case 6 -> xuatFileBinary();
+                case 6 -> this.inThongKe();
+                case 7 -> xuatFileBinary();
                 default -> System.out.println("Chọn chức năng không hợp lệ, nhập lại: ");
             }
         }while (chon != 6);
