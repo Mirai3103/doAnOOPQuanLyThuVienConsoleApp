@@ -1,6 +1,7 @@
 package Model;
 
 
+import Main.MainApp;
 import helper.Helper;
 
 import java.util.Scanner;
@@ -125,10 +126,15 @@ public class QuanLi extends NhanVien  {
     }
 
     public void sua() {
+        if(!MainApp.nguoiDung.getMaNV().equalsIgnoreCase("admin") ){
+            System.out.println("Bạn không có quyền sửa thông tin nhân viên này!!!");
+            return;
+        }
         int choose;
         do {
 
             this.xuatDangBang();
+
             menuSua();
             System.out.println("Nhập lựa chọn: ");
             choose = Helper.nhapSoNguyen("Lựa chọn không hop lệ !! yêu cầu nhập lại: ");
