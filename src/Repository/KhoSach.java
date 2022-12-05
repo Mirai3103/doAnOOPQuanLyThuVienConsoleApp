@@ -96,12 +96,6 @@ public class KhoSach extends BaseDanhSach<Sach> {
         System.out.println("Nhap id sach can sua");
         int id = Helper.nhapSoNguyen("Id khong hop le");
         System.out.println("Đây là sách sắp chỉnh sửa");
-        Mang<Sach> sachSapCS = new Mang<>();
-        sachSapCS.add(getById(id));
-        if (sachSapCS.size() == 0) {
-            return;
-        }
-        System.out.println(Table.taoBang(sachSapCS));
         update(id);
     }
 
