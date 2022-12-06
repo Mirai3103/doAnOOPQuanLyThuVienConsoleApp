@@ -331,7 +331,7 @@ public class Sach implements Serializable, ITableRowData {
             }
             case 3 -> {
                 System.out.println("Sửa ngôn ngữ sách: ");
-                this.ngonNgu = Helper.scanner.nextLine();
+                this.ngonNgu = Helper.nhapTen();
             }
             case 4 -> {
                 System.out.println("Nhập giá: ");
