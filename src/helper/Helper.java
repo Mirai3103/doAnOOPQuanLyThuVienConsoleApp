@@ -62,13 +62,15 @@ public final class Helper {
 		return email;
 	}
 	public static String nhapTen(){
-		String number = scanner.nextLine();
-		while (Arrays.stream(number.split("")).map(t->t.charAt(0) >='0' && t.charAt(0)<='9').toList().size() !=0 && Pattern.matches("[a-zA-Z\\s]+$",number)){
+		String name = scanner.nextLine();
+		var isOk =Arrays.stream(name.split("")).filter(t->t.charAt(0) >='0' && t.charAt(0)<='9').toList().size() !=0 ;
+		while (isOk){
 			System.out.println("Tên khônng hợp lệ! , nhập lại: ");
-			number = scanner.nextLine();
+			name = scanner.nextLine();
+			isOk =Arrays.stream(name.split("")).filter(t->t.charAt(0) >='0' && t.charAt(0)<='9').toList().size() !=0 ;
 		}
 
-		return number;
+		return name;
 	}
 	public static boolean checkSdt(String SDT) {
 		if (SDT.matches("^[\\d]{10,11}$")) {

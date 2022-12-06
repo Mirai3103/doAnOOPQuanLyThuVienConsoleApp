@@ -74,7 +74,6 @@ public class DocGia extends ConNguoi implements Serializable, ITableRowData {
         System.out.println("4. Sửa CMND");
         System.out.println("5. Sửa địa chỉ");
         System.out.println("6. Tạo thẻ mới");
-
         System.out.println("7. Thoát");
         System.out.println("Chọn chức năng: ");
     }
