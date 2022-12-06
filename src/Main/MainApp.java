@@ -18,17 +18,17 @@ public class MainApp {
         String matKhau = Helper.inputNoneEmptyString().trim();
         NhanVien user = TongHopDuLieu.getNhanViens().getByMaNV(maNhanVien);
         if(user == null){
-            
+
             System.out.println("Mã nhân viên không tồn tại");
             return false;
         }
         if(!user.getMK().equals(matKhau)){
-            
+
             System.out.println("Mật khẩu không đúng");
             return  false;
         }
         nguoiDung = user;
-        
+
         System.out.println("Đăng nhập thành công");
         System.out.println("Xin chào " + nguoiDung.getHoTen());
         return true;

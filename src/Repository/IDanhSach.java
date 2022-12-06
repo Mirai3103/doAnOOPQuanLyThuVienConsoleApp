@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface IDanhSach<T> {
 
-     void copyFrom(IDanhSach<T> other);
+    void copyFrom(IDanhSach<T> other);
 
     void add(T item);
     void xuatConsoleDangTable();

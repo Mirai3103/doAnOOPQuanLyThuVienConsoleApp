@@ -134,7 +134,7 @@ public final class Helper {
 		return date;
 	}
 	public static LocalDate inputDate(){
-	 return inputDate(false);
+		return inputDate(false);
 	}
 	public static boolean checkEmail(String email){
 		return email.matches(EMAIL_PATTERN);

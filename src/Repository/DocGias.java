@@ -106,7 +106,6 @@ public class DocGias  extends BaseDanhSach<DocGia> {
         if (DocGiaSapCS.size() == 0) {
             return;
         }
-        System.out.println(Table.taoBang(DocGiaSapCS));
         docGia.sua();
 
     }

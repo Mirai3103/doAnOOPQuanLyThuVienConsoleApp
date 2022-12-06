@@ -177,7 +177,7 @@ public class Mang <T > implements Serializable {
     public int size(){
         return size;
     }
-  
+
 
     public boolean isEmpty() {
         return arr == null || size == 0;

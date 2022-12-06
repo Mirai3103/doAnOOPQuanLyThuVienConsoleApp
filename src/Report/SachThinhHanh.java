@@ -4,7 +4,7 @@ package Report;
 import helper.Xuat.ITableRowData;
 
 public class SachThinhHanh implements ITableRowData {
-     private  int stt;
+    private  int stt;
     private String tenSach;
     private int soLanMuon = 0;
 
