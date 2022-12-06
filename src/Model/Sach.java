@@ -388,6 +388,8 @@ public class Sach implements Serializable, ITableRowData {
                     }
                 }
             }
+            case 12 ->{
+            }
             default -> {
                 System.out.println("đối số truyền vào không đúng");
             }
