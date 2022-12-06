@@ -26,7 +26,7 @@ public class ThuThuView {
         do {
             menu();
             System.out.println("Nhập lựa chọn của bạn");
-            luaChon = helper.Helper.nhapSoNguyen("Không hợp lệ: ");
+            luaChon = helper.Helper.nhapSoNguyen("Không hợp lệ, mời nhập lại: ");
             switch (luaChon) {
                 case 1 -> TongHopDuLieu.getKhoSach().thuThuLamViec();
                 case 2 -> TongHopDuLieu.getKhoTheLoai().thuThuLamViec();

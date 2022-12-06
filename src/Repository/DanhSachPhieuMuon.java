@@ -96,7 +96,7 @@ public class DanhSachPhieuMuon extends BaseDanhSach<MuonTra> {
 
     public void traSach() {
         System.out.println("Nhập mã phiếu mượn");
-        var id = Helper.nhapSoNguyen("Id không hợp lệ");
+        var id = Helper.nhapSoNguyen("Id không hợp lệ, nhập lại: ");
         var muonTra = getById(id);
         if (muonTra == null) {
             System.out.println("Không tìm thấy phiếu mượn");
@@ -151,7 +151,7 @@ public class DanhSachPhieuMuon extends BaseDanhSach<MuonTra> {
 
     public void giaHanSachDangMuon() {
         System.out.println("Nhập mã phiếu mượn");
-        var id = Helper.nhapSoNguyen("Id không hợp lệ");
+        var id = Helper.nhapSoNguyen("Id không hợp lệ ,nhập lại: ");
         var muonTra = getById(id);
         if (muonTra == null) {
             System.out.println("Không tìm thấy phiếu mượn");
@@ -216,7 +216,7 @@ public class DanhSachPhieuMuon extends BaseDanhSach<MuonTra> {
 
     public void suaPhieuMuon() {
         System.out.println("Nhập mã phiếu mượn");
-        var id = Helper.nhapSoNguyen("Id không hợp lệ");
+        var id = Helper.nhapSoNguyen("Id không hợp lệ, nhập lại: ");
         var muonTra = getById(id);
         if (muonTra == null) {
             System.out.println("Không tìm thấy phiếu mượn");
@@ -233,14 +233,14 @@ public class DanhSachPhieuMuon extends BaseDanhSach<MuonTra> {
 
         do {
             showMenu();
-            choose = Helper.nhapSoNguyen("Lựa chọn không hợp lệ!");
+            choose = Helper.nhapSoNguyen("Lựa chọn không hợp lệ, nhập lại");
             switch (choose) {
                 case 1 -> {
                     muonSach();
                 }
                 case 2 -> {
                     System.out.println("Nhập id phiếu mươn: ");
-                    var id = Helper.nhapSoNguyen("id không hợp lệ,Nhập lại! ");
+                    var id = Helper.nhapSoNguyen("id không hợp lệ,Nhập lại: ");
                     var phieuMuon = getById(id);
                     if(phieuMuon == null) {
                         System.out.println("Không tìm thấy phiếu mượn");

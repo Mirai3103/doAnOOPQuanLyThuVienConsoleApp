@@ -23,7 +23,7 @@ public class QuanLyView {
         do {
             menu();
             System.out.println("Nhập lựa chọn của bạn");
-            luaChon = helper.Helper.nhapSoNguyen("Không hợp lệ: ");
+            luaChon = helper.Helper.nhapSoNguyen("Không hợp lệ, mời nhâp lại: ");
             switch (luaChon) {
                 case 1 -> TongHopDuLieu.getKhoSach().lamViec();
                 case 2 -> TongHopDuLieu.getKhoTheLoai().lamViecVoiDanhSachTheLoai();
@@ -42,7 +42,7 @@ public class QuanLyView {
                     System.out.println("Đăng xuất thành công");
                     MainApp.nguoiDung = null;
                 }
-                default -> System.out.println("Lựa chọn không hợp lệ");
+                default -> System.out.println("Lựa chọn không hợp lệ, mời nhập lại");
             }
         }while (luaChon != 11);
 

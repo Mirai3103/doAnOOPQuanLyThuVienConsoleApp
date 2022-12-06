@@ -99,7 +99,7 @@ public class NhanViens  extends BaseDanhSach<NhanVien>{
 				do {
 					 maNV = Helper.inputNoneEmptyString();
 					if(maNV.length() !=6){
-						System.out.println("Mã nhân viên không hợp lệ !");
+						System.out.println("Mã nhân viên không hợp lệ, mời nhập lại: ");
 					}
 				}while (maNV.length() !=6);
 				if(checkId(maNV)) {
@@ -122,7 +122,7 @@ public class NhanViens  extends BaseDanhSach<NhanVien>{
 				do {
 					maNV = Helper.inputNoneEmptyString();
 					if(maNV.length() !=6){
-						System.out.println("Mã nhân viên không hợp lệ !");
+						System.out.println("Mã nhân viên không hợp lệ, mời nhập lại: ");
 					}
 				}while (maNV.length() !=6);
 				if(checkId(maNV)) {

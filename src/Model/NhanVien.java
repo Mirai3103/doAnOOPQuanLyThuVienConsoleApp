@@ -128,9 +128,9 @@ public abstract class NhanVien extends ConNguoi implements ITableRowData {
             System.out.println("1. Sửa họ tên");
             System.out.println("2. Sửa ngày sinh");
             System.out.println("3. Sửa số điện thoại");
-            System.out.println("4. Sửa CMND");
-            System.out.println("5. Sửa địa chỉ");
-            System.out.println("6. Sửa mật khẩu");
+            System.out.println("4. Sửa địa chỉ");
+            System.out.println("5. Sửa mật khẩu");
+            System.out.println("6. Thoát");
             System.out.println("Nhập lựa chọn: ");
             choose = Helper.nhapSoNguyen("Lựa chọn không hop lệ !! yêu cầu nhập lại: ");
             switch (choose) {

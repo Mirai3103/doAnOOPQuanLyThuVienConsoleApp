@@ -79,7 +79,7 @@ public class DanhSachNhaXuatBan extends BaseDanhSach<NhaXuatBan>  {
                 case 4 -> xuatConsoleDangTable();
                 case 5 -> System.out.println("Thoát");
                 case 6 -> xuatFileBinary();
-                default -> System.out.println("Lựa chọn không hợp lệ");
+                default -> System.out.println("Lựa chọn không hợp lệ, nhập lại: ");
             }
         }while (luaChon != 5);
     }
@@ -189,7 +189,7 @@ public class DanhSachNhaXuatBan extends BaseDanhSach<NhaXuatBan>  {
                                 System.out.println(Table.taoBang(new ArrayList<>(nhaXuatBan.getSachDaXuatBan())));
                             }
                             case 2 -> System.out.println("Thoát");
-                            default -> System.out.println("Không hợp lệ");
+                            default -> System.out.println("Không hợp lệ , nhập lại:");
                         }
                     }
                 }
