@@ -141,7 +141,7 @@ public abstract class NhanVien extends ConNguoi implements ITableRowData {
                     setHoTen(HoTen);
                 }
                 case 2 -> {
-                    System.out.println("Sửa ngay sinh: ");
+                    System.out.println("Sửa ngà y sinh: ");
                     setNgaySinh(Helper.inputDate().format(Helper.DATE_FORMAT));
                 }
                 case 3 -> {

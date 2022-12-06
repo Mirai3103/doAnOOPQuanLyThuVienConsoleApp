@@ -124,3 +124,4 @@ public class DanhSachXuPhat extends BaseDanhSachArray<XuPhat> {
         } while (c != '5');
     }
 }
+
