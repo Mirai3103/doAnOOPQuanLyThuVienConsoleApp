@@ -76,6 +76,7 @@ public final class Helper {
 			System.out.println("Tên khônng hợp lệ! , nhập lại: ");
 			name = scanner.nextLine();
 			isOk = !name.equals("") && Arrays.stream(name.split("")).filter(t -> t.charAt(0) >= '0' && t.charAt(0) <= '9').toList().size() == 0;
+
 		}
 		return name;
 	}

@@ -83,6 +83,10 @@ public class DocGia extends ConNguoi implements Serializable, ITableRowData {
         int chon;
 
         do {
+
+            
+          System.out.println(Table.taoBang(this));
+
             System.out.println("Sửa thông tin độc giả");
             menuSua();
             chon = Helper.nhapSoNguyen("Không hợp lệ. Nhập lại: ");
@@ -90,7 +94,8 @@ public class DocGia extends ConNguoi implements Serializable, ITableRowData {
                 case 1 -> {
                     String HoTen;
                     System.out.println("Sửa Họ Tên: ");
-                    HoTen = Helper.inputNoneEmptyString();
+
+                    HoTen = Helper.nhapTen();
                     setHoTen(HoTen);
                 }
                 case 2 -> {

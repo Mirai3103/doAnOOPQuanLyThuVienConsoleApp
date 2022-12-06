@@ -111,6 +111,7 @@ public class TacGia implements Serializable, ITableRowData {
         int a = Helper.nhapSoNguyen("yêu cầu nhập số nguyên");
         switch (a) {
             case 1 -> {
+
                 System.out.println("Nhập tên tác giả: ");
                 this.tenTacGia = Helper.inputNoneEmptyString();
             }

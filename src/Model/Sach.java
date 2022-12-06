@@ -331,7 +331,8 @@ public class Sach implements Serializable, ITableRowData {
             }
             case 3 -> {
                 System.out.println("Sửa ngôn ngữ sách: ");
-                this.ngonNgu = Helper.inputNoneEmptyString();
+
+                this.ngonNgu = Helper.nhapTen();
             }
             case 4 -> {
                 System.out.println("Nhập giá: ");
@@ -387,6 +388,8 @@ public class Sach implements Serializable, ITableRowData {
                         tiepTuc = Helper.inputNoneEmptyString().charAt(0) == 'y';
                     }
                 }
+            }
+            case 12 ->{
             }
             default -> {
                 System.out.println("đối số truyền vào không đúng");

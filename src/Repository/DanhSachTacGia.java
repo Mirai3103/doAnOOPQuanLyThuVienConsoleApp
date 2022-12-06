@@ -41,7 +41,15 @@ public class DanhSachTacGia extends BaseDanhSach<TacGia>  {
 
     public void suaTacGia(){
         System.out.println("Nhập id tác giả cần sửa:");
-        update(Helper.nhapSoNguyen("Id không hợp lệ, nhập lại: "));
+        int id=Helper.nhapSoNguyen("Id không hợp lệ, nhập lại: ");
+        System.out.println("Đây là tác giả bạn sắp sửa");
+        Mang<TacGia> TacGiaSapXoa = new Mang<>();
+        TacGiaSapXoa.add(getById(id));
+        if (TacGiaSapXoa.size() == 0) {
+            return;
+        }
+        System.out.println(Table.taoBang(TacGiaSapXoa));
+        update(id);
     }
 
     public void showMenu() {
@@ -52,7 +60,7 @@ public class DanhSachTacGia extends BaseDanhSach<TacGia>  {
         System.out.println("3. Xóa tác giả");
         System.out.println("4. Xem danh sách tác giả");
         System.out.println("5. Thoát");
-        System.out.println("5. Lưu vào file");
+        System.out.println("6. Lưu vào file");
 
     }
     public void lamViec(){
@@ -107,13 +115,6 @@ public class DanhSachTacGia extends BaseDanhSach<TacGia>  {
     public void update(int id) {
         TacGia tacGia = getById(id);
         if(tacGia != null){
-            System.out.println("Đây là tác giả bạn sắp chỉnh sửa");
-            Mang<TacGia> TacGiaSapCS = new Mang<>();
-            TacGiaSapCS.add(getById(id));
-            if (TacGiaSapCS.size() == 0) {
-                return;
-            }
-            System.out.println(Table.taoBang(TacGiaSapCS));
             tacGia.sua();
         }else {
             System.out.println("Khong tim thay tac gia");
