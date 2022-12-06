@@ -104,9 +104,6 @@ public class TacGia implements Serializable, ITableRowData {
     }
 
     public void sua() {
-
-
-        xuatDangBang();
         for (int i = 1; i < getHeader().length; i++)
             System.out.printf((i) + ". " + getHeader()[i] + "\n");
         System.out.println("4. Thoát");

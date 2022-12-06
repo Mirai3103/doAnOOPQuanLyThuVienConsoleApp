@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import Main.MainApp;
 import Model.NhanVien;
 import Model.QuanLi;
 import Model.ThuThu;
@@ -170,7 +171,10 @@ public class NhanViens  extends BaseDanhSach<NhanVien>{
 		String MaNV = Helper.scanner.nextLine();
 		NhanVien NV = getByMaNV(MaNV);
 		if(NV != null) {
-
+			if(NV instanceof QuanLi && !MainApp.nguoiDung.getMaNV().equalsIgnoreCase("admin")){
+				System.out.println("Bạn không có quyền xoá người này!");
+				return;
+			}
 			System.out.println("Đây là nhân viên sắp xóa");
 			Mang<NhanVien> NhanVienSapXoa = new Mang<>();
 			NhanVienSapXoa.add(getByMaNV(MaNV));
@@ -190,26 +194,6 @@ public class NhanViens  extends BaseDanhSach<NhanVien>{
 
 	}
 
-	public void ShowQL(QuanLi QL ) {
-		System.out.println("");
-		// thấy có hàm xuất bản nhưng không biết dùng :))
-
-	}
-
-
-	public List<NhanVien> DocFile() {
-		try {
-			FileInputStream finput = new FileInputStream("E:\\data.obj");
-			ObjectInputStream objinput = new ObjectInputStream(finput);
-			ArrayList<NhanVien> DATA = (ArrayList<NhanVien>) objinput.readObject();
-			return DATA;
-
-		} catch (Exception e) {
-
-			e.printStackTrace();
-			return null;
-		}
-	}
 
 	//ghi file
 	public void TimKiemNV() {

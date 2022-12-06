@@ -74,7 +74,6 @@ public class DanhSachPhieuMuon extends BaseDanhSach<MuonTra> {
                     continue;
                 }
                 var Ctmuon = new CTMuonTra();
-
                 try {
                     Ctmuon.setIdPhieuMuon(muonTra.getIDmt());
                     Ctmuon.setIDsach(sachCanMuon.getId());
@@ -211,7 +210,7 @@ public class DanhSachPhieuMuon extends BaseDanhSach<MuonTra> {
         System.out.println("6. Trả sách");
         System.out.println("7. Gia hạn sách");
         System.out.println("8. Hiển thị mượn sách quá hạn");
-        System.out.println("9. Thoát");
+        System.out.println("9. Thoát ");
         System.out.println("Nhập lựa chọn của bạn: ");
     }
 
