@@ -84,10 +84,11 @@ public class ConNguoi  implements Serializable {
 
 	public void Nhap() {
 		System.out.println("Nhập họ và tên");
+
 		HoTen = Helper.nhapTen();
 		do {
 			System.out.println("Nhập ngày sinh:");
-			NgaySinh = Helper.scanner.nextLine();
+			NgaySinh = Helper.inputNoneEmptyString();
 			if(NgaySinh.equalsIgnoreCase("null")){
 				NgaySinh = "";
 				break;
@@ -95,7 +96,7 @@ public class ConNguoi  implements Serializable {
 		}while (!Helper.checkNgayThang(NgaySinh));
 		do {
 			System.out.println("Nhập số điện thoại:");
-			SDT = Helper.scanner.nextLine();
+			SDT = Helper.inputNoneEmptyString();
 			if(SDT.equalsIgnoreCase("null")){
 				SDT = "";
 				break;
@@ -103,7 +104,7 @@ public class ConNguoi  implements Serializable {
 		}while (!checkSdt());
 		do {
 			System.out.println("Nhập số CMND/CCCD:");
-			CMND = Helper.scanner.nextLine();
+			CMND = Helper.inputNoneEmptyString();
 			if(CMND.equalsIgnoreCase("null")){
 				CMND = "";
 				break;
@@ -115,7 +116,7 @@ public class ConNguoi  implements Serializable {
 			}
 		}while (!checkCMND());
 		System.out.println("Bạn có muốn nhập địa chỉ không? (y/n)");
-		String chon = Helper.scanner.nextLine().charAt(0)+"";
+		String chon = Helper.inputNoneEmptyString().charAt(0)+"";
 		if(chon.equalsIgnoreCase("y")){
 			System.out.println("Nhập địa chỉ: ");
 			DC.Nhap();

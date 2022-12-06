@@ -61,13 +61,22 @@ public final class Helper {
 		}
 		return email;
 	}
+	public static String inputNoneEmptyString(){
+		String input = scanner.nextLine();
+		while (input.trim().equals("")){
+			System.out.println("Không được để trống. Vui lòng nhập lại: ");
+			input = scanner.nextLine();
+		}
+		return input;
+	}
 	public static String nhapTen(){
 		String name = scanner.nextLine();
-		var isOk =Arrays.stream(name.split("")).filter(t->t.charAt(0) >='0' && t.charAt(0)<='9').toList().size() !=0 ;
-		while (isOk){
+		var isOk = !name.equals("") && Arrays.stream(name.split("")).filter(t -> t.charAt(0) >= '0' && t.charAt(0) <= '9').toList().size() == 0;
+		while (!isOk){
 			System.out.println("Tên khônng hợp lệ! , nhập lại: ");
 			name = scanner.nextLine();
-			isOk =Arrays.stream(name.split("")).filter(t->t.charAt(0) >='0' && t.charAt(0)<='9').toList().size() !=0 ;
+			isOk = !name.equals("") && Arrays.stream(name.split("")).filter(t -> t.charAt(0) >= '0' && t.charAt(0) <= '9').toList().size() == 0;
+
 		}
 		return name;
 	}
@@ -112,7 +121,7 @@ public final class Helper {
 		var isDateValid = false;
 		do {
 			System.out.print("Nhập ngày : ");
-			dateStr = Helper.scanner.nextLine();
+			dateStr = Helper.inputNoneEmptyString();
 			isDateValid = Helper.checkNgayThang(dateStr);
 		}while (!isDateValid);
 		var date = LocalDate.parse(dateStr, DATE_FORMAT);

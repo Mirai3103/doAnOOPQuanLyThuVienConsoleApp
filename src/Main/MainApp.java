@@ -13,9 +13,9 @@ public class MainApp {
     private static boolean Login(){
         System.out.println("\t ĐĂNG NHẬP");
         System.out.println("Nhập mã nhân viên:");
-        String maNhanVien = Helper.scanner.nextLine().trim();
+        String maNhanVien = Helper.inputNoneEmptyString().trim();
         System.out.println("Nhập mật khẩu:");
-        String matKhau = Helper.scanner.nextLine().trim();
+        String matKhau = Helper.inputNoneEmptyString().trim();
         NhanVien user = TongHopDuLieu.getNhanViens().getByMaNV(maNhanVien);
         if(user == null){
             

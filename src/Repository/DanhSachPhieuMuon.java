@@ -74,7 +74,6 @@ public class DanhSachPhieuMuon extends BaseDanhSach<MuonTra> {
                     continue;
                 }
                 var Ctmuon = new CTMuonTra();
-
                 try {
                     Ctmuon.setIdPhieuMuon(muonTra.getIDmt());
                     Ctmuon.setIDsach(sachCanMuon.getId());
@@ -121,14 +120,14 @@ public class DanhSachPhieuMuon extends BaseDanhSach<MuonTra> {
             if (ctmt.getNgaytra() == null) {
                 System.out.println(Table.taoBang(ctmt.getBook()));
                 System.out.println("Bạn có muốn trả sách này không? (y/n)");
-                var answer = Helper.scanner.nextLine().charAt(0);
+                var answer = Helper.inputNoneEmptyString().charAt(0);
                 if (answer == 'y') {
                     ctmt.setNgaytra(LocalDate.now());
                     System.out.println("Trả sách thành công");
                     ctmt.getBook().setTheTVNguoiMuonId(null);
                 }
                 System.out.println("Có phạt không? (y/n)");
-                answer = Helper.scanner.nextLine().charAt(0);
+                answer = Helper.inputNoneEmptyString().charAt(0);
                 if (answer == 'y') {
                     TongHopDuLieu.getDanhSachXuPhat().xuatConsoleDangTable();
                     System.out.println("Nhập id xử phạt");
@@ -163,7 +162,7 @@ public class DanhSachPhieuMuon extends BaseDanhSach<MuonTra> {
             if (ctmt.getNgaytra() != null) {
                 System.out.println(Table.taoBang(ctmt.getBook()));
                 System.out.println("Bạn có muốn gia hạn sách này không? (y/n)");
-                var answer = Helper.scanner.nextLine().charAt(0);
+                var answer = Helper.inputNoneEmptyString().charAt(0);
                 if (answer == 'y') {
                     System.out.println("Nhập số ngày muốn gia hạn");
                     var soNgay = Helper.nhapSoNguyen("Số ngày không hợp lệ, nhập lại: ");
@@ -185,7 +184,7 @@ public class DanhSachPhieuMuon extends BaseDanhSach<MuonTra> {
         }
         System.out.println(Table.taoBang(dsQuaHan));
         System.out.println("Bạn có muốn hiển thị độc giả vi pham (y/n");
-        var awnser = Helper.scanner.nextLine().toLowerCase().charAt(0) == 'y';
+        var awnser = Helper.inputNoneEmptyString().toLowerCase().charAt(0) == 'y';
 
         if (awnser) {
             ArrayList<DocGia> dsDGQuaHan = new ArrayList<>();
@@ -211,7 +210,7 @@ public class DanhSachPhieuMuon extends BaseDanhSach<MuonTra> {
         System.out.println("6. Trả sách");
         System.out.println("7. Gia hạn sách");
         System.out.println("8. Hiển thị mượn sách quá hạn");
-        System.out.println("9. Thoát");
+        System.out.println("9. Thoát ");
         System.out.println("Nhập lựa chọn của bạn: ");
     }
 
@@ -249,7 +248,7 @@ public class DanhSachPhieuMuon extends BaseDanhSach<MuonTra> {
                     }
                     phieuMuon.xuatPhieu();
                     System.out.println("Bạn có muốn xoá phiếu mượn: ");
-                    boolean y = Helper.scanner.nextLine().charAt(0) == 'y';
+                    boolean y = Helper.inputNoneEmptyString().charAt(0) == 'y';
                     if (y) {
                         phieuMuon.xoaTatCaCtMuonTra();
                         TongHopDuLieu.getDanhSachPhieuMuonTra().xoaPhieu(phieuMuon);

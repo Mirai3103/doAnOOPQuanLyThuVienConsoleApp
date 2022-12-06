@@ -86,18 +86,18 @@ public class TheThuVien implements Serializable, ITableRowData{
 	public void themTheThuVien()
 	{
 		System.out.print("Nhập IDuser: ");
-		this.IDuser = Integer.parseInt(Helper.scanner.nextLine());
+		this.IDuser = Integer.parseInt(Helper.inputNoneEmptyString());
 		String dateStr;
 		var isDateValid = false;
 		do {
 			System.out.print("Nhập ngày hết hạn(dd/MM/yyyy): ");
-			dateStr = Helper.scanner.nextLine();
+			dateStr = Helper.inputNoneEmptyString();
 			isDateValid = Helper.checkNgayThang(dateStr);
 		}while (!isDateValid);
 
 
 		System.out.print("Nhập ghi chú: ");
-		this.ghichu = Helper.scanner.nextLine();
+		this.ghichu = Helper.inputNoneEmptyString();
 	}
 	public DocGia getUser(){
 		return TongHopDuLieu.getDanhSachDocGia().getById(IDuser);
@@ -109,11 +109,11 @@ public class TheThuVien implements Serializable, ITableRowData{
 		var isDateValid = false;
 		do {
 			System.out.print("Nhập ngày hết hạn(dd/MM/yyyy): ");
-			dateStr = Helper.scanner.nextLine();
+			dateStr = Helper.inputNoneEmptyString();
 			isDateValid = Helper.checkNgayThang(dateStr);
 		}while (!isDateValid);
 		System.out.print("Nhập ghi chú: ");
-		this.ghichu = Helper.scanner.nextLine();
+		this.ghichu = Helper.inputNoneEmptyString();
 	}
 	public void inThe()
 	{
@@ -137,7 +137,7 @@ public class TheThuVien implements Serializable, ITableRowData{
 		System.out.println("2. Sửa ghi chú");
 		System.out.println("3. Quay lại");
 		System.out.print("Nhập lựa chọn: ");
-		int luachon = Integer.parseInt(Helper.scanner.nextLine());
+		int luachon = Integer.parseInt(Helper.inputNoneEmptyString());
 		switch(luachon)
 		{
 			case 1:
@@ -145,13 +145,13 @@ public class TheThuVien implements Serializable, ITableRowData{
 				var isDateValid = false;
 				do {
 					System.out.print("Nhập ngày hết hạn(dd/MM/yyyy): ");
-					dateStr = Helper.scanner.nextLine();
+					dateStr = Helper.inputNoneEmptyString();
 					isDateValid = Helper.checkNgayThang(dateStr);
 				}while (!isDateValid);
 				break;
 			case 2:
 				System.out.print("Nhập ghi chú: ");
-				this.ghichu = Helper.scanner.nextLine();
+				this.ghichu = Helper.inputNoneEmptyString();
 				break;
 			case 3:
 				break;

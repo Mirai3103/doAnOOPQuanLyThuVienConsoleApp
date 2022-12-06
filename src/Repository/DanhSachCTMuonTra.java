@@ -35,7 +35,7 @@ public class DanhSachCTMuonTra extends BaseDanhSach<CTMuonTra> {
         for (CTMuonTra ctMuonTra : data) {
             if(ctMuonTra.getIdPhieuMuon()==idPhieuMuon && ctMuonTra.getIDsach()==idSach){
                 System.out.print("Bạn có chắc muốn xóa không (y/n): ");
-                if(Helper.scanner.nextLine().equals("y")) {
+                if(Helper.inputNoneEmptyString().equals("y")) {
                     System.out.println("Đã xóa!!");
                     data.remove(ctMuonTra);
                 }

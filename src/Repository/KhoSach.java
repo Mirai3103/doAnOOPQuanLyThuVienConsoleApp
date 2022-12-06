@@ -82,7 +82,7 @@ public class KhoSach extends BaseDanhSach<Sach> {
         }
         System.out.println(Table.taoBang(sachSapXoa));
         System.out.print("Bạn có chắc muốn xóa không (y/n): ");
-        if(Helper.scanner.nextLine().equals("y")) {
+        if(Helper.inputNoneEmptyString().equals("y")) {
             System.out.println("Đã xóa!!");
             delete(id);
             return;
@@ -164,7 +164,7 @@ public class KhoSach extends BaseDanhSach<Sach> {
 
     public ArrayList<Sach> timTheoTen() {
         System.out.println("Nhập tên sách cần tìm");
-        String name = Helper.scanner.nextLine();
+        String name = Helper.inputNoneEmptyString();
         return getByName(name);
     }
 
@@ -244,7 +244,7 @@ public class KhoSach extends BaseDanhSach<Sach> {
 
     public void timSach() {
         System.out.println("Nhập tên cuốn sách muốn tìm");
-        var name = Helper.scanner.nextLine();
+        var name = Helper.inputNoneEmptyString();
         var sachs = getByName(name);
         if (sachs.size() == 0) {
             System.out.println("Không tìm thấy sách");

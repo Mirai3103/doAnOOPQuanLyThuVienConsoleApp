@@ -34,7 +34,7 @@ public class DanhSachNhaXuatBan extends BaseDanhSach<NhaXuatBan>  {
         }
         System.out.println(Table.taoBang(NXBSapXoa));
         System.out.print("Bạn có chắc muốn xóa không (y/n): ");
-        if(Helper.scanner.nextLine().equals("y")) {
+        if(Helper.inputNoneEmptyString().equals("y")) {
             System.out.println("Đã xóa!!");
             delete(id);
             return;
@@ -158,7 +158,7 @@ public class DanhSachNhaXuatBan extends BaseDanhSach<NhaXuatBan>  {
                     switch (luaChon2) {
                         case 1 -> {
                             System.out.println("Nhập tên nhà xuất bản cần tìm");
-                            String tenNXB = Helper.scanner.nextLine();
+                            String tenNXB = Helper.inputNoneEmptyString();
                             nhaXuatBan = getByName(tenNXB);
                             if (nhaXuatBan != null) {
                                 System.out.println(nhaXuatBan);

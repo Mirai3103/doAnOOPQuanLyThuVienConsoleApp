@@ -76,19 +76,19 @@ public class ThuThu extends NhanVien {
     public void Nhap() {
         super.Nhap();
         System.out.println("Nhập nơi làm việc: ");
-        NoiLamViec = Helper.scanner.nextLine();
+        NoiLamViec = Helper.inputNoneEmptyString();
         do {
             System.out.println("Nhập ngày nhận chức: ");
-            NgayNhanChuc = Helper.scanner.nextLine();
+            NgayNhanChuc = Helper.inputNoneEmptyString();
         } while (!Helper.checkNgayThang(NgayNhanChuc));
         do {
             System.out.println("Nhập ngày làm việc: ");
-            NgayLamViec = Helper.scanner.nextLine();
+            NgayLamViec = Helper.inputNoneEmptyString();
         } while (!Helper.checkNgayThang(NgayLamViec));
         System.out.println("Nhập năm kinh nghiệm: ");
         NamKinhNghiem = Helper.nhapSoNguyen("Phải là số nguyên!! yêu cầu nhập lại: ");
         System.out.println("Nhấn y nếu đó là trưởng (y/n): ");
-        Truong = Helper.scanner.nextLine().toLowerCase().charAt(0) == 'y';
+        Truong = Helper.inputNoneEmptyString().toLowerCase().charAt(0) == 'y';
     }
 
 
@@ -165,7 +165,7 @@ public class ThuThu extends NhanVien {
                 case 1 -> {
                     String HoTen;
                     System.out.println("Sửa Họ Tên: ");
-                    HoTen = Helper.scanner.nextLine();
+                    HoTen = Helper.inputNoneEmptyString();
                     setHoTen(HoTen);
                 }
                 case 2 -> {
@@ -191,7 +191,7 @@ public class ThuThu extends NhanVien {
                     String MK;
                     System.out.println("Sửa Mật khẩu: ");
                     System.out.println("Nhập mật khẩu mới: ");
-                    MK = Helper.scanner.nextLine();
+                    MK = Helper.inputNoneEmptyString();
                     setMK(MK);
                 }
                 case 7 -> {
@@ -203,7 +203,7 @@ public class ThuThu extends NhanVien {
                 }
                 case 8 -> {
                     System.out.println("Nhập nơi làm việc: ");
-                    NoiLamViec = Helper.scanner.nextLine();
+                    NoiLamViec = Helper.inputNoneEmptyString();
                 }
                 case 9 -> {
                     System.out.println("Sửa ngày nhận chức: ");
@@ -222,7 +222,7 @@ public class ThuThu extends NhanVien {
                 case 12 -> {
                     System.out.println("Trưởng phòng: ");
                     System.out.println("Nhấn y nếu đó là trưởng (y/n): ");
-                    Truong = Helper.scanner.nextLine().toLowerCase().charAt(0) == 'y';
+                    Truong = Helper.inputNoneEmptyString().toLowerCase().charAt(0) == 'y';
                 }
                 case 13 -> {
                     System.out.println("Thoát sửa!");

@@ -189,25 +189,25 @@ public class Sach implements Serializable, ITableRowData {
 
     public void nhapSach() {
         System.out.println("Nhập tên sách: ");
-        this.tenSach = Helper.scanner.nextLine();
+        this.tenSach = Helper.inputNoneEmptyString();
         System.out.println("Nhập tổng số trang: ");
         this.tongSoTrang = Helper.nhapSoNguyen("Tổng số trang phải là số nguyên dương");
         System.out.println("Nhập ngôn ngữ: ");
-        this.ngonNgu = Helper.scanner.nextLine();
+        this.ngonNgu = Helper.inputNoneEmptyString();
         System.out.println("Nhập tác giả: ");
         // hỏi người dùng có muốn nhập tác giả mới không hay chọn từ danh sách tác giả
         nhapTacGia();
         String chon;
         System.out.println("Nhập nhà xuất bản: ");
         System.out.println("Bạn có muốn nhập nhà xuất bản mới không? (y/n)");
-        chon = Helper.scanner.nextLine();
+        chon = Helper.inputNoneEmptyString();
         nhapNhaXuatBan(chon);
         do {
             System.out.println("Nhập năm xuất bản: ");
             this.namXuatBan = (short) Helper.nhapSoNguyen("Năm xuất bản phải là số nguyên dương");
         } while (this.namXuatBan < 0);
         System.out.println("Nhập tình trạng: ");
-        this.tinhTrang = Helper.scanner.nextLine();
+        this.tinhTrang = Helper.inputNoneEmptyString();
         System.out.println("Nhập giá: ");
         this.giaSach = Helper.nhapSoNguyen("Giá phải là số nguyên dương");
         while (this.giaSach < 0) {
@@ -215,7 +215,7 @@ public class Sach implements Serializable, ITableRowData {
             this.giaSach = Helper.nhapSoNguyen("Giá phải là số nguyên dương");
         }
         System.out.println("Nhập giới thiệu: ");
-        this.gioiThieu = Helper.scanner.nextLine();
+        this.gioiThieu = Helper.inputNoneEmptyString();
 
     }
 
@@ -249,7 +249,7 @@ public class Sach implements Serializable, ITableRowData {
             TongHopDuLieu.getKhoTheLoai().xuatConsoleDangTable();
             System.out.println();
             System.out.println("Bạn muốn taọ thể loại mới không? (y/n)");
-            if (Helper.scanner.nextLine().equals("y")) {
+            if (Helper.inputNoneEmptyString().equals("y")) {
                 TheLoai theLoai = new TheLoai();
                 theLoai.nhap();
                 TongHopDuLieu.getKhoTheLoai().add(theLoai);
@@ -267,7 +267,7 @@ public class Sach implements Serializable, ITableRowData {
             }
 
             System.out.println("Bạn có muốn nhập thêm thể loại không? (y/n)");
-            tiepTuc = Helper.scanner.nextLine().equalsIgnoreCase("y");
+            tiepTuc = Helper.inputNoneEmptyString().equalsIgnoreCase("y");
         }
     }
 
@@ -323,7 +323,7 @@ public class Sach implements Serializable, ITableRowData {
         switch (a) {
             case 1 -> {
                 System.out.println("Sửa tên sách: ");
-                this.tenSach = Helper.scanner.nextLine();
+                this.tenSach = Helper.inputNoneEmptyString();
             }
             case 2 -> {
                 System.out.println("Sửa tổng số trang: ");
@@ -331,6 +331,7 @@ public class Sach implements Serializable, ITableRowData {
             }
             case 3 -> {
                 System.out.println("Sửa ngôn ngữ sách: ");
+
                 this.ngonNgu = Helper.nhapTen();
             }
             case 4 -> {
@@ -351,7 +352,7 @@ public class Sach implements Serializable, ITableRowData {
                 System.out.println(Table.taoBang(getNhaXuatBan()));
                 System.out.println("Nhập nhà xuất bản: ");
                 System.out.println("Bạn có muốn nhập nhà xuất bản mới không? (y/n)");
-                String chon = Helper.scanner.nextLine();
+                String chon = Helper.inputNoneEmptyString();
                 nhapNhaXuatBan(chon);
             }
             case 7 -> {
@@ -366,17 +367,17 @@ public class Sach implements Serializable, ITableRowData {
             }
             case 8 -> {
                 System.out.println("Nhập tình trạng: ");
-                this.tinhTrang = Helper.scanner.nextLine();
+                this.tinhTrang = Helper.inputNoneEmptyString();
             }
             case 9 -> {
                 System.out.println("Nhập giới thiệu: ");
-                this.gioiThieu = Helper.scanner.nextLine();
+                this.gioiThieu = Helper.inputNoneEmptyString();
             }
             case 11 -> {
                 System.out.println("Sửa thể loại sách: ");
                 System.out.println(Table.taoBang(new ArrayList<>(getTheLoais())));
                 System.out.println("Bạn muốn thêm hay xóa thể loại sách? (t/x)");
-                String chon = Helper.scanner.nextLine();
+                String chon = Helper.inputNoneEmptyString();
                 if ((chon.charAt(0) + "").equalsIgnoreCase("t")) {
                     nhapTheLoaiChoSach();
                 } else if ((chon.charAt(0) + "").equalsIgnoreCase("x")) {
@@ -384,7 +385,7 @@ public class Sach implements Serializable, ITableRowData {
                     while (tiepTuc) {
                         xoaTheLoaiChoSach();
                         System.out.println("Bạn có muốn xóa thể loại khác không? y/n");
-                        tiepTuc = Helper.scanner.nextLine().charAt(0) == 'y';
+                        tiepTuc = Helper.inputNoneEmptyString().charAt(0) == 'y';
                     }
                 }
             }
@@ -399,7 +400,7 @@ public class Sach implements Serializable, ITableRowData {
 
     private void nhapTacGia() {
         System.out.println("Bạn có muốn nhập tác giả mới không? (y/n)");
-        String chon = Helper.scanner.nextLine();
+        String chon = Helper.inputNoneEmptyString();
         if ((chon.charAt(0) + "").equalsIgnoreCase("y")) {
             TacGia tacGia = new TacGia();
             tacGia.nhap();

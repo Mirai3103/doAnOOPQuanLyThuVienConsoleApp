@@ -64,9 +64,9 @@ public class TheLoai implements Serializable, ITableRowData {
 
     public void nhap() {
         System.out.println("Nhập tên thể loại: ");
-        this.tenTheLoai = Helper.scanner.nextLine();
+        this.tenTheLoai = Helper.inputNoneEmptyString();
         System.out.println("Nhập giới thiệu: ");
-        this.gioiThieu = Helper.scanner.nextLine();
+        this.gioiThieu = Helper.inputNoneEmptyString();
     }
 
     public void xuat() {
@@ -102,11 +102,11 @@ public class TheLoai implements Serializable, ITableRowData {
         switch (a) {
             case 1 -> {
                 System.out.println("Nhập tên thể loại: ");
-                this.tenTheLoai = Helper.scanner.nextLine();
+                this.tenTheLoai = Helper.inputNoneEmptyString();
             }
             case 2 -> {
                 System.out.println("Nhập giới thiệu: ");
-                this.gioiThieu = Helper.scanner.nextLine();
+                this.gioiThieu = Helper.inputNoneEmptyString();
             }
             case 3 -> {
             }

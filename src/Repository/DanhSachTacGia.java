@@ -29,7 +29,7 @@ public class DanhSachTacGia extends BaseDanhSach<TacGia>  {
         }
         System.out.println(Table.taoBang(TacGiaSapXoa));
         System.out.print("Bạn có chắc muốn xóa không (y/n): ");
-        if(Helper.scanner.nextLine().equals("y")) {
+        if(Helper.inputNoneEmptyString().equals("y")) {
             System.out.println("Đã xóa!!");
             this.delete(id);
             return;
@@ -172,7 +172,7 @@ public class DanhSachTacGia extends BaseDanhSach<TacGia>  {
                     switch (luaChon2) {
                         case 1 -> {
                             System.out.println("Nhập tên tác giả cần tìm");
-                            String tenTacGia = Helper.scanner.nextLine();
+                            String tenTacGia = Helper.inputNoneEmptyString();
                             tacGia = getByName(tenTacGia);
                             if (tacGia != null) {
                                 tacGia.xuat();
@@ -194,7 +194,7 @@ public class DanhSachTacGia extends BaseDanhSach<TacGia>  {
                     }
                     if (tacGia != null) {
                         System.out.println("bạn có muốn xuất sách của tác giả này không y/n");
-                        char luaChon3 = Helper.scanner.nextLine().charAt(0) ;
+                        char luaChon3 = Helper.inputNoneEmptyString().charAt(0) ;
                         if (luaChon3 == 'y') {
                             System.out.println(Table.taoBang(new ArrayList<>(tacGia.getSachs())));
                         }
