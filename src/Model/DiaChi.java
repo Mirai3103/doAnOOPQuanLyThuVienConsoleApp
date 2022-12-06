@@ -65,16 +65,16 @@ public class DiaChi implements Serializable {
 
     public void Nhap() {
         System.out.println("Nhập số nhà: ");
-        SoNha = Helper.scanner.nextLine();
+        SoNha = Helper.inputNoneEmptyString();
         System.out.println("Nhập đường: ");
-        Duong = Helper.scanner.nextLine();
+        Duong = Helper.inputNoneEmptyString();
         System.out.println("Nhập phường: ");
-        Phuong = Helper.scanner.nextLine();
+        Phuong = Helper.inputNoneEmptyString();
         System.out.println("Nhập quận: ");
-        Quan = Helper.scanner.nextLine();
+        Quan = Helper.inputNoneEmptyString();
         System.out.println("Nhập tỉnh: ");
 
-        this.Tinh = Helper.scanner.nextLine();
+        this.Tinh = Helper.inputNoneEmptyString();
     }
 
     public String toString() {

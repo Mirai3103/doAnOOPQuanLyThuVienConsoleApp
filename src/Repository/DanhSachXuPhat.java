@@ -16,6 +16,7 @@ public class DanhSachXuPhat extends BaseDanhSachArray<XuPhat> {
     @Override
     public void copyFrom(IDanhSach<XuPhat> other) {
         var otherXuPhats = (DanhSachXuPhat) other;
+        this.idIdentity = otherXuPhats.idIdentity;
         this.data = otherXuPhats.data;
     }
 
@@ -95,7 +96,7 @@ public class DanhSachXuPhat extends BaseDanhSachArray<XuPhat> {
         }
         System.out.println(Table.taoBang(XuaPhatSapXoa));
         System.out.print("Bạn có chắc muốn xóa không (y/n): ");
-        if(Helper.scanner.nextLine().equals("y")) {
+        if(Helper.inputNoneEmptyString().equals("y")) {
             System.out.println("Đã xóa!!");
             data.remove(item);
             return;
@@ -107,7 +108,7 @@ public class DanhSachXuPhat extends BaseDanhSachArray<XuPhat> {
         char c = ' ';
         do {
             showMenu();
-            String a = Helper.scanner.nextLine();
+            String a = Helper.inputNoneEmptyString();
             c = a.charAt(0);
             switch (c) {
                 case '1' -> add();

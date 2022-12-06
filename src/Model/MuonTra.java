@@ -51,7 +51,7 @@ public class MuonTra implements Serializable, ITableRowData {
                     System.out.println("Nhập ngày mượn mới: ");
                     var isValidate = false;
                     do {
-                        var ngaymuon = Helper.scanner.nextLine();
+                        var ngaymuon = Helper.inputNoneEmptyString();
                         var formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
                         try {
                             this.ngayLapPhieu = LocalDate.parse(ngaymuon, formatter);
@@ -119,7 +119,7 @@ public class MuonTra implements Serializable, ITableRowData {
     public void nhapPhieuMuonTra() {
         while (true) {
             System.out.print("Nhập số thẻ: ");
-            IDthe = Integer.parseInt(Helper.scanner.nextLine());
+            IDthe = Integer.parseInt(Helper.inputNoneEmptyString());
             var theTv = TongHopDuLieu.getDanhSachTheThuVien().getById(IDthe);
 
             if (theTv == null) {

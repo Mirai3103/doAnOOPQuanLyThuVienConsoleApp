@@ -126,7 +126,7 @@ public class DocGias  extends BaseDanhSach<DocGia> {
         }
         System.out.println(Table.taoBang(DocGiaSapXoa));
         System.out.print("Bạn có chắc muốn xóa không (y/n): ");
-        if(Helper.scanner.nextLine().equals("y")) {
+        if(Helper.inputNoneEmptyString().equals("y")) {
             System.out.println("Đã xóa!!");
             data.remove(docGia);
             return;
@@ -151,7 +151,7 @@ public class DocGias  extends BaseDanhSach<DocGia> {
                     System.out.println("2. Tìm theo ID");
                     int chon2 = Helper.nhapSoNguyen("Chọn chức năng không hợp lệ, nhập lại: ");
                     if (chon2 == 1) {
-                        String name = Helper.scanner.nextLine();
+                        String name = Helper.inputNoneEmptyString();
                         var docGias = getByName(name);
 
                         if (docGias.size() == 0) {

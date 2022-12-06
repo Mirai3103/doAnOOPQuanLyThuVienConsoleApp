@@ -90,7 +90,7 @@ public abstract class NhanVien extends ConNguoi implements ITableRowData {
     public void Nhap() {
         super.Nhap();
         System.out.println("Nhập mật khẩu: ");
-        MK = Helper.scanner.nextLine();
+        MK = Helper.inputNoneEmptyString();
         System.out.println("Nhập mức lương");
         Luong = Helper.nhapSoNguyen("phải là số nguyên!! yêu cầu nhập lại : ");
         while (Luong < 0) {
@@ -125,14 +125,19 @@ public abstract class NhanVien extends ConNguoi implements ITableRowData {
     public void suaThongTinCaNhan() {
         int choose;
         do {
-            menuSua();
+            System.out.println("1. Sửa họ tên");
+            System.out.println("2. Sửa ngày sinh");
+            System.out.println("3. Sửa số điện thoại");
+            System.out.println("4. Sửa CMND");
+            System.out.println("5. Sửa địa chỉ");
+            System.out.println("6. Sửa mật khẩu");
             System.out.println("Nhập lựa chọn: ");
             choose = Helper.nhapSoNguyen("Lựa chọn không hop lệ !! yêu cầu nhập lại: ");
             switch (choose) {
                 case 1 -> {
                     String HoTen;
                     System.out.println("Sửa Họ Tên: ");
-                    HoTen = Helper.scanner.nextLine();
+                    HoTen = Helper.inputNoneEmptyString();
                     setHoTen(HoTen);
                 }
                 case 2 -> {
@@ -154,7 +159,7 @@ public abstract class NhanVien extends ConNguoi implements ITableRowData {
                     String MK;
                     System.out.println("Sửa Mật khẩu: ");
                     System.out.println("Nhập mật khẩu mới: ");
-                    MK = Helper.scanner.nextLine();
+                    MK = Helper.inputNoneEmptyString();
                     setMK(MK);
                 }
 
@@ -171,7 +176,7 @@ public abstract class NhanVien extends ConNguoi implements ITableRowData {
         System.out.println("Thông tin cá nhân");
         Xuat();
         System.out.println("Bạn có muốn sửa thông tin cá nhân không? (y/n)");
-        if(Helper.scanner.nextLine().charAt(0)=='y'){
+        if(Helper.inputNoneEmptyString().charAt(0)=='y'){
             suaThongTinCaNhan();
         }else {
             System.out.println("bye");

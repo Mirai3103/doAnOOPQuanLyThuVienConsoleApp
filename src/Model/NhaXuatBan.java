@@ -87,16 +87,16 @@ public class NhaXuatBan implements Serializable , ITableRowData {
     public void nhap(){
 
         System.out.println("Nhap ten nha xuat ban: ");
-        this.tenNXB = Helper.scanner.nextLine();
+        this.tenNXB = Helper.inputNoneEmptyString();
         System.out.println("Nhap dia chi: ");
         this.diaChi = new DiaChi();
         this.diaChi.Nhap();
         do {
             System.out.println("Nhap email: ");
-            this.email = Helper.scanner.nextLine();
+            this.email = Helper.inputNoneEmptyString();
         }while(!Helper.checkEmail(this.email));
         System.out.println("Nhap nguoi dai dien: ");
-        this.nguoiDaiDien = Helper.scanner.nextLine();
+        this.nguoiDaiDien = Helper.inputNoneEmptyString();
     }
 
     @Override

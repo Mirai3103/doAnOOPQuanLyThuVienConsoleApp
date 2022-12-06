@@ -120,7 +120,7 @@ public class DanhSachTheThuVien extends BaseDanhSachArray<TheThuVien>{
                     }
                     System.out.println(Table.taoBang(theThuVienSapXoa));
                     System.out.print("Bạn có chắc muốn xóa không (y/n): ");
-                    if(Helper.scanner.nextLine().equals("y")) {
+                    if(Helper.inputNoneEmptyString().equals("y")) {
                         System.out.println("Đã xóa!!");
                         data.remove(theThuVien);
                     }

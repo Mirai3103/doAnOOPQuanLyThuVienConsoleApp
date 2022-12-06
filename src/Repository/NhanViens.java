@@ -98,7 +98,7 @@ public class NhanViens  extends BaseDanhSach<NhanVien>{
 					System.out.println("Nhập mã nhân viên (6 kí tự): ");
 					String maNV ;
 					do {
-						maNV = Helper.scanner.nextLine();
+						maNV = Helper.inputNoneEmptyString();
 						if(maNV.length() !=6){
 							System.out.println("Mã nhân viên không hợp lệ !");
 						}
@@ -121,7 +121,7 @@ public class NhanViens  extends BaseDanhSach<NhanVien>{
 					System.out.println("Nhập mã nhân viên (6 kí tự): ");
 					String maNV ;
 					do {
-						maNV = Helper.scanner.nextLine();
+						maNV = Helper.inputNoneEmptyString();
 						if(maNV.length() !=6){
 							System.out.println("Mã nhân viên không hợp lệ !");
 						}
@@ -143,7 +143,7 @@ public class NhanViens  extends BaseDanhSach<NhanVien>{
 
 	public void SuaNhanVien() {
 		System.out.println("Nhập mã nhân viên cần sửa thông tin");
-		String MaNV = Helper.scanner.nextLine();
+		String MaNV = Helper.inputNoneEmptyString();
 		if (checkId(MaNV)) {
 			NhanVien a = getByMaNV(MaNV);
 			if(a instanceof QuanLi) {
@@ -168,7 +168,7 @@ public class NhanViens  extends BaseDanhSach<NhanVien>{
 
 
 		System.out.println("Nhập mã nhân viên cần xóa: ");
-		String MaNV = Helper.scanner.nextLine();
+		String MaNV = Helper.inputNoneEmptyString();
 		NhanVien NV = getByMaNV(MaNV);
 		if(NV != null) {
 			if(NV instanceof QuanLi && !MainApp.nguoiDung.getMaNV().equalsIgnoreCase("admin")){
@@ -183,7 +183,7 @@ public class NhanViens  extends BaseDanhSach<NhanVien>{
 			}
 			System.out.println(Table.taoBang(NhanVienSapXoa));
 			System.out.print("Bạn có chắc muốn xóa không (y/n): ");
-			if(Helper.scanner.nextLine().equals("y")) {
+			if(Helper.inputNoneEmptyString().equals("y")) {
 				System.out.println("Đã xóa!!");
 				XoaNV(NV);
 				return;
@@ -205,7 +205,7 @@ public class NhanViens  extends BaseDanhSach<NhanVien>{
 		switch (q) {
 			case 1:{
 				System.out.println("Nhập mã nhân viên cần tìm kiếm thông tin: ");
-				String MaNV = Helper.scanner.nextLine();
+				String MaNV = Helper.inputNoneEmptyString();
 				if (checkId(MaNV)) {
 					NhanVien a = getByMaNV(MaNV);
 					if(a instanceof QuanLi) {
@@ -221,7 +221,7 @@ public class NhanViens  extends BaseDanhSach<NhanVien>{
 			}
 			case 2:{
 				System.out.println("Nhập tên nhân viên muốn tìm thông tin: ");
-				String name = Helper.scanner.nextLine();
+				String name = Helper.inputNoneEmptyString();
 				Mang<NhanVien> NV = getByName(name);
 				if(NV != null) {
 

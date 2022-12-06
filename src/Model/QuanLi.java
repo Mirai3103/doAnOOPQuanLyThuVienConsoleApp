@@ -72,16 +72,16 @@ public class QuanLi extends NhanVien  {
         super.Nhap();
         do {
             System.out.println("Nhập ngày nhận chức : ");
-            NgayNhanChuc = Helper.scanner.nextLine();
+            NgayNhanChuc = Helper.inputNoneEmptyString();
         }while (!Helper.checkNgayThang(NgayNhanChuc));
         do {
             System.out.println("Nhập năm kinh nghiệm: ");
             NamKinhNghiem=Helper.nhapSoNguyen("Phải là số nguyên!!! Yêu cầu nhập lại: ");
         }while(NamKinhNghiem<0);
         System.out.println("Nhập mã bảo mật: ");
-        MaBaoMat = Helper.scanner.nextLine();
+        MaBaoMat = Helper.inputNoneEmptyString();
         System.out.println("Nhập đặc quyền: ");
-        DacQuyen = Helper.scanner.nextLine();
+        DacQuyen = Helper.inputNoneEmptyString();
     }
 
     @Override
@@ -142,7 +142,7 @@ public class QuanLi extends NhanVien  {
                 case 1 -> {
                     String HoTen;
                     System.out.println("Sửa Họ Tên: ");
-                    HoTen = Helper.scanner.nextLine();
+                    HoTen = Helper.inputNoneEmptyString();
                     setHoTen(HoTen);
                 }
                 case 2 -> {
@@ -168,7 +168,7 @@ public class QuanLi extends NhanVien  {
                     String MK;
                     System.out.println("Sửa Mật khẩu: ");
                     System.out.println("Nhập mật khẩu mới: ");
-                    MK = Helper.scanner.nextLine();
+                    MK = Helper.inputNoneEmptyString();
                     setMK(MK);
                 }
                 case 7 -> {
@@ -190,7 +190,7 @@ public class QuanLi extends NhanVien  {
                 case 10 -> {
                     System.out.println("Sửa đặc quyền: ");
                     System.out.println("Nhập đặc quyền: ");
-                    DacQuyen = Helper.scanner.nextLine();
+                    DacQuyen = Helper.inputNoneEmptyString();
                 }
                 case 11->{}
                 default -> {

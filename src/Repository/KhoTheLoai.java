@@ -87,7 +87,7 @@ public class KhoTheLoai extends BaseDanhSach<TheLoai> {
         switch (luaChon) {
             case 1 -> {
                 System.out.println("Nhập tên: ");
-                String ten = Helper.scanner.nextLine();
+                String ten = Helper.inputNoneEmptyString();
                 ArrayList<TheLoai> theLoaiArrayList = this.getAllByName(ten);
                 if (theLoaiArrayList.size() == 0) {
                     System.out.println("Không tìm thấy");
@@ -102,7 +102,7 @@ public class KhoTheLoai extends BaseDanhSach<TheLoai> {
                 } else {
                     theLoai.xuat();
                     System.out.println("Bạn có muốn xuất tất cả sách thuộc thể loại này không? (y/n)");
-                    char luaChon2 = Helper.scanner.nextLine().trim().toLowerCase().charAt(0);
+                    char luaChon2 = Helper.inputNoneEmptyString().trim().toLowerCase().charAt(0);
                     if (luaChon2 == 'y') {
                         var khoSach = theLoai.getSachs();
                         System.out.println(Table.taoBang(khoSach));
@@ -214,7 +214,7 @@ public class KhoTheLoai extends BaseDanhSach<TheLoai> {
             }
             System.out.println(Table.taoBang(TheLoaiSapXoa));
             System.out.print("Bạn có chắc muốn xóa không (y/n): ");
-            if(Helper.scanner.nextLine().equals("y")) {
+            if(Helper.inputNoneEmptyString().equals("y")) {
                 System.out.println("Đã xóa!!");
                 data.remove(theLoai);
                 return;

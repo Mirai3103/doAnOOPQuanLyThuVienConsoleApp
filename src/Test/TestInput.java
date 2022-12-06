@@ -8,6 +8,6 @@ import java.util.Arrays;
 public class TestInput {
     public static void main(String[] args) {
 
-        System.out.println(Helper.nhapTen());
+        System.out.println(Helper.nhapSoNguyen("cc"));
     }
 }
