@@ -124,7 +124,7 @@ public final class Helper {
             dateStr = Helper.inputNoneEmptyString();
             isDateValid = Helper.checkNgayThang(dateStr);
         }while (!isDateValid);
-        var date = LocalDate.parse(dateStr, DATE_FORMAT);
+        var date = parseDate(dateStr);
         if(isAfterNow){
             if (date.isBefore(LocalDate.now())){
                 System.out.println("Không hợp lệ! phải sau ngày hiện hôm nay");
@@ -179,7 +179,8 @@ public final class Helper {
         return true; //   dd/mm/yyyy || dd-mm-yyyy
     }
     public static LocalDate parseDate(String date){
-        return LocalDate.parse(date, DATE_FORMAT);
+        String[] list = date.split("/");
+        return LocalDate.of(Integer.parseInt(list[2]), Integer.parseInt(list[1]), Integer.parseInt(list[0]));
     }
     public static void clearScreen() {
         try {

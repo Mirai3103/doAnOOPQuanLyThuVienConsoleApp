@@ -27,6 +27,13 @@ public class MuonTra implements Serializable, ITableRowData {
         ngayLapPhieu = LocalDate.now();
     }
 
+    public MuonTra(int IDmt, int IDthe, String IDnv, LocalDate ngayLapPhieu) {
+        this.IDmt = IDmt;
+        this.IDthe = IDthe;
+        this.IDnv = IDnv;
+        this.ngayLapPhieu = ngayLapPhieu;
+    }
+
     public MuonTra(int IDmt, int IDthe, String IDnv, String ngaymuon) {
         this.IDthe = IDthe;
         this.IDnv = IDnv;
