@@ -60,7 +60,7 @@ public class DanhSachTacGia extends BaseDanhSach<TacGia>  {
         System.out.println("3. Xóa tác giả");
         System.out.println("4. Xem danh sách tác giả");
         System.out.println("5. Thoát");
-        System.out.println("5. Lưu vào file");
+        System.out.println("6. Lưu vào file");
 
     }
     public void lamViec(){
