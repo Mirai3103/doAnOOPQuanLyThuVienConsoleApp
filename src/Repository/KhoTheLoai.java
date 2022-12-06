@@ -36,7 +36,6 @@ public class KhoTheLoai extends BaseDanhSach<TheLoai> {
         System.out.println("1. tìm kiếm thể loại");
         System.out.println("2. Xem danh sach the loai");
         System.out.println("3. Thống kê thể loại yêu thích");
-
         System.out.println("4. Thoat");
     }
     public void inThongKeTheLoaiYeuThich(){
@@ -76,7 +75,7 @@ public class KhoTheLoai extends BaseDanhSach<TheLoai> {
                 case 4 -> System.out.println("Thoat");
                 default -> System.out.println("Lua chon khong hop le, nhap lai: ");
             }
-        } while (luaChon != 3);
+        } while (luaChon != 4);
     }
 
     private void timKiemTheLoai() {
