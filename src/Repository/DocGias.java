@@ -51,7 +51,8 @@ public class DocGias  extends BaseDanhSach<DocGia> {
         System.out.println("4. Sửa thông tin độc giả");
         System.out.println("5. Xóa độc giả");
         System.out.println("6. Thống kê độc giả");
-        System.out.println("7. Quay lại");
+        System.out.println("7. Lưu vào file");
+        System.out.println("8. Quay lại");
     }
     public void  inThongKe(){
         ArrayList<ThongKeDocGia> list = new ArrayList<>();
@@ -179,7 +180,7 @@ public class DocGias  extends BaseDanhSach<DocGia> {
                 case 7 -> xuatFileBinary();
                 default -> System.out.println("Chọn chức năng không hợp lệ, nhập lại: ");
             }
-        }while (chon != 6);
+        }while (chon != 8);
     }
     public void xuatFileBinary(){
         super.xuatFileBinary(FILE_PATH);
