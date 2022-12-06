@@ -115,13 +115,6 @@ public class DanhSachTacGia extends BaseDanhSach<TacGia>  {
     public void update(int id) {
         TacGia tacGia = getById(id);
         if(tacGia != null){
-            System.out.println("Đây là tác giả bạn sắp chỉnh sửa");
-            Mang<TacGia> TacGiaSapCS = new Mang<>();
-            TacGiaSapCS.add(getById(id));
-            if (TacGiaSapCS.size() == 0) {
-                return;
-            }
-            System.out.println(Table.taoBang(TacGiaSapCS));
             tacGia.sua();
         }else {
             System.out.println("Khong tim thay tac gia");
