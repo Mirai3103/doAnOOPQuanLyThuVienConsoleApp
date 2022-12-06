@@ -92,7 +92,7 @@ public class DocGia extends ConNguoi implements Serializable, ITableRowData {
                 case 1 -> {
                     String HoTen;
                     System.out.println("Sửa Họ Tên: ");
-                    HoTen = Helper.scanner.nextLine();
+                    HoTen = Helper.nhapTen();
                     setHoTen(HoTen);
                 }
                 case 2 -> {

@@ -142,7 +142,7 @@ public class QuanLi extends NhanVien  {
                 case 1 -> {
                     String HoTen;
                     System.out.println("Sửa Họ Tên: ");
-                    HoTen = Helper.scanner.nextLine();
+                    HoTen = Helper.nhapTen();
                     setHoTen(HoTen);
                 }
                 case 2 -> {

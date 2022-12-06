@@ -84,7 +84,7 @@ public class ConNguoi  implements Serializable {
 
 	public void Nhap() {
 		System.out.println("Nhập họ và tên");
-		HoTen = Helper.scanner.nextLine();
+		HoTen = Helper.nhapTen();
 		do {
 			System.out.println("Nhập ngày sinh:");
 			NgaySinh = Helper.scanner.nextLine();
