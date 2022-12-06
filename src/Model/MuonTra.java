@@ -185,13 +185,17 @@ public class MuonTra implements Serializable, ITableRowData {
             TongHopDuLieu.getKhoSach().getById(ctMuonTra.getIDsach()).setTheTVNguoiMuonId(-1);
         }
     }
+    public NhanVien getNhanVien() {
+        return TongHopDuLieu.getNhanViens().getByMaNV(this.IDnv);
+    }
 
     public void xuatPhieu() {
         System.out.println("ID phiếu mượn: " + this.IDmt);
-        System.out.println("ID thẻ: " + this.IDthe);
-        System.out.println("ID nhân viên: " + this.IDnv);
+        System.out.println("ID thẻ thư viện: " + this.IDthe);
+        System.out.println("ID nhân viên lập phiếu: " + this.IDnv+" - Tên nhân viên lập phiếu: "+getNhanVien().getHoTen());
         System.out.println("Ngày mượn: " + this.ngayLapPhieu);
-        System.out.println("Người mượn: " + TongHopDuLieu.getDanhSachTheThuVien().getById(this.IDthe).getUser().getHoTen());
+        System.out.print("Id độc giả mượn: " + TongHopDuLieu.getDanhSachTheThuVien().getById(this.IDthe).getIDuser());
+        System.out.println(" - Người mượn: " + TongHopDuLieu.getDanhSachTheThuVien().getById(this.IDthe).getUser().getHoTen());
         ArrayList<CTMuonTra> ctMuonTras = getCTMuontras();
         System.out.println("Danh sách sách mượn: ");
         System.out.println(Table.taoBang(ctMuonTras));

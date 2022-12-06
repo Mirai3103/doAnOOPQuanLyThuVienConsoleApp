@@ -34,6 +34,12 @@ public class MainApp {
         return true;
     }
     public static void main(String[] args) {
+        // Bắt sự kiện người dùng tắt chương trình đột ngột
+        Runtime.getRuntime().addShutdownHook(new Thread(() -> {
+            System.out.println("Đang lưu dữ liệu");
+            TongHopDuLieu.fastXuatFile();
+        }));
+
         while (true){
             while (!Login()){
 
