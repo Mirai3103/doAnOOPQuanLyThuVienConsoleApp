@@ -115,18 +115,39 @@ public final  class TongHopDuLieu  {
         return nhanViens;
     }
     public static void fastXuatFile(){
-        getKhoSach().xuatFileBinary(KhoSach.FILE_PATH);
-        getKhoTheLoai().xuatFileBinary(KhoTheLoai.FILE_PATH);
-        getDanhSachTheLoai_sach().xuatFileBinary();
-        getDanhSachTacGia().xuatFileBinary(DanhSachTacGia.FILE_PATH);
-        getDanhSachNhaXuatBan().xuatFileBinary(DanhSachNhaXuatBan.FILE_PATH);
-        getNhanViens().xuatFileBinary(NhanViens.FILE_PATH);
-        getDanhSachPhieuMuonTra().xuatFileBinary(DanhSachPhieuMuon.FILE_PATH);
-        getDanhSachCTMuonTra().xuatFileBinary(DanhSachCTMuonTra.FILE_PATH);
-        getDanhSachDocGia().xuatFileBinary(DocGias.FILE_PATH);
-        getDanhSachTheThuVien().xuatFileBinary(DanhSachTheThuVien.FILE_PATH);
-        getDanhSachXuPhat().xuatFileBinary(DanhSachXuPhat.FILE_PATH);
-
+        if(khoSach != null){
+            khoSach.xuatFileBinary();
+        }
+        if(khoTheLoai != null){
+            khoTheLoai.xuatFileBinary();
+        }
+        if(danhSachTheLoai_sach != null){
+            danhSachTheLoai_sach.xuatFileBinary();
+        }
+        if(danhSachTacGia != null){
+            danhSachTacGia.xuatFileBinary();
+        }
+        if(danhSachNhaXuatBan != null){
+            danhSachNhaXuatBan.xuatFileBinary();
+        }
+        if(nhanViens != null){
+            nhanViens.xuatFileBinary();
+        }
+        if(danhSachPhieuMuonTra != null){
+            danhSachPhieuMuonTra.xuatFileBinary(DanhSachPhieuMuon.FILE_PATH);
+        }
+        if(danhSachCTMuonTra != null){
+            danhSachCTMuonTra.xuatFileBinary(DanhSachCTMuonTra.FILE_PATH);
+        }
+        if(danhSachDocGia != null){
+            danhSachDocGia.xuatFileBinary();
+        }
+        if(danhSachTheThuVien != null){
+            danhSachTheThuVien.xuatFileBinary();
+        }
+        if(danhSachXuPhat != null){
+            danhSachXuPhat.xuatFileBinary();
+        }
     }
     public static void fastXuatCsv(){
         Table.xuatFileExcel(getKhoSach().getAll(), KhoSach.FILE_PATH);
@@ -144,8 +165,5 @@ public final  class TongHopDuLieu  {
 
     }
 
-    public static void main(String[] args) {
-        TongHopDuLieu.fastXuatCsv();
-    }
 
 }

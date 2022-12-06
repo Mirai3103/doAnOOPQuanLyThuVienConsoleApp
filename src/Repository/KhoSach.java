@@ -71,10 +71,10 @@ public class KhoSach extends BaseDanhSach<Sach> {
 
     public void xoaSach() {
         xuatConsoleDangTable();
-        System.out.println("Nhap id sach can xoa");
-        int id = Helper.nhapSoNguyen("Id khong hop le");
+        System.out.println("Nhập id sách cần xóa: ");
+        int id = Helper.nhapSoNguyen("Id không hợp lệ, vui lòng nhập lại: ");
 
-        System.out.println("Đây là sách sắp xóa");
+        System.out.println("Đây là sách sắp xóa: ");
         Mang<Sach> sachSapXoa = new Mang<>();
         sachSapXoa.add(getById(id));
         if (sachSapXoa.size() == 0) {
@@ -93,18 +93,18 @@ public class KhoSach extends BaseDanhSach<Sach> {
     }
 
     public void suaSach() {
-        System.out.println("Nhap id sach can sua");
-        int id = Helper.nhapSoNguyen("Id khong hop le");
+        System.out.println("Nhâp id sách cần sửa: ");
+        int id = Helper.nhapSoNguyen("Id không hợp lệ, vui lòng nhập lại: ");
         System.out.println("Đây là sách sắp chỉnh sửa");
         update(id);
     }
 
     public void showMenu() {
 
-        System.out.println("1. Them sach");
-        System.out.println("2. Xoa sach");
-        System.out.println("3. Sua sach");
-        System.out.println("4. Xuat sach");
+        System.out.println("1. Thêm sách");
+        System.out.println("2. Xóa sách");
+        System.out.println("3. sửa sách");
+        System.out.println("4. Xuất sách");
         System.out.println("5. Lưu vào file");
         System.out.println("7. Thoat");
     }
