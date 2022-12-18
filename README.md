@@ -18,6 +18,4 @@ Quan Ly Thu Vien - Nhom 10
 #### Kiểm tra độc giả vi phạm quá hạn
 #### Chức năng trả sách
 
-## CHỨC NĂNG KHÁC
-#### Đăng nhập vào phần mềm để vào hệ thống quản lý(gồm 2 quyền thủ thư và quản lý)
-#### Thay đổi mật khẩu của tài khoản đang đăng nhập
+## VÀ CÁC CHỨC NĂNG KHÁC (HƠI NHIỀU NÊN LÀM BIẾNG GHI)
