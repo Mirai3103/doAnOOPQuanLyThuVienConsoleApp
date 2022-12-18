@@ -30,7 +30,7 @@ out/
 
 # AWS User-specific
 .idea/**/aws.xml
-
+out
 # Generated files
 .idea/**/contentModel.xml
 
