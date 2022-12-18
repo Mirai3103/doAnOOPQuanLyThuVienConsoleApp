@@ -1,39 +1,21 @@
-# doAnOOP
 
-Quan Ly Thu Vien - Nhom 10
+### Mã học phần  : 841044
+### Nhóm môn học : 7
+### Nhóm đồ án   : 11
 
-## === QUẢN LÝ ĐỘC GIẢ===
+### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  Danh sách thành viên 
 
-#### Hiển thị danh sách độc giả
+| Mã số sinh viên |       Họ và tên        |
+|-----------------|:----------------------:|
+| 3121560074      |     Cao Bảo Quỳnh      |
+| 3121560001      |      Ngũ Hữu Kiên      |
+| 3121560032      |    Ngô Hữu Hoàng     |
+| 3121560003      | Phan Huỳnh Thanh Phong |
 
-#### Thêm, xóa, chỉnh sửa thông tin độc giả
+# Quản lý thư viện
 
-#### Tạo thẻ thư viện cho độc giả
 
-## === QUẢN LÝ SÁCH ===
 
-#### Hiển thị danh sách sách (có thể tìm kiếm theo tên sách, tên tác giả)
-
-#### Chỉnh sửa thông tin sách
-
-#### Quản lý danh sách cuốn sách trong đầu sách (chỉ cho quản lý)
-
-#### Tình trạng cuốn sách (mượn/trả)
-
-## === QUẢN LÝ MƯỢN TRẢ SÁCH ===
-
-#### Hiển thị danh sách phiếu mượn sách
-
-#### Chức năng mượn mới
-
-#### Gia hạn sách đã mượn
-
-#### Kiểm tra độc giả vi phạm quá hạn
-
-#### Chức năng trả sách
-
-## VÀ CÁC CHỨC NĂNG KHÁC (HƠI NHIỀU NÊN LÀM BIẾNG GHI)
-
-###### để chạy chạy file Main trong Package Dataloader trước đễ lấy dữ liệu, xong chạy file MainApp trong Package Main
+###### để chạy hãy chạy file Main trong Package Dataloader trước đễ lấy dữ liệu, xong chạy file MainApp trong Package Main
 
 Link [Repository](https://github.com/Mirai3103/doAnOOPQuanLyThuVienConsoleApp)
